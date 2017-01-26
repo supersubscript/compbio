@@ -1,0 +1,44 @@
+Conserved genes: 	14341
+Non-conserved genes: 	245
+Change-of-allegiance M: 18 / 220
+Change-of-allegiance T:	243 / 5646
+
+Conserved
+GEO 		mostly involved with metabolic/catabolic processes, cell cycle, transport
+Pathways 	cell cycle (mitotic), metabolism, transport
+
+Non-conserved
+GEO 		heart development?! 40-fold; regulation of signalling and metabolic/catabolic proc. 	
+Pathways 	RHO GPTpase cycle, G alpha signalling events, Notch pathway
+
+
+RHOA expression levels correlated positively with the progression of the disease
+
+DEXSeq for non-conserved genes: show enrichment in RHO GPTase-related things.  
+
+---------------------------
+
+Genes which are driven by progesterone AND change their allegiance when you add it
+- Are there any interesting isoforms here which might be direct targets of progesterone?
+- In this subset of genes, we have differential splicing of the PISD gene, which is involved
+	in the FOXA1 transcription factor pathway. 
+- Sadly, it looks like PISD is downstream of this...
+
+Progesterone receptor is 2.5-fold expressed in T47D genes than in MCF7, both in control and progesterone comparison. 
+
+Reading through the literature and compiling a list of ER-a and PR co-activator / co-factor / co-chaperone / chaperone genes (and ERG1), show that almost all of them (7/9) are differentially expressed between the samples in the control setting (and all when you add progesterone).
+
+Doing a splicing analysis of these show that FKBP has differential exon usage between the cell lines, but hardly any reliable amounts in order to account for any change. 
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------

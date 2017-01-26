@@ -1,0 +1,133 @@
+================================
+Introduction
+================================
+Role of progesterone in er-a positive breast cancer
+
+Progesterone is a hormone 
+
+Addition of progesterone induces a global increase in ER-a binding to the genome, co-located with PR and p300, which is a co-activator of ER-a. Together, these create an active transcription regulatory complex which alters the gene expression signature of the cancer. 
+
+Differential binding maps to differential expression of genes; genes which are mapped in this manner are associated with better survival prognosis. 
+
+================================
+RNA-seq processing steps
+================================
+Raw reads, remove adapters with cutadapt
+
+Alignment with TopHat, Ensembl reference genome GRCh37
+
+Merge technical replicates
+
+Deduplication of duplicate reads
+
+Mapped read counts to genomic features using htseq-count
+
+================================
+Debugging RNA alignments
+================================
+Strandedness -- we map alignments to both sense and antisense strands.
+
+Still some differences, which might be explained by different TopHat versions and using another version of htseq-counts. 
+
+================================
+Differential expression of RNA-seq
+================================
+
+We get a set of genes which are regulated by BOTH progesterone and R5020. These cluster between the samples nicely. 
+
+MCF7, the reaction to addition of progesterone is not as clear.  
+
+================================
+Differential expression of RNA-seq 2
+================================
+
+Lots of genes differentially expressed in T47D under both conditions. MCF7 more restrictive in its response. 
+
+Also, R5020 creates a bigger response than progesterone in both cell lines, though marginally so. 
+
+Again, our results are significantly smaller, but the paper doesn't mention all that much about their methodology; we just had to assume. What's more, the paper mentions a significance level of 0.01, but the scripts they used say 0.05.  
+
+================================
+Metabric
+================================
+
+METABRIC -- same data set we used for FG2
+
+Supposed to be the same as in the paper, but we can't find several of the genes that are in the paper's gene signature. 
+
+Switched data set, METABRIC not easily available
+
+================================
+Kaplan-Meier
+================================
+Determine clinical significance of gene list:
+
+Paper, nice separation.
+
+NKI + paper genes: nice separation between top and bottom 5 percent according to fit to gene signature
+
+
+================================
+SIGCHECK
+================================
+Their genes are better than random
+
+Our genes are shit
+
+================================
+CONCLUSION
+================================
+
+Just read slide
+
+================================
+================================
+================================
+INDIVIDUAL PART
+================================
+================================
+================================
+See from RNA-seq data that the differences between cell lines are bigger than differences between the treated / untreated conditions.
+
+MCF7 has a copy number loss of PR-gene which paper mentions, though we don't look into that.
+
+Is this the only factor driving differences between MCF7 and T47D, or are there more significant biological differences which are important?
+
+================================
+DRIVING DIFFERENCES BETWEEN CELL LINES?
+================================
+What we can note: 
+	1) The response is MUCH higher with respect to the number of genes in T47D
+	2) Differential expression between cell lines show that a large amount of genes
+		differ wrt their general expression level 
+Most of these are conserved when you add progesterone -- so the cell lines really are quite different from each other.
+
+================================
+PATHWAY ANALYSIS
+================================
+Enriched pathways in T47D:
+	Nothing interesting
+Negatively enriched pathways:
+	Splicing, transcription, chromatin stuff
+
+================================
+SHIT SLIDE
+================================
+
+================================
+CAN ISOFORM LEVELS AFFECT THE DIFFERENCES?
+================================
+
+DEXSeq
+
+Test groups
+
+================================
+Conclusion
+================================
+Effects seem to be largely PR related, but it's hard to judge.
+
+
+
+	
+

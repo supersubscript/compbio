@@ -1,0 +1,246 @@
+<<setup, eval=TRUE, include=FALSE, echo=FALSE, cache=TRUE>>=
+setwd('~/compbio/text/functional_genomics/assignment_1/')
+Sys.setenv(TEXINPUTS=getwd(),
+           BIBINPUTS=getwd(),
+           BSTINPUTS=getwd())
+@
+\documentclass[10pt]{article}
+\usepackage{mathpazo}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{url}
+\usepackage[a4paper,margin=1.5cm]{geometry}
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage[backend=bibtex,style=numeric-comp,sorting=none]{biblatex}
+\bibliography{report}
+\usepackage{subcaption}
+\usepackage[font={small}]{caption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{decorations, matrix, arrows, shapes, positioning, calc, fit}
+\tikzset  
+{
+  mybox/.style={draw, minimum height=.8cm, minimum width=.9cm},
+  myflip/.style={draw, fill=gray!30, minimum height=.8cm, minimum width=.9cm},
+  myint/.style={draw, minimum height=.8cm, minimum width=1.1cm},
+  mynone/.style={draw=none}
+}
+
+\usepackage{graphicx,epstopdf}
+\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+\usepackage{cleveref}
+\usepackage{collcell} % loads array
+\newcolumntype{m}{>{$} r <{$}}
+\newcolumntype{u}{>{$[\collectcell\si} l <{\endcollectcell]$}}
+\newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{=}}}
+\newcommand{\matr}[1]{\mathbf{#1}}
+\newcommand{\partt}[2]{\ensuremath{\dfrac{\partial {#1}}{\partial {#2}}}}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}} % non-italized differentials
+\newcommand{\h}[0]{\ensuremath{\hbar}} % hbar
+\newcommand{\qed}[0]{\ensuremath{\tag*{$\square$}}} % QED square
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{thm}{theorem} % reset theorem numbering for each chapter
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{definition} % definition numbers are dependent on theorem numbers
+\newtheorem{exmp}[thm]{example} % same for example numbers
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist    
+\newcommand{\ts}{\textsuperscript} 
+\title
+{
+  \phantom{a}\vspace{2cm}
+	\textbf
+	{
+      Genome Informatics: Assignment 1
+  }\\[1em]
+  \small{University of Cambridge}
+}
+
+\author{Henrik Åhl}
+\date{\today}
+
+% Stephen's stuff
+\newcommand{\R}{\texttt{R}}
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\mbox{\normalfont\textsf{#1}}}}
+\usepackage{xcolor}
+\definecolor{Red}{rgb}{0.7,0,0}
+\definecolor{Blue}{rgb}{0,0,0.8}
+\hypersetup{%
+  pdfusetitle,
+  bookmarks = {true},
+  bookmarksnumbered = {true},
+  bookmarksopen = {true},
+  bookmarksopenlevel = 2,
+  unicode = {true},
+  breaklinks = {false},
+  hyperindex = {true},
+  colorlinks = {true},
+  linktocpage = {true},
+  plainpages = {false},
+  linkcolor = {Blue},
+  citecolor = {Blue},
+  urlcolor = {Red},
+  pdfstartview = {Fit},
+  pdfpagemode = {UseOutlines},
+  pdfview = {XYZ null null null}
+}
+%% Listings
+\lstset{ 
+  language=R,                     % the language of the code
+  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},      % keyword style
+  commentstyle=\color{green},   % comment style
+  stringstyle=\color{purple},      % string literal style
+  escapeinside={\%*}{*)},         % if you want to add a comment within your code
+  morekeywords={*,...}            % if you want to add more keywords to the set
+} 
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{float}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+\begin{document}
+
+\date{\today}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+% \begin{abstract}
+% \begin{changemargin}{-.8cm}{-.8cm}
+% {\bf  
+% \hspace{.5cm}
+% \hspace{.5cm}
+% }
+% \end{changemargin} 
+% \end{abstract}
+
+\section*{Preface}
+This is an assignment report in connection to the \textit{Functional Genomics} module in the Computational Biology course at the University of Cambridge, Michaelmas term 2016. All related code is as of \date{\today} available on \url{https://github.com/supersubscript/compbio/tree/master/src/fg_assignments/assignment_1/}, or available per request by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}. Likewise, the corresponding assignment can be found on \url{https://github.com/supersubscript/compbio/tree/master/general/fg_assignment_1.pdf}.
+
+\section{Introduction}
+
+\section{Problems}
+\subsection*{Part A}
+\subsubsection*{Describe the principles guiding the design of a microarray
+experiment}
+
+Microarray experiments are by construct in need of rigourous underlying design in order to enable and improve subsequent analysis. 
+
+The core principles of microarray sequences can be summarised, as by Fisher~\cite{fisher1960}, as \textit{randomisation, replication} and \textit{blocking}.
+
+\begin{description}
+
+\item[\emph{Randomisation}] is the principle of assigning samples to groups at random, e.g.\ by constructing a set of labels and then accordingly assign these to the relevant compounds of interest, forming arrays with a randomised setup of samples. This serves to counter uncontrolled factors which might affect the outcome of the experiment, should statistically dampen the effects of these.
+
+\item[\emph{Replication}] is the process of repeating the data acquisition, in principle from scratch, in order to account for the variability in the experiment outcome. 
+
+\item[\emph{Blocking}] signifies the notion behind the distribution of samples such that comparisons, for example between different microarrays, can be performed adequately.  
+
+\end{description}
+
+
+\subsubsection*{Give a description of Illumina microarray platform including the
+advantages compared to other commercial platforms}
+%%BeadArray technology is based on 3-micron silica beads that self assemble in microwells on either of two substrates: fiber optic bundles or planar silica slides. When randomly assembled on one of these two substrates, the beads have a uniform spacing of ~5.7 microns. Each bead is covered with hundreds of thousands of copies of a specific oligonucleotide that act as the capture sequences in a given Illumina assay.
+
+Illumina BeadArray bases itself on fiber optic bundles or silica slides in which microwells have been arranged. Into these wells, silica beads are placed an coated with $\sim 100000$ copies of specific oligonucleotides, which act to capture certain genes or sequences. The captures consist of a 23 base pair long address, tied to a 50 base pair sequence specific probe.
+
+In the process of capture, a decoding procedure is undergone to determine which beads occupy which well. The sample of interest is then applied, whereafter strands who have bound are measer using a fluorescent label. 
+
+In particular, Illumina microarrays are advantageous as they are highly reproducible, and allow for fast multiplex processing. Microarrays in general have also traditionally been highly used, which means that the corresponding analysis is well-developed, and the workflow comparably easy.%~\cite{}
+https://www.ncbi.nlm.nih.gov/probe/docs/techbeadarray/
+http://www.illumina.com/techniques/microarrays.html
+
+SPREAD OUT THING? (SEE SLIDES)
+
+
+\subsubsection*{Describe at least two different normalisation methods for single-
+channel microarrays. What could help in choosing the most appropriate method?}
+\begin{description}
+\item[\emph{Quantile Normalisation}] is a way of relativising data points so that data between arrays get the same distribution. This works by assigning data points within arrays with labels according to their rank, sorting the data in columns within each array separately, and subsequently normalising each resulting row by the row mean. This allows 
+These methods rely on the assumption that changes between samples are due to technical variance, and not a product of the data itself. In transforming the distributions, the identification of patterns is simplified~\cite{amaratunga2004exploration,Hicks}.
+
+\item[\emph{LOESS}] is a regression model working with a nearest-neighbour approach. LOESS works by separating the data set into subgroups to which simple models are fitted in order to build up a function describing the deterministic part of the data. A set of low-degree polynomials are fitted using a weighted least-squares approach at each value in the variable range(s) of the function, effectively creating a higher-order polynomial fitted to the data, which is used instead of the singular data points~\cite{loess}.
+\end{description}
+
+Choosing an adequate normalisation method is in many cases crucial as it serves to (1) remove errenous data, and (2) extract patterns in the dito. Often, the actual choice is problem-dependent, and has to be decided on a case-to-case basis. Nevertheless, the analysis can be greatly simplified if the researcher knows what patterns are sought for, as it can help in narrowing down the possible tools. On top of this, diagnostic tools of various kinds can be used, such as PCA for identifying dimensions of variance. 
+
+
+%  Major aim is to derive optimal results from the underlying experiment. Comparisons of different normalization methods have already been conducted, none of which, to our knowledge, comparing more than a handful of methods.
+% 
+% Results
+% In the present study, 25 different ways of pre-processing Illumina Sentrix BeadChip array data are compared. Among others, methods provided by the BeadStudio software are taken into account. Looking at different statistical measures, we point out the ideal versus the actual observations. Additionally, we compare qRT-PCR measurements of transcripts from different ranges of expression intensities to the respective normalized values of the microarray data. Taking together all different kinds of measures, the ideal method for our dataset is identified.
+% 
+
+
+
+\subsubsection*{Explain why a probe filtering step is important and give an
+example of a meaningful filtering criterion}
+A probe filtering step is crucial in order to control the false discovery rate. As most probes ought to be affiliated with genes which are not differentially expressed, filtering is essential to remove a large portion of the false discoveries before core analysis~\cite{filtering}.
+
+
+
+\subsection*{Part B}
+
+% Large collections of formalin-fixed paraffin-embedded (FFPE)
+% samples are generated for diagnostic purposes and represent a
+% valuable source of biological material in cancer translational
+% research. Unfortunately, RNA extracted from FFPE samples has poor
+% quality; however, strategies to obtain reliable gene expression data
+% using microarrays have been developed. In a paper published on
+% Plos One (PMC4386823), suitability of different microarray platforms
+% was investigated in the context of breast cancer. Read the paper
+% and then download the raw Affymetrix CEL files from GEO repository
+% (GSE51450, n=12) and use it to answer the following questions.
+% Please include the relevant code and plots that you generate.
+
+
+% 1) Using the affy package, import the data in R and perform a
+% sample quality control before and after summarization/normalization
+% using appropriate diagnostic plots. Consider the presence of outliers
+% and remove them from the analysis.
+% 2) Retrieve information about estrogen receptor (ER) status of the
+% samples (available in the Series Metrics file downloadable from the
+% GEO entry). Create an appropriate design matrix and identify
+% probesets differentially expressed between ER+ and ER- samples
+% using the limma package. How many probesets are significantly
+% differentially expressed (adjusted p<0.05)?
+% 3) Repeat the differential analysis after filtering out non-informative
+% probesets using either present call (similar to Illumina detection p-
+% value) or IQR based filters. Is filtering affecting the number of
+% differentially expressed probesets?
+
+\printbibliography
+\appendix
+\section{Appendix 1}
+\section{Appendix 2}
+
+\end{document}

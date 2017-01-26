@@ -1,0 +1,118 @@
+Menu entry                                Default shortcut~
+Start/Close
+  . Start R (default)                                  \rf
+  . Start R (custom)                                   \rc
+  --------------------------------------------------------
+  . Close R (no save)                                  \rq
+  . Stop R                                          :RStop
+-----------------------------------------------------------
+
+Send
+  . File                                               \aa
+  . File (echo)                                        \ae
+  . File (open .Rout)                                  \ao
+  --------------------------------------------------------
+  . Block (cur)                                        \bb
+  . Block (cur, echo)                                  \be
+  . Block (cur, down)                                  \bd
+  . Block (cur, echo and down)                         \ba
+  --------------------------------------------------------
+  . Chunk (cur)                                        \cc
+  . Chunk (cur, echo)                                  \ce
+  . Chunk (cur, down)                                  \cd
+  . Chunk (cur, echo and down)                         \ca
+  . Chunk (from first to here)                         \ch
+  --------------------------------------------------------
+  . Function (cur)                                     \ff
+  . Function (cur, echo)                               \fe
+  . Function (cur and down)                            \fd
+  . Function (cur, echo and down)                      \fa
+  --------------------------------------------------------
+  . Selection                                          \ss
+  . Selection (echo)                                   \se
+  . Selection (and down)                               \sd
+  . Selection (echo and down)                          \sa
+  . Selection (evaluate and insert output in new tab)  \so
+  --------------------------------------------------------
+  . Paragraph                                          \pp
+  . Paragraph (echo)                                   \pe
+  . Paragraph (and down)                               \pd
+  . Paragraph (echo and down)                          \pa
+  --------------------------------------------------------
+  . Line                                                \l
+  . Line (and down)                                     \d
+  . Line (and new one)                                  \q
+  . Left part of line (cur)                       \r<Left>
+  . Right part of line (cur)                     \r<Right>
+  . Line (evaluate and insert the output as comment)    \o
+-----------------------------------------------------------
+
+Command
+  . List space                                         \rl
+  . Clear console                                      \rr
+  . Clear all                                          \rm
+  --------------------------------------------------------
+  . Print (cur)                                        \rp
+  . Names (cur)                                        \rn
+  . Structure (cur)                                    \rt
+  . View data.frame (cur)                              \rv
+  --------------------------------------------------------
+  . Arguments (cur)                                    \ra
+  . Example (cur)                                      \re
+  . Help (cur)                                         \rh
+  --------------------------------------------------------
+  . Summary (cur)                                      \rs
+  . Plot (cur)                                         \rg
+  . Plot and summary (cur)                             \rb
+  --------------------------------------------------------
+  . Set working directory (cur file path)              \rd
+  --------------------------------------------------------
+  . Sweave (cur file)                                  \sw
+  . Sweave and PDF (cur file)                          \sp
+  . Sweave, BibTeX and PDF (cur file) (Linux/Unix)     \sb
+  --------------------------------------------------------
+  . Knit (cur file)                                    \kn
+  . Knit, BibTeX and PDF (cur file) (Linux/Unix)       \kb
+  . Knit and PDF (cur file)                            \kp
+  . Knit and Beamer PDF (cur file)                     \kl
+  . Knit and HTML (cur file, verbose)                  \kh
+  . Knit and ODT (cur file)                            \ko
+  . Knit and Word Document (cur file)                  \kw
+  . Markdown render (cur file)                         \kr
+  . Spin (cur file) (only .R)                          \ks
+  --------------------------------------------------------
+  . Open PDF (cur file)                                \op
+  . Search forward (SyncTeX)                           \gp
+  . Go to LaTeX (SyncTeX)                              \gt
+  --------------------------------------------------------
+  . Build tags file (cur dir)                  :RBuildTags
+-----------------------------------------------------------
+
+Edit
+  . Insert "<-"                                          _
+  . Complete object name                              ^X^O
+  . Complete function arguments                       ^X^A
+  --------------------------------------------------------
+  . Indent (line)                                       ==
+  . Indent (selected lines)                              =
+  . Indent (whole buffer)                             gg=G
+  --------------------------------------------------------
+  . Toggle comment (line, sel)                         \xx
+  . Comment (line, sel)                                \xc
+  . Uncomment (line, sel)                              \xu
+  . Add/Align right comment (line, sel)                 \;
+  --------------------------------------------------------
+  . Go (next R chunk)                                  \gn
+  . Go (previous R chunk)                              \gN
+-----------------------------------------------------------
+
+Object Browser
+  . Show/Update                                        \ro
+  . Expand (all lists)                                 \r=
+  . Collapse (all lists)                               \r-
+  . Toggle (cur)                                     Enter
+-----------------------------------------------------------
+
+Help (plugin)
+Help (R)                                            :Rhelp
+-----------------------------------------------------------

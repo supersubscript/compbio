@@ -1,0 +1,469 @@
+\documentclass[10pt]{article}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{url}
+\usepackage[a4paper, margin = 1.5cm]{geometry}
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[backend=bibtex,style=numeric-comp,sorting=none]{biblatex}
+\bibliography{report}
+\usepackage{subcaption}
+\usepackage[font={small}]{caption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{cleveref}
+\newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{=}}}
+\newcommand{\matr}[1]{\mathbf{#1}}
+\newcommand{\partt}[2]{\ensuremath{\dfrac{\partial {#1}}{\partial {#2}}}}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}} % non-italized differentials
+\newcommand{\h}[0]{\ensuremath{\hbar}} % hbar
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\usepackage{amsthm}
+\theoremstyle{plain}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist    
+\newcommand{\ts}{\textsuperscript} 
+% Stephen's stuff
+\newcommand{\R}{\texttt{R}}
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\mbox{\normalfont\textsf{#1}}}}
+\usepackage{xcolor}
+\definecolor{Red}{rgb}{0.7,0,0}
+\definecolor{Blue}{rgb}{0,0,0.8}
+\hypersetup{%
+  pdfusetitle,
+  bookmarks = {true},
+  bookmarksnumbered = {true},
+  bookmarksopen = {true},
+  bookmarksopenlevel = 2,
+  unicode = {true},
+  breaklinks = {false},
+  hyperindex = {true},
+  colorlinks = {true},
+  linktocpage = {true},
+  plainpages = {false},
+  linkcolor = {Blue},
+  citecolor = {Blue},
+  urlcolor = {Red},
+  pdfstartview = {Fit},
+  pdfpagemode = {UseOutlines},
+  pdfview = {XYZ null null null}
+}
+%% Listings
+\lstset{ 
+  language=R,                     % the language of the code
+  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},      % keyword style
+  commentstyle=\color{green},   % comment style
+  stringstyle=\color{purple},      % string literal style
+  escapeinside={\%*}{*)},         % if you want to add a comment within your code
+  morekeywords={*,...}            % if you want to add more keywords to the set
+} 
+\usepackage{verbatim}
+\usepackage{multicol}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+%%%%%%%%%%%%%%%%%%%% Begin
+\title
+{
+  %\phantom{a}\vspace{2cm}
+	\textbf
+	{
+      Scientific Programming: Assignment 2
+  }\\[1em]
+  \small{University of Cambridge}
+}
+
+\author{Henrik Åhl}
+\date{\today}
+
+\begin{document}
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+options(formatR.arrow=TRUE,width=50)
+opts_chunk$set(fig.path='figure/graphics-', cache.path='cache/graphics-', fig.align='center', fig.width=5, fig.height=5, fig.show='hold', cache=TRUE, par=TRUE)
+knit_hooks$set(par=function(before, options, envir){
+if (before && options$fig.show!='none') par(mar=c(4,4,.1,.1),cex.lab=.95,cex.axis=.9,mgp=c(2,.7,0),tcl=-.3)
+}, crop=hook_pdfcrop)
+@
+\date{\today}
+\maketitle
+\setcounter{page}{1}
+\begin{abstract}
+\begin{changemargin}{-.8cm}{-.8cm}
+{\bf
+  We investigate weather data for Cambridge, Cambridgeshire, UK, gathered from the \textit{Digital Technology Group} at the University of Cambridge. The data spans from \date{1995-07-01} to \date{2016-10-25}, but contains multiple accuracies which are accounted for.
+  
+\hspace{.5cm}By filtering out missing data in the metrics of hours of sunshine, total amount of rain and temperature, we achieve a data set on which we perform various analyses, such as identification of the days which showed the higest respectively lowest average temperatures. 
+}
+
+\end{changemargin} 
+\end{abstract}
+%\begin{multicols*}{2}
+\section*{Preface}
+This is an assignment report in connection to the \textit{Scientific Programming} module in the Computational Biology course at the University of Cambridge, Michaelmas term 2016. All related code is as of \date{\today} available per request by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}. Data used is hosted at \url{https://www.cl.cam.ac.uk/research/dtg/weather/index-daily-text.html}, and is freely accessible.
+
+\section{Handling of Inaccuracies}
+The data points which contained inaccuracies were accounted for in most of the cases, although ambiguity in the inaccuracy descriptions prevented from systematically handling this. In particular, the inaccuracy information mentions a breakdown of the rain sensor in October 2011, but is then not mentioned again aside of a remark regarding a temporary replacement. In this case, all data after this event are disregarded, as no specific breaking point could be determined. 
+
+In other cases, when the inaccuracy page mentions breakdown of a certain metric, the dates for this are disregarded. Note, however, that a breakdown in for example the rain data sensor is not accounted for in analyses of the other metrics, in order to improve the data set. Futhermore, inaccuracies when the data management team express uncertainty about the quality of the data are not accounted for unless the data points show clearly faulty behavior.
+
+In the case where the treatment is very ambiguous, the following choices have been made with respect to the corresponding metrics:
+\begin{enumerate}
+  \item A few data points have been corrected after initial insertion, rendering duplicate files (with copies having a '\textbackslash$\sim$' suffix). Only the corrected files are kept.
+  \item We disregard the mentioned clock synchronisation error. All times are rounded to the nearest half-hour. Because of this, multiple data points for the same timestamp arise in some cases. We here choose to only keep the latest entered data point.
+  \item The data management team voice concern about precipitation \date{2001-06-01} to \date{2001-07-29}, where it is mentioned that lower-value data points hold higher accuracy. We remove all data points in this interval.
+  \item For dates \date{2006-10-05} to \date{2006-10-09}, we keep the data point for the 6th as it appears to have been manually corrected by the data management, but rid ourselves of the rest.
+  \item Dates which are stated to have already been corrected are not removed from the analysis.
+  \item A remark about possible inaccuracies due to a sun shield are mentioned, though as this is not something which is voiced as any greater concern, the data points corresponding to these dates are kept.
+  \item All data was pruned with respect to faulty values. For example, some files contained placeholder asterisks. These timestamps were removed, and the data treated in accordance to previously stated methods.
+\end{enumerate}
+
+Finally, we must also note that our approach carries a few biases. In particular, in the case of a time-shift from summer to winter and \textit{vice versa}, our method of only keeping latter duplicates and complete datasets with respect to the number of time stamps will skew our analysis in that we will remove a complete day in half of the cases, and lose singular data points in the other half.
+
+\section{Problems and Solutions}
+\subsection{Filtering and file sizes}
+The data were initially filtered using a 1000 bit file size limit, in order to to a further extent only account for directly relevant files. The files filtered for the analyses of \texttt{rain}, \texttt{sunshine} and \texttt{temperature} data can collectively be found in the appendix, along with statistics for the files used. 
+
+\texttt{Rain} data was filtered mainly by the inaccuracies information page, and turned out to be the variable most frequently having technical issues. \texttt{Sunlight} was filtered by removing all data points with $> 16$ hours of sunlight recorded in a single day. We corrected \texttt{temperature} by removing all data points with temperatures $< -25$ or $> 35$. The temperature data set also shows a group of data points occuring in the late December to early January region, all having a mean temperatures of 11.4 $^\circ$C. However, as these could not be related to any noted malfunctions, and proved difficult to remove systematically, no corrections were made. Nevertheless, this does has an effect on the data, and can be seen causing spikes in particular in \cref{fig:compareYears} (see Dec--Feb).
+<<echo=FALSE>>=
+### Load data, retain only what is necessary.
+### Define graphics and functions we will use.
+files = list.files(path = "/local/data/public/sje30/weather/2016/daily-text", full.name = TRUE)
+files.size = length(files)
+files = files[which(file.info(files)$size >= 1000)]
+weather.data        = lapply(files, function(x) read.table(x, header = FALSE, 
+  col.names = c("Time", "Temp", "Humid", "DewPt", "Press", "WindSp", "WindDr", "Sun", "Rain", "Start", "MxWSpd"), fill = TRUE)) 
+names(weather.data) = unname(gsub("_", "-", sapply(files, function(x) tail(strsplit(x, "/")[[1]], n = 1))))
+weather.data        = lapply(weather.data, function(x) x[, c("Time", "Temp", "Sun", "Rain")])
+filtered.out        = c()
+par(lwd = 3, cex = 1.5)
+
+### Round times to the nearest half-hour
+round.times = function(x){
+  times = strptime(x[, "Time"], format = "%H:%M")
+  mins  = round(times$min / 30) * 30
+  mins[which(mins == 60)] = 59
+  times$min  = mins
+  x[,"Time"] = paste(times$hour, ifelse(times$min == 0, "00", times$min), sep = ":")
+  return(x)
+}
+weather.data = lapply(weather.data, round.times) 
+
+### Remove row and timestamp duplicates. Only keep last (most recent) timestamp.
+weather.data = lapply(weather.data, function(x) x[order(as.Date(x[,1], format = "%H:%M")), ]) 
+weather.data = lapply(weather.data, function(x) x[!duplicated(x), ])
+weather.data = lapply(weather.data, function(x) x[!rev(duplicated(rev(x[,1]))), ]) 
+
+### Filter away days with too few data points
+large.enough = sapply(weather.data, function(x) nrow(x) == 49)
+filtered.out = append(filtered.out, weather.data[-large.enough])
+weather.data = weather.data[large.enough]
+
+### Filter out days which have been corrected 
+corrected    = which(sapply(names(weather.data), function(x) paste0(x,"~") %in% names(weather.data)))
+filtered.out = append(filtered.out, corrected)
+weather.data = weather.data[-corrected]
+@
+
+\subsection{Temperature Data for Christmas Eve 2012}
+<<christmas, echo=FALSE, fig.height = 2.5, fig.width=4.5, fig.env='figure', fig.cap="Temperature over 24 hours for Christmas Eve 2012",fig.pos='H'>>=
+times = strptime(weather.data[["2012-12-25"]][, "Time"], format = "%H:%M")
+plot(times, weather.data[["2012-12-25"]][, "Temp"], bty='n', ylab = "Temperature", xlab = "Time", type= 'o', pch = 16)
+@
+The temperature for Christmas Eve 2012 can be seen to start off at a surprisingly high temperature, subsequently falling off until it again starts increasing before noon. Shortly after mid-day, the temperature reaches its peak, whereafter it then falls towards even lower temperatures. 
+
+\subsection{Mean Temperature as a Function of the Date}
+<<meantemp, echo=FALSE, fig.height = 2.5, fig.env='figure', fig.cap="Mean temperature for all (pruned) dates. The enlarged dots signify the highest respectively lowest recorded mean temperature.",fig.pos='H'>>=
+remove.faulty = function(days, column)
+{
+  a = days[names(which(sapply(days, function(x) !is.numeric(x[, column]))))]
+  a = append(a, days[names(which(sapply(weather.data, function(x) anyNA(as.numeric(x[, column])))))])
+  days[which(names(days) %in% names(a))] = NULL
+  return(days)  
+}
+
+### Prune weather
+temperature.days = weather.data
+temperature.days = remove.faulty(temperature.days, "Temp")
+temperature.days = temperature.days[-which(sapply(temperature.days, function(x) max(x[,"Temp"])) > 35)]
+temperature.days = temperature.days[-which(sapply(temperature.days, function(x) min(x[,"Temp"])) < -25)]
+
+### Find mean temperature over year
+mean.temperatures = sapply(temperature.days, function(x) mean(as.numeric(x[, "Temp"])))
+max.name = names(which(mean.temperatures == max(mean.temperatures)))
+min.name = names(which(mean.temperatures == min(mean.temperatures)))
+max.mean = max(mean.temperatures)
+min.mean = min(mean.temperatures)
+
+plot(as.Date(names(mean.temperatures), "%Y-%m-%d"), mean.temperatures, cex = .2, xlab = "Year", ylab = expression(paste("Temperature (",degree,"C)")), ylim=c(-10,30), xlim=c(as.numeric(as.Date("1995-01-01")), as.numeric(as.Date("2016-12-31"))))
+points(as.Date(min.name), min.mean, cex = 1.5, col = 'slateblue3', pch = 16)
+points(as.Date(max.name), max.mean, cex = 1.5, col = 'violetred3', pch = 16)
+@
+
+\Cref{fig:meantemp} shows the daily mean temperature for the data set. As expected, we see the oscillatory, stable behaviour of the temperature, ensuring that summer indeed returns to summer. The coldest respectively warmest day on average was found to be \Sexpr{min.name} and \Sexpr{max.name}, who both can be seen as the enlarged, coloured dots in the graph.
+
+\subsection{Mean of the mean temperatures}
+<<compareYears, echo=FALSE, fig.height = 2.5, fig.env='figure', fig.cap="Comparison between the average temperature for all (366) days in the calendar year. In red is shown the year most similar to the average, as measured by the summed squared distance for available data points. Conversely, the blue curve shows the least similar year.",fig.pos='H'>>=
+#### 4. Fit mean temperature over whole data set
+mean.mean.temps  = rep(0, 366)
+mean.mean.counts = rep(0, 366)
+names(mean.mean.temps)  = seq.Date(as.Date("2016-01-01"), as.Date("2016-12-31"), "days")
+names(mean.mean.counts) = seq.Date(as.Date("2016-01-01"), as.Date("2016-12-31"), "days")
+for (ii in names(temperature.days))
+{
+  date = as.character(as.Date(format(as.Date(ii, format = "%Y-%m-%d"), format = "%m-%d"), format = "%m-%d"))
+  mean.mean.temps[date]  = mean.mean.temps[date]  + mean(temperature.days[as.character(ii)][[1]][,"Temp"])
+  mean.mean.counts[date] = mean.mean.counts[date] + 1
+}  
+mean.mean.temps = mean.mean.temps / mean.mean.counts
+
+### Per year
+year.averages = function(x, FUN)
+{
+  mean.temps  = rep(NA,366)
+  names(mean.temps)  = seq.Date(as.Date("2016-01-01"), as.Date("2016-12-31"), "days")
+    
+  ### Loop through days in year
+  for(ii in names(x))
+  {
+    date = as.character(as.Date(format(as.Date(ii, format = "%Y-%m-%d"), format = "%m-%d"), format = "%m-%d"))
+    mean.temps[date] = FUN(as.numeric(temperature.days[as.character(ii)][[1]][, "Temp"]))
+  }
+  return (mean.temps[which(!is.na(mean.temps))])
+}
+
+min.val = 99999999
+max.val  = 0
+min.year = ""
+max.year = ""
+
+for(ii in seq(1996, 2015))
+{
+  days          = temperature.days[grep(ii, names(temperature.days))]
+  mean.temps    = year.averages(days, mean)
+  data.for      = which(!is.na(mean.temps))
+  sq.difference = sum((mean.temps[data.for] - mean.mean.temps[data.for])^2) #sum((mean.temps[data.for] - mean.mean.temps[data.for]))^2
+  
+  if(sq.difference > max.val)
+  {
+    max.val  = sq.difference
+    max.year = ii
+  }
+  if(sq.difference < min.val)
+  {
+    min.val  = sq.difference
+    min.year = ii
+  }
+}
+days                   = temperature.days[grep(min.year, names(temperature.days))]
+most.alike.mean.temps  = year.averages(days, mean)
+most.alike.mean.temps  = most.alike.mean.temps[which(!is.na(most.alike.mean.temps))]
+
+days                   = temperature.days[grep(max.year, names(temperature.days))]
+least.alike.mean.temps = year.averages(days, mean)
+least.alike.mean.temps = least.alike.mean.temps[which(!is.na(least.alike.mean.temps))]
+
+plot(as.Date(names(least.alike.mean.temps), format = "%Y-%m-%d"), least.alike.mean.temps, col= 'slateblue3', lwd = 2, type = 'l', ylab = expression(paste("Mean mean temperature (", degree, "C)")), xlab = "Month", ylim = c(-10,30), cex = 3, lty = 1)
+lines(as.Date(names(most.alike.mean.temps),  format = "%Y-%m-%d"), most.alike.mean.temps, col= 'violetred3', lwd = 2)
+lines(as.Date(names(mean.mean.temps), format = "%Y-%m-%d"), mean.mean.temps, lwd = 3, lty = 2)
+legend("topleft", c("Monthly average", paste0("Least alike: ", max.year), paste0("Most  alike: ", min.year)), lty = c(2,1,1), col = c(1, 'slateblue3', 'violetred3'), lwd = c(3,2,2), cex = .6)
+@
+The dotted line in \cref{fig:compareYears} shows the mean mean temperature for each individual day in the calendar year, given our data. Both the least on most similar annual temperature trajectory are seen as the two coloured lines, who as expected follow a more volatile path. These were determined using a summed squared distance method for all available data points. However, the years 1995 and 2016 were excluded due to only being partial.
+
+The gap reaching from June to laste August in our year with the worst fit to the average is due to removal of data because of sensor malfunction. Note, however, that the points in this interval are not included in the summed distance measure. 
+
+\subsection{Temperature--rain correlation}
+<<tempVSrain, echo=FALSE, fig.height = 2, fig.env='figure', fig.cap="Scatterplot for temperature-rain relationship.",fig.pos='H'>>=
+removal.dates = function(x, from, to)
+{
+  remove = c()
+  for (ii in 1:length(to))
+  {
+    remove = append(remove, seq.Date(as.Date(from[ii], "%Y-%m-%d"), as.Date(to[ii], "%Y-%m-%d"), "days"))
+  }
+  return (remove)
+}
+rain.from = c(
+  "2001-07-01", "2004-07-09", "2005-01-21", "2005-06-28", "2005-10-20", "2006-07-27", 
+  "2006-10-07", "2007-10-09", "2007-11-22", "2008-07-08", "2008-08-12", "2008-08-19",
+  "2008-08-03", "2008-08-04", "2008-10-25", "2009-04-10", "2010-02-06", "2010-08-23", 
+  "2011-02-26", "2011-08-19", "2011-09-19", "2011-02-26", "2011-09-06"
+)
+rain.to   = c(
+  "2001-08-31", "2004-07-18", "2005-03-02", "2005-07-01", "2005-11-07", "2006-07-31",
+  "2006-10-09", "2007-10-16", "2007-11-22", "2008-07-08", "2008-08-12", "2008-08-27",
+  "2008-08-03", "2008-08-04", "2008-11-04", "2009-04-13", "2010-02-28", "2010-08-23",
+  "2011-02-26", "2011-08-23", "2020-12-31", "2011-02-26", "2011-09-06"
+)
+rain.malfunction.dates = removal.dates(weather.data, rain.from, rain.to)
+
+rainy.days = weather.data
+rainy.days = remove.faulty(rainy.days, "Rain")
+rainy.days[which(names(rainy.days) %in% as.character(rain.malfunction.dates))] = NULL
+rain.and.temperature.data  = temperature.days
+rain.and.temperature.data  = rain.and.temperature.data[which(names(rain.and.temperature.data) %in% names(rainy.days))]
+
+temperatures = sapply(sapply(rain.and.temperature.data, "[", "Temp"), mean)
+rain         = sapply(sapply(rain.and.temperature.data, "[", "Rain"), max)
+plot(temperatures, rain, bty ='n', type = 'p', xlab = expression(paste("Temperature (", degree, "C)")), ylab = "Rain (mm)", lwd = .2, pch = 16, cex=.3)
+@
+
+As depicted in \cref{fig:tempVSrain} the relationship between temperature and rain show no significant features aside from an accumulation of data in the 2--20 $^\circ$C region. The Pearson correlation is \Sexpr{round(cor(temperatures, rain), 3)}.
+
+\subsection{Temperature--sunlight relationship}
+<<tempVSsun, echo=FALSE, fig.height = 2, fig.env='figure', fig.cap="Relationship between sunlight and mean daily temperature.",fig.pos='H'>>=
+######## 6.
+sunny.days = weather.data
+sunny.days = remove.faulty(sunny.days, "Sun")
+sun.from   = c("2009-04-03", "2007-06-19", "2007-06-04", "2007-08-04", "2007-12-31")
+sun.to     = c("2009-04-03", "2007-06-19", "2007-06-04", "2007-08-06", "2008-01-02")
+sunshine.malfunction.dates = removal.dates(weather.data, rain.from, rain.to)
+
+sunny.days = weather.data[lapply(sunny.days, function(x) max(x[, "Sun"])) <= 16]
+
+sunlight.and.temperature.data = sunny.days[which(names(sunny.days) %in% names(temperature.days))]
+sun          = sapply(sapply(sunlight.and.temperature.data, "[", "Sun"),  max)
+temperatures = sapply(sapply(sunlight.and.temperature.data, "[", "Temp"), mean)
+plot(temperatures, sun, bty = 'n', type ='p', xlab = expression(paste("Temperature (",degree,"C)")), ylab = "Sunlight (hours)", cex = .3, pch = 16, ylim = c(0,16))
+@
+In contrast to the rain--temperature data, temperature and sunlight are significantly more correlated. More specifically, the Pearson correlation is calculated to be \Sexpr{round(cor(temperatures, sun), 3)}.
+
+\newpage
+\subsection{Average min--max temperatures}
+<<minMaxMonth, echo=FALSE, fig.height = 2.5, fig.env='figure', fig.cap="Monthly maximum, average and minimum values with respect to temperature.",fig.pos='H'>>=
+### 7.
+mins   =  vector(mode = "double", length = 12)
+maxes  =  vector(mode = "double", length = 12)
+means  =  vector(mode = "double", length = 12)
+counts =  vector(mode = "double", length = 12)
+
+for(ii in 1995:2016)
+{
+  year = temperature.days[grep(ii, names(temperature.days))]
+  for(jj in 1:12)
+  {
+    month = year[as.numeric(lapply(names(year), function(x) strsplit(x, "-")[[1]][2])) == jj]
+    if(length(month) > 0)
+    {
+      mins[jj]   = mins[jj]   + mean(sapply(sapply(month, "[", "Temp"), min))
+      maxes[jj]  = maxes[jj]  + mean(sapply(sapply(month, "[", "Temp"), max))
+      means[jj]  = means[jj]  + mean(sapply(sapply(month, "[", "Temp"), mean))
+      counts[jj] = counts[jj] + 1
+    }
+  }
+}
+mins  = mins  / counts
+maxes = maxes / counts
+means = means / counts
+
+plot(seq.Date(as.Date("2016-01-01"), as.Date("2016-12-31"), "months"),  maxes, type='o', col = 'violetred3', ylim = c(-10,30), xlab = "Month", ylab = expression(paste("Temperature (", degree, "C)")), pch = 16)
+grid(nx = 12, ny = 4, col = "gray", lty = "dotted",
+     lwd = par("lwd"), equilogs = TRUE)
+lines(seq.Date(as.Date("2016-01-01"), as.Date("2016-12-31"), "months"), means, type='l', pch = 16, lty = 2, lwd= 3)
+lines(seq.Date(as.Date("2016-01-01"), as.Date("2016-12-31"), "months"), mins,  type='o', col = 'slateblue3', pch = 16)
+legend("topleft", c("Max", "Mean", "Min"), lty = c(1,2,1), col = c('violetred3', 1, 'slateblue3'), lwd = c(2,3,2), cex = .6)
+@
+
+Compared to the figure provided in the assignment notes, \cref{fig:minMaxMonth} displays high similarities. However, while July is the hottest month on average for both cases, the month with the lowest mean minimum is in our cases February. Also with respect to the absolute temperatures, our values are slightly upscaled. Most notably with respect to the high-summer months.
+
+\subsection{A wet day}
+<<echo=FALSE>>=
+### 8.
+wet.day.threshold = .5
+from = ""
+to   = ""
+consequtive = 0
+max.consequtive = 0
+best.from = ""
+if(max(as.numeric(rainy.days[[1]][, "Rain"])) > wet.day.threshold)
+{
+  consequtive = 1
+}
+for(ii in 2:length(rainy.days))
+{
+  # are the dates consequtive?
+  # is this a rainy day?
+  this.rainy = max(as.numeric(rainy.days[[ii]][, "Rain"])) > wet.day.threshold 
+  if((as.Date(names(rainy.days[ii])) !=  (as.Date(names(rainy.days[ii - 1])) + 1)) | !this.rainy)
+  {
+    consequtive = 0
+  }
+  # is this one rainy?
+  if(this.rainy)
+  {
+    # first one? 
+    if(consequtive == 0)
+    {
+      from = names(rainy.days[ii])
+    }
+    consequtive = consequtive + 1
+    # new record?
+    if(consequtive > max.consequtive)
+    {
+      max.consequtive = consequtive
+      to = names(rainy.days[ii])
+      best.from = from
+    }
+  }
+}
+streak.winner = seq.Date(as.Date(best.from), as.Date(to), "days")
+@
+We define a \textit{wet day} as one in which there falls at least \Sexpr{wet.day.threshold}~mm precipitation. Doing this, the highest number consequtive wet days are in the interval \Sexpr{streak.winner[1]} to \Sexpr{tail(streak.winner, n = 1)}, i.e.\ making up an interval of length \Sexpr{length(streak.winner)}. We should nonetheless note that this result is highly affected by our treatment of the data, as intervals in which there are gaps are excluded. 
+
+\printbibliography
+%\end{multicols*}
+\appendix
+\section{Excluded dates}
+\subsection{All data}
+<<echo=FALSE>>=
+filtered.rain = weather.data[which(!names(weather.data) %in% names(rainy.days))]
+filtered.sun  = weather.data[which(!names(weather.data) %in% names(sunny.days))]
+filtered.temp = weather.data[which(!names(weather.data) %in% names(temperature.days))]
+filtered.all  = weather.data[which(!names(weather.data) %in% c(names(rainy.days), names(sunny.days), names(temperature.days)))]
+
+complete.sets = weather.data[which(!names(weather.data) %in% c(names(filtered.rain), names(filtered.sun), names(filtered.temp))) ]
+@
+The total number of included files, i.e.\ the files with complete data in all categories, is ultimately \Sexpr{length(complete.sets)} files, which accounts for \Sexpr{round(length(complete.sets) / files.size, 3)*100}~\% of the initial file pool.
+
+\subsection{Rain data}
+The excluded \texttt{rain} data consists of \Sexpr{length(filtered.rain)} files, making up \Sexpr{round(length(filtered.rain) / files.size,3)*100}~\% of the initial data set. The dates excluded are the following:
+<<echo=FALSE>>=
+print(names(filtered.rain))
+@
+
+\subsection{Sun data}
+The excluded \texttt{sun} data consists of \Sexpr{length(filtered.sun)} files, making up \Sexpr{round(length(filtered.sun) / files.size,3)*100}~\% of the initial data set. The dates excluded are the following:
+<<echo=FALSE>>=
+print(names(filtered.sun))
+@
+
+\subsection{Temperature data}
+The excluded \texttt{temperature} data consists of \Sexpr{length(filtered.temp)} files, making up \Sexpr{round(length(filtered.temp) / files.size,3)*100}~\% of the initial data set. The dates excluded are the following:
+<<echo=FALSE>>=
+print(names(filtered.temp))
+@
+
+\end{document}

@@ -1,0 +1,5 @@
+Number of words:	 99171 
+Number of ascii words:	 244 
+Number of non-v words:	 254 
+Number of words with apostrophes:	 26141 
+The most frequent bigram is 's ' with a frequency of 0.03208276.

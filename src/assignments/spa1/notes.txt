@@ -1,0 +1,4 @@
+### Exc. 3.4
+### Stolen from http://www.regular-expressions.info/recursebacktrack.html
+#regex  = "\\b(?'word'(?'oddword'(?'oddletter'[a-z])(?P>oddword)\\k'oddletter'|[a-z\\'])|(?'evenword'(?'evenletter'[a-z\\'])(?P>evenword)?\\k'evenletter'))\\b" # Can't account for apostrophes in the latter part for words...
+#print(grep(regex, asciiWords,perl=TRUE, ignore.case= TRUE, value = TRUE))

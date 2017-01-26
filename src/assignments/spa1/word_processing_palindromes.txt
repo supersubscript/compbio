@@ -1,0 +1,22 @@
+A	Ada	Ala	Ana	Anna	Ara
+Ava	B	Bib	Bob	C	D
+E	Eve	F	G	Gog	H
+Hannah	I	J	K	L	Laval
+M	MGM	Malayalam	N	Nan	O
+Ono	Otto	P	Q	R	S
+S's	Salas	T	Tet	Tevet	Tut
+U	V	W	X	Y	Z
+a	aha	b	bib	bob	boob
+c	civic	d	dad	deed	deified
+did	dud	e	eke	ere	eve
+ewe	eye	f	g	gag	gig
+h	hah	huh	i	j	k
+kayak	kook	l	level	m	ma'am
+madam	minim	mom	mum	n	non
+noon	nun	o	oho	p	pap
+peep	pep	pip	poop	pop	pup
+q	r	radar	redder	refer	rotor
+s	sagas	sees	sexes	shahs	sis
+solos	sos	stats	t	tat	tenet
+tit	toot	tot	u	v	w
+wow	x	y	z

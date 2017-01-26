@@ -1,0 +1,223 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{Zerbino08}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Zerbino}{Z.}%
+     {Daniel~R}{D.~R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Birney}{B.}%
+     {Ewan}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{imported}
+  \strng{namehash}{ZDRBE1}
+  \strng{fullhash}{ZDRBE1}
+  \verb{doi}
+  \verb 10.1101/gr.074492.107
+  \endverb
+  \field{number}{5}
+  \field{pages}{821\bibrangedash 9}
+  \field{title}{Velvet: algorithms for de novo short read assembly using de
+  Bruijn graphs.}
+  \field{volume}{18}
+  \verb{file}
+  \verb article:../Statistics/Velvet%3A algorithms for de novo short read assem
+  \verb bly using de Bruijn graphs.pdf:pdf
+  \endverb
+  \field{journaltitle}{Genome Res.}
+  \field{year}{2008}
+\endentry
+
+\entry{Silva2003176}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Silva}{S.}%
+     {Francisco~J.}{F.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Latorre}{L.}%
+     {Amparo}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Moya}{M.}%
+     {Andrés}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SFJLAMA1}
+  \strng{fullhash}{SFJLAMA1}
+  \verb{doi}
+  \verb http://dx.doi.org/10.1016/S0168-9525(03)00041-6
+  \endverb
+  \field{issn}{0168-9525}
+  \field{number}{4}
+  \field{pages}{176 \bibrangedash  180}
+  \field{title}{Why are the genomes of endosymbiotic bacteria so stable?}
+  \verb{url}
+  \verb http://www.sciencedirect.com/science/article/pii/S0168952503000416
+  \endverb
+  \field{volume}{19}
+  \field{journaltitle}{Trends in Genetics}
+  \field{year}{2003}
+\endentry
+
+\entry{2006Perez}{article}{}
+  \name{author}{9}{}{%
+    {{}%
+     {{P{\'e}rez-Brocal}}{P.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{Gil}}{G.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{Ramos}}{R.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{Lamelas}}{L.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{Postigo}}{P.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{Michelena}}{M.}%
+     {J.~M.}{J.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{Silva}}{S.}%
+     {F.~J.}{F.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{Moya}}{M.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{Latorre}}{L.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PV+1}
+  \strng{fullhash}{PVGRRSLAPMMJMSFJMALA1}
+  \verb{doi}
+  \verb 10.1126/science.1130441
+  \endverb
+  \field{pages}{312\bibrangedash 313}
+  \field{title}{{A Small Microbial Genome: The End of a Long Symbiotic
+  Relationship?}}
+  \field{volume}{314}
+  \field{journaltitle}{Science}
+  \field{month}{10}
+  \field{year}{2006}
+\endentry
+
+\entry{shigenobu2000genome}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Shigenobu}{S.}%
+     {Shuji}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Watanabe}{W.}%
+     {Hidemi}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hattori}{H.}%
+     {Masahira}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sakaki}{S.}%
+     {Yoshiyuki}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ishikawa}{I.}%
+     {Hajime}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Nature Publishing Group}%
+  }
+  \strng{namehash}{SS+1}
+  \strng{fullhash}{SSWHHMSYIH1}
+  \field{number}{6800}
+  \field{pages}{81\bibrangedash 86}
+  \field{title}{Genome sequence of the endocellular bacterial symbiont of
+  aphids Buchnera sp. APS}
+  \field{volume}{407}
+  \field{journaltitle}{Nature}
+  \field{year}{2000}
+\endentry
+
+\entry{exonerate}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Slater}{S.}%
+     {Guy St~C}{G.~S.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Birney}{B.}%
+     {Ewan}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SGSCBE1}
+  \strng{fullhash}{SGSCBE1}
+  \verb{doi}
+  \verb 10.1186/1471-2105-6-31
+  \endverb
+  \field{issn}{1471-2105}
+  \field{pages}{31}
+  \field{title}{Automated generation of heuristics for biological sequence
+  comparison}
+  \verb{url}
+  \verb http://europepmc.org/articles/PMC553969
+  \endverb
+  \field{volume}{6}
+  \field{journaltitle}{BMC bioinformatics}
+  \field{year}{2005}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

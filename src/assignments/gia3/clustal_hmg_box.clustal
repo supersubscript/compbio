@@ -1,0 +1,278 @@
+CLUSTAL O(1.2.3) multiple sequence alignment
+
+
+ENSSSCP00000027045                         ATGGTGCAGTCATATGCTTCTGCTATGTTCAGAGTATTGAAAGCGGACGATTACAGCCCA
+ENSSSCP00000025359                         ATGGTGCAGTCATATGCTTCTGCTATGTTCAGAGTATTGAAAGCGGACGATTACAGCCCA
+ENSBTAP00000056194                         ------------------------ATGTTCAGAGTATTGAACGACGATGTTTACAGTCCA
+ENSMUSP00000088717                         ------------------------------------------------------------
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ---ATGCAATCATATGCTTCTGCTATGTTAAGCGTATTCAACAGCGATGATTACAGTCCA
+ENSPTRP00000038745                         ---ATGCAATCATATGCTTCTGCTATGTTAAGCGTATTCAACAGCGATGATTACAGTCCA
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ---ATGCAATCATATGCTTCTGCCAAGTTAAGCGTATTTAACACTGATGGTTACAGTCCA
+ENSMMUP00000045603                         ---ATGCAATCATATGCTTCTGCCATGTTAAGCGTATTTAACACTGATGGTTACAGTCCA
+                                                                                                       
+
+ENSSSCP00000027045                         GCGGCACAGCAGCAAAATATTCTCGCCTTGGGGAAAGGCTCCTCACTATTTCCGACGGAC
+ENSSSCP00000025359                         GCGGCACAGCAGCAAAATATTCTCGCCTTGGGGAAAGGCTCCTCACTATTTCCGACGGAC
+ENSBTAP00000056194                         GCTGTGGTACAGCAACAAACTACTCTCGCTTTTAGGAAAGACTCTTCCTTGTGCACAGAC
+ENSMUSP00000088717                         ------------------------------------------------------------
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            GCTGTGCAAGAGAATATTCCCGCTCTCCG---GAGAAGCTCTTCCTTCCTTTGCACTGAA
+ENSPTRP00000038745                         GCTGTGCAACAGAATATTCCCGCTCTCCG---GAGAAGCTCTTCCTTCCTTTGCACTGAA
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         GCTGCGCAACAGAATATTCCTGCTCTCCG---GAGAAGCTCTTCCTTCATTTGCACTGAA
+ENSMMUP00000045603                         GCTGCGCAACAGAATATTCCTGCTCTCCG---GAGAAGCTCTTCCTTCATTTGCACTGAA
+                                                                                                       
+
+ENSSSCP00000027045                         AATCATAGCTCAAAGGATGGACGTGAAACTAGAGGAAGTGGTAGAGAGAGTGGCCAGGAT
+ENSSSCP00000025359                         AATCATAGCTCAAAGGATGGACGTGAAACTAGAGGAAGTGGTAGAGAGAGTGGCCAGGAT
+ENSBTAP00000056194                         AGTCATAGCGCAAATGATCAGTGTGAAAGGGGAGAACATGTTAGGGAGAGCAGCCAGGAC
+ENSMUSP00000088717                         ---------------------------------------------------ATGGAGGGC
+ENSRNOP00000076001                         ---------------------------------------------------ATGGAGGGC
+ENSP00000372547                            AGCTGTAACTCTAAGTATCAGTGTGAAACGGGAGAAAACAGTAAAGGCAACGTCCAGGAT
+ENSPTRP00000038745                         AGCTATAACTCTAAGTATCAGCGTGAAACGGGAGAAAACAGTAAAGATAGCGTCCAGGAT
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         AGCTGTAGCTCTAAGTATCACTGTGAAGCAGGAGAAAACAGTAAAGGCAGCGTCCAGGAT
+ENSMMUP00000045603                         AGCTGTAGCTCTAAGTATCAGTGTGAAGCAGGAGAAAACAGTAAAGGCAGCGTCCAGGAT
+                                                                                                       
+
+ENSSSCP00000027045                         CGTGTCAAGCGACCCATGAACGCTTTCATTGTGTGGTCTCGTGATCAAAGGAGAAAAGTG
+ENSSSCP00000025359                         CGTGTCAAGCGACCCATGAACGCTTTCATTGTGTGGTCTCGTGATCAAAGGAGAAAAGTG
+ENSBTAP00000056194                         CACGTCAAGCGACCCATGAACGCCTTCATTGTGTGGTCTCGTGAACGAAGACGAAAGGTG
+ENSMUSP00000088717                         CATGTCAAGCGCCCCATGAATGCATTTATGGTGTGGTCCCGTGGTGAGAGGCACAAGTTG
+ENSRNOP00000076001                         CATGTCAAGCGCCCCATGAATGCATTTATGGTGTGGTCCCGTGGAGAGAGGCGCAAGTTG
+ENSP00000372547                            AGAGTGAAGCGACCCATGAACGCATTCATCGTGTGGTCTCGCGATCAGAGGCGCAAGATG
+ENSPTRP00000038745                         AGAGTGAAGCGACCCATGAACGCATTCTTCGTGTGGTCTCGCGATCAGAGGCGCAAGATG
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         AGAGTGAAGCGACCCATGAACGCATTCATTGTGTGGTCTCGCGATCAGAGGCGCAAGATG
+ENSMMUP00000045603                         AAAGTGAAGCGACCCATGAACGCATTCATTGTGTGGTCTCGCGATCAGAGGCGCAAGATG
+                                                                                                       
+
+ENSSSCP00000027045                         GCTCTAGAGAACCCTCAAATGCAAAACTCAGAGATCAGCAAGTGGCTGGGATGCAAGTGG
+ENSSSCP00000025359                         GCTCTAGAGAACCCTCAAATGCAAAACTCAGAGATCAGCAAGTGGCTGGGATGCAAGTGG
+ENSBTAP00000056194                         GCTCTAGAGAATCCCAAAATGAAAAACTCAGACATCAGCAAGCAGCTGGGATATGAGTGG
+ENSMUSP00000088717                         GCCCAGCAGAATCCCAGCATGCAAAATACAGAGATCAGCAAGCAGCTGGGATGCAGGTGG
+ENSRNOP00000076001                         GCTCAACAGAATCCCAGCATGCAGAATTCAGAGATCAGCAAGCATCTGGGATATCAGTGG
+ENSP00000372547                            GCTCTAGAGAATCCCAGAATGCGAAACTCAGAGATCAGCAAGCAGCTGGGATACCAGTGG
+ENSPTRP00000038745                         GCTCTAGAGAATCCCAGAATGCGAAACTCAGAGATCAGCAAGCAGCTGGGATACCAGTGG
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ---------------------------------------------CTGGGATACCAGTGG
+ENSCSAP00000019027                         GCTCTAGAGAATCCCAAAATGCGAAACTCAGAGATCAGCAAGCAGCTGGGATACCAGTGG
+ENSMMUP00000045603                         GCTCTAGAGAATCCCAAAATGCGAAACTCAGAGATCAGCAAGCAGCTGGGATACCAGTGG
+                                                                                        *******    ****
+
+ENSSSCP00000027045                         AAAATGCTTACAGAAGCCGAAAAGCGCCCATTCTTCGAGGAGGCACAGAGGCTACAGGCG
+ENSSSCP00000025359                         AAAATGCTTACAGAAGCCGAAAAGCGCCCATTCTTCGAGGAGGCACAGAGGCTACAGGCG
+ENSBTAP00000056194                         AAAAGGCTTACAGATGCTGAAAAGCGCCCATTCTTTGAGGAGGCACAGAGACTACTAGCC
+ENSMUSP00000088717                         AAAAGCCTTACAGAAGCCGAAAAAAGGCCCTTTTTCCAGGAGGCACAGAGATTGAAGATC
+ENSRNOP00000076001                         AAAAGCCTTACAGAAGCCGAAAAAAGGCCCTTTTTCCAGGAGGCGCAGAGACTGAAGACC
+ENSP00000372547                            AAAATGCTTACTGAAGCCGAAAAATGGCCATTCTTCCAGGAGGCACAGAAATTACAGGCC
+ENSPTRP00000038745                         AAAATGCTTACTGAAGCCGAAAAATGGCCATTCTTCCAGGAGGCACAGAAATTACAGGCC
+gi|292511|gb|L10101.1|HUMSRYA:376-427      AAAATGCTTACTGAAGCCGAAAAATGGCCATTCTTCC-----------------------
+ENSCSAP00000019027                         AAAATGCTTACCGAAGCCGATAAATGGCCATTCTTCCAGGAGGCACAGAAACTACAGGCC
+ENSMMUP00000045603                         AAAATGCTTACCGAAGCCGATAAATGGCCATTCTTCCAGGAGGCACAGAAACTACAGGCC
+                                           ****  ***** ** ** ** **  * ** ** **                         
+
+ENSSSCP00000027045                         GTGCACCGAGATAAATACCCGGGCTATAAATACCGACCTCGTCGCAAGGGAGAGAGGGCA
+ENSSSCP00000025359                         GTGCACCGAGATAAATACCCGGGCTATAAATACCGACCTCGTCGCAAGGGAGAGAGGGCA
+ENSBTAP00000056194                         ATACACCGAGACAAATACCCGGGCTATAAATATCGACCTCGTCGGAGAGCCAAGAGGCCA
+ENSMUSP00000088717                         CTACACAGAGAGAAATACCCAAACTATAAATATCAGCCTCATCGGAGGGCTAAAGTGTCA
+ENSRNOP00000076001                         CTACACAGAGAGAAATATCCAAACTATAAATATCAGCCTCATCGAAGGGTTAAAGTGCCA
+ENSP00000372547                            ATGCACAGAGAGAAATACCCGAATTATAAGTATCGACCTCGTCGGAAGGCGAAGATGCTG
+ENSPTRP00000038745                         ATGCACAGAGAGAAATACCCGAATTATAAGTATCGACCTCGTCGGAAGGCGAACATGCTG
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ATGCATAGAGAGAAATACCCGAATTATAAGTATCGACCTCGTCGGAAGGCGAAGATGCTG
+ENSMMUP00000045603                         ATGCATAGAGAGAAATACCCGAATTATAAGTATCGACCTCGTCGGAAGGCGAAGATGCTG
+                                                                                                       
+
+ENSSSCP00000027045                         CAGAATTTGCTTCCGGCAGAGGCGGCA------------GTACTATGCAGCCAAGTGCGC
+ENSSSCP00000025359                         CAGAATTTGCTTCCGGCAGAGGCGGCA------------GTACTATGCAGCCAAGTGCGC
+ENSBTAP00000056194                         CAGAAATCGCTTCCTGCAGACTCTTCA------------ATACTATGCAACCCGATGCAT
+ENSMUSP00000088717                         CAGAGGAGTGGCATTTTACAGCCTGCAGTTGCCTCAACAAAACTGTACAACCTTCTGCAG
+ENSRNOP00000076001                         CAGAGGAGTTATACTTTGCAGCGTGAAGTTGCCTCAACAAAACTGTACAACCTGCTGCAA
+ENSP00000372547                            CCGAAGAATTGCAGTTTGCTTCCCGCAGATCCCGCTTCGGTACTCTGCAGCGAAGTGCAA
+ENSPTRP00000038745                         CCGAAGAATTGCAGTTTGCTTCCCGCAGATCCCGCTTCGGTACTCTGCAGCGAAGTGCAA
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         CAAAACAGTTGCAGTTTGCTTCCGGCAGATCCCTCTTCGGTACCCTGCAGAGAAGTGGAA
+ENSMMUP00000045603                         CAAAACAGTTGCAGTTTGCTTCCGGCAGATCCCTCTTCGGTACCCTGCAGAGAAGTGTAC
+                                                                                                       
+
+ENSSSCP00000027045                         GTAGAGGAGAGGATGTATCCCTTCACATACACAGTCGCCAAGGCCAAGT------GCTCA
+ENSSSCP00000025359                         GTAGAGGAGAGGATGTATCCCTTCACATACACAGTCGCCAAGGCCAAGT------GCTCA
+ENSBTAP00000056194                         GTAG---AGACATTGCACCCCTTCACATACAGGGATGGTTGTGCCAAGACCACATACTCA
+ENSMUSP00000088717                         TGGGACAGGAACCCACATGCCATCACATACAGGCAAGACTGGAGTAGAGCTGCACACCTG
+ENSRNOP00000076001                         TGGGACAACAACCTACACACTATCATATACGGACAGGACTGGGCTAGAGCTGCACACCAG
+ENSP00000372547                            CTGGACAACAGGTTGTACAGGG------------ATGACTGTACGAAAGCCACACACTCA
+ENSPTRP00000038745                         CTGGACAACAGGTTGTACAGGG------------ATGACTGTACGAAAGCCACACACTCA
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         CTGGACAACAGGTTGTACAGGG------------ATGACTGTACCAAAGCCACGCACTCA
+ENSMMUP00000045603                         ---AACAACAGGTTGTACAGGG------------ATGACTGTACCAAAGCCACGCACTCA
+                                                                                                       
+
+ENSSSCP00000027045                         GGAACAGAAAGCCAGTTAA---GTCACTCACAGCCCATGAACATAACCAGCTCACTTCTG
+ENSSSCP00000025359                         GGAACAGAAAGCCAGTTAA---GTCACTCACAGCCCATGAACATAACCAGCTCACTTCTG
+ENSBTAP00000056194                         CAAATGGAAAGCCAATTAA---GCCGGTCACAGTCCGTGATCATAACCAATTCACTCCTG
+ENSMUSP00000088717                         TACTCCAAAAACCAGCAAAGCTTTTATTGGCAGCCTGTTGATATCCCCACTGGGCACCTG
+ENSRNOP00000076001                         TCCTCCAAGAACCAGAAAAGCATTTATTTACAGCCTGTGGACATCCCCACTGGATACCCA
+ENSP00000372547                            AGAATGGAGCACCAGCTAG---GCCACTTACCGCCCATCAACGCAGCCAG------CTCA
+ENSPTRP00000038745                         AGAATGGAGCACCAGCTAG---GCCACTTACCGCCCATCAACGCAGCCAG------CTCA
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         AGAATGCAGCACCAGTTAG---GCCACTTACCGCCCATCAACACAGCCAG------CTCA
+ENSMMUP00000045603                         AGAATGCAGCACCAGTTAG---GCCACTTACCGCCCATCAACACAGCCAG------CTCA
+                                                                                                       
+
+ENSSSCP00000027045                         CAACAGGAGGATCGCTGCAACTGGACAGGCCTGTGCCACAGTAGGGTAACATCCACCCGG
+ENSSSCP00000025359                         CAACAGGAGGATCGCTGCAACTGGACAGGCCTGTGCCACAGTAGG---------------
+ENSBTAP00000056194                         CAAAAGGAGCATCACAGCAGCTGGACAAGCCTGGGCCACAATAA--------GGTAACAT
+ENSMUSP00000088717                         CAGCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGTTCCATAACCACCACCAGCAGCAACAG
+ENSRNOP00000076001                         CTACAGCAGAAACAGCAGCACCAGCAGCAGCAGCACGTGCACCTGCAGCAGCAGCAGCAG
+ENSP00000372547                            CC---GCAGCAACGGGACCGCTACA------------GCCACTGGACAAAGCTGTAG---
+ENSPTRP00000038745                         CC---GCAGCAACGGGACCGCTACA------------GCCACTGGACAAAGCTGTAG---
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         CC---GCAGCAATGGGACCGCTACA------------GCCACTCGACAAAGCTG------
+ENSMMUP00000045603                         CC---GCAGCAACGGGACCGCTACA------------GCCACTCGACAAAGCTGTAG---
+                                                                                                       
+
+ENSSSCP00000027045                         CAGATCC--------------------------------------GCGCCGACTTGCCTT
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         TGGCTACACGGATTT------------------------------CGGCGGACTTTCCCT
+ENSMUSP00000088717                         CAGTTCTATGACCACCACCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGTTCCAT
+ENSRNOP00000076001                         CAGCAGCACCAGTTCCACTAG---------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         TTCACCGTGGTTTACAGCCGGGACTTTCTCACATTTATTTTCCATATTGA----------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         GTAACAAAAGCTTAGAGCCTGGACTTTCTTGTGCTTATTTTCAATATTGA----------
+ENSMUSP00000088717                         GACCACCACCAGCAGAAGCAGCAGTTTCATGACCACCACCAGCAGCAACAGCAGTTCCAT
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         GACCACCACCACCACCACCAGGAGCAGCAGTTCCATGACCACCACCAGCAGCAACAGCAG
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         TTCCATGACCACCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGTTCCATGACCACCAC
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         CAGCAGAAGCAGCAGTTCCATGACCACCACCACCACCAACAGCAGCAGCAGTTCCATGAC
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         CACCAGCAGCAGCAGCAGCAGTTCCATGACCACCAGCAGCAGCAGCATCAGTTCCATGAC
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         CACCCCCAGCAGAAGCAGCAGTTCCATGACCACCCCCAGCAGCAACAGCAGTTCCATGAC
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         CACCACCACCAGCAGCAGCAGAAGCAGCAGTTCCATGACCACCACCAGCAGAAGCAGCAG
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         TTCCATGACCACCACCAGCAGAAGCAGCAGTTCCATGACCACCACCAGCAGCAACAGCAG
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         TTCCATGACCACCACCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGCAGTTCCAC
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ------------------------------------------------------------
+ENSSSCP00000025359                         ------------------------------------------------------------
+ENSBTAP00000056194                         ------------------------------------------------------------
+ENSMUSP00000088717                         GACCAGCAGCTTACCTACTTACTAACAGCTGACATCACTGGTGAGCATACACCATACCAG
+ENSRNOP00000076001                         ------------------------------------------------------------
+ENSP00000372547                            ------------------------------------------------------------
+ENSPTRP00000038745                         ------------------------------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ------------------------------------------------------------
+ENSCSAP00000019027                         ------------------------------------------------------------
+ENSMMUP00000045603                         ------------------------------------------------------------
+                                                                                                       
+
+ENSSSCP00000027045                         ---------------------------------------
+ENSSSCP00000025359                         ---------------------------------------
+ENSBTAP00000056194                         ---------------------------------------
+ENSMUSP00000088717                         GAGCACCTCAGCACAGCCCTGTGGTTGGCAGTCTCATGA
+ENSRNOP00000076001                         ---------------------------------------
+ENSP00000372547                            ---------------------------------------
+ENSPTRP00000038745                         ---------------------------------------
+gi|292511|gb|L10101.1|HUMSRYA:376-427      ---------------------------------------
+ENSCSAP00000019027                         ---------------------------------------
+ENSMMUP00000045603                         ---------------------------------------
+                                                                                  

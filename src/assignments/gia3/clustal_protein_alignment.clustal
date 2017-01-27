@@ -1,0 +1,90 @@
+CLUSTAL O(1.2.3) multiple sequence alignment
+
+
+ENSRNOP00000076001      ---------------------------------------------------------MEG
+ENSMUSP00000088717      ---------------------------------------------------------MEG
+ENSPTRP00000038745      -MQSYASAMLSVFNSDDYSPAVQ-QNIPALRRSSSFLCTESYNSKYQRETGENSKDSVQD
+ENSP00000372547         -MQSYASAMLSVFNSDDYSPAVQ-ENIPALRRSSSFLCTESCNSKYQCETGENSKGNVQD
+ENSCSAP00000019027      -MQSYASAKLSVFNTDGYSPAAQ-QNIPALRRSSSFICTESCSSKYHCEAGENSKGSVQD
+ENSMMUP00000045603      -MQSYASAMLSVFNTDGYSPAAQ-QNIPALRRSSSFICTESCSSKYQCEAGENSKGSVQD
+ENSBTAP00000056194      --------MFRVLNDDVYSPAVVQQQTTLAFRKDSSLCTDSHSANDQCERGEHVRESSQD
+ENSSSCP00000027045      MVQSYASAMFRVLKADDYSPAAQQQNILALGKGSSLFPTDNHSSKDGRETRGSGRESGQD
+ENSSSCP00000025359      MVQSYASAMFRVLKADDYSPAAQQQNILALGKGSSLFPTDNHSSKDGRETRGSGRESGQD
+                                                                                  :.
+
+ENSRNOP00000076001      HVKRPMNAFMVWSRGERRKLAQQNPSMQNSEISKHLGYQWKSLTEAEKRPFFQEAQRLKT
+ENSMUSP00000088717      HVKRPMNAFMVWSRGERHKLAQQNPSMQNTEISKQLGCRWKSLTEAEKRPFFQEAQRLKI
+ENSPTRP00000038745      RVKRPMNAFFVWSRDQRRKMALENPRMRNSEISKQLGYQWKMLTEAEKWPFFQEAQKLQA
+ENSP00000372547         RVKRPMNAFIVWSRDQRRKMALENPRMRNSEISKQLGYQWKMLTEAEKWPFFQEAQKLQA
+ENSCSAP00000019027      RVKRPMNAFIVWSRDQRRKMALENPKMRNSEISKQLGYQWKMLTEADKWPFFQEAQKLQA
+ENSMMUP00000045603      KVKRPMNAFIVWSRDQRRKMALENPKMRNSEISKQLGYQWKMLTEADKWPFFQEAQKLQA
+ENSBTAP00000056194      HVKRPMNAFIVWSRERRRKVALENPKMKNSDISKQLGYEWKRLTDAEKRPFFEEAQRLLA
+ENSSSCP00000027045      RVKRPMNAFIVWSRDQRRKVALENPQMQNSEISKWLGCKWKMLTEAEKRPFFEEAQRLQA
+ENSSSCP00000025359      RVKRPMNAFIVWSRDQRRKVALENPQMQNSEISKWLGCKWKMLTEAEKRPFFEEAQRLQA
+                        :********:**** .*:*:* :** *:*::*** ** .** **:*:* ***:***:*  
+
+ENSRNOP00000076001      LHREKYPNYKYQPHRRVKVPQRSYTLQREVASTKLYNLLQWDNNLHTIIYGQDWARAAHQ
+ENSMUSP00000088717      LHREKYPNYKYQPHRRAKVSQRSGILQPAVASTKLYNLLQWDRNPHAITYRQDWSRAAHL
+ENSPTRP00000038745      MHREKYPNYKYRPRRKANMLPKNCSLLPADPASVLCSEVQLDNR----LYRDDCTKATHS
+ENSP00000372547         MHREKYPNYKYRPRRKAKMLPKNCSLLPADPASVLCSEVQLDNR----LYRDDCTKATHS
+ENSCSAP00000019027      MHREKYPNYKYRPRRKAKMLQNSCSLLPADPSSVPCREVELDNR----LYRDDCTKATHS
+ENSMMUP00000045603      MHREKYPNYKYRPRRKAKMLQNSCSLLPADPSSVPCREV-YNNR----LYRDDCTKATHS
+ENSBTAP00000056194      IHRDKYPGYKYRPRRRAKRPQK---SLPAD-SSILCNPMHVET-LHPFTYRDGCAKTTYS
+ENSSSCP00000027045      VHRDKYPGYKYRPRRKGERAQN---LLPAE-AAVLCSQVRVEERMYPFTYTV--AKAKCS
+ENSSSCP00000025359      VHRDKYPGYKYRPRRKGERAQN---LLPAE-AAVLCSQVRVEERMYPFTYTV--AKAKCS
+                        :**:***.***:*:*: :   .         ::     :  :       *    :::   
+
+ENSRNOP00000076001      SSKNQKSIYLQPVDIPTGYPLQQKQQHQQQQHVHLQQ--------------QQQQQHQFH
+ENSMUSP00000088717      YSKNQQSFYWQPVDIPTGHLQQQQQQQQQQQFHNHHQQQQQFYDHHQQQQQQQQQQQQFH
+ENSPTRP00000038745      RMEHQLG-HLPPINAASSPQQRDRYSHWTKL-----------------------------
+ENSP00000372547         RMEHQLG-HLPPINAASSPQQRDRYSHWTKL-----------------------------
+ENSCSAP00000019027      RMQHQLG-HLPPINTASSPQQWDRYSHSTKL-----------------------------
+ENSMMUP00000045603      RMQHQLG-HLPPINTASSPQQRDRYSHSTKL-----------------------------
+ENSBTAP00000056194      QMESQLS-RSQSVIITNSLLQKEHHSSWTSLGHNKVTLATRI-----------SADFPCN
+ENSSSCP00000027045      GTESQLS-HSQPMNITSSLLQQEDRCNWTGLCHSRVTSTRQI-----------RADLPFH
+ENSSSCP00000025359      GTESQLS-HSQPMNITSSLLQQEDRCNWTGLCHSR-------------------------
+                          : * .     :   ..    :                                     
+
+ENSRNOP00000076001      ------------------------------------------------------------
+ENSMUSP00000088717      DHHQQKQQFHDHHQQQQQFHDHHHHHQEQQFHDHHQQQQQFHDHQQQQQQQQQQQFHDHH
+ENSPTRP00000038745      ------------------------------------------------------------
+ENSP00000372547         ------------------------------------------------------------
+ENSCSAP00000019027      ------------------------------------------------------------
+ENSMMUP00000045603      ------------------------------------------------------------
+ENSBTAP00000056194      KSLEPG--LS-----CAYF----------QY-----------------------------
+ENSSSCP00000027045      RGLQPG--LS-----HIYF----------PY-----------------------------
+ENSSSCP00000025359      ------------------------------------------------------------
+                                                                                    
+
+ENSRNOP00000076001      ------------------------------------------------------------
+ENSMUSP00000088717      QQKQQFHDHHHHQQQQQFHDHQQQQQQFHDHQQQQHQFHDHPQQKQQFHDHPQQQQQFHD
+ENSPTRP00000038745      ------------------------------------------------------------
+ENSP00000372547         ------------------------------------------------------------
+ENSCSAP00000019027      ------------------------------------------------------------
+ENSMMUP00000045603      ------------------------------------------------------------
+ENSBTAP00000056194      ------------------------------------------------------------
+ENSSSCP00000027045      ------------------------------------------------------------
+ENSSSCP00000025359      ------------------------------------------------------------
+                                                                                    
+
+ENSRNOP00000076001      ------------------------------------------------------------
+ENSMUSP00000088717      HHHQQQQKQQFHDHHQQKQQFHDHHQQKQQFHDHHQQQQQFHDHHQQQQQQQQQQQQQFH
+ENSPTRP00000038745      ------------------------------------------------------------
+ENSP00000372547         ------------------------------------------------------------
+ENSCSAP00000019027      ------------------------------------------------------------
+ENSMMUP00000045603      ------------------------------------------------------------
+ENSBTAP00000056194      ------------------------------------------------------------
+ENSSSCP00000027045      ------------------------------------------------------------
+ENSSSCP00000025359      ------------------------------------------------------------
+                                                                                    
+
+ENSRNOP00000076001      --------------------------------
+ENSMUSP00000088717      DQQLTYLLTADITGEHTPYQEHLSTALWLAVS
+ENSPTRP00000038745      --------------------------------
+ENSP00000372547         --------------------------------
+ENSCSAP00000019027      --------------------------------
+ENSMMUP00000045603      --------------------------------
+ENSBTAP00000056194      --------------------------------
+ENSSSCP00000027045      --------------------------------
+ENSSSCP00000025359      --------------------------------
+                                                        

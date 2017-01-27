@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://kobra.io/#/e/-KZtzcbka02hHMcuZWCr -->
+<html lang="en" ng-app="myApp" class="js flexbox canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}</style>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Kobra.io</title>
+  <meta name="description" content="Kobra is the easiest way to collaborate on code quickly. Just paste code, share your unique URL, and collaborate with built in video &amp; voice chat.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="80Nd4F9Ll8Wj3rNqaZbbAMbBdjHQMihF5r6yXhiFWhU">
+<!--   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css"> -->
+
+  <!-- added -->
+
+  <link rel="icon" type="image/png" href="https://kobra.io/img/favicon.png">
+
+  <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css" />-->
+
+
+  <link rel="stylesheet" href="./Kobra.io_files/bootstrap-fonts.css">
+  <link rel="stylesheet" href="./Kobra.io_files/bootstrap-panel.css">
+  <link rel="stylesheet" href="./Kobra.io_files/bootstrap-theme.css">
+  <link href="./Kobra.io_files/font-awesome.css" rel="stylesheet">
+
+  <!-- end added -->
+
+  <link rel="stylesheet" href="./Kobra.io_files/app.css">
+  <script type="text/javascript" async="" src="./Kobra.io_files/r4ma7fu1"></script><script async="" src="./Kobra.io_files/analytics.js"></script><script src="./Kobra.io_files/modernizr-2.6.2.min.js"></script>
+
+  <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/r4ma7fu1';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+  
+<style id="ace_editor">.ace_editor {position: relative;overflow: hidden;font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;font-size: 12px;line-height: normal;direction: ltr;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: text;min-width: 100%;}.ace_dragging, .ace_dragging * {cursor: move !important;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0px;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-moz-transition: opacity 0.18s;-webkit-transition: opacity 0.18s;-o-transition: opacity 0.18s;-ms-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;display: block;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-moz-transition: opacity 0.4s ease 0.05s;-webkit-transition: opacity 0.4s ease 0.05s;-o-transition: opacity 0.4s ease 0.05s;-ms-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-moz-transition: opacity 0.05s ease 0.05s;-webkit-transition: opacity 0.05s ease 0.05s;-o-transition: opacity 0.05s ease 0.05s;-ms-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;border-radius: 2px;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style>.ace_snippet-marker {    -moz-box-sizing: border-box;    box-sizing: border-box;    background: rgba(194, 193, 208, 0.09);    border: 1px dotted rgba(211, 208, 235, 0.62);    position: absolute;}</style><style>.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #CAD6FA;    z-index: 1;}.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid #abbffe;    margin-top: -1px;    background: rgba(233,233,253,0.4);}.ace_editor.ace_autocomplete .ace_line-hover {    position: absolute;    z-index: 2;}.ace_editor.ace_autocomplete .ace_scroller {   background: none;   border: none;   box-shadow: none;}.ace_rightAlignedText {    color: gray;    display: inline-block;    position: absolute;    right: 4px;    text-align: right;    z-index: -1;}.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #000;    text-shadow: 0 0 0.01em;}.ace_editor.ace_autocomplete {    width: 280px;    z-index: 200000;    background: #fbfbfb;    color: #444;    border: 1px lightgray solid;    position: fixed;    box-shadow: 2px 3px 5px rgba(0,0,0,.2);    line-height: 1.4;}</style><style>#cVim-command-bar, #cVim-command-bar-mode, #cVim-command-bar-input, #cVim-command-bar-search-results,
+.cVim-completion-item, .cVim-completion-item .cVim-full, .cVim-completion-item .cVim-left,
+.cVim-completion-item .cVim-right {
+  font-family: Helvetica, Helvetica Neue, Neue, sans-serif, monospace, Arial;
+  font-size: 10pt !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+#cVim-command-bar {
+  position: fixed;
+  z-index: 2147483646;
+  background-color: #1b1d1e;
+  color: #bbb;
+  display: none;
+  box-sizing: content-box;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.4);
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+#cVim-command-bar-mode {
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding-left: 2px;
+  height: 100%;
+  width: 10px;
+  padding-top: 2px;
+  color: #888;
+}
+
+#cVim-command-bar-input {
+  background-color: #1b1d1e;
+  color: #bbb;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: calc(100% - 10px);
+  position: absolute;
+}
+
+#cVim-command-bar-search-results {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2147483647;
+  left: 0;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.4);
+  background-color: #1c1c1c;
+}
+
+.cVim-completion-item, .cVim-completion-item .cVim-full, .cVim-completion-item .cVim-left, .cVim-completion-item .cVim-right {
+  text-overflow: ellipsis;
+  padding: 1px;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cVim-completion-item:nth-child(even) {
+  background-color: #1f1f1f;
+}
+
+.cVim-completion-item {
+  width: 100%; left: 0;
+  color: #bcbcbc;
+}
+
+.cVim-completion-item[active] {
+  width: 100%; left: 0;
+  color: #1b1d1e;
+  background-color: #f1f1f1;
+}
+
+.cVim-completion-item[active] span {
+  color: #1b1d1e;
+}
+
+.cVim-completion-item .cVim-left {
+  color: #fff;
+  width: 37%;
+}
+
+.cVim-completion-item .cVim-right {
+  font-style: italic;
+  color: #888;
+  width: 57%;
+}
+
+
+#cVim-link-container, .cVim-link-hint,
+#cVim-hud, #cVim-status-bar {
+  font-family: Helvetica, Helvetica Neue, Neue, sans-serif, monospace, Arial;
+  font-size: 10pt !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+#cVim-link-container {
+  position: absolute;
+  pointer-events: none;
+  width: 100%; left: 0;
+  height: 100%; top: 0;
+  z-index: 2147483647;
+}
+
+.cVim-link-hint {
+  position: absolute;
+  color: #302505 !important;
+  background-color: #ffd76e !important;
+  border-radius: 2px !important;
+  padding: 2px !important;
+  font-size: 8pt !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  border: 1px solid #ad810c;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  box-shadow: 2px 2px 1px rgba(0,0,0,0.25) !important;
+}
+
+.cVim-link-hint_match {
+  color: #777;
+  text-transform: uppercase !important;
+}
+
+
+#cVim-hud {
+  background-color: rgba(28,28,28,0.9);
+  position: fixed !important;
+  transition: right 0.2s ease-out;
+  z-index: 24724289;
+}
+
+#cVim-hud span {
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: #8f8f8f;
+  font-size: 10pt;
+}
+
+#cVim-frames-outline {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 9999999999;
+  box-sizing: border-box;
+  border: 3px solid yellow;
+}
+</style><style id="vimMode">.insert-mode .ace_cursor{    border-left: 2px solid #333333;}.ace_dark.insert-mode .ace_cursor{    border-left: 2px solid #eeeeee;}.normal-mode .ace_cursor{    border: 0!important;    background-color: red;    opacity: 0.5;}</style><style></style><style></style><style></style><script src="./Kobra.io_files/mode-sh.js"></script><script src="./Kobra.io_files/theme-monokai.js"></script><style></style><style id="ace-monokai">.ace-monokai .ace_gutter {background: #2F3129;color: #8F908A}.ace-monokai .ace_print-margin {width: 1px;background: #555651}.ace-monokai {background-color: #272822;color: #F8F8F2}.ace-monokai .ace_cursor {color: #F8F8F0}.ace-monokai .ace_marker-layer .ace_selection {background: #49483E}.ace-monokai.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #272822;border-radius: 2px}.ace-monokai .ace_marker-layer .ace_step {background: rgb(102, 82, 0)}.ace-monokai .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #49483E}.ace-monokai .ace_marker-layer .ace_active-line {background: #202020}.ace-monokai .ace_gutter-active-line {background-color: #272727}.ace-monokai .ace_marker-layer .ace_selected-word {border: 1px solid #49483E}.ace-monokai .ace_invisible {color: #52524d}.ace-monokai .ace_entity.ace_name.ace_tag,.ace-monokai .ace_keyword,.ace-monokai .ace_meta.ace_tag,.ace-monokai .ace_storage {color: #F92672}.ace-monokai .ace_punctuation,.ace-monokai .ace_punctuation.ace_tag {color: #fff}.ace-monokai .ace_constant.ace_character,.ace-monokai .ace_constant.ace_language,.ace-monokai .ace_constant.ace_numeric,.ace-monokai .ace_constant.ace_other {color: #AE81FF}.ace-monokai .ace_invalid {color: #F8F8F0;background-color: #F92672}.ace-monokai .ace_invalid.ace_deprecated {color: #F8F8F0;background-color: #AE81FF}.ace-monokai .ace_support.ace_constant,.ace-monokai .ace_support.ace_function {color: #66D9EF}.ace-monokai .ace_fold {background-color: #A6E22E;border-color: #F8F8F2}.ace-monokai .ace_storage.ace_type,.ace-monokai .ace_support.ace_class,.ace-monokai .ace_support.ace_type {font-style: italic;color: #66D9EF}.ace-monokai .ace_entity.ace_name.ace_function,.ace-monokai .ace_entity.ace_other,.ace-monokai .ace_entity.ace_other.ace_attribute-name,.ace-monokai .ace_variable {color: #A6E22E}.ace-monokai .ace_variable.ace_parameter {font-style: italic;color: #FD971F}.ace-monokai .ace_string {color: #E6DB74}.ace-monokai .ace_comment {color: #75715E}.ace-monokai .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ0FD0ZXBzd/wPAAjVAoxeSgNeAAAAAElFTkSuQmCC) right repeat-y}</style><style></style></head>
+<body class="">
+
+  <!-- ngView:  --><div ng-view="" style="height:100%;" class="ng-scope">
+<table style="position:absolute;top:0px;left:0px;width:100%;height:100%;" cellspacing="0" cellpadding="0" class="ng-scope">
+    <tbody><tr ng-show="!chrome &amp;&amp; !firefox" class="ng-hide">
+      <td colspan="2" style="height:40px;">
+      <div style="padding:10px;background-color:#008aff;text-align:center;color:white;">
+          Kobra.io uses features that are only supported in Google Chrome or Firefox.
+          </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" id="main-header" style="padding:0px;margin:0px;height:40px;background:linear-gradient(#f68a28,#f36c00);border-bottom:1px solid black;color:white;font-weight:100;font-size:22px;">
+            <span style="padding-left:5px;padding-top:8px;display:inline-block;"><img src="./Kobra.io_files/logo_64x64.png" style="width:30px;margin-top:-3px;cursor:pointer;" ng-click="goHome()"><!-- {{NAME}}--></span>
+
+            <div id="header-menu-file" ng-show="projectSettings.cliConnected" class="header-menu-option text no-select ng-hide">
+              <div style="padding-left:10px;padding-right:10px;" ng-click="saveCLI()"><span class="fa fa-save"></span> <span>Save to CLI</span></div>
+            </div>
+
+            <div ng-mouseenter="menuHoverOpen(&#39;edit&#39;);" id="header-menu-edit" class="dropdown header-menu-option text no-select">
+            <div class="dropdown-toggle">Edit</div>
+            <ul class="dropdown-menu">
+        <li>
+          <a ng-click="execCommand(&#39;undo&#39;);">Undo <span class="key ng-binding" ng-bind-html="keyboardShortcuts.undo|keyboardShortcut:this">Ctrl-Z</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;redo&#39;);">Redo <span class="key ng-binding" ng-bind-html="keyboardShortcuts.redo|keyboardShortcut:this">Ctrl-Shift-Z|Ctrl-Y</span></a>
+        </li>
+        <li class="divider"></li>
+        <li class="dropdown-submenu">
+          <a>Line</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="execCommand(&#39;indent&#39;);">Indent <span class="key ng-binding" ng-bind-html="keyboardShortcuts.indent|keyboardShortcut:this">Tab</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;outdent&#39;);">Outdent <span class="key ng-binding" ng-bind-html="keyboardShortcuts.outdent|keyboardShortcut:this">Shift-Tab</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;movelinesup&#39;);">Move Line Up <span class="key ng-binding" ng-bind-html="keyboardShortcuts.movelinesup|keyboardShortcut:this">Alt-Up</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;movelinesdown&#39;);">Move Line Down <span class="key ng-binding" ng-bind-html="keyboardShortcuts.movelinesdown|keyboardShortcut:this">Alt-Down</span></a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a ng-click="execCommand(&#39;copylinesup&#39;);">Copy Lines Up <span class="key ng-binding" ng-bind-html="keyboardShortcuts.copylinesup|keyboardShortcut:this">Alt-Shift-Up</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;copylinesdown&#39;);">Copy Lines Down <span class="key ng-binding" ng-bind-html="keyboardShortcuts.copylinesdown|keyboardShortcut:this">Alt-Shift-Down</span></a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a ng-click="execCommand(&#39;removeline&#39;);">Remove Line <span class="key ng-binding" ng-bind-html="keyboardShortcuts.removeline|keyboardShortcut:this">Ctrl-D</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;removetolineend&#39;);">Remove to Line End <span class="key ng-binding" ng-bind-html="keyboardShortcuts.removetolineend|keyboardShortcut:this">Alt-Delete</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;removetolinestart&#39;);">Remove to Line Start <span class="key ng-binding" ng-bind-html="keyboardShortcuts.removetolinestart|keyboardShortcut:this">Alt-Backspace</span></a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a ng-click="execCommand(&#39;splitline&#39;);">Split Line <span class="key ng-binding" ng-bind-html="keyboardShortcuts.splitline|keyboardShortcut:this"></span></a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;togglecomment&#39;);">Toggle Comment <span class="key ng-binding" ng-bind-html="keyboardShortcuts.togglecomment|keyboardShortcut:this">Ctrl-/</span></a>
+        </li>
+        <li class="dropdown-submenu">
+          <a>Code Folding</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="execCommand(&#39;fold&#39;);">Fold <span class="key ng-binding" ng-bind-html="keyboardShortcuts.fold|keyboardShortcut:this">Alt-L|Ctrl-F1</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;unfold&#39;);">Unfold <span class="key ng-binding" ng-bind-html="keyboardShortcuts.unfold|keyboardShortcut:this">Alt-Shift-L|Ctrl-Shift-F1</span></a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a ng-click="execCommand(&#39;foldall&#39;);">Fold All <span class="key ng-binding" ng-bind-html="keyboardShortcuts.foldall|keyboardShortcut:this">Ctrl-Alt-0</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;unfoldall&#39;);">Unfold All <span class="key ng-binding" ng-bind-html="keyboardShortcuts.unfoldall|keyboardShortcut:this">Alt-Shift-0</span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a>Convert Case</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="execCommand(&#39;touppercase&#39;);">Upper Case <span class="key ng-binding" ng-bind-html="keyboardShortcuts.touppercase|keyboardShortcut:this">Ctrl-U</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;tolowercase&#39;);">Lower Case <span class="key ng-binding" ng-bind-html="keyboardShortcuts.tolowercase|keyboardShortcut:this">Ctrl-Shift-U</span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a ng-click="execCommand(&#39;startAutocomplete&#39;);">Show Autocomplete <span class="key ng-binding" ng-bind-html="&#39;Alt-Space&#39;|keyboardShortcut:this">Alt-Space</span></a>
+        </li>
+        </ul>
+      </div><div ng-mouseenter="menuHoverOpen(&#39;selection&#39;);" id="header-menu-selection" class="header-menu-option text no-select">
+            <div class="dropdown-toggle">Selection</div>
+            <ul class="dropdown-menu" style="min-width:325px;">
+              <li>
+          <a ng-click="execCommand(&#39;selectall&#39;);">Select All <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selectall|keyboardShortcut:this">Ctrl-A</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;splitIntoLines&#39;);">Split Into Lines <span class="key ng-binding" ng-bind-html="keyboardShortcuts.splitIntoLines|keyboardShortcut:this">Ctrl-Alt-L</span></a>
+        </li>
+        <li class="divider"></li>
+        <li class="dropdown-submenu">
+          <a>Multiple Selections</a>
+          <ul class="dropdown-menu" style="min-width:340px;">
+            <li>
+              <a ng-click="execCommand(&#39;addCursorAbove&#39;);">Add Cursor Up <span class="key ng-binding" ng-bind-html="keyboardShortcuts.addCursorAbove|keyboardShortcut:this">Ctrl-Alt-Up</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;addCursorBelow&#39;);">Add Cursor Down <span class="key ng-binding" ng-bind-html="keyboardShortcuts.addCursorBelow|keyboardShortcut:this">Ctrl-Alt-Down</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;addCursorAboveSkipCurrent&#39;);">Move Active Cursor Up <span class="key ng-binding" ng-bind-html="keyboardShortcuts.addCursorAboveSkipCurrent|keyboardShortcut:this">Ctrl-Alt-Shift-Up</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;addCursorBelowSkipCurrent&#39;);">Move Active Cursor Down <span class="key ng-binding" ng-bind-html="keyboardShortcuts.addCursorBelowSkipCurrent|keyboardShortcut:this">Ctrl-Alt-Shift-Down</span></a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a ng-click="execCommand(&#39;selectMoreAfter&#39;);">Add Next Selection Match <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selectMoreAfter|keyboardShortcut:this">Ctrl-Alt-Right</span></a>
+            </li>
+            <li>
+              <a ng-click="execCommand(&#39;selectMoreBefore&#39;);">Add Previous Selection Match <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selectMoreBefore|keyboardShortcut:this">Ctrl-Alt-Left</span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a ng-click="execCommand(&#39;selectwordright&#39;);">Select Word Right <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selectwordright|keyboardShortcut:this">Ctrl-Shift-Right</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;selectwordleft&#39;);">Select Word Left <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selectwordleft|keyboardShortcut:this">Ctrl-Shift-Left</span></a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a ng-click="execCommand(&#39;selecttolineend&#39;);">Select to Line End <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selecttolineend|keyboardShortcut:this">Alt-Shift-Right</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;selecttolinestart&#39;);">Select to Line Start <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selecttolinestart|keyboardShortcut:this">Alt-Shift-Left</span></a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a ng-click="execCommand(&#39;selecttoend&#39;);">Select to Document End <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selecttoend|keyboardShortcut:this">Ctrl-Shift-End</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;selecttostart&#39;);">Select to Document Start <span class="key ng-binding" ng-bind-html="keyboardShortcuts.selecttostart|keyboardShortcut:this">Ctrl-Shift-Home</span></a>
+        </li>
+            </ul>
+           </div><div ng-mouseenter="menuHoverOpen(&#39;find&#39;);" id="header-menu-find" class="header-menu-option text no-select">
+            <div class="dropdown-toggle">Find</div>
+            <ul class="dropdown-menu">
+              <li>
+          <a ng-click="execCommand(&#39;find&#39;);">Find... <span class="key ng-binding" ng-bind-html="keyboardShortcuts.find|keyboardShortcut:this">Ctrl-F</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;findnext&#39;);">Find Next <span class="key ng-binding" ng-bind-html="keyboardShortcuts.findnext|keyboardShortcut:this">Ctrl-K</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;findprevious&#39;);">Find Previous <span class="key ng-binding" ng-bind-html="keyboardShortcuts.findprevious|keyboardShortcut:this">Ctrl-Shift-K</span></a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a ng-click="execCommand(&#39;replace&#39;);">Replace... <span class="key ng-binding" ng-bind-html="keyboardShortcuts.replace|keyboardShortcut:this">Ctrl-H</span></a>
+        </li>
+            </ul>
+           </div><div ng-mouseenter="menuHoverOpen(&#39;goto&#39;);" id="header-menu-goto" class="header-menu-option text no-select">
+            <div class="dropdown-toggle">Goto</div>
+            <ul class="dropdown-menu">
+              <li>
+          <a ng-click="execCommand(&#39;gotowordright&#39;);">Word Right <span class="key ng-binding" ng-bind-html="keyboardShortcuts.gotowordright|keyboardShortcut:this">Ctrl-Right</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;gotowordleft&#39;);">Word Left <span class="key ng-binding" ng-bind-html="keyboardShortcuts.gotowordleft|keyboardShortcut:this">Ctrl-Left</span></a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a ng-click="execCommand(&#39;gotolineend&#39;);">Line End <span class="key ng-binding" ng-bind-html="keyboardShortcuts.gotolineend|keyboardShortcut:this">Alt-Right|End</span></a>
+        </li>
+        <li>
+          <a ng-click="execCommand(&#39;gotolinestart&#39;);">Line Start <span class="key ng-binding" ng-bind-html="keyboardShortcuts.gotolinestart|keyboardShortcut:this">Alt-Left|Home</span></a>
+        </li>
+            </ul>
+          </div><div ng-mouseenter="menuHoverOpen(&#39;settings&#39;);" id="header-menu-settings" class="header-menu-option text no-select">
+            <div class="dropdown-toggle">Settings</div>
+            <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a>Syntax Highlighting (Mode)</a>
+          <ul class="dropdown-menu" style="max-height:500px;overflow-y:auto;">
+            <!-- ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">C and C++ <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">CSS <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">HTML <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Java <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">JavaScript <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Objective-C <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">PHP <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Python <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes --><li ng-repeat="mode in popularModes" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Ruby <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in popularModes -->
+            <li class="divider"></li>
+            <!-- ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">ABAP <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">ActionScript <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">ADA <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Apache Conf <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">AsciiDoc <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Assembly x86 <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">AutoHotKey <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">BatchFile <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">C9Search <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">C and C++ <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Cirru <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Clojure <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Cobol <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">CoffeeScript <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">ColdFusion <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">C# <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">CSS <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Curly <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">D <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Dart <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Diff <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Dockerfile <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Dot <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Eiffel <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">EJS <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Erlang <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Forth <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">F# <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">FreeMarker <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Gcode <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Gherkin <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Gitignore <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Glsl <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Go <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Groovy <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">HAML <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Handlebars <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Haskell <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">haXe <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">HTML <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">HTML (Ruby) <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">INI <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Jack <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Jade <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Java <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">JavaScript <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">JSON <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">JSONiq <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">JSP <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">JSX <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Julia <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">LaTeX <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">LESS <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Liquid <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Lisp <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">LiveScript <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">LogiQL <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">LSL <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Lua <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">LuaPage <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Lucene <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Makefile <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Markdown <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">MATLAB <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">MEL <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">MUSHCode <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">MySQL <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Nix <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Objective-C <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">OCaml <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Pascal <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Perl <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">pgSQL <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">PHP <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Powershell <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Praat <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Prolog <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Properties <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Protobuf <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Python <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">R <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">RDoc <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">RHTML <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Ruby <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Rust <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">SASS <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">SCAD <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Scala <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Scheme <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">SCSS <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">SH <span class="key fa fa-check" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">SJS <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Smarty <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">snippets <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Soy Template <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Space <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">SQF <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">SQL <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Stylus <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">SVG <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Tcl <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Tex <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Text <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Textile <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Toml <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Twig <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Typescript <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Vala <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">VBScript <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Velocity <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">Verilog <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">XML <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">XQuery <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName --><li ng-repeat="mode in modeList.modesByName" class="ng-scope">
+              <a ng-click="setMode(mode.mode, $event);" class="ng-binding">YAML <span class="key fa fa-check ng-hide" ng-show="currentMode==mode.mode"></span></a>
+            </li><!-- end ngRepeat: mode in modeList.modesByName -->
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a>Theme</a>
+          <ul class="dropdown-menu" style="max-height:500px;overflow-y:auto;">
+            <!-- ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Ambiance <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Chaos <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Chrome <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Clouds <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Clouds Midnight <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Cobalt <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Crimson Editor <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Dawn <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Dreamweaver <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Eclipse <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">GitHub <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">idle Fingers <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">KatzenMilch <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">krTheme <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Kuroir <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Merbivore <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Merbivore Soft <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Mono Industrial <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Monokai <span class="key fa fa-check" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Pastel on dark <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Plain <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Solarized Dark <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Solarized Light <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Terminal <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">TextMate <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Tomorrow <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Tomorrow Night <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Tomorrow Night Blue <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Tomorrow Night Bright <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Tomorrow Night 80s <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Twilight <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">Vibrant Ink <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName --><li ng-repeat="theme in availableThemes.themesByName" class="ng-scope">
+              <a ng-click="setTheme(theme.theme, $event);" class="ng-binding">XCode <span class="key fa fa-check ng-hide" ng-show="options.theme==theme.theme"></span></a>
+            </li><!-- end ngRepeat: theme in availableThemes.themesByName -->
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a>Tabs</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="setTabs(&#39;tab&#39;);">Real Tabs <span class="key fa fa-check ng-hide" ng-show="options.tabs==&#39;tab&#39;"></span><span class="key fa fa-file-code-o ng-hide" ng-show="options.tabs!=&#39;tab&#39; &amp;&amp; projectSettings.tabs==&#39;tab&#39;"></span></a>
+              <a ng-click="setTabs(&#39;1&#39;);">1 Spaces <span class="key fa fa-check ng-hide" ng-show="options.tabs==&#39;1&#39;"></span><span class="key fa fa-file-code-o ng-hide" ng-show="options.tabs!=&#39;1&#39; &amp;&amp; projectSettings.tabs==&#39;1&#39;"></span></a>
+              <a ng-click="setTabs(&#39;2&#39;);">2 Spaces <span class="key fa fa-check ng-hide" ng-show="options.tabs==&#39;2&#39;"></span><span class="key fa fa-file-code-o" ng-show="options.tabs!=&#39;2&#39; &amp;&amp; projectSettings.tabs==&#39;2&#39;"></span></a>
+              <a ng-click="setTabs(&#39;3&#39;);">3 Spaces <span class="key fa fa-check ng-hide" ng-show="options.tabs==&#39;3&#39;"></span><span class="key fa fa-file-code-o ng-hide" ng-show="options.tabs!=&#39;3&#39; &amp;&amp; projectSettings.tabs==&#39;3&#39;"></span></a>
+              <a ng-click="setTabs(&#39;4&#39;);">4 Spaces <span class="key fa fa-check" ng-show="options.tabs==&#39;4&#39;"></span><span class="key fa fa-file-code-o ng-hide" ng-show="options.tabs!=&#39;4&#39; &amp;&amp; projectSettings.tabs==&#39;4&#39;"></span></a>
+              <a ng-click="setTabs(&#39;5&#39;);">5 Spaces <span class="key fa fa-check ng-hide" ng-show="options.tabs==&#39;5&#39;"></span><span class="key fa fa-file-code-o ng-hide" ng-show="options.tabs!=&#39;5&#39; &amp;&amp; projectSettings.tabs==&#39;5&#39;"></span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a>Keybinding</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="setKeybinding(&#39;ace&#39;, $event);">ACE (Default) <span class="key fa fa-check" ng-show="options.keybinding==&#39;ace&#39;"></span></a>
+              <a ng-click="setKeybinding(&#39;vim&#39;, $event);">vim <span class="key fa fa-check ng-hide" ng-show="options.keybinding==&#39;vim&#39;"></span></a>
+              <a ng-click="setKeybinding(&#39;emacs&#39;, $event);">emacs <span class="key fa fa-check ng-hide" ng-show="options.keybinding==&#39;emacs&#39;"></span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a>Font Size</a>
+          <ul class="dropdown-menu">
+            <li>
+            <a ng-click="setFontSize(&#39;10px&#39;,$event);">10px <span class="key fa fa-check ng-hide" ng-show="options.fontSize==&#39;10px&#39;"></span></a>
+            <a ng-click="setFontSize(&#39;11px&#39;,$event);">11px <span class="key fa fa-check ng-hide" ng-show="options.fontSize==&#39;11px&#39;"></span></a>
+            <a ng-click="setFontSize(&#39;12px&#39;,$event);">12px <span class="key fa fa-check" ng-show="options.fontSize==&#39;12px&#39;"></span></a>
+            <a ng-click="setFontSize(&#39;13px&#39;,$event);">13px <span class="key fa fa-check ng-hide" ng-show="options.fontSize==&#39;13px&#39;"></span></a>
+            <a ng-click="setFontSize(&#39;14px&#39;,$event);">14px <span class="key fa fa-check ng-hide" ng-show="options.fontSize==&#39;14px&#39;"></span></a>
+            <a ng-click="setFontSize(&#39;16px&#39;,$event);">16px <span class="key fa fa-check ng-hide" ng-show="options.fontSize==&#39;16px&#39;"></span></a>
+            <a ng-click="setFontSize(&#39;18px&#39;,$event);">18px <span class="key fa fa-check ng-hide" ng-show="options.fontSize==&#39;18px&#39;"></span></a>
+            <a ng-click="setFontSize(&#39;20px&#39;,$event);">20px <span class="key fa fa-check ng-hide" ng-show="options.fontSize==&#39;20px&#39;"></span></a>
+            <a ng-click="setFontSize(&#39;24px&#39;,$event);">24px <span class="key fa fa-check ng-hide" ng-show="options.fontSize==&#39;24px&#39;"></span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a>Folding</a>
+          <ul class="dropdown-menu">
+          <li>
+            <a ng-click="setFolding(&#39;manual&#39;,$event);">Manual <span class="key fa fa-check ng-hide" ng-show="options.folding==&#39;manual&#39;"></span></a>
+            <a ng-click="setFolding(&#39;markbegin&#39;,$event);">Mark Beginning <span class="key fa fa-check" ng-show="options.folding==&#39;markbegin&#39;"></span></a>
+            <a ng-click="setFolding(&#39;markbeginend&#39;,$event);">Mark Beginning &amp; End <span class="key fa fa-check ng-hide" ng-show="options.folding==&#39;markbeginend&#39;"></span></a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a ng-click="toggleInvisibles($event);">Show Invisibles <span class="key fa fa-check ng-hide" ng-show="options.invisibles"></span></a>
+        </li>
+        <li>
+          <a ng-click="toggleIndentGuides($event);">Show Indent Guides <span class="key fa fa-check" ng-show="options.indentGuides"></span></a>
+        </li>
+        <li>
+          <a ng-click="toggleGutter($event);">Show Gutter <span class="key fa fa-check" ng-show="options.gutter"></span></a>
+        </li>
+        <li>
+          <a ng-click="toggleHighlightSelected($event);">Highlight Selected Word <span class="key fa fa-check" ng-show="options.highlightSelected"></span></a>
+        </li>
+        <li>
+          <a ng-click="toggleFadeFold($event);">Fade Fold Widgets <span class="key fa fa-check ng-hide" ng-show="options.fadeFold"></span></a>
+        </li>
+        <li>
+          <a ng-click="toggleScrollPastEnd($event);">Scroll Past End <span class="key fa fa-check ng-hide" ng-show="options.scrollPastEnd"></span></a>
+        </li>
+        <li>
+          <a ng-click="toggleWordWrap($event);">Word Wrap <span class="key fa fa-check ng-hide" ng-show="options.wordWrap"></span></a>
+        </li>
+        
+        </ul>
+      </div><div id="header-menu-about" ng-show="projectSettings.creator == user.uid || !user" class="header-menu-option text no-select">
+            <div style="padding-left:10px;padding-right:10px;" ng-click="setPrivate()"><span ng-show="!projectSettings.private" class="fa fa-lock"></span><span ng-show="projectSettings.private" class="fa fa-users ng-hide"></span> <span ng-show="!projectSettings.private" class="">Make Private</span><span ng-show="projectSettings.private" class="ng-hide">Invite Users</span></div>
+      </div>
+
+          <div style="float:right;margin-top:2px;">
+
+            <div id="header-menu-goto" class="header-menu-option text no-select">
+              <div ng-show="!user" class="dropdown-toggle" ng-click="openLogin();"><span class="fa fa-rocket" style="font-size:24px;vertical-align:middle;margin-right:5px;"></span>Login or Register</div>
+              <div ng-show="user" class="dropdown ng-hide" style="padding-left:10px;padding-right:10px;">
+                <div class="dropdown-toggle ng-binding" ng-click="">
+
+                  <div style="display:inline-block;width:30px;height:30px;border-radius:15px;box-sizing:border-box;background:url(https://www.gravatar.com/avatar/8af86d8b0b78054c8d55d0d31e0578c6.jpg?s=80&amp;d=identicon) no-repeat;background-size:cover;vertical-align:middle;margin-right:5px;box-shadow:0px 0px 1px #444;">&nbsp;</div> Welcome,  <div class="fa fa-chevron-down" style="margin-left: 5px;"></div>
+
+                <!--<span class="fa fa-heart-o" style="font-size:24px;vertical-align:middle;margin-right:5px;"></span>Welcome, {{userInfo.public.username}}!--></div>
+                <ul class="dropdown-menu" style="min-width:125px;">
+                  <li>
+                    <a ng-click="openMyDashboard();">My Dashboard</a>
+                  </li>
+                  <li>
+                    <a ng-click="openMyAccount();">My Account</a>
+                  </li>
+                  <li>
+                    <a ng-click="logout();">Logout</a>
+                  </li>
+                </ul>
+              </div>
+
+            </div><div class="header-menu-option text no-select" style="padding-left:10px;padding-right:10px;" ng-show="!user || !userInfo.admin.pro" ng-click="openGoPro()">
+
+              <span class="fa fa-magic" style="font-size:24px;vertical-align:middle;margin-right:5px;"></span>Go Pro!
+
+            </div>
+
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="width:100%;height:100%;" cellpadding="0" cellspacing="0">
+          <tbody><tr>
+            <td style="height:100%;vertical-align:top;">
+              <div class="firepad"><div style="width: 100%; height: 100%; font-size: 12px;" id="firepad" class=" ace_editor ace-monokai ace_dark ace_focus"><textarea class="ace_text-input" wrap="off" autocapitalize="off" spellcheck="false" style="height: 12px; left: 68.0625px; top: 60px; width: 6.01562px;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 0px; height: 872px; width: 40px;"><div class="ace_gutter-cell " style="height: 12px;">1</div><div class="ace_gutter-cell " style="height: 12px;">2</div><div class="ace_gutter-cell " style="height: 12px;">3</div><div class="ace_gutter-cell " style="height: 12px;">4</div><div class="ace_gutter-cell " style="height: 12px;">5</div><div class="ace_gutter-cell " style="height: 12px;">6</div></div><div class="ace_gutter-active-line" style="top: 60px; height: 12px;"></div></div><div class="ace_scroller" style="left: 40px; right: 0px; bottom: 0px;"><div class="ace_content" style="margin-top: 0px; width: 654px; height: 872px; margin-left: 0px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 485.25px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height:12px;top:60px;left:0;right:0;"></div><div class="other-client-cursor-ffb3b3 ace_start" style="height:12px;width:0px;top:36px;left:58.140625px;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line" style="height:12px"><span class="ace_variable">TOPHAT_PATH=</span><span class="ace_string">"alignments/tophat/tophat_"</span></div><div class="ace_line" style="height:12px"></div><div class="ace_line" style="height:12px"><span class="ace_keyword">for</span>&nbsp;<span class="ace_identifier">FILENO</span>&nbsp;<span class="ace_keyword">in</span>&nbsp;‘<span class="ace_identifier">seq</span>&nbsp;<span class="ace_constant ace_numeric">0</span>&nbsp;<span class="ace_constant ace_numeric">47</span>’;&nbsp;<span class="ace_keyword">do</span></div><div class="ace_line" style="height:12px">&nbsp;&nbsp;<span class="ace_identifier">FILENO</span>&nbsp;</div><div class="ace_line" style="height:12px">&nbsp;&nbsp;<span class="ace_identifier">samtools</span>&nbsp;<span class="ace_identifier">view</span>&nbsp;<span class="ace_keyword ace_operator">-</span><span class="ace_identifier">bS</span>&nbsp;<span class="ace_support ace_function ace_builtin">test</span>.<span class="ace_identifier">sam</span>&nbsp;<span class="ace_keyword ace_operator">&gt;</span>&nbsp;<span class="ace_support ace_function ace_builtin">test</span>.<span class="ace_identifier">bam</span></div><div class="ace_line" style="height:12px"><span class="ace_keyword">done</span></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer"><div class="ace_cursor" style="left: 28.0625px; top: 60px; width: 6.01562px; height: 12px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 20px; height: 72px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px; left: 40px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 20px; width: 694px;"></div></div><div style="height: auto; width: auto; top: -100px; left: -100px; visibility: hidden; position: fixed; white-space: pre; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: -100px; left: -100px; visibility: hidden; position: fixed; white-space: pre; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: -100px; left: -100px; visibility: hidden; position: fixed; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">X</div></div></div><a class="powered-by-firepad" href="http://www.firepad.io/" target="_blank"></a></div>
+            </td>
+          </tr>
+          <tr ng-show="projectSettings.cliConnected" class="ng-hide">
+            <td style="height:200px;background-color:black;color:white;font-family:monospace;vertical-align:top;padding:5px;position:relative;padding-bottom:0px;">
+
+              <table style="width:100%;height:100%;" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                  <td style="vertical-align:top;position:relative;font-size:12px;">
+                    <div style="overflow-y:auto;height:100%;" id="cliMessages">
+                      <div><span style="color:rgb(0, 187, 0);">Kobra.io CLI is Connected.</span></div>
+                      <!-- ngRepeat: message in cliMessages track by $index -->
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align:top;position:relative;height:25px;">
+                    <input id="consoleInput" type="text" class="form-control console ng-pristine ng-valid" ng-model="cliConsoleInput" placeholder="input..." ng-keydown="checkConsoleEnter($event);">
+                  </td>
+                </tr>
+              </tbody></table>
+
+              
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+      <td style="width:250px;vertical-align:top;position:relative;">
+        <table style="width:100%;height:100%;border-left:1px solid black;" cellpadding="0" cellspacing="0"><tbody><tr><td style="vertical-align:top;">
+          <div class="gray-gradient" ng-click="joinVideo();" ng-show="videoData.videoChatOn==false" style="height:100px;border-bottom:1px solid black;text-align:center;cursor:pointer;">
+            <table style="width:100%;height:101px;"><tbody><tr><td>
+              <div class="fa fa-spinner fa-spin ng-hide" ng-show="videoData.startingVideo" style="font-size:48px;color:#f68a28;text-shadow:1px 1px #f36c00;"></div>
+              <div ng-show="videoData.startingVideo" style="font-size:18px;color:#f36c00;" class="ng-hide">Initializing Chat...</div>
+              <div class="fa fa-youtube-play" ng-show="!videoData.startingVideo" style="font-size:48px;color:#f68a28;text-shadow:1px 1px #f36c00;"></div>
+              <div ng-show="!videoData.startingVideo" style="font-size:18px;color:#f36c00;" class="">Video Chat</div>
+            </td></tr></tbody></table>
+          </div>
+
+          <div id="remoteVideos" ng-show="videoData.videoChatOn==true" class="ng-hide">
+            <video id="currentVideo" class="large-video ng-hide" ng-show="videoData.currentVideo"></video>
+            <div id="otherVideos">
+              <div><video id="myVideo" class="small-video"></video><!-- ngRepeat: rtcid in videoData.videos --></div>
+            </div>
+            <div id="videoControls">
+              <button class="btn btn-danger" ng-click="leaveVideo()">Leave</button>
+            </div>
+
+          </div>
+
+        </td></tr><tr><td>
+          <div style="border-bottom:1px solid black;padding:5px;">
+            <table style="width:100%;" cellpadding="3">
+              <tbody><tr>
+                <th style="width:80px;text-align:left;">File Name:</th>
+                <td><input ng-model="fileName" type="text" placeholder="untitled.ext" style="margin-bottom:0px;width:90%;" class="ng-pristine ng-valid"></td>
+              </tr>
+              <tr>
+                <th style="width:80px;text-align:left;">File Mode:</th>
+                <td><select ng-model="dropdownMode" style="width:154px;margin-bottom:0px;" class="ng-pristine ng-valid">
+                  <!-- ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/c_cpp" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">C and C++</option><!-- end ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/css" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">CSS</option><!-- end ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/html" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">HTML</option><!-- end ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/java" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Java</option><!-- end ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/javascript" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">JavaScript</option><!-- end ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/objectivec" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Objective-C</option><!-- end ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/php" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">PHP</option><!-- end ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/python" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Python</option><!-- end ngRepeat: mode in popularModes --><option ng-repeat="mode in popularModes" value="ace/mode/ruby" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Ruby</option><!-- end ngRepeat: mode in popularModes -->
+                  <option disabled="" role="separator" value="
+                  ">
+                  </option><!-- ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/abap" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">ABAP</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/actionscript" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">ActionScript</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/ada" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">ADA</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/apache_conf" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Apache Conf</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/asciidoc" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">AsciiDoc</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/assembly_x86" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Assembly x86</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/autohotkey" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">AutoHotKey</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/batchfile" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">BatchFile</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/c9search" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">C9Search</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/c_cpp" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">C and C++</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/cirru" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Cirru</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/clojure" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Clojure</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/cobol" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Cobol</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/coffee" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">CoffeeScript</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/coldfusion" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">ColdFusion</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/csharp" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">C#</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/css" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">CSS</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/curly" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Curly</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/d" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">D</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/dart" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Dart</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/diff" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Diff</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/dockerfile" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Dockerfile</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/dot" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Dot</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/eiffel" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Eiffel</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/ejs" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">EJS</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/erlang" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Erlang</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/forth" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Forth</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/fsharp" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">F#</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/ftl" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">FreeMarker</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/gcode" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Gcode</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/gherkin" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Gherkin</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/gitignore" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Gitignore</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/glsl" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Glsl</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/golang" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Go</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/groovy" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Groovy</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/haml" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">HAML</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/handlebars" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Handlebars</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/haskell" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Haskell</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/haxe" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">haXe</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/html" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">HTML</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/html_ruby" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">HTML (Ruby)</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/ini" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">INI</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/jack" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Jack</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/jade" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Jade</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/java" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Java</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/javascript" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">JavaScript</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/json" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">JSON</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/jsoniq" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">JSONiq</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/jsp" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">JSP</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/jsx" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">JSX</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/julia" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Julia</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/latex" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">LaTeX</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/less" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">LESS</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/liquid" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Liquid</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/lisp" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Lisp</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/livescript" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">LiveScript</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/logiql" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">LogiQL</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/lsl" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">LSL</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/lua" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Lua</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/luapage" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">LuaPage</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/lucene" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Lucene</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/makefile" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Makefile</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/markdown" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Markdown</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/matlab" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">MATLAB</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/mel" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">MEL</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/mushcode" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">MUSHCode</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/mysql" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">MySQL</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/nix" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Nix</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/objectivec" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Objective-C</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/ocaml" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">OCaml</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/pascal" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Pascal</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/perl" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Perl</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/pgsql" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">pgSQL</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/php" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">PHP</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/powershell" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Powershell</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/praat" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Praat</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/prolog" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Prolog</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/properties" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Properties</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/protobuf" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Protobuf</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/python" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Python</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/r" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">R</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/rdoc" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">RDoc</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/rhtml" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">RHTML</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/ruby" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Ruby</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/rust" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Rust</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/sass" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">SASS</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/scad" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">SCAD</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/scala" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Scala</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/scheme" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Scheme</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/scss" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">SCSS</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/sh" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope" selected="selected">SH</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/sjs" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">SJS</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/smarty" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Smarty</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/snippets" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">snippets</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/soy_template" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Soy Template</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/space" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Space</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/sqf" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">SQF</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/sql" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">SQL</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/stylus" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Stylus</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/svg" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">SVG</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/tcl" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Tcl</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/tex" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Tex</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/text" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Text</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/textile" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Textile</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/toml" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Toml</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/twig" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Twig</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/typescript" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Typescript</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/vala" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Vala</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/vbscript" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">VBScript</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/velocity" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Velocity</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/verilog" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">Verilog</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/xml" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">XML</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/xquery" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">XQuery</option><!-- end ngRepeat: mode in modeList.modesByName --><option ng-repeat="mode in modeList.modesByName" value="ace/mode/yaml" ng-selected="currentMode==mode.mode" class="ng-binding ng-scope">YAML</option><!-- end ngRepeat: mode in modeList.modesByName -->
+                </select></td>
+              </tr>
+              <tr>
+                <th style="width:80px;text-align:left;">Share:</th>
+                <td>
+                  <div class="input-append" style="margin-bottom:0px;">
+                    <input type="text" style="width:110px;cursor:text;" class="form-control" value="https://kobra.io/#/e/-KZtzcbka02hHMcuZWCr" readonly="" select-on-click="">
+                    <span data-clipboard-text="https://kobra.io/#/e/-KZtzcbka02hHMcuZWCr" id="copytoclipboard" class="btn" style="width:5px;cursor:pointer;height:20px;"><span ng-class="{&quot;fa-clipboard&quot;: !justCopied, &quot;fa-check&quot;: justCopied, &quot;justCopied&quot;: justCopied}" class="fa fa-clipboard" style="margin-left:-3px;"></span></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody></table>
+          </div>
+          <div style="border-bottom:1px solid black;padding:5px;text-align:center;">
+            <span ng-show="usersInFile==0" class="ng-hide">There are <b>0</b> other users here.</span>
+            <div ng-show="usersInFile==1" class="ng-hide">
+              There is <b>1</b> other user here.
+            </div>
+            <div ng-show="usersInFile&gt;1" class="">
+              There are <b class="ng-binding">2</b> other users here.
+            </div>
+            <div ng-show="usersInFile&gt;0" style="max-height:150px;overflow:auto;" class="">
+              <div>
+                <!-- ngRepeat: (id,data) in inFile --><div ng-repeat="(id,data) in inFile" style="padding:5px;text-align:left;" ng-hide="myInFileRefId==id" class="ng-scope">
+                  <div style="display:inline-block;width:40px;height:40px;border-radius:20px;box-sizing:border-box;background:url(https://www.gravatar.com/avatar/433560fa2d1c5bfc6e1ceec37469d3a4.jpg?s=80&amp;d=identicon) no-repeat;background-size:cover;border:3px solid #ffb3b3;vertical-align:middle;">&nbsp;</div> <div style="display:inline-block;vertical-align:middle;padding-left:5px;font-size:18px;" class="ng-binding">User 8155<span ng-show="data.pro" class="label label-warning ng-hide" style="text-shadow: none;vertical-align:middle;margin-left:10px;">PRO</span><span ng-show="data.inVideo" class="label label-success fa fa-volume-up inline ng-hide" style="text-shadow: none;vertical-align:middle;margin-left:10px;font-size:14px;width:13px;">&nbsp;</span></div>
+                </div><!-- end ngRepeat: (id,data) in inFile --><div ng-repeat="(id,data) in inFile" style="padding:5px;text-align:left;" ng-hide="myInFileRefId==id" class="ng-scope">
+                  <div style="display:inline-block;width:40px;height:40px;border-radius:20px;box-sizing:border-box;background:url(https://www.gravatar.com/avatar/728121e371287ba1c1aab9317a9af781.jpg?s=80&amp;d=identicon) no-repeat;background-size:cover;border:3px solid #f7ffb3;vertical-align:middle;">&nbsp;</div> <div style="display:inline-block;vertical-align:middle;padding-left:5px;font-size:18px;" class="ng-binding">User 6110<span ng-show="data.pro" class="label label-warning ng-hide" style="text-shadow: none;vertical-align:middle;margin-left:10px;">PRO</span><span ng-show="data.inVideo" class="label label-success fa fa-volume-up inline ng-hide" style="text-shadow: none;vertical-align:middle;margin-left:10px;font-size:14px;width:13px;">&nbsp;</span></div>
+                </div><!-- end ngRepeat: (id,data) in inFile --><div ng-repeat="(id,data) in inFile" style="padding:5px;text-align:left;" ng-hide="myInFileRefId==id" class="ng-scope ng-hide">
+                  <div style="display:inline-block;width:40px;height:40px;border-radius:20px;box-sizing:border-box;background:url(https://www.gravatar.com/avatar/8af86d8b0b78054c8d55d0d31e0578c6.jpg?s=80&amp;d=identicon) no-repeat;background-size:cover;border:3px solid #cbb3ff;vertical-align:middle;">&nbsp;</div> <div style="display:inline-block;vertical-align:middle;padding-left:5px;font-size:18px;" class="ng-binding">User 8681<span ng-show="data.pro" class="label label-warning ng-hide" style="text-shadow: none;vertical-align:middle;margin-left:10px;">PRO</span><span ng-show="data.inVideo" class="label label-success fa fa-volume-up inline ng-hide" style="text-shadow: none;vertical-align:middle;margin-left:10px;font-size:14px;width:13px;">&nbsp;</span></div>
+                </div><!-- end ngRepeat: (id,data) in inFile -->
+              </div>
+            </div>
+            <div style="padding-top:5px;">
+              <button ng-click="contactUs()" class="btn btn-default btn-small">Give Feedback on Kobra</button>
+            </div>
+          </div>
+        </td></tr><tr><td style="position:relative;height:100%;">
+          <div id="messages" style="width:100%;height:100%;overflow-y:auto;width:250px;" scroll-glue="">
+            <!-- ngRepeat: message in messages -->
+          </div>
+        </td></tr><tr><td style="height:40px;">
+          <form style="margin:0px;" class="ng-pristine ng-valid"><textarea class="animate msd-elastic; ng-pristine ng-valid" ng-model="nextMessage" id="chat-input" placeholder="Message..." style="width:100%;box-sizing: border-box;border: 0px;border-radius: 0px;margin: 0px;padding: 5px;resize: none;border-top:1px solid black;" ng-keydown="checkEnter($event);"></textarea></form>
+        </td></tr></tbody></table>
+      </td>
+    </tr>
+  </tbody></table></div>
+
+  <!--<ul class="menu">
+    <li><a href="#/home">home</a></li>
+    <li><a href="#/chat">chat</a></li>
+    <li ng-hide-auth><a href="#/login">login</a></li>
+    <li ng-show-auth><a href="#/account">account</a></li>
+  </ul>
+
+  <div ng-view></div>
+
+  <div>AngularFire-seed v<span app-version></span></div>-->
+
+  <!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.x/angular.min.js"></script>
+<script src="//cdn.firebase.com/js/client/1.0.x/firebase.js"></script>
+<script src="//cdn.firebase.com/js/simple-login/1.6.x/firebase-simple-login.js"></script>
+<script src="//cdn.firebase.com/libs/angularfire/0.8.x/angularfire.min.js"></script>
+-->
+  <script src="./Kobra.io_files/angular.js"></script>
+  <script src="./Kobra.io_files/angular-sanitize.js"></script>
+  <script src="./Kobra.io_files/angular-route.js"></script>
+  <script src="./Kobra.io_files/firebase.js"></script>
+  <script src="./Kobra.io_files/firebase-simple-login.js"></script>
+  <script src="./Kobra.io_files/angularfire.js"></script>
+
+  <!-- added -->
+
+  <!--<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
+
+  <script src="./Kobra.io_files/checkout.js"></script>
+
+  <script src="./Kobra.io_files/ui-bootstrap-tpls.js"></script>
+
+  <script src="./Kobra.io_files/ace.js"></script>
+  <script src="./Kobra.io_files/ext-modelist.js" type="text/javascript"></script>
+  <script src="./Kobra.io_files/ext-themelist.js" type="text/javascript"></script>
+  <script src="./Kobra.io_files/ext-language_tools.js" type="text/javascript"></script>
+  <script src="./Kobra.io_files/ext-statusbar.js"></script>
+  <script src="./Kobra.io_files/keybinding-vim.js"></script>
+  <script src="./Kobra.io_files/keybinding-emacs.js"></script>
+
+
+  <script src="./Kobra.io_files/firepad.js"></script>
+
+  <!--<script src="libs/easyrtc/socket.io.js"></script>-->
+  <!--<script src="/static/app/lib/easyrtc/hark.bundle.js?version={{version}}"></script>-->
+  <script src="./Kobra.io_files/easyrtc.js"></script>
+
+  <script src="./Kobra.io_files/ZeroClipboard.js"></script>
+
+  <script src="./Kobra.io_files/socket.io.js"></script>
+
+  <script src="./Kobra.io_files/ansi_up.js"></script>
+
+  <!-- end added -->
+
+
+  <script src="./Kobra.io_files/app.js"></script>
+  <script src="./Kobra.io_files/config.js"></script>
+  <script src="./Kobra.io_files/controllers.js"></script>
+  <script src="./Kobra.io_files/decorators.js"></script>
+  <script src="./Kobra.io_files/directives.js"></script>
+  <script src="./Kobra.io_files/filters.js"></script>
+  <script src="./Kobra.io_files/routes.js"></script>
+  <script src="./Kobra.io_files/services.js"></script>
+  <script src="./Kobra.io_files/firebase.utils.js"></script>
+  <script src="./Kobra.io_files/simpleLogin.js"></script>
+  <script src="./Kobra.io_files/changeEmail.js"></script>
+  <script src="./Kobra.io_files/angulartimer.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53782702-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 965081039;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<div style="display:none">
+<script type="text/javascript" src="./Kobra.io_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Kobra.io_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+</div>
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/965081039/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+&lt;/div&gt;
+</noscript>
+  
+
+
+<iframe id="intercom-frame" style="display: none;" src="./Kobra.io_files/saved_resource(1).html"></iframe></body><div id="cVim-status-bar" style="top: 0px;"></div><iframe src="./Kobra.io_files/cmdline_frame.html" id="cVim-command-frame"></iframe><autoscroll></autoscroll></html>

@@ -1,0 +1,35 @@
+Variant ID,vf,Location,Chr, bp,vf_allele,Alleles,gmaf_allele,Global MAF,Class,Source,Evidence,Clin. Sig.,Conseq. Type,AA,AA coord,sift_sort,sift_class,SIFT,polyphen_sort,polyphen_class,PolyPhen,Transcript,
+rs756606002,122123524,Y,2787015,Y,2787015,A,G/A,-,,SNP,dbSNP,ExAC,,Missense variant,R/C,197,301,tolerated,0.3,6,benign,0.005,ENST00000383070.1
+rs780561417,146098045,Y,2787044,Y,2787044,C,T/C,-,,SNP,dbSNP,ExAC,,Missense variant,N/S,187,221,tolerated,0.22,26,benign,0.025,ENST00000383070.1
+rs748958243,114469706,Y,2787113,Y,2787113,C,T/C,-,,SNP,dbSNP,ExAC,,Missense variant,Y/C,164,61,tolerated,0.06,15,benign,0.014,ENST00000383070.1
+rs754623064,120138996,Y,2787136,Y,2787136,G,T/G,-,,SNP,dbSNP,ExAC,,Missense variant,E/D,156,491,tolerated,0.49,13,benign,0.012,ENST00000383070.1
+rs104894976,18587945,Y,2787207,Y,2787207,A,G/A,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,R/W,133,1,deleterious,0,908,possibly damaging,0.907,ENST00000383070.1
+rs375342012,57030162,Y,2787221,Y,2787221,C,T/C,-,,SNP,dbSNP,ESP~ExAC,,Missense variant,K/R,128,21,deleterious,0.02,998,probably damaging,0.997,ENST00000383070.1
+rs104894973,18587942,Y,2787224,Y,2787224,A,T/A,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,Y/F,127,11,deleterious,0.01,996,probably damaging,0.995,ENST00000383070.1
+rs606231178,110808486,Y,2787237,Y,2787237-2787240,-,TCTC/-,-,,deletion,dbSNP,Phenotype_or_Disease,pathogenic,Frameshift variant,EK/X,122,,-,,,-,,ENST00000383070.1
+rs771449441,136978842,Y,2787240,Y,2787240,T,C/T,-,,SNP,dbSNP,ExAC,,Missense variant,E/K,122,791,tolerated,0.79,892,possibly damaging,0.891,ENST00000383070.1
+rs104894966,18587935,Y,2787267,Y,2787267,T,C/T,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,A/T,113,1,deleterious,0,1000,probably damaging,0.999,ENST00000383070.1
+rs104894956,18587925,Y,2787278,Y,2787278,G,A/G,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,F/S,109,1,deleterious,0,1000,probably damaging,0.999,ENST00000383070.1
+rs606231179,110808487,Y,2787280,Y,2787280,-,T/-,-,,deletion,dbSNP,Phenotype_or_Disease,pathogenic,Frameshift variant,P/X,108,,-,,,-,,ENST00000383070.1
+rs104894967,18587936,Y,2787284,Y,2787284,T,C/T,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Stop gained,W/*,107,,-,,,-,,ENST00000383070.1
+rs104894964,18587933,Y,2787287,Y,2787287,A,T/A,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,K/I,106,1,deleterious,0,1001,probably damaging,1,ENST00000383070.1
+rs104894972,18587941,Y,2787320,Y,2787320,T,C/T,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,G/E,95,1,deleterious,0,1001,probably damaging,1,ENST00000383070.1
+rs104894974,18587943,Y,2787321,Y,2787321,G,C/G,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,G/R,95,1,deleterious,0,1001,probably damaging,1,ENST00000383070.1
+rs104894958,18587927,Y,2787327,Y,2787327,A,G/A,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Stop gained,Q/*,93,,-,,,-,,ENST00000383070.1
+rs104894970,18587939,Y,2787330,Y,2787330,A,T/A,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Stop gained,K/*,92,,-,,,-,,ENST00000383070.1
+rs104894959,18587928,Y,2787334,Y,2787334,C,G/C,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,I/M,90,1,deleterious,0,1001,probably damaging,1,ENST00000383070.1
+rs746931713,112441526,Y,2787350,Y,2787350,T,A/T,-,,SNP,dbSNP,ExAC,,Missense variant,M/K,85,1,deleterious,0,987,probably damaging,0.986,ENST00000383070.1
+rs770778716,136307591,Y,2787353,Y,2787353,G,C/G,-,,SNP,dbSNP,ExAC,,Missense variant,R/T,84,31,deleterious,0.03,4,benign,0.003,ENST00000383070.1
+rs776339584,141872786,Y,2787385,Y,2787385,C,A/C,-,,SNP,dbSNP,ExAC,,Missense variant,D/E,73,261,tolerated,0.26,691,possibly damaging,0.69,ENST00000383070.1
+rs104894965,18587934,Y,2787395,Y,2787395,T,C/T,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Stop gained,W/*,70,,-,,,-,,ENST00000383070.1
+rs763174397,128697262,Y,2787399,Y,2787399,G,C/G,-,,SNP,dbSNP,ExAC,,Missense variant,V/L,69,71,tolerated,0.07,999,probably damaging,0.998,ENST00000383070.1
+rs104894968,18587937,Y,2787401,Y,2787401,G,A/G,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,I/T,68,1,deleterious,0,832,possibly damaging,0.831,ENST00000383070.1
+rs104894969,18587938,Y,2787412,Y,2787412,T,C/T,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,M/I,64,11,deleterious,0.01,979,probably damaging,0.978,ENST00000383070.1
+rs764249635,129773356,Y,2787425,Y,2787425,G,A/G,-,,SNP,dbSNP,Phenotype_or_Disease~ExAC,,Missense variant,V/A,60,1,deleterious,0,1000,probably damaging,0.999,ENST00000383070.1
+rs104894957,18587926,Y,2787426,Y,2787426,G,C/G,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Missense variant,V/L,60,1,deleterious,0,994,probably damaging,0.993,ENST00000383070.1
+rs773764555,139295719,Y,2787430,Y,2787430,C,A/C,C,0.004,SNP,dbSNP,Frequency~1000Genomes~ExAC,,Missense variant,D/E,58,91,tolerated,0.09,31,benign,0.03,ENST00000383070.1
+rs762003265,127525175,Y,2787434,Y,2787434,C,T/C,-,,SNP,dbSNP,ExAC,,Missense variant,Q/R,57,51,deleterious,0.05,980,probably damaging,0.979,ENST00000383070.1
+rs767481926,133008207,Y,2787456,Y,2787456,T,C/T,-,,SNP,dbSNP,ExAC,,Missense variant,E/K,50,411,tolerated,0.41,829,possibly damaging,0.828,ENST00000383070.1
+rs104894971,18587940,Y,2787551,Y,2787551,T,C/T,-,,SNP,dbSNP,Phenotype_or_Disease~ExAC,pathogenic,Missense variant,S/N,18,141,tolerated,0.14,6,benign,0.005,ENST00000383070.1
+rs104894975,18587944,Y,2787592,Y,2787592,T,A/T,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Stop gained,Y/*,4,,-,,,-,,ENST00000383070.1
+rs104894977,18587946,Y,2787600,Y,2787600,A,G/A,-,,SNP,dbSNP,Phenotype_or_Disease,pathogenic,Stop gained,Q/*,2,,-,,,-,,ENST00000383070.1

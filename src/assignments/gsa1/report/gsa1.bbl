@@ -1,0 +1,85 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.7 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\sortlist[entry]{none/global/}
+  \entry{rabiner}{article}{}
+    \name{author}{1}{}{%
+      {{hash=RLR}{%
+         family={Rabiner},
+         family_i={R\bibinitperiod},
+         given={L.\bibnamedelima R.},
+         given_i={L\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \keyw{Markov processes;speech recognition;balls-in-urns
+  system;coin-tossing;discrete Markov chains;ergodic models;hidden Markov
+  models;hidden states;left-right models;probabilistic function;speech
+  recognition;Distortion;Hidden Markov models;Mathematical model;Multiple
+  signal classification;Signal processing;Speech recognition;Statistical
+  analysis;Stochastic processes;Temperature measurement;Tutorial}
+    \strng{namehash}{RLR1}
+    \strng{fullhash}{RLR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/5.18626
+    \endverb
+    \field{issn}{0018-9219}
+    \field{number}{2}
+    \field{pages}{257\bibrangedash 286}
+    \field{title}{A tutorial on hidden Markov models and selected applications
+  in speech recognition}
+    \field{volume}{77}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{1989}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{shen}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SD}{%
+         family={Shen},
+         family_i={S\bibinitperiod},
+         given={D.},
+         given_i={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SD1}
+    \strng{fullhash}{SD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{0}
+    \field{title}{Some Mathematics for HMM}
+    \field{volume}{0}
+    \field{journaltitle}{Carnegie Mellon University Internal Publications}
+    \field{year}{2008}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{sc}{misc}{}
+    \verb{url}
+    \verb http://www.ensembl.org/Saccharomyces_cerevisiae/Info/Index
+    \endverb
+    \field{journaltitle}{Ensembl.org}
+    \field{year}{2017}
+    \field{urlday}{27}
+    \field{urlmonth}{01}
+    \field{urlyear}{2017}
+  \endentry
+\endsortlist
+\endinput

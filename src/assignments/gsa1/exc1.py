@@ -1,15 +1,11 @@
 #!/usr/bin/env python
 
 import numpy as np
-# import scipy
-# import sys
 import random
 import math
-# import matplotlib.mlab as mlab
-# from scipy.optimize import minimize
 import matplotlib.pyplot as plt
 from operator import itemgetter
-from string import maketrans  # Required to call maketrans function.
+from string import maketrans
 
 
 #################################
@@ -18,17 +14,17 @@ from string import maketrans  # Required to call maketrans function.
 # Get index for letter (symbol) occurring.
 def get_ind(probs):
     rand = random.random()
-    for ii in xrange(probs.shape)[1]:
-        if rand < probs[0, ii]:
+    for ii in xrange(len(probs)):
+        if rand < probs[ii]:
             return ii
 
 
 # Read in transition matrix and initial distribution from files.
 # If sumrows == TRUE, sum the rows
-def read_and_output(matrix_file, init_dist_file, seq_length, sumrows, transpose):
+def read_and_output(mat_file, idist_file, seq_length, sumrows, transpose):
     # Read in data
-    trans_mat = np.loadtxt(open(matrix_file, "r").read())
-    init_dist = np.loadtxt(open(init_dist_file, "r").read())
+    trans_mat = np.loadtxt(open(mat_file, "r"))
+    init_dist = np.loadtxt(open(idist_file, "r"))
 
     # Act on the optional things
     if transpose:
@@ -38,14 +34,19 @@ def read_and_output(matrix_file, init_dist_file, seq_length, sumrows, transpose)
 
     # Fill out the output probabilistically
     output = seq_length * [None]
-    output[0] = np.random.choice(np.arange(0, len(matrix_file)), p=init_dist.tolist())
-    for ii in xrange(1, seq_length - 1):
+    output[0] = np.random.choice(np.arange(0, len(trans_mat)), p=list(init_dist))
+    for ii in xrange(1, seq_length):
         output[ii] = get_ind(trans_mat[output[ii - 1], :])
 
+    "".join(str(s) for s in output)
     return output
 
 
-# output = read_and_output(mat_file, idist_file, TRUE)
+mat_file = "/home/henrik/compbio/src/assignments/gsa1/report/mat_file.dat"
+idist_file = "/home/henrik/compbio/src/assignments/gsa1/report/idist_file.dat"
+output = read_and_output(mat_file, idist_file, 115, True, False)
+
+
 # print output
 
 
@@ -55,70 +56,88 @@ def read_and_output(matrix_file, init_dist_file, seq_length, sumrows, transpose)
 # Infer the transition matrix and initial distribution from a sequence.
 def infer_mat_and_init(sequence):
     # Get some data and create the matrices we need.
-    elements = np.unique(sequence)
-    trans_mat = np.zeros((len(elements), len(sequence)))
-    init_dist = np.zeros(len(elements))
+    elements = np.unique(list(sequence))
+    trans_mat = np.zeros((len(elements), len(elements)))
+    init_dist = np.zeros(len(elements))  # This is specific to this assignment
     init_dist[int(sequence[0])] = 1  # Count the first one
 
     # Count the occurrences of all events
     for ii in xrange(1, len(sequence)):
         trans_mat[int(sequence[ii - 1]), int(sequence[ii])] += 1
-        init_dist[int(sequence[ii])] += 1
 
-    # What are the probabilities
-    trans_mat /= np.sum(trans_mat)
-    init_dist /= np.sum(init_dist)
+    # What are the probabilities?
+    for ss in xrange(len(trans_mat)):
+        trans_mat[ss, :] /= np.sum(trans_mat[ss,])
 
     return trans_mat, init_dist
 
 
-# trans_mat, init_dist = infer_mat_and_init("12412412112212112311123124121122412412312121231212212")
-
+trans_mat, init_dist = infer_mat_and_init("010101010101111010010101100101001010101010101010010101")
 
 #################################
 # PROGRAM 3
 #################################
 S = np.array([0, 1])
-mu0 = np.array([.5, .5])
-V = np.array([0, 1, 2, 3, 4, 5])
+V = np.array([0, 1, 2, 3, 4])
 A = np.matrix("0.8, 0.2;"
               "0.1, 0.9")
 B = np.matrix("0.2, 0.5, 0.2, 0.1, 0.0;"
               "0.0, 0.1, 0.4, 0.4, 0.1")
+mu0 = np.array([.5, .5])
 
 
+# Emit a sequence given some transition and emission matrices, as well as
+# an initial distribution.
 def emit_sequence(seq_length, trans_matrix, emiss_matrix, init_dist):
     c_trans_mat = np.cumsum(trans_matrix, 1)
     c_emiss_mat = np.cumsum(emiss_matrix, 1)
 
     emit = np.zeros(seq_length)
     hidden = np.zeros(seq_length)
-    hidden[0] = np.random.choice(np.arange(0, trans_matrix), p=init_dist.tolist())
-    emit[0] = get_ind(c_emiss_mat[hidden[0], :])
+    hidden[0] = np.random.choice(np.arange(0, len(trans_matrix)), p=list(init_dist))
+    emit[0] = get_ind((c_emiss_mat[int(hidden[0]), :]).tolist()[0])
 
     # Parse sequence
     for ii in xrange(1, seq_length):
-        hidden[ii] = get_ind(c_trans_mat[hidden[ii - 1], :])
-        emit[ii] = get_ind(c_emiss_mat[hidden[ii], :])
+        hidden[ii] = get_ind((c_trans_mat[int(hidden[ii - 1]), :]).tolist()[0])
+        emit[ii] = get_ind((c_emiss_mat[int(hidden[ii]), :]).tolist()[0])
 
-    emit = "".join(str(x) for x in emit)
-    hidden = "".join(str(x) for x in hidden)
+    emit = "".join(str(int(x)) for x in emit)
+    hidden = "".join(str(int(x)) for x in hidden)
     return emit, hidden
 
 
-# emit, hidden = emit_sequence(115, A, B, mu0)
-# print(emit)
+emit, hidden = emit_sequence(115, A, B, mu0)
+
+
+# random.seed(2)
+# plt.interactive(True)
+# plt.yticks([])
+# pl_emit, = plt.step(xrange(len(emit)), list(emit), label = "Emit")
+# pl_hidd, = plt.step(xrange(len(hidden)), list(int(s) +4 for s in hidden), label = "Hidden")
+# plt.legend(handles=[pl_emit, pl_hidd])
+# plt.show()
+# print(emit)a
 
 
 #################################
 # PROGRAM 4
 #################################
+# Read in sequence from file.
+def read_sequence(file, skipFirst):
+    seq = ""
+    with open(file, 'r') as in_file:
+        if skipFirst:
+            in_file.readline()
+        seq = in_file.read().replace('\n', '')
+    return seq
+
+
+# Use the forward algorithm to determine (log) likelihood of sequence
 def forward(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist):
     # Function for getting normalisation constant
     def get_constant(a):
-        sum = 0
-        for ss in xrange(len(trans_matrix)):
-            sum += a[ss]
+        sum = np.sum(a)
         return 1.0 / len(trans_matrix) if sum == 0 else 1.0 / sum
 
     # Pre-allocate
@@ -154,7 +173,15 @@ def forward(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist):
     return ln_prob, constants, fw
 
 
-# prob, consts, fw = forward_scaling("11111", A, B, S, mu0)
+out_sequence, __ = emit_sequence(115, A, B, mu0)
+seq_file = '/home/henrik/compbio/src/assignments/gsa1/random_output_sequence.dat'
+with open(seq_file, "w") as f_out:
+    f_out.write(out_sequence)
+    f_out.close()
+that_same_sequence = read_sequence(seq_file, False)
+prob, consts, fw = forward(that_same_sequence, A, B, S, mu0)
+
+
 # print(math.exp(prob))
 
 
@@ -178,14 +205,10 @@ def calc_gc(sequence, bin_size):
     return gc_cont
 
 
-# Read in genome.
-sc_gen = ""
-with open('/home/henrik/gsa1/sc_gen.fa', 'r') as in_file:
-    in_file.readline()  # skip first
-    sc_gen = in_file.read().replace('\n', '')
-
-
-# gc = calc_gc(sc_gen, 100)
+# Read genome
+sc_file = '/home/henrik/compbio/src/assignments/gsa1/sc_gen.fa'
+sc_gen = read_sequence(sc_file, True)
+gc = calc_gc(sc_gen, 100)
 
 
 # Relabel according to predefined cuts
@@ -202,17 +225,14 @@ def relabel(seq, cuts):
 
 
 # Compare the two strings
-# relab = relabel(gc, [.28, .35, .41, .49])  # Split by percentages
-# model3_seq, hidden = emit_sequence(len(relab), A, B, [.5, .5])
-# log_p, const, fw = forward(relab, A, B, S, mu0)
+relab = relabel(gc, [.285, .342, .40, .5, 1.])  # Split by percentages
+model3_seq, model3_hidden = emit_sequence(len(relab), A, B, mu0)
+log_p, const, fw_seq = forward(relab, A, B, S, mu0)
 
 
-# plt.interactive(True)
-# plt.hist(model3_seq, len(V), alpha=0.5, label='x')
-# plt.hist(relab, len(V), alpha=0.5, label='y')
-# # plt.hist(gc, bins=100)
-# # plt.plot(gc_cont)
-# plt.show()
+# plt.hist(list(int(s) for s in model3_seq), bins=5, alpha=0.5, label='x')
+# plt.hist(list(int(s) for s in relab), bins = 5, alpha=0.5, label='y')
+# # plt.show()
 
 
 #################################
@@ -228,8 +248,8 @@ def backward(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist, con
         bw[ss, len(sequence) - 1] = 1.
         bw[ss, len(sequence) - 1] = constants[len(sequence) - 1]
 
-    # Go through the rest of the sequence
-    for ii in xrange(len(sequence) - 1, 0, -1):
+    # Go through the rest of the sequence, continue from the back end
+    for ii in xrange(len(sequence) - 2, -1, -1):
         b = np.zeros(len(hidden_states))
         for ss in xrange(len(hidden_states)):
             b[ss] = np.sum([(bw[substate, ii + 1] * trans_matrix[ss, substate] *
@@ -247,7 +267,6 @@ def baum_welch(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist):
     # Get those lists we need
     p1, constants, fw = forward(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist)
     p1, bw = backward(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist, constants)
-    print p1
 
     # Initial distribution
     for ss in xrange(len(hidden_states)):
@@ -270,6 +289,7 @@ def baum_welch(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist):
                               xrange(len(sequence))])
             norm = np.sum([(fw[ss, ii] * bw[ss, ii] / constants[ii]) for ii in xrange(len(sequence))])
             emiss_matrix[ss, jj] = new_est / norm if norm != 0 else 1. / emiss_matrix.shape[1]
+    return p1
 
 
 #################################
@@ -306,22 +326,29 @@ def viterbi(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist):
     return solution
 
 
-# model7_seq, hidden7 = emit_sequence(10000, A, B, mu0)
 model7_seq = sc_gen
-gc = calc_gc(sc_gen[1:10000], 100)
-relab = relabel(gc, [.28, .35, .41, .49, 1.])  # Split by percentages
+gc = calc_gc(sc_gen, 100)
 
 intab = "ATCG"
 outtab = "0123"
 trantab = maketrans(intab, outtab)
 model7_seq = model7_seq.translate(trantab)
 
-for iter in xrange(50):
-    baum_welch(relab, A, B, S, mu0)
+change = 99999999999999
+prev = change
+while change > 0.000001:
+    prob = baum_welch(relab, A, B, S, mu0)
+    change = prev - prob
+    prev = prob
+
 
 solution = viterbi(relab, A, B, S, mu0)
+out_len = 200
+solution = solution[0:out_len]
 plt.interactive(True)
-plt.step(xrange(len(gc)), solution + 5)
-plt.plot(xrange(len(gc)), [(x + 4) for x in gc] )
-plt.step(xrange(len(gc)), list(relab))
+plt.yticks([])
+plt.step(xrange(len(solution)), solution + 5, label="Viterbi")
+plt.plot(xrange(out_len), [(x + 4) for x in gc[0:out_len]], label="GC content")
+plt.step(xrange(out_len), list(relab[0:out_len]), label="Categorized GC content")
+plt.legend()
 plt.show()

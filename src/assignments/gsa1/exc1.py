@@ -334,21 +334,30 @@ outtab = "0123"
 trantab = maketrans(intab, outtab)
 model7_seq = model7_seq.translate(trantab)
 
-change = 99999999999999
-prev = change
-while change > 0.000001:
+
+prev = -99999999999999
+change = -prev
+while change > 0.0001:
     prob = baum_welch(relab, A, B, S, mu0)
-    change = prev - prob
+    change = (prob - prev)
     prev = prob
 
-
 solution = viterbi(relab, A, B, S, mu0)
-out_len = 200
-solution = solution[0:out_len]
+# out_len = 200
+# solution = solution[0:out_len]
+# plt.interactive(True)
+# plt.yticks([])
+# plt.step(xrange(len(solution)), solution + 5, label="Viterbi")
+# plt.plot(xrange(out_len), [(x + 4) for x in gc[0:out_len]], label="GC content")
+# plt.step(xrange(out_len), list(relab[0:out_len]), label="Categorized GC content")
+# plt.legend()
+# plt.show()
+
 plt.interactive(True)
-plt.yticks([])
-plt.step(xrange(len(solution)), solution + 5, label="Viterbi")
-plt.plot(xrange(out_len), [(x + 4) for x in gc[0:out_len]], label="GC content")
-plt.step(xrange(out_len), list(relab[0:out_len]), label="Categorized GC content")
+# plt.yticks([])
+plt.hist(gc, bins=100, width=1./100. - 0.006, label="GC")
 plt.legend()
+fig = plt.gcf()
+fig.set_size_inches(6, 4)
+fig.savefig("/home/henrik/compbio/src/assignments/gsa1/report/gc_hist.png")
 plt.show()

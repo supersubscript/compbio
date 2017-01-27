@@ -125,15 +125,6 @@ Genome Sequence Analysis: Assignment 1}\\[1em]
 
 \makeatother
 
-\newcommand{\SRY}{\textit{SRY}\xspace}
-\newcommand{\HMG}{\textit{HMG}\xspace}
-\newcommand{\SOX}{\textit{SOX}\xspace}
-\newcommand{\XX}{\textit{XX}\xspace}
-\newcommand{\XY}{\textit{X[Y-]}\xspace}
-\newcommand{\XYSRY}{\textit{X[Y-]sry}\xspace}
-\newcommand{\XYXSRY}{\textit{XXsry}\xspace}
-\newcommand{\Y}{\textit{Y}\xspace}
-
 \begin{document}
 
 
@@ -141,7 +132,9 @@ Genome Sequence Analysis: Assignment 1}\\[1em]
 \maketitle
 \setcounter{page}{1}
 \section*{Preface}
-This is an assignment report in connection to the \textit{Genome Sequence Analysis} module in the Computational Biology course at the University of Cambridge, Michaelmas term 2016. All related code is as of \date{\today} available per request by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}. The approach is done after the guidelines specified by Rabiner~\cite{rabiner}, and as summarized by Shen~\cite{shen}. All code is implemented using Python, and in particular by using the \texttt{numpy} package. 
+This is an assignment report in connection to the \textit{Genome Sequence Analysis} module in the Computational Biology course at the University of Cambridge, Michaelmas term 2016. All related code is as of \date{\today} available per request by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}, or by visiting \url{https://github.com/supersubscript/compbio/tree/master/src/assignments/gsa1}, where the corresponding lecturer should have been made a collaborator by the assignment deadline. This repository should also contain the auxilliary files used for the assignment, if any.
+
+The approach for the solutions is done after the guidelines specified by Rabiner~\cite{rabiner}, and as summarized by Shen~\cite{shen}. All code is implemented using Python, and in particular by usage of the \texttt{numpy} package. 
 
 \section*{Exercises}
 \subsection*{1}
@@ -187,8 +180,8 @@ output = read_and_output(mat_file, idist_file, 115, True, False)
 Evoking the \texttt{print} command we get the following:
 \begin{Schunk}
 \begin{Soutput}
-01111111011111111111101101011011111111111111111110100110111111111001111111111110
-11111111101011111111111111111111101
+00111111111111111111110010011110000111010111100111111011110011111111111111110110
+11111101100111101001111111101111100
 \end{Soutput}
 \end{Schunk}
 
@@ -379,7 +372,7 @@ prob, consts, fw = forward(that_same_sequence, A, B, S, mu0)
 \subsection*{5}
 We use the \textit{Saccharomyces cerevisiae} chromosome III genome from Ensembl~\cite{sc}. The genome is binned by taking intervals of size 100, and subsequently identifying how many G or C bases are contained. In our implementation, bins are sequential and do not overlap. 
 
-Trying to approximate the correct distribution of categories, we label bins after percentage-wise GC content. Doing this rough fitting, the best fit appears to be found around $0-28.5~\%, 28.5-34.2~\%, 34.2-40.0~\%, 40.0-50.0~\%$ and a $50-100~\%$ split for label 1-5 respectively, with upper boundaries exclusive. As our genome is not evenly divisble by the bin size, the last bin will be misrepresentative. However, as our genome is large, and we thus will also have a large set of bins, the effects of this will be marginal. Thence we choose to disregard this effect.
+Trying to approximate the correct distribution of categories, we label bins after percentage-wise GC content. Doing this rough fitting, the best fit appears to be found around $0-28.5~\%, 28.5-34.2~\%, 34.2-40.0~\%, 40.0-50.0~\%$ and a $50-100~\%$ split for label 1-5 respectively, with upper boundaries exclusive. As our genome is not evenly divisble by the bin size, the last bin will be misrepresentative. However, as our genome is large, and we thus will also have a large set of bins, the effects of this will be marginal. Therefore we choose to disregard this effect.
 
 
 \begin{Schunk}
@@ -518,11 +511,12 @@ Our final log likelihood for the same situation evaluates as:
 \end{Soutput}
 \end{Schunk}
 
+
 \subsection*{7}
 \begin{Schunk}
 \begin{Sinput}
 # Retrieve the most likely input hidden states given and output sequence and
-# the corresponding matrices. 
+# the corresponding matrices.
 def viterbi(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist):
     # Define some things we're gonna use.
     constants = np.zeros(len(sequence))
@@ -553,33 +547,58 @@ def viterbi(sequence, trans_matrix, emiss_matrix, hidden_states, init_dist):
 
     return solution
 
-
+# Use the SC genome, and translate this to a format readable
+# by our implementation.
 model7_seq = sc_gen
 gc = calc_gc(sc_gen, 100)
-
 intab = "ATCG"
 outtab = "0123"
 trantab = maketrans(intab, outtab)
 model7_seq = model7_seq.translate(trantab)
 
-change = 99999999999999
-prev = change
-while change > 0.000001:
+# Update parameters until convergence
+prev = -99999999999999
+change = -prev
+while change > 0.0001:
     prob = baum_welch(relab, A, B, S, mu0)
-    change = prev - prob
+    change = prob - prev
     prev = prob
 
+# What is the most likely sequence?
 solution = viterbi(relab, A, B, S, mu0)
 \end{Sinput}
 \end{Schunk}
+
+The inferred sequence along with the corresponding GC content and category is visualised in~\cref{fig:viterbi}. We can again see how our predictions appear to produce sensible results; grouping lower values with the lower state, and the contrary for the higher one. According to NCBI, roughly 38.5~\% of chromosome III in yeast has high GC content~\cite{gc_cont}, which is somewhat well-mirrored by our 32.5~\% of bins corresponding to high-GC ones. However, as our labelling is inherently fairly arbitrary, we expect some misrepresentation. More accurate would have been to optimise the fit of the categorisation to a selection of sequences, which should to give us more accurate results. The comparison is also directly dependent on the binning approach, which thus also skews the outcome somewhat. Nevertheless, we are able to see the correct pattern in our results, which should reassure us of an overall solid approach.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=.6\textwidth]{"/home/henrik/compbio/src/assignments/gsa1/report/viterbi"}
-  \caption{Inferred underlying hidden state sequence using the Viterbi algorithm, along with the corresponding categorized and non-categorized GC content under the previously determined binning scheme. Notably, the 1-valued states correspond well with the highest gc content, as expected from our matrices. Similarly, the lower state more consistently is affiliated with lower emission values.}
-  \label{fig:hidden_emit}
+  \caption{Inferred underlying hidden state sequence using the Viterbi algorithm, along with the corresponding categorized and non-categorized GC content under the previously determined binning scheme. Notably, the 1-valued states correspond well with the highest GC content, as expected from our matrices. Similarly, the lower state is more consistently affiliated with lower emission values.}
+  \label{fig:viterbi}
 \end{figure}
 
 \subsection*{8}
-Categorise according to a gaussian distribution with different means? 
+Looking at \cref{fig:gc_hist}, the distribution of GC content amongst the bins is gaussian-like. It would therefore seem probable that a more accurate approach would be to have a normally distributed emission space, i.e.\ where we define a mean and variance according to
+
+\begin{align*}
+\displaystyle
+  \mu_i &= \dfrac{\sum_{m=0}^{N-1} v_m \times \gamma_m(i)}{\sum_{m=0}^{N-1} \gamma_m(i)}, \text{and} \\
+  \sigma_i^2 &= \dfrac{\sum_{m=0}^{N-1} \gamma_m(i) \times (v_m - \mu_i)^2}{\sum_{m=0}^{N-1} \gamma_m(i)}
+\end{align*}
+where $v_m$ is the corresponding emission value, and $\gamma_m(i) = P(x_m=s_i | Y)$. Here $x$ and $s$ represent states, while $Y$ is the observation. 
+
+Even though it is hard to determine from the looks of~\cref{fig:gc_hist}, it might be viable to attempt to approximate the distribution using two states with different means and variances (i.e.\ corresponding to high and low GC content regions respectively). Looking at our initial emission matrix, which was able to approximate the yeast genome somewhat well, both states have distribution spaces reminiscent of gaussian-like distributions, so it seems probable that a normally distributed space would be better at capturing the finer details of the distribution of GC content in the genome. 
+
+These types of models could likely be used in helping to annotate genomes \textit{de novo}, possibly by correlating the GC content to direct or indirect structural information about already known genes. In order to be more precise, limiting the analsysis to gene structures which are highly correlated with either high or low GC content might be a way to ensuring a higher certainty in the method. In addition, Besemer and Borodovsky~\cite{heuristic} also discuss the possibility of matching GC content to amino acid residues, and utilizing this information in finding novel genes. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.6\textwidth]{"/home/henrik/compbio/src/assignments/gsa1/report/gc_hist"}
+  \caption{Histogram over GC content in our yeast. The distribution appears to take an overall gaussian shape.}
+  \label{fig:gc_hist}
+\end{figure}
+
+
 
 \end{document}

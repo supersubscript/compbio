@@ -1,0 +1,98 @@
+\documentclass[10pt, twocolumn]{article}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[a4paper, margin=1.5cm]{geometry}
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{natbib}
+\usepackage{subcaption}
+\usepackage[font={small}]{caption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{cleveref}
+\usepackage{lipsum}
+\newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{=}}}
+\newcommand{\matr}[1]{\mathbf{#1}}
+\newcommand{\partt}[2]{\ensuremath{\dfrac{\partial {#1}}{\partial {#2}}}}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}} % non-italized differentials
+\newcommand{\h}[0]{\ensuremath{\hbar}} % hbar
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\usepackage{amsthm}
+\theoremstyle{plain}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist    
+\usepackage{xcolor}
+\definecolor{Red}{rgb}{0.7,0,0}
+\definecolor{Blue}{rgb}{0,0,0.8}
+\usepackage{verbatim}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+\addtolength{\oddsidemargin}{-.35in}
+\addtolength{\evensidemargin}{-.35in}
+\addtolength{\textwidth}{.7in}
+
+%%% Document specific
+\newcommand{\course}{Population Genetics}
+\newcommand{\ass}{1}
+\newcommand{\term}{Lent term 2017}
+%\bibliography{pga1}
+
+%%% Title page
+\title{
+  \bf \course: Assignment \ass \\[1em]
+  \small{University of Cambridge}
+}
+
+\author{Henrik Åhl}
+\date{\today}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+\makeatletter
+\makeatother
+
+%%% Actual document
+\begin{document}
+\date{\today}
+\maketitle
+\setcounter{page}{1}
+\begin{abstract}
+{\bf 
+  %\begin{changemargin}{-.8cm}{-.8cm}
+  Text here.
+}
+\end{abstract}
+
+\section*{Preface}
+This is an assignment report in connection to the \textit{\course}
+module in the Computational Biology course at the University of Cambridge,
+\term. All related code is as of \date{\today} available as a
+Github repository per request by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
+
+\section*{Exercises}
+\subsection*{1 -- Measurement of variance}
+\subsection*{2 -- Modelling fitness in a diploid system}
+\subsection*{3 -- Dynamics of allele frequency change}
+\subsection*{4 -- Time-dependent selection}
+
+%\section*{Introduction}
+%\section*{Methods}
+%\section*{Results}
+%\section*{Discussion}
+
+\section*{Acknowledgements}
+As always, many thanks to Julian Melgar for no particular reason.
+
+%\newpage
+%\bibliographystyle{te}
+%\bibliography{pga1}
+\end{document}

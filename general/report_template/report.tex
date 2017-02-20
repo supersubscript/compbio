@@ -1,4 +1,4 @@
-\documentclass[10pt, twocolumn]{article}
+\documentclass[10pt]{article}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage[a4paper, margin=1.5cm]{geometry}
@@ -10,7 +10,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{xspace}
-\usepackage[backend=bibtex,style=numeric-comp,sorting=none]{biblatex}
+%\usepackage{natbib}
 \usepackage{subcaption}
 \usepackage[font={small}]{caption}
 \usepackage{booktabs}
@@ -38,7 +38,9 @@
 \addtolength{\oddsidemargin}{-.35in}
 \addtolength{\evensidemargin}{-.35in}
 \addtolength{\textwidth}{.7in}
+\usepackage{multicol}
 
+% Course details
 \newcommand{\course}{COURSE NAME}
 \newcommand{\ass}{1}
 \newcommand{\term}{E.g.\ Lent term 2017}
@@ -47,11 +49,10 @@
 %%%%%%%%%%%%%%%%%%%% Begin
 \title
 {\bf
-  \course: Assignment \ass\\[1em]
-  \small{University of Cambridge}
+  TITLE GOES HERE 
 }
 
-\author{Henrik Åhl}
+\author{AUTHOR}
 \date{\today}
 \renewcommand{\textfraction}{0.05}
 \renewcommand{\topfraction}{0.8}
@@ -70,26 +71,19 @@
   Text here.
 }
 \end{abstract}
+\begin{multicols}{2}
 \section*{Preface}
-This is an assignment report in connection to the \textit{\course}
-module in the Computational Biology course at the University of Cambridge,
-\term. All related code is as of \date{\today} available as a
-Github repository per request by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
-
+Other text here and below.%~\cite{test}
 \section*{Exercises}
-\subsection*{1 -- x}
-\subsection*{2 -- x}
-\subsection*{3 -- x}
-\subsection*{4 -- x}
+\section*{Introduction}
+\section*{Methods}
+\section*{Results}
+\section*{Discussion}
 
-%\section*{Introduction}
-%\section*{Methods}
-%\section*{Results}
-%\section*{Discussion}
-
-\section*{Acknowledgements}
-As always, many thanks to Julian Melgar for no particular reason. 
+%\section*{Acknowledgements}
 
 %\newpage
+%\bibliography{references}
 %\printbibliography
+\end{multicols}
 \end{document}

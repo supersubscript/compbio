@@ -1,0 +1,23 @@
+Toll-like receptors:
+
+Two defences towards bacteria and viruses:
+  1) Innate immune system
+  2) Adaptive immune system (in vertebrate animals)  
+    - Comes in if problem more severe, w/ custom antibodies and lots of white
+      blood cells. 
+
+Innate system battles common foes -- TOLL PROTEIN: bacterial and fungal
+infections.
+
+Our cells contain 10 Toll-like receptors. 
+
+Toll-like receptors activate an inflammatory response which fights pathogens.
+E.g. mice with faulty TLRs die quickly due to bacterial infections and the
+likes. 
+
+TLRs send signals by forming a dimer. 
+DIMER: A molecule or molecular complex consisting of two identical
+molecules linked together.
+
+Pathegenic molecules bring together cytoplasmic domains of the TLR (outside of
+the cell), initiating a cascade of signals (inside of the cell). 

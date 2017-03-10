@@ -277,10 +277,12 @@ p = 0.42/0.6
             1 - x_0 + x_0e^{\sigma_1t'}}\right)} = \\
           =&~\dfrac{x_0e^{\sigma_1t' + \sigma_2t}}{1 - x_0 + x_0e^{\sigma_1t' + \sigma_2t}}
   \end{align*}
-  for some arbitrary intervals where our $\sigma$'s are separable. Since we can repeat this process for any number of intervals, our corresponding exponent will equal a sum over the $\sigma-t$ products, which in the limit of our timesteps trending towards zero is equivalent to our sought-after integral.
-  
+  for some arbitrary intervals where our $\sigma$'s are separable. Since we can repeat this process for any number of intervals, our corresponding exponent will equal a sum over the $\sigma_i\cdot t_i$ products, which in the limit of our timesteps trending towards zero is equivalent to our sought-after integral.
 \end{enumerate}
 
+\begin{enumerate}
+\item[B] As we can see in \cref{fig:fisherb, the population of smaller size is affiliated with a much larger variability, as is to be expected from the expression defining the probability of a fixation. In contrast, the larger population steadily reaches the optimum and does not sway further on. Because of the rigid optimum, the accumulated fitness variations mirror precisely the fraction trajectory.  
+\end{enumerate}
 <<fisherb, echo=FALSE,fig.height=5,fig.env='figure',fig.cap="Stuff", cache = TRUE, fig.pos="H", fig.align='center', warning=FALSE>>= 
   source("../code/fisherb.R")
 @
@@ -294,6 +296,8 @@ p = 0.42/0.6
 <<fisherd_ext, echo=FALSE,fig.height=5,fig.env='figure',fig.cap="Stuff", cache = TRUE, fig.pos="H", fig.align='center', warning=FALSE>>= 
   source("../code/fisherd_ext.R")
 @
+
+
 
 Biological systems: Some populations have a harder time adapting.
 

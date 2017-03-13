@@ -18,6 +18,7 @@
 \usepackage{listings}
 \usepackage{cleveref}
 \usepackage{lipsum}
+\usepackage{epstopdf}
 \newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{=}}}
 \newcommand{\matr}[1]{\mathbf{#1}}
 \newcommand{\partt}[2]{\ensuremath{\dfrac{\partial {#1}}{\partial {#2}}}}
@@ -94,6 +95,10 @@ escapeinside={\%*}{*)},         % if you want to add a comment within your code
 morekeywords={*,...}            % if you want to add more keywords to the set
 } 
 
+\epstopdfDeclareGraphicsRule{.tga}{png}{.png}{%
+  convert #1 \OutputFile
+}
+\AppendGraphicsExtensions{.tga}
 
 %%% Document specific
 \newcommand{\course}{Structural Biology}
@@ -144,6 +149,35 @@ Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
 @
 \section*{Exercises}
 \subsection*{1}
+How would you describe its structure? 
+
+The protein in essence consists of a toroidal structure made up by anti-parallel
+beta-sheets. These are separated into two sub-structures of 6 and 3 beta-strands
+each. Together, the structure forms a seemingly twisted, tubular form, making it
+seem like the top conformation is made out to capture incoming molecules of some
+sort. Even though this might be because of resolution issues, water molecules do
+not appear to be present within the structure, or at least not frequent. Maybe
+electrostatically repelled? 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{prot1_topview}
+  \caption{topview}
+  \label{fig:topview}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{prot1_aligned}
+  \caption{aligned}
+  \label{fig:aligned}
+\end{figure}
+
+In aligning the structures, we can clearly see how the “entrance” to the
+capturing cavity is inaccessible in the starting structure (i.e.\ during X-ray
+crystallography). Aside of the general opening in the structure, the red
+(opening) appears to have a slightly bigger cavity. 
+
 \bibliography{references}
 \end{multicols*}
 \end{document}

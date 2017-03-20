@@ -4,7 +4,7 @@
 x.init = 0.5
 no.generations = 5000
 pop.size = 0
-no.replicates = 1000
+no.replicates = 1
 lambda = 0.001
 linew = 3
 

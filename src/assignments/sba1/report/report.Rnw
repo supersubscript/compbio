@@ -18,7 +18,10 @@
 \usepackage{listings}
 \usepackage{cleveref}
 \usepackage{lipsum}
+\usepackage{graphicx}
 \usepackage{epstopdf}
+\graphicspath{{../figures/}}
+\epstopdfsetup{outdir=./}
 \newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{=}}}
 \newcommand{\matr}[1]{\mathbf{#1}}
 \newcommand{\partt}[2]{\ensuremath{\dfrac{\partial {#1}}{\partial {#2}}}}
@@ -133,51 +136,141 @@ render_listings()
 % \date{\today}
 \maketitle
 \begin{abstract}
-{\bf 
-  %\begin{changemargin}{-.8cm}{-.8cm}
-  This is an abstract abstract.
-}
+	{\bf 
+		%\begin{changemargin}{-.8cm}{-.8cm}
+		This is an abstract abstract.
+	}
 \end{abstract}
 
 \begin{multicols*}{2}
-\section*{Preface}
-This is an assignment report in connection to the \textit{\course}
-module in the Computational Biology course at the University of Cambridge,
-\term. All related code is as of \date{\today} available through a
-Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
-<<codeblock,include = F, echo = F, warning = F>>=
-@
-\section*{Exercises}
-\subsection*{1}
-How would you describe its structure? 
-
-The protein in essence consists of a toroidal structure made up by anti-parallel
-beta-sheets. These are separated into two sub-structures of 6 and 3 beta-strands
-each. Together, the structure forms a seemingly twisted, tubular form, making it
-seem like the top conformation is made out to capture incoming molecules of some
-sort. Even though this might be because of resolution issues, water molecules do
-not appear to be present within the structure, or at least not frequent. Maybe
-electrostatically repelled? 
+	\section*{Preface}
+	This is an assignment report in connection to the \textit{\course}
+	module in the Computational Biology course at the University of Cambridge,
+	\term. All related code is as of \date{\today} available through a
+	Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
+	<<codeblock,include = F, echo = F, warning = F>>=
+	@
+	\section*{Exercises}
+	\subsection*{1}
+	How would you describe its structure? 
+	
+	The protein in essence consists of a toroidal structure made up by anti-parallel
+	beta-sheets. These are separated into two sub-structures of 6 and 3 beta-strands
+	each. Together, the structure forms a seemingly twisted, tubular form, making it
+	seem like the top conformation is made out to capture incoming molecules of some
+	sort. Even though this might be because of resolution issues, water molecules do
+	not appear to be present within the structure, or at least not frequent. Maybe
+	electrostatically repelled? 
+	
+	% \begin{figure}[H]
+	%   \centering
+	%   \includegraphics{../figures/prot1_topview}
+	%   \caption{topview}
+	%   \label{fig:topview}
+	% \end{figure}
+	% 
+	% \begin{figure}[H]
+	%   \centering
+	%   \includegraphics{../figures/prot1_aligned}
+	%   \caption{aligned}
+	%   \label{fig:aligned}
+	% \end{figure}
+	
+	In aligning the structures, we can clearly see how the “entrance” to the
+	capturing cavity is inaccessible in the starting structure (i.e.\ during X-ray
+	crystallography). Aside of the general opening in the structure, the red
+	(opening) appears to have a slightly bigger cavity. 
+	
+	<<trajs, echo=FALSE, fig.height = 5, fig.env='figure', fig.cap="Things", cache = TRUE, fig.pos="H",fig.align='center'>>=
+	setwd("~/compbio/src/assignments/sba1/code/")
+	library(RColorBrewer)
+	palette(brewer.pal(n = 8, name = "Set1"))
+	filenames = list.files("../data", pattern="*.dat", full.names=TRUE)
+	res = lapply(filenames, function(x) read.table(x, header = T))
+	names(res) = filenames #substr(filenames, 1, 30)
+	plot(1, type="n", axes=T, xlab="", ylab="", ylim=c(0,5), xlim = c(0,1003), bty = "n")
+	for(ii in 1:length(res)){
+		lines(res[[ii]], col = ii, lwd = 2)
+	}
+	conf.names = c("+ N CA C", "+ N CA C and helix", "+ N CA C and sheet", "+ N CA C and (sheet or helix)", "Protein")
+	# legend("bottomright", names(res), col = 1:length(res), inset = c(0.01, 0.05), lty = 1, lwd = 2)
+	legend("bottomright", conf.names, col = 1:length(res), inset = c(0.01, 0.05), lty = 1, lwd = 2, bg = "white")
+	@
+\end{multicols*}
 
 \begin{figure}[H]
-  \centering
-  \includegraphics{prot1_topview}
-  \caption{topview}
-  \label{fig:topview}
+	\centering
+	\includegraphics[trim={2cm 1.6cm 0 0}, clip, width = \textwidth]{../figures/timeline}
+	\caption{timeline}
+	\label{fig:timeline}
 \end{figure}
+\begin{multicols*}{2}
+	
+	Formation of new (pink) domains. Amino acid involved in forming helix very variable. Most domains fairly stable overall, but most also alternate at some point. 
+	
+	INCLUDE PINK DOMAIN THINGY
+	\begin{figure}[H]
+		\centering
+		\includegraphics[trim={9cm 8cm 9cm 6cm}, clip, width = .3\textwidth]{../figures/domainchange_snapshot}
+		\caption{domainchange}
+		\label{fig:domchange}
+	\end{figure}
+	
+	ARG90-XXX120 are the end of one beta-sheet (arrow) and the bottom of another. SER120 is the 3-one (head), whereas ARG90 is the 6-one (bottom). 
+	
+	SER27-PRO50 are on the other side of the 3-domain, and  
+	
+	% PLOT FIGURE OF THE THREE REGIONS HERE. 
+	
+	
+	\subsection{9}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[trim={2cm 2.5cm 5cm 4.5cm}, clip, width = .45\textwidth]{../figures/charged}
+		\caption{charged}
+		\label{fig:charged}
+	\end{figure}
+	
+	Charged guys are far away from the core structure. 
+	
+	The flexible structures of the protein also tends to consist of smaller amino acids (the spaghetti-like things) (plotting "small" residues)
+	
+	No ions in complex.
+	
+	Almost no overlap between polar and hydrophobic amino acids.
+	
+	
+	\subsection{10}
+	Non-functional form: Water molecules in cavity.
+	Functional form: No water molecules in cavity.
+	
+	\subsection{11}
+	The molecule stays pretty much the same, with the ring inside of the cavity. In the end, it comes together with the other other side of the cavity. It has also functionally "bent over", i.e.\ so that it hangs "inwards" from the other side of the cavity. A 180+ degree rotation around it's axis.  
+	
+	
+	\section{2}
+	No alpha helix anymore. 
+	
+	\subsection{1}
+	Hydrophobic tails appear to remain stable. 
+	
+	Restype: Now, let's modify the colors of our representation. Choose Coloring Method $\rightarrow$ ResType Fig. 5(c). This allows you to distinguish non-polar residues (white), basic residues (blue), acidic residues (red) and polar residues (green).
+	
+	Basic residues for contacts with neutral ones. Also to aliphatic ones. 
+  
+  \subsection{2}
+  At the beginning of the simulation, charged molecules are on one side of the thingything, but at the end of the simulation, they encircle and enclose it. R
+		
+	% within 10
+	  \subsection{3}
+%	Doesn't seem like there are any negative amino acids present in the protein at all. 
+Negatively charged seem like the ones actually binding. (Green)
+Positively charged molecules (orange) appear further away.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics{prot1_aligned}
-  \caption{aligned}
-  \label{fig:aligned}
-\end{figure}
 
-In aligning the structures, we can clearly see how the “entrance” to the
-capturing cavity is inaccessible in the starting structure (i.e.\ during X-ray
-crystallography). Aside of the general opening in the structure, the red
-(opening) appears to have a slightly bigger cavity. 
+Interestingly, in order to bind the ligand, the bound complex appear to be more flexible with respect to the non-sheet surfaces, indicating that the ligand intercedes with the ordinary "path of least resistance", which ends up being what effectively entangles it in the cavity. In the non-bound states, the protein visually appears more rigid with respect to the overall structure, whereas it in the bound case has to adapt to the incoming ligand. In other words, the trajectory in the bound case is more varied, due to the increased change in environment. However, at the point where the ligand has stabilised somewhat, the other strucutre appears more varyingly; especially the helix seems to go away a bit at some of the latter timepoints. 
 
-\bibliography{references}
+
+	\bibliography{references}
 \end{multicols*}
 \end{document}

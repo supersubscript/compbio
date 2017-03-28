@@ -2,7 +2,6 @@ setwd("~/compbio/src/assignments/sba1/code/")
 library(RColorBrewer)
 palette(brewer.pal(n = 8, name = "Set1"))
 
-
 filenames = list.files("../data", pattern="*.dat", full.names=TRUE)
 res = lapply(filenames, function(x) read.table(x, header = T))
 names(res) = filenames #substr(filenames, 1, 30)

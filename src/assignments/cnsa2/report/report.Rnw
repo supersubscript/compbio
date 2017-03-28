@@ -18,6 +18,10 @@
 \usepackage{listings}
 \usepackage{cleveref}
 \usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\graphicspath{{../figures/}}
+\epstopdfsetup{outdir=./}
 \newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{=}}}
 \newcommand{\matr}[1]{\mathbf{#1}}
 \newcommand{\partt}[2]{\ensuremath{\dfrac{\partial {#1}}{\partial {#2}}}}
@@ -122,7 +126,7 @@ morekeywords={*,...}            % if you want to add more keywords to the set
 
 <<setup, include=FALSE, cache=FALSE, echo = FALSE, warning=FALSE, message = FALSE>>=
 library(knitr)
-opts_chunk$set(fig.path='figure/twocolumn-', fig.align='center', fig.show='hold')
+opts_chunk$set(fig.path='../figures/twocolumn-', fig.align='center', fig.show='hold')
 render_listings()
 @
 % \date{\today}
@@ -140,10 +144,54 @@ This is an assignment report in connection to the \textit{\course}
 module in the Computational Biology course at the University of Cambridge,
 \term. All related code is as of \date{\today} available through a
 Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
-<<codeblock,include = F, echo = F, warning = F>>=
-@
 \section*{Exercises}
 \subsection*{1}
+<<newtonetc,include = F, echo = F, warning = F>>=
+setwd("~/compbio/src/assignments/cnsa2/code/")
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+lw.s = 3
+dvdt.nc = function(v, Ie=0, ...){
+  v*(1-v**2) + Ie
+}
+dudt.nc = function(v, ...){
+  2*v
+}
+tolerance = 1e-10
+reps = 20
+newton = function(f, x0) {
+  h = 0.001
+  i = 2
+  x1 = x0
+  p = numeric(reps)
+  for (ii in 1:reps) {
+    dfdx = (f(x0 + h) - f(x0)) / h
+    x1 = (x0 - (f(x0) / dfdx))
+    p[i] = x1
+    i = i + 1
+    if (abs(x1 - x0) < tolerance)
+      break
+    x0 = x1
+  }
+  return(p[1:(i - 1)])
+}
+@
+
+We plot the nullclines in \cref{fig:nullclines}. Implementing Newton's method to find the roots of the composite equation $v^3 + v + 1 = 0$, we find that they are given by $v~=~$\Sexpr{tail(newton(function(x) x**3 + x + 1, 1),1)}, \Sexpr{tail(newton(function(x) x**3 + x + 1, 1),1)}$i$ and \Sexpr{tail(-newton(function(x) x**3 + x + 1, 1),1)}$i$ for $I_e = -1$, and .
+<<nullclines, echo=FALSE, fig.height = 5, fig.env='figure', fig.cap="Things", cache = TRUE, fig.pos="H",fig.align='center'>>=
+x = seq(-1,1, 0.001)
+plot(x, dvdt.nc(x, 0), type = "l", col = "darkblue", ylim = c(-1.5,1), bty= "n", lwd = lw.s, xaxt = "n", yaxt="n", xlab = "v", ylab = "u")
+axis(1, pos=0)
+axis(2, pos=0)
+lines(x, dvdt.nc(x, -1), type = "l", col = 2, lwd = lw.s)
+lines(x, dudt.nc(x), type = "l", col = 1, lwd = lw.s)
+legend("topleft", c("dvdt = 0, Ie = 0", "dvdt = 0, Ie = -1", "dudt = 0"), col = c("darkblue",2,1), inset = c(0.01, 0.05), lty = 1, lwd = lw.s, bg="white", cex = 1.1)
+@
+
+0.6823278
+
+
+\subsection*{2}
 \bibliography{references}
 \end{multicols*}
 \end{document}

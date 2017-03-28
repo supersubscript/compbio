@@ -1,4 +1,8 @@
 #!/usr/bin/env Rscript
+setwd("~/compbio/src/assignments/cnsa1/code/")
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+
 inhibitory = F
 method = "milstein"
 EL = -70.0 #mV

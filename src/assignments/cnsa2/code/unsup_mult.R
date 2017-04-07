@@ -11,7 +11,7 @@ par(
 no.datapoints <- 2000
 rho <-  .7
 
-m = 10
+m = 2
 x <- rnorm(no.datapoints, mean = m, sd = 1)
 y <- rnorm(no.datapoints, mean = rho * x, sd = sqrt(1 - rho ** 2))
 data = cbind(x, y)
@@ -33,9 +33,31 @@ train = function(inputs, covorcor, method = "sub", oja.c = 1, ...) {
     for (iter in 1:no.datapoints) {
       # weights = weights + learning.rate*(c(cor.mat %*% weights) - 1/no.weights * c(rowSums(cor.mat) %*% weights)) # Preserves weights
       # weights = weights + learning.rate*(c(cor.mat %*% weights) - 1/no.weights * c(weights * c(cor.mat %*% unit(2)))) # Doesn't preserve weights
-      weights = weights + learning.rate*(c(cor.mat %*% weights) - 1/no.weights * rowSums(cor.mat)%*%weights) # Doesn't preserve weights
+      
+      weights = weights + learning.rate*c(cor.mat %*% weights) - learning.rate/no.weights * sum(cor.mat%*%weights) # Doesn't preserve weights
+      # change = learning.rate*(c(cor.mat %*% weights) - 1/no.weights * sum(cor.mat%*%weights))
+      # if(any(weights + change > 1)){
+      #   newunit = !(weights + change > 1)
+      #   print(weights)
+      #   print(newunit)
+      #   change = learning.rate*(c(cor.mat %*% weights) - 1/sum(newunit) * sum((cor.mat*newunit)%*%weights))#sum(cor.mat%*%weights))
+      # }
+      # 
+      # if(any(weights + change < 0)){
+      #   newunit = !(weights + change < 0)
+      #   change = learning.rate * ((c(cor.mat%*%newunit) %*% weights) - 1/sum(newunit) * sum((cor.mat*newunit)%*%weights))#sum(cor.mat%*%weights))
+        # change = learning.rate*(c(cor.mat %*% weights) - 1/sum(newunit) * asum((cor.mat*newunit)%*%weights))#sum(cor.mat%*%weights))
+        # print(change)
+      weights[weights > 1] = 1
+      weights[weights < 0] = 0
       # print(sum(weights))
-    }
+      }
+      # weights = weights + change
+      
+      # weights = weights + learning.rate*(c(cor.mat %*% weights) - 1/no.weights * sum(cor.mat%*%weights)) # Preserves weights
+      # print(sum(weights))
+      # weights[weights > 1] = 1
+      # weights[weights < 0] = 0
   }else if (method == "hebb") {
     for (iter in 1:no.datapoints) {
       output = c(weights %*% inputs[iter,])
@@ -43,14 +65,12 @@ train = function(inputs, covorcor, method = "sub", oja.c = 1, ...) {
       # weights = weights / sqrt(weights%*%weights)
     }
   }else if (method == "oja"){
-      for (iter in 0:(no.datapoints-1)) {
-        iter = iter %% no.datapoints + 1
+      for (iter in 1:(no.datapoints)) {
         output = c(weights %*% inputs[iter,])
         weights = weights + learning.rate*(output*inputs[iter,] - oja.c*output**2*weights) # Preserves weights
         # weights = weights / sqrt(weights%*%weights)
       }
     }
-  
   return(weights)
 }
 
@@ -90,19 +110,18 @@ lines(
 #   lty = 3
 # )
 
-
 # Correlation
-# weights = train(data, cor, method = "sub")
-# cat("sub+cor unnorm:\t", weights, "\n")
-# weights = weights / sqrt(weights %*% weights)
-# cat("sub+cor norm:\t", weights, "\n")
-# lines(
-#   -3:3 * weights[1] + m,
-#   -3:3 * weights[2] + m * rho,
-#   col = 4,
-#   lwd = 5,
-#   lty = 3
-# )
+weights = train(data, cor, method = "sub")
+cat("sub+cor unnorm:\t", weights, "\n")
+weights = weights / sqrt(weights %*% weights)
+cat("sub+cor norm:\t", weights, "\n")
+lines(
+  -3:3 * weights[1] + m,
+  -3:3 * weights[2] + m * rho,
+  col = 4,
+  lwd = 5,
+  lty = 3
+)
 
 # weights = train(data, cor, method = "mult")
 # cat("mul+cor unnorm:\t", weights, "\n")
@@ -116,3 +135,4 @@ lines(
 #   lwd = 5,
 #   lty = 2
 # )
+print(prcomp(data.frame(data)))

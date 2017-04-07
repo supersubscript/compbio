@@ -1,0 +1,27 @@
+Initial mutation 0 0.049169 87 0
+Last generation is 336
+1
+Change vector 0 29 -29 17 -17 7 -7 2 -2 
+Current underlying data
+Mutation 0 0.049169 87 0
+New likelihood = -92.5725
+Now set at:
+Mutation 0 0.0492702 87 0
+2
+Change vector 0 23 -23 13 -13 5 -5 1 -1 
+Current underlying data
+Mutation 0 0.0492702 87 0
+3
+Change vector 0 19 -19 11 -11 3 -3 1 -1 
+Current underlying data
+Mutation 0 0.0492702 87 0
+4
+Change vector 0 4 -4 3 -3 2 -2 1 -1 
+Current underlying data
+Mutation 0 0.0492702 87 0
+Program converged :
+Best likelihood = -92.5725
+Mutation 0 0.0492702 87 0
+Start frequency 0.359167
+Start frequency 0.640833
+-92.5725

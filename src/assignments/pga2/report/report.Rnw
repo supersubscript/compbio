@@ -97,7 +97,7 @@ morekeywords={*,...}            % if you want to add more keywords to the set
 
 %%% Document specific
 \newcommand{\course}{Population Genetics}
-\newcommand{\ass}{1}
+\newcommand{\ass}{2}
 \newcommand{\term}{Lent term 2017}
 %\bibliography{pga1}
 
@@ -144,6 +144,72 @@ Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
 @
 \section*{Exercises}
 \subsection*{1}
+<<inference, echo=FALSE, fig.height = 4.5, fig.env='figure', fig.cap="Things", cache = FALSE, fig.pos="H",fig.align='center'>>=
+setwd("~/compbio/src/assignments/pga2/code/")
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+library(scales)
+library(stats4)
+library(viridis)
+
+# Parameters / data
+N = 100
+timepoints = 0:6
+data = data.frame(time = 0:6, n = c(28, 39, 72, 83, 98, 96, 99) / N)
+x = data[, "time"]
+xs = seq(0, 6, 0.1)
+
+# Fraction development over time
+q = function(q.init, sigma, t) {
+  q.init * exp(sigma * t) / (1 - q.init + q.init * exp(sigma * t))
+}
+
+# Calculate the log-likelihood
+nas = data[,"n"]*N
+prefact = factorial(N)/(sapply(nas, factorial)*sapply(N-nas, factorial))
+log.lik = function(q.init, sigma){
+  qas = q(q.init, sigma, timepoints)
+  # nas = qas*N
+  ln.p = log(prefact*qas**(nas)*((1-qas)**(N-nas))) 
+  -sum(ln.p)   
+}
+
+fit = mle(minuslogl = log.lik, start = list(q.init = .5, sigma = .5), method="L-BFGS-B", lower = 0, upper=c(1, Inf)) 
+coef = coef(summary(fit))
+
+# Calculate upper and lower bound of estimate
+yhigh = q(coef[1, 1] + coef[1, 2], coef[2, 1] + coef[2, 2], xs)
+ylow = q(coef[1, 1] - coef[1, 2], coef[2, 1] - coef[2, 2], xs)
+
+# Plot it all
+plot(1, type="n", axes=T, xlab="Time [days]", ylab="Allele frequency", ylim=c(0,100/N), xlim = c(0,6), bty = "n")
+polygon(c(xs, rev(xs)), c(yhigh, rev(ylow)),
+          col = alpha(2, .33), border = F, lty = 2, lwd = 2)
+lines(x, data[,"n"], type = "b", pch = 17, cex = 1.5, lwd = 3, col = 1)
+lines(xs, q(coef[1, 1], coef[2, 1], xs), col = 2, lwd = 3, lty = 2)
+
+# Plot borders
+lines(xs, ylow, col = alpha(2, 1), lwd = 1)
+lines(xs, yhigh, col = alpha(2, 1), lwd = 1)
+@
+
+<<inference2, echo=FALSE, fig.height = 4.5, fig.env='figure', fig.cap="Things", cache = TRUE, fig.pos="H",fig.align='center'>>=
+qvals = seq(0, 1, 0.01)
+svals = seq(0, 7.5, 0.02)
+
+likelihoods = sapply(qvals, function(x)
+  sapply(svals, function(y)
+    log.lik(x, y)))
+
+filled.contour((likelihoods),   xlab = expression(q[0]),  ylab = expression(sigma),
+               col = viridis(22),
+               axes = F
+)
+axis(1, at = seq(0, .75, 0.15), labels = round(seq(.1, 1, 1/.75 * .25/2), 2))
+axis(2, at = seq(0, 1, 0.2), labels = seq(0, 7.5, 7.5 * 0.2))
+axis(4, at = seq(0, .9, 0.15), labels = seq(0, 3000, 500), las =2, line= -2)
+@
+
 \bibliography{references}
 \end{multicols*}
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.12.24)  31 MAR 2017 20:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.12.24)  4 APR 2017 15:06
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -747,26 +747,6 @@ Package cleveref Info: `listings' support loaded on input line 2950.
 Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count141
 )
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf.sty
-Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-)))
 (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks27
@@ -854,29 +834,29 @@ Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 )
 
 Package hyperref Warning: Option `pdfusetitle' has already been used,
-(hyperref)                setting the option has no effect on input line 89.
+(hyperref)                setting the option has no effect on input line 85.
 
 
 Package hyperref Warning: Option `bookmarks' has already been used,
-(hyperref)                setting the option has no effect on input line 89.
+(hyperref)                setting the option has no effect on input line 85.
 
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 89.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 89.
-Package hyperref Info: Option `unicode' set `true' on input line 89.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 85.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 85.
+Package hyperref Info: Option `unicode' set `true' on input line 85.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2016/06/24 v6.83q Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `breaklinks' set `false' on input line 89.
+Package hyperref Info: Option `breaklinks' set `false' on input line 85.
 
 
 Package hyperref Warning: Option `hyperindex' has already been used,
-(hyperref)                setting the option has no effect on input line 89.
+(hyperref)                setting the option has no effect on input line 85.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 89.
-Package hyperref Info: Option `linktocpage' set `true' on input line 89.
-Package hyperref Info: Option `plainpages' set `false' on input line 89.
+Package hyperref Info: Option `colorlinks' set `true' on input line 85.
+Package hyperref Info: Option `linktocpage' set `true' on input line 85.
+Package hyperref Info: Option `plainpages' set `false' on input line 85.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -886,10 +866,6 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps,.tga]
-(grfext)             \AppendGraphicsExtensions on input line 119.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
@@ -897,22 +873,22 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
  (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -927,11 +903,28 @@ LaTeX Font Info:    ... okay on input line 144.
 \MPnumerator=\count155
 \makeMPintoPDFobject=\count156
 \everyMPtoPDFconversion=\toks36
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 \c@lstlisting=\count157
 \AtBeginShipoutBox=\box60
-Package hyperref Info: Link coloring ON on input line 144.
- (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package hyperref Info: Link coloring ON on input line 133.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -939,9 +932,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count158
 )
-LaTeX Info: Redefining \ref on input line 144.
-LaTeX Info: Redefining \pageref on input line 144.
-LaTeX Info: Redefining \nameref on input line 144.
+LaTeX Info: Redefining \ref on input line 133.
+LaTeX Info: Redefining \pageref on input line 133.
+LaTeX Info: Redefining \nameref on input line 133.
 
 (./report.out) (./report.out)
 \@outlinefile=\write4
@@ -984,317 +977,63 @@ LaTeX Info: Redefining \nameref on input line 144.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 147.
+LaTeX Font Info:    Try loading font information for U+msa on input line 136.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 147.
+LaTeX Font Info:    Try loading font information for U+msb on input line 136.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Package epstopdf Info: Source file: <../figures/unbound_cartoon.tga>
-(epstopdf)                    date: 2017-03-30 10:55:28
-(epstopdf)                    size: 2954490 bytes
-(epstopdf)             Output file: <./unbound_cartoon-tga-converted-to.png>
-(epstopdf)                    date: 2017-03-30 11:06:50
-(epstopdf)                    size: 146716 bytes
-(epstopdf)             Command: <convert ../figures/unbound_cartoon.tga ./unbou
-nd_cartoon-tga-converted-to.png>
-(epstopdf)             \includegraphics on input line 173.
-Package epstopdf Info: Output file is already uptodate.
+<figure/twocolumn-inference-1.pdf, id=5, 505.89pt x 325.215pt>
+File: figure/twocolumn-inference-1.pdf Graphic file (type pdf)
 
-<./unbound_cartoon-tga-converted-to.png, id=8, 961.5925pt x 1031.855pt>
-File: ./unbound_cartoon-tga-converted-to.png Graphic file (type png)
-
-<use ./unbound_cartoon-tga-converted-to.png>
-Package pdftex.def Info: ./unbound_cartoon-tga-converted-to.png used on input l
-ine 173.
-(pdftex.def)             Requested size: 190.0671pt x 189.86522pt.
-Package epstopdf Info: Source file: <../figures/unbound_VDW.tga>
-(epstopdf)                    date: 2017-03-30 10:56:17
-(epstopdf)                    size: 2954490 bytes
-(epstopdf)             Output file: <./unbound_VDW-tga-converted-to.png>
-(epstopdf)                    date: 2017-03-30 11:05:28
-(epstopdf)                    size: 470190 bytes
-(epstopdf)             Command: <convert ../figures/unbound_VDW.tga ./unbound_V
-DW-tga-converted-to.png>
-(epstopdf)             \includegraphics on input line 181.
-Package epstopdf Info: Output file is already uptodate.
-
-<./unbound_VDW-tga-converted-to.png, id=10, 961.5925pt x 1031.855pt>
-File: ./unbound_VDW-tga-converted-to.png Graphic file (type png)
-
-<use ./unbound_VDW-tga-converted-to.png>
-Package pdftex.def Info: ./unbound_VDW-tga-converted-to.png used on input line 
-181.
-(pdftex.def)             Requested size: 190.0671pt x 192.95514pt.
- [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./unbound_cartoon-tga-conv
-erted-to.png> <./unbound_VDW-tga-converted-to.png>]
-Package epstopdf Info: Source file: <../figures/unbound_aligned_startvsend.tga>
-
-(epstopdf)                    date: 2017-03-30 12:52:06
-(epstopdf)                    size: 2954490 bytes
-(epstopdf)             Output file: <./unbound_aligned_startvsend-tga-converted
--to.png>
-(epstopdf)                    date: 2017-03-30 12:54:02
-(epstopdf)                    size: 224519 bytes
-(epstopdf)             Command: <convert ../figures/unbound_aligned_startvsend.
-tga ./unbound_aligned_startvsend-tga-converted-to.png>
-(epstopdf)             \includegraphics on input line 194.
-Package epstopdf Info: Output file is already uptodate.
-
-<./unbound_aligned_startvsend-tga-converted-to.png, id=34, 961.5925pt x 1031.85
-5pt>
-File: ./unbound_aligned_startvsend-tga-converted-to.png Graphic file (type png)
-
- <use ./unbound_aligned_startvsend-tga-converted-to.png>
-Package pdftex.def Info: ./unbound_aligned_startvsend-tga-converted-to.png used
- on input line 194.
-(pdftex.def)             Requested size: 190.0671pt x 203.94264pt.
-
-<figure/twocolumn-trajs-1.pdf, id=36, 505.89pt x 325.215pt>
-File: figure/twocolumn-trajs-1.pdf Graphic file (type pdf)
-
-<use figure/twocolumn-trajs-1.pdf>
-Package pdftex.def Info: figure/twocolumn-trajs-1.pdf used on input line 204.
+<use figure/twocolumn-inference-1.pdf>
+Package pdftex.def Info: figure/twocolumn-inference-1.pdf used on input line 16
+0.
 (pdftex.def)             Requested size: 232.58751pt x 149.52132pt.
 
-<../figures/ramaplot.pdf, id=38, 279.0425pt x 279.0425pt>
-File: ../figures/ramaplot.pdf Graphic file (type pdf)
+<figure/twocolumn-inference2-1.pdf, id=6, 505.89pt x 325.215pt>
+File: figure/twocolumn-inference2-1.pdf Graphic file (type pdf)
 
-<use ../figures/ramaplot.pdf>
-Package pdftex.def Info: ../figures/ramaplot.pdf used on input line 217.
-(pdftex.def)             Requested size: 142.55396pt x 142.55673pt.
- [2 <./unbound_aligned_startvsend-tga-converted-to.png> <./figure/twocolumn-tra
-js-1.pdf> <../figures/ramaplot.pdf>]
-Package epstopdf Info: Source file: <../figures/timeline.eps>
-(epstopdf)                    date: 2017-03-13 20:34:53
-(epstopdf)                    size: 18727720 bytes
-(epstopdf)             Output file: <./timeline-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-03-13 20:35:00
-(epstopdf)                    size: 355534 bytes
-(epstopdf)             Command: <epstopdf --outfile=./timeline-eps-converted-to
-.pdf ../figures/timeline.eps>
-(epstopdf)             \includegraphics on input line 226.
-Package epstopdf Info: Output file is already uptodate.
-
-<./timeline-eps-converted-to.pdf, id=58, 506.89375pt x 365.365pt>
-File: ./timeline-eps-converted-to.pdf Graphic file (type pdf)
-
-<use ./timeline-eps-converted-to.pdf>
-Package pdftex.def Info: ./timeline-eps-converted-to.pdf used on input line 226
-.
-(pdftex.def)             Requested size: 475.17502pt x 337.75546pt.
-Package epstopdf Info: Source file: <../figures/domainchange_snapshot.tga>
-(epstopdf)                    date: 2017-03-13 21:19:13
-(epstopdf)                    size: 2960658 bytes
-(epstopdf)             Output file: <./domainchange_snapshot-tga-converted-to.p
-ng>
-(epstopdf)                    date: 2017-03-14 17:50:04
-(epstopdf)                    size: 119616 bytes
-(epstopdf)             Command: <convert ../figures/domainchange_snapshot.tga .
-/domainchange_snapshot-tga-converted-to.png>
-(epstopdf)             \includegraphics on input line 235.
-Package epstopdf Info: Output file is already uptodate.
-
-<./domainchange_snapshot-tga-converted-to.png, id=61, 963.6pt x 1031.855pt>
-File: ./domainchange_snapshot-tga-converted-to.png Graphic file (type png)
-
-<use ./domainchange_snapshot-tga-converted-to.png>
-Package pdftex.def Info: ./domainchange_snapshot-tga-converted-to.png used on i
-nput line 235.
-(pdftex.def)             Requested size: 142.55396pt x 200.04207pt.
-
-<figure/twocolumn-dists-1.pdf, id=63, 505.89pt x 361.35pt>
-File: figure/twocolumn-dists-1.pdf Graphic file (type pdf)
-
-<use figure/twocolumn-dists-1.pdf>
-Package pdftex.def Info: figure/twocolumn-dists-1.pdf used on input line 244.
-(pdftex.def)             Requested size: 232.58751pt x 166.1348pt.
-
-Overfull \vbox (2.79753pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (2.79753pt too high) has occurred while \output is active []
-
-
-[3 <./timeline-eps-converted-to.pdf> <./domainchange_snapshot-tga-converted-to.
-png>]
-Package epstopdf Info: Source file: <../figures/charged.tga>
-(epstopdf)                    date: 2017-03-16 15:56:11
-(epstopdf)                    size: 1673856 bytes
-(epstopdf)             Output file: <./charged-tga-converted-to.png>
-(epstopdf)                    date: 2017-03-16 15:57:23
-(epstopdf)                    size: 233303 bytes
-(epstopdf)             Command: <convert ../figures/charged.tga ./charged-tga-c
-onverted-to.png>
-(epstopdf)             \includegraphics on input line 263.
-Package epstopdf Info: Output file is already uptodate.
- <./charged-tga-converted-to.png, id=86, 671.50874pt x 837.1275pt>
-File: ./charged-tga-converted-to.png Graphic file (type png)
-
-<use ./charged-tga-converted-to.png>
-Package pdftex.def Info: ./charged-tga-converted-to.png used on input line 263.
-
-(pdftex.def)             Requested size: 213.8273pt x 284.48665pt.
-Package epstopdf Info: Source file: <../figures/unbound_polar.tga>
-(epstopdf)                    date: 2017-03-31 12:40:44
-(epstopdf)                    size: 2954490 bytes
-(epstopdf)             Output file: <./unbound_polar-tga-converted-to.png>
-(epstopdf)                    date: 2017-03-31 13:30:12
-(epstopdf)                    size: 349557 bytes
-(epstopdf)             Command: <convert ../figures/unbound_polar.tga ./unbound
-_polar-tga-converted-to.png>
-(epstopdf)             \includegraphics on input line 270.
-Package epstopdf Info: Output file is already uptodate.
-
-<./unbound_polar-tga-converted-to.png, id=88, 961.5925pt x 1031.855pt>
-File: ./unbound_polar-tga-converted-to.png Graphic file (type png)
-
-<use ./unbound_polar-tga-converted-to.png>
-Package pdftex.def Info: ./unbound_polar-tga-converted-to.png used on input lin
-e 270.
-(pdftex.def)             Requested size: 213.8273pt x 252.3615pt.
-Package epstopdf Info: Source file: <../figures/unbound_hydrophobicandaliphatic
-.tga>
-(epstopdf)                    date: 2017-03-31 12:39:42
-(epstopdf)                    size: 2954490 bytes
-(epstopdf)             Output file: <./unbound_hydrophobicandaliphatic-tga-conv
-erted-to.png>
-(epstopdf)                    date: 2017-03-31 13:30:12
-(epstopdf)                    size: 251129 bytes
-(epstopdf)             Command: <convert ../figures/unbound_hydrophobicandaliph
-atic.tga ./unbound_hydrophobicandaliphatic-tga-converted-to.png>
-(epstopdf)             \includegraphics on input line 277.
-Package epstopdf Info: Output file is already uptodate.
-
-<./unbound_hydrophobicandaliphatic-tga-converted-to.png, id=90, 961.5925pt x 10
-31.855pt>
-File: ./unbound_hydrophobicandaliphatic-tga-converted-to.png Graphic file (type
- png)
- <use ./unbound_hydrophobicandaliphatic-tga-converted-to.png>
-Package pdftex.def Info: ./unbound_hydrophobicandaliphatic-tga-converted-to.png
- used on input line 277.
-(pdftex.def)             Requested size: 213.8273pt x 262.57368pt.
- [4 <./charged-tga-converted-to.png> <./unbound_polar-tga-converted-to.png> <./
-figure/twocolumn-dists-1.pdf>]
-Package epstopdf Info: Source file: <../figures/unbound_all_hydrophobic.tga>
-(epstopdf)                    date: 2017-03-31 12:43:34
-(epstopdf)                    size: 2954490 bytes
-(epstopdf)             Output file: <./unbound_all_hydrophobic-tga-converted-to
-.png>
-(epstopdf)                    date: 2017-03-31 13:30:12
-(epstopdf)                    size: 407849 bytes
-(epstopdf)             Command: <convert ../figures/unbound_all_hydrophobic.tga
- ./unbound_all_hydrophobic-tga-converted-to.png>
-(epstopdf)             \includegraphics on input line 284.
-Package epstopdf Info: Output file is already uptodate.
-
-<./unbound_all_hydrophobic-tga-converted-to.png, id=110, 961.5925pt x 1031.855p
-t>
-File: ./unbound_all_hydrophobic-tga-converted-to.png Graphic file (type png)
- <use ./unbound_all_hydrophobic-tga-converted-to.png>
-Package pdftex.def Info: ./unbound_all_hydrophobic-tga-converted-to.png used on
- input line 284.
-(pdftex.def)             Requested size: 213.8273pt x 233.53159pt.
-
-<figure/twocolumn-bounddists-1.pdf, id=113, 505.89pt x 361.35pt>
-File: figure/twocolumn-bounddists-1.pdf Graphic file (type pdf)
-
-<use figure/twocolumn-bounddists-1.pdf>
-Package pdftex.def Info: figure/twocolumn-bounddists-1.pdf used on input line 3
-05.
-(pdftex.def)             Requested size: 232.58751pt x 166.1348pt.
- [5 <./unbound_hydrophobicandaliphatic-tga-converted-to.png> <./unbound_all_hyd
-rophobic-tga-converted-to.png> <./figure/twocolumn-bounddists-1.pdf>]
-<figure/twocolumn-liganddists-1.pdf, id=131, 505.89pt x 361.35pt>
-File: figure/twocolumn-liganddists-1.pdf Graphic file (type pdf)
-
-<use figure/twocolumn-liganddists-1.pdf>
-Package pdftex.def Info: figure/twocolumn-liganddists-1.pdf used on input line 
-318.
-(pdftex.def)             Requested size: 232.58751pt x 166.1348pt.
-Package epstopdf Info: Source file: <../figures/bound_positive_aa_bindstoligand
-P1.tga>
-(epstopdf)                    date: 2017-03-31 15:42:48
-(epstopdf)                    size: 1673856 bytes
-(epstopdf)             Output file: <./bound_positive_aa_bindstoligandP1-tga-co
-nverted-to.png>
-(epstopdf)                    date: 2017-03-31 15:46:28
-(epstopdf)                    size: 178459 bytes
-(epstopdf)             Command: <convert ../figures/bound_positive_aa_bindstoli
-gandP1.tga ./bound_positive_aa_bindstoligandP1-tga-converted-to.png>
-(epstopdf)             \includegraphics on input line 330.
-Package epstopdf Info: Output file is already uptodate.
-
-<./bound_positive_aa_bindstoligandP1-tga-converted-to.png, id=133, 671.50874pt 
-x 837.1275pt>
-File: ./bound_positive_aa_bindstoligandP1-tga-converted-to.png Graphic file (ty
-pe png)
- <use ./bound_positive_aa_bindstoligandP1-tga-converted-to.png>
-Package pdftex.def Info: ./bound_positive_aa_bindstoligandP1-tga-converted-to.p
-ng used on input line 330.
-(pdftex.def)             Requested size: 213.8273pt x 288.80154pt.
-
-[6 <./bound_positive_aa_bindstoligandP1-tga-converted-to.png> <./figure/twocolu
-mn-liganddists-1.pdf>]
-Package epstopdf Info: Source file: <../figures/wholeprot.tga>
-(epstopdf)                    date: 2017-03-31 18:40:44
-(epstopdf)                    size: 1673856 bytes
-(epstopdf)             Output file: <./wholeprot-tga-converted-to.png>
-(epstopdf)                    date: 2017-03-31 18:54:34
-(epstopdf)                    size: 291585 bytes
-(epstopdf)             Command: <convert ../figures/wholeprot.tga ./wholeprot-t
-ga-converted-to.png>
-(epstopdf)             \includegraphics on input line 343.
-Package epstopdf Info: Output file is already uptodate.
-
-<./wholeprot-tga-converted-to.png, id=147, 671.50874pt x 837.1275pt>
-File: ./wholeprot-tga-converted-to.png Graphic file (type png)
-
-<use ./wholeprot-tga-converted-to.png>
-Package pdftex.def Info: ./wholeprot-tga-converted-to.png used on input line 34
-3.
-(pdftex.def)             Requested size: 332.62105pt x 414.65402pt.
+<use figure/twocolumn-inference2-1.pdf>
+Package pdftex.def Info: figure/twocolumn-inference2-1.pdf used on input line 1
+71.
+(pdftex.def)             Requested size: 232.58751pt x 149.52132pt.
 
 No file report.bbl.
-[7 <./wholeprot-tga-converted-to.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 352.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 352.
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figure/twocolumn-inferen
+ce-1.pdf> <./figure/twocolumn-inference2-1.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 181.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 181.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 352.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 352.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 181.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 181.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 352.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
  ) 
 Here is how much of TeX's memory you used:
- 17064 strings out of 494358
- 252820 string characters out of 6164526
- 492027 words of memory out of 5000000
- 20124 multiletter control sequences out of 15000+600000
- 14354 words of font info for 55 fonts, out of 8000000 for 9000
+ 16889 strings out of 494358
+ 248658 string characters out of 6164526
+ 485687 words of memory out of 5000000
+ 20019 multiletter control sequences out of 15000+600000
+ 10756 words of font info for 40 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 42i,8n,40p,967b,530s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-
-Output written on report.pdf (7 pages, 3806328 bytes).
+ 42i,8n,40p,931b,526s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on report.pdf (1 page, 494444 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 135 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
+ 7 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

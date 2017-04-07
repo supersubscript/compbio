@@ -1,4 +1,19 @@
-\documentclass[10pt]{article}
+\documentclass[10pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\usepackage{Sweavel}
+
+
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage[a4paper]{geometry}
@@ -96,9 +111,10 @@ morekeywords={*,...}            % if you want to add more keywords to the set
 
 
 %%% Document specific
-\newcommand{\course}{Biological Imaging Analysis}
-\newcommand{\ass}{1}
+\newcommand{\course}{Population Genetics}
+\newcommand{\ass}{2}
 \newcommand{\term}{Lent term 2017}
+%\bibliography{pga1}
 
 %%% Title page
 \title{
@@ -119,11 +135,7 @@ morekeywords={*,...}            % if you want to add more keywords to the set
 \maketitle
 \setcounter{page}{1}
 
-<<setup, include=FALSE, cache=FALSE, echo = FALSE, warning=FALSE, message = FALSE>>=
-library(knitr)
-opts_chunk$set(fig.path='figure/twocolumn-', fig.align='center', fig.show='hold')
-render_listings()
-@
+
 % \date{\today}
 \maketitle
 \begin{abstract}
@@ -139,10 +151,31 @@ This is an assignment report in connection to the \textit{\course}
 module in the Computational Biology course at the University of Cambridge,
 \term. All related code is as of \date{\today} available through a
 Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
-<<codeblock,include = F, echo = F, warning = F>>=
-@
+
 \section*{Exercises}
 \subsection*{1}
+\begin{Schunk}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=\maxwidth]{figure/twocolumn-inference-1} 
+
+}
+
+\caption[Things]{Things}\label{fig:inference}
+\end{figure}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=\maxwidth]{figure/twocolumn-inference2-1} 
+
+}
+
+\caption[Things]{Things}\label{fig:inference2}
+\end{figure}
+\end{Schunk}
+
 \bibliography{references}
 \end{multicols*}
 \end{document}

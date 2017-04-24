@@ -1,0 +1,23 @@
+open("/home/henrik/project_data/Embryo.ome.tif");
+
+run("Gaussian Blur...", "sigma=4");
+
+// Subtract the background with rolling ball radius of 60 pixels
+run("Subtract Background...", "rolling=60");
+
+// Perform an automated Otsu thresholding and convert to binary image
+setAutoThreshold("Default dark");
+setAutoThreshold("Otsu dark");
+run("Convert to Mask");
+
+// Fill any "holes" in the binary image
+run("Fill Holes");
+
+// Separate touching objects with a Watershed Transformation
+run("Watershed");
+
+// Count the number of particles with the Analyze Particles plugin.
+// Minimum object size set to 9 micro-meters squared
+// Only the "exclude on edges", "summarize" boxes were ticked
+run("Analyze Particles...", "size=9-Infinity exclude summarize");
+

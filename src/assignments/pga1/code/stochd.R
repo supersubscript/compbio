@@ -1,3 +1,9 @@
+setwd("~/compbio/src/assignments/pga2/code/")
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+library(scales)
+library(stats4)
+library(viridis)
 sigma = 0
 mu = 0.0
 h = 0.1

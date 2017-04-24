@@ -3,76 +3,84 @@ setwd("~/compbio/src/assignments/cnsa2/code/")
 library(RColorBrewer)
 palette(brewer.pal(n = 8, name = "Set1"))
 
-no.inputs = 1000
-no.datap = 10 # N_S
-no.replicates = 100
+no.weights = 10
+no.replicates = 200
 lw.s = 2
-train.data = replicate(no.datap, sample(c(1, -1), no.inputs, replace = T))
-test.data  = replicate(no.datap, sample(c(1, -1), no.inputs, replace = T))
-weights = runif(no.inputs, min = 0, max = 1)
+threshold = 0
 
-sum.classify = function(input) {
-  ifelse(sum(input) < 0,-1, 1)
-}
-prod.classify = function(input) {
-  ifelse(prod(input) < 0,-1, 1)
+classify = function(input, threshold = 0, fct = sum, ...) {
+  ifelse(fct(input) < threshold, -1, 1)
 }
 
-train.hebb = function(weights, ...) {
-  targets = apply(train.data, 2, function(x)
-    sum.classify(x))
-  weights = sapply(1:no.inputs, function(x)
-    sum(targets * train.data[x,]))
-  1 / no.inputs * weights
+train.hebb = function(data, no.patterns, ...) {
+  targets = apply(data, 2, function(x) classify(x))
+  weights = apply(data, 1, function(x) sum(targets * x))
+  1/no.weights * weights
 }
 
-train.delta = function(weights, learning.rate, ...) {
-  targets = apply(train.data, 2, function(x)
-    sum.classify(x))
-  for(ii in 1:no.datap){
-    outputs = apply(train.data, 2, function(x)
-      sum.classify(weights*x))
-    weights = weights + learning.rate * (outputs - targets)*train.data[, ii]
+train.delta = function(data, no.patterns, learning.rate, no.iterations, ...) {
+  targets = apply(data, 2, function(x) classify(x)) 
+  weights = 0 # Initialise matrix
+  for (ii in 1:no.iterations) {
+    rand = sample(1:no.patterns, 1)
+    output = classify(data[, rand] %*% weights)
+    weights = weights + learning.rate * (targets[rand] - output) * data[, rand]
   }
+  weights
+}
+train.delta.time = function(data, no.patterns, learning.rate, ...) {
+  targets = apply(data, 2, function(x) classify(x)) 
+  weights = 0 # Initialise matrix
+  outputs = apply(data, 2, function(x) classify(weights*x)) 
+  iters = 1
+  while(!all.equal(targets, outputs)) {
+    rand = sample(1:no.patterns, 1)
+    # output =  classify(data[, rand] %*% weights)
+    weights = weights + learning.rate * (targets[rand] - outputs[rand]) * data[, rand]
+    outputs = apply(data, 2, function(x) classify(weights*x)) 
+    iters = iters + 1
+  }
+  list(weights=weights, iters=iters)
 }
 
-get.stat = function(no.inputs, no.datap) {
-  no.inputs <<- no.inputs
-  no.datap <<- no.datap
-  train.data <<-
-    replicate(no.datap, sample(c(1, -1), no.inputs, replace = T))
-  test.data  <<-
-    replicate(no.datap, sample(c(1, -1), no.inputs, replace = T))
-  weights <<- train.hebb(weights)
+##############################################################################
+### Simulate for given number of patterns, with a specified 
+### training function and classification function.
+##############################################################################
+run = function(no.patterns, train.fct, fct = sum, learning.rate = .2, ...) {
+  # Generate data and set weights accordingly
+  train.data = replicate(no.patterns, sample(c(1, -1), no.weights, replace = T))
+  test.data = replicate(no.patterns, sample(c(1, -1), no.weights, replace = T))
+  weights = train.fct(train.data, learning.rate)
   
+  # Check how many patterns are recalled
   train.s = 0
   test.s = 0
-  for (ii in 1:no.datap) {
-    if (sum.classify(train.data[, ii] * weights) == sum.classify(train.data[, ii]))
+  for (ii in 1:no.patterns) {
+    if (classify(train.data[, ii] * weights) == classify(train.data[, ii])) 
       train.s = train.s + 1
-    if (sum.classify(test.data[, ii] * weights) == sum.classify(test.data[, ii]))
+    if (classify(test.data[, ii] * weights) == classify(test.data[, ii])) 
       test.s = test.s + 1
   }
   return(list(train = train.s, test = test.s))
 }
 
-# Run! ... and get statistics.
-results = lapply(ceiling(2 ^ (seq(1, 10, 1))), function(x)
-  replicate(no.replicates, get.stat(x, 10)))
-means = sapply(results, function(x)
-  apply(x, 1, function(y)
-    mean(unlist(y)))) 
-stds  = sapply(results, function(x)
-  apply(x, 1, function(y)
-    sd(unlist(y)) / sqrt(no.replicates))) 
+### RUN SIMULATION
+patterns.stored = ceiling(2^(seq(1, 10, 1)))  # How many patterns stored? 
+results = lapply(patterns.stored, function(x) lapply(1:no.replicates, function(y) run(x, train.delta, fct = sum)))
 
-plot(ceiling(2^(seq(1,10,1))), means[1,], type="l", ylim=c(0,10), lwd = lw.s)
-arrows(ceiling(2^(seq(1,10,1))), means[1,]-stds[1,], ceiling(2^(seq(1,10,1))), means[1,]+stds[1,], length=0.05, angle=90, code=3, cex = 2, lwd = lw.s)
-lines(ceiling(2^(seq(1,10,1))), means[2,], col=2, lwd=lw.s)
-arrows(ceiling(2^(seq(1,10,1))), means[2,]-stds[2,], ceiling(2^(seq(1,10,1))), means[2,]+stds[2,], length=0.05, angle=90, code=3, cex = 2, col = 2, lwd = lw.s)
-legend("bottomright", c("Train", "Test"), col=1:2, lwd=lw.s, lty=1, inset=c(.01,.05))
-lines(0:1024, rep(5, 1025), lwd = 2, lty = 2)
+### TRAIN DATA
+train.means = sapply(results, function(x) mean(sapply(x, function(y) y$train))) / patterns.stored
+train.stds = sapply(results, function(x) sd(sapply(x, function(y) y$train)) / sqrt(length(no.replicates))) / patterns.stored
 
+plot(1, cex = 0, xlim = c(1.9, 1025), ylim = c(0, 1), log = "x", xlab = "Patterns stored", ylab = "Fraction correct", bty = "n")
+lines(patterns.stored, train.means, lwd = lw.s, col = 1)
+suppressWarnings(arrows(patterns.stored, train.means - train.stds, patterns.stored, train.means + train.stds, length = 0.05, angle = 90, code = 3, cex = 2, lwd = lw.s, col = 1))
 
+### TEST DATA
+test.means = sapply(results, function(x) mean(sapply(x, function(y) y$test)))/patterns.stored
+test.stds = sapply(results, function(x) sd(sapply(x, function(y) y$test))/sqrt(length(no.replicates)))/patterns.stored
 
-
+lines(patterns.stored, test.means, lwd = lw.s, col = 2)
+suppressWarnings(arrows(patterns.stored, test.means - test.stds, patterns.stored, test.means + test.stds, length = 0.05, angle = 90, code = 3, cex = 2, lwd = lw.s, col = 2))
+legend("bottomright", c("Train", "Test"), col = 1:2, lty = 1, lwd = lw.s, inset = c(0.05, 0.05))

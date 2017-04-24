@@ -1,4 +1,10 @@
 #!/usr/bin/env Rscript
+setwd("~/compbio/src/assignments/pga1/code/")
+library(RColorBrewer)
+library(scales) #imports alpha
+library(stats)
+palette(brewer.pal(n = 8, name = "Set1"))
+lw.s = 3
 
 # Params
 x.init = 0.5
@@ -85,11 +91,11 @@ plot(
 )
 lines(mean10k,
       type = "l",
-      col = "forestgreen",
+      col = 2,
       lwd = linew)
 lines(
   mean10,
-  col = "orange",
+  col = 1,
   lwd = linew
 )
 skip = 250
@@ -100,7 +106,7 @@ arrows((2:no.generations)[seq(2, no.generations, skip)],
        length = 0.05,
        angle = 90,
        code = 3,
-       col = "orange",
+       col = 1,
        lwd = linew
 )
 arrows((2:no.generations)[seq(2, no.generations, skip)],
@@ -110,14 +116,14 @@ arrows((2:no.generations)[seq(2, no.generations, skip)],
        length = 0.05,
        angle = 90,
        code = 3,
-       col = "forestgreen",
+       col = 2,
        lwd = linew
 )
 
 # Plot those f-stats
 plot(
   f.mean10,
-  col = "orange",
+  col = 1,
   type = "l",
   ylab = "Summed change \n in fitness",
   xlab = "Generation",
@@ -125,7 +131,7 @@ plot(
   lwd = linew
 )
 mtext("Generation", side = 1, line = 2.5)
-lines(f.mean10k, col = "forestgreen", lwd = 2)
+lines(f.mean10k, col = 2, lwd = 2)
 arrows((2:no.generations)[seq(2, no.generations, skip)],
        f.mean10[seq(1, no.generations, skip)] - f.stdev10[seq(2, no.generations, skip)],
        (2:no.generations)[seq(2, no.generations, skip)],
@@ -133,7 +139,7 @@ arrows((2:no.generations)[seq(2, no.generations, skip)],
        length = 0.05,
        angle = 90,
        code = 3,
-       col = "orange",
+       col = 1,
        lwd = linew
 )
 arrows((2:no.generations)[seq(2, no.generations, skip)],
@@ -143,7 +149,7 @@ arrows((2:no.generations)[seq(2, no.generations, skip)],
        length = 0.05,
        angle = 90,
        code = 3,
-       col = "forestgreen",
+       col = 2,
        lwd = linew
 )
 
@@ -152,7 +158,7 @@ legend(
   c("N = 10", "N = 1000"),
   inset = 0.02,
   cex = 1.5,
-  col = c("orange", "forestgreen"),
+  col = c(1, 2),
   lty = c(1, 1),
   bg = "white",
   lwd = linew

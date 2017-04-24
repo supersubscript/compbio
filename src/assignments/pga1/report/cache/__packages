@@ -1,2 +1,6 @@
 base
 knitr
+RColorBrewer
+scales
+viridisLite
+viridis

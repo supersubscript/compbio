@@ -2,6 +2,8 @@ setwd("~/compbio/src/assignments/pga2/code/")
 library(RColorBrewer)
 palette(brewer.pal(n = 8, name = "Set1"))
 library(scales)
+library(stats4)
+library(viridis)
 
 # Parameters / data
 N = 100
@@ -50,9 +52,7 @@ lines(xs, yhigh, col = alpha(2, 1), lwd = 1)
 qvals = seq(0, 1, 0.001)
 svals = seq(0, 7.5, 0.05)
 
-likelihoods = sapply(qvals, function(x)
-  sapply(svals, function(y)
-    log.lik(x, y)))
+likelihoods = sapply(qvals, function(x) sapply(svals, function(y) log.lik(x, y)))
 
 filled.contour((likelihoods),   xlab = expression(q[0]),  ylab = expression(sigma),
                col = viridis(17),

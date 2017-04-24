@@ -1,3 +1,9 @@
+setwd("~/compbio/src/assignments/pga2/code/")
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+library(scales)
+library(stats4)
+library(viridis)
 sigma = 0
 mu = 0.2
 xi = 0
@@ -50,18 +56,18 @@ par(mfrow=c(1,1), mai = c(.5,.8,.5,.5))
 plot(
   qs1[, 1],
   type = "l",
-  col = "orange",
+  col = 1,
   bty = "n",
   ylab = "q",
   xlab = "", xaxt = "n", ylim = c(0,1)
 )
 # lines(1:end.t, rep(init.q, end.t - start.t), col = "black", lwd = 2, lty = 2 )
 out = apply(qs1[, -1], 2, function(x)
-  lines(x, col = "orange"))
+  lines(x, col = 1))
 out = apply(qs2[, -1], 2, function(x)
-  lines(x, col = "firebrick"))
+  lines(x, col = 2))
 out = apply(qs3[, -1], 2, function(x)
-  lines(x, col = "forestgreen"))
-legend("topright", c("0.05", "0.1", "0.2"), col = c("orange", "firebrick", "forestgreen"), lty=c(1,1,1), cex = 1.2, lwd = 3)
+  lines(x, col = 3))
+legend("topright", c("0.05", "0.1", "0.2"), col = c(1, 2,3), lty=c(1,1,1), cex = 1.2, lwd = 3)
 
 # print(count / no.replicates)

@@ -1,0 +1,245 @@
+\documentclass[10pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\usepackage{Sweavel}
+
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[a4paper]{geometry}
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage[numbers]{natbib}
+\bibliographystyle{unsrtnat}
+\usepackage{subcaption}
+\usepackage[font={small}]{caption}
+\usepackage{booktabs}
+\usepackage{breakurl}
+\usepackage{listings}
+\usepackage{cleveref}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\graphicspath{{../figures/}}
+\epstopdfsetup{outdir=./}
+\newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{=}}}
+\newcommand{\matr}[1]{\mathbf{#1}}
+\newcommand{\partt}[2]{\ensuremath{\dfrac{\partial {#1}}{\partial {#2}}}}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}} % non-italized differentials
+\newcommand{\h}[0]{\ensuremath{\hbar}} % hbar
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\usepackage{amsthm}
+\theoremstyle{plain}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist    
+\usepackage{xcolor}
+\definecolor{Red}{rgb}{0.7,0,0}
+\definecolor{Blue}{rgb}{0,0,0.8}
+\usepackage{verbatim}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+\addtolength{\oddsidemargin}{-.35in}
+\addtolength{\evensidemargin}{-.35in}
+\addtolength{\textwidth}{.7in}
+\usepackage{multicol}
+
+% Stephen's stuff
+\newcommand{\R}{\texttt{R}}
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\mbox{\normalfont\textsf{#1}}}}
+\usepackage{xcolor}
+\definecolor{Red}{rgb}{0.7,0,0}
+\definecolor{Blue}{rgb}{0,0,0.8}
+\hypersetup{%
+pdfusetitle,
+bookmarks = {true},
+bookmarksnumbered = {true},
+bookmarksopen = {true},
+bookmarksopenlevel = 2,
+unicode = {true},
+breaklinks = {false},
+hyperindex = {true},
+colorlinks = {true},
+linktocpage = {true},
+plainpages = {false},
+linkcolor = {Blue},
+citecolor = {Blue},
+urlcolor = {Red},
+pdfstartview = {Fit},
+pdfpagemode = {UseOutlines},
+pdfview = {XYZ null null null}
+}
+%% Listings
+\lstset{ 
+language=R,                     % the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1, each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+title=\lstname,                 % show the filename of files included with \lstinputlisting;
+% also try caption instead of title
+keywordstyle=\color{Blue},      % keyword style
+commentstyle=\color{orange},    % comment style
+stringstyle=\color{Red},        % string literal style
+escapeinside={\%*}{*)},         % if you want to add a comment within your code
+  morekeywords={*,...}            % if you want to add more keywords to the set
+} 
+
+%%% Document specific
+\newcommand{\course}{Computational Neuroscience}
+\newcommand{\ass}{1}
+\newcommand{\term}{Lent term 2017}
+\newcommand{\CC}{{\color{Red} \bf CITE}}
+%\bibliography{pga1}
+
+%%% Title page
+\title{
+  \bf Mind the Gap: Problems Underlining Computational Models of the Brain\\[1em]
+  \small
+  {{CNSA2: Essay} \\[1em]
+  University of Cambridge}
+}
+
+\author{Henrik Åhl}
+\date{\today}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+%%% Actual document
+\begin{document}
+\date{\today}
+\maketitle
+\setcounter{page}{1}
+        
+
+% \date{\today}
+\maketitle
+\begin{multicols*}{2}
+	% \begin{abstract}
+	\paragraph[Introduction]{\bf 
+		% \begin{changemargin}{-.8cm}{-.8cm}
+		The recent upshoot in global interest for the computational neurosciences, sparked and realised majorly by the American BRAIN Initiative launched in 2013, as well as by the in the same year initiated European Commision-funded Human Brain Project (HBP), has not been without controversy. While most researchers see importance in large-scale efforts in in that they bring together researchers and ambitions under joint umbrellas, the question of what projects deserve and require funding has ignited significant debate within the neuroscience community, with more than 500 principal investigators eligible for HBP funding threatening to boycott the project unless more inclusion and transparency is brought into the effort~\cite{neurofuture}. With this recent narrowing between the political and scientific dimension of the field, the question of which approach is the most viable stands perhaps more important than ever.
+	}
+					        
+	\subsection*{The rise and use of modern day large-scale brain models}
+	While both the HBP and the BRAIN initiative are not large-scale brain projects \textit{per se}, they encapsulate them. In the HBP's case it does so in particular in the form of the Blue Brain project, which originates out of the Swiss Federal Institute of Technology in Lausanne, where the now former director of the HBP, Henry Markram, is based. The BRAIN Initiative instead contains the Human Connectome project, where the goal is to form a comprehensive map between the functional and anatomical parts of the human brain~\cite{geddes_2017}.  
+	
+The Blue Brain project can be seen as the forerunner to the HBP, and there are therefore many overlaps between the two. The HBP, with its mission to 'understand the human mind', and in extension also explain consciousness, has based a majority of its investigative approach on the Blue Brain project's ambition to create detailed biological models of neocortical columns, which have been described as minimal functional parts of the brain~\cite{rakic2008confusing}. 
+	Already at the launch of the HBP, the initiative suffered critique, to a large extent due to the unclear ambitions of the project. As can be seen in a letter signed to date by over 800 researchers, the apparent authoritaritan leadership of Makram, as well as the lack of transparency into the funding process within the HBP umbrella lies in the crosshair. Markram, who has since the publication of the letter been removed from his executive role, has been accused of short-sightedness and oversensationalism with respect to what his research can achieve. Prominent researchers within the field, such as David Abbott at the University of Melbourne argue that the HBP's approach to understanding consciousness is 'radically premature'~\cite{sample2014scientists}, exemplifying the concern within the field that the billion euro project will not be able to achieve any useful results at all.
+	% expand on this
+					          
+	In light of the tours with the HBP, the American White House BRAIN Initiative has instead taken the place of acting role model for how large-scale neuroscience projects should or could be successfully run. Despite not being without concern itself, the general plan and structure has been approved by many, especially with respect to its executive commitee made up by the field's forerunners, representing the various takes on the succinct questions that underlie the endeavour~\cite{smith_2017}. The BRAIN Initiative also has a more structured plan of progress for the overall scope of the effort, with the first few years dedicated to the development of necessary softwares, platforms and technologies, in order to set the ground for the work, followed by years of commited data acquisition and more direct research on the healthy and pathological brain~\cite{nih_brain_initiative_2017}.
+	
+	Aside of the political dimension of how to govern major projects on the scale of the BRAIN Initiative and HBP, the latter also struggles with fundamentally different questions, relating to how to attain the sought after results. A significant portion of these issues stem from the problem with decoding and deciphering neurological data, and how they link to functional and behavioural traits.
+	
+	\subsection*{Dechiphering data -- what does it mean?}
+	% interpretation, structural vs functional
+	A major obstacle in modeling neurological phenomena with the goal of understanding broader psychological concepts come with the need to be able to make sense of the results. This is one of the current major challenges within the field -- to interpret direct measurements of quantities and dynamics within the brain. 
+	% Add to here? 
+	
+	It has long since been well established that certain structural regions within the brain correspond to specific functionalities; an example of this being fine and gross motor control, which are governed by the pyramidal and extrapyramidal subparts of the central nervous system respectively~\cite{guyton2006textbook}. Despite such clear linkages, the perhaps most important part in giving the brain its overall function is also what makes diffucult to analyse -- its plasticity, making hard-wired architechtural models insufficient in the grand scheme. While there is indeed a clear link between the structural region and the functionality in some parts of the brain, it is also so adaptable that major loss of tissue can occur with no or minor loss of function, as has been shown in the famous case of Phineas Gage~\cite{damasio1994return} and in several other cases where a larger part of the brain has been removed~\cite{kolb1998brain,bach1990brain,rauschecker1995compensatory}. Because of this, it has been claimed that the structural architechture is of lesser importance generally, and that a significant portion of the brain's functions instead lie in the interplay between different regions rather than their spatial postionand local architechture~\cite{chua1995schizophrenia,park2013structural}. Reasonably, a successful large-scale brain model aspiring to explain general, macroscopic brain phenomena should also be able to incorporate this.
+% Expand on why this is problematic.
+					          
+	% METHODS
+		In order to discern what parts of the brain are active under certain circumstances, researchers use tools like electron-microscopy--based imaging to assess what structural parts are active under certain perceived or induced emotive states. These methods are also applied to discern to what extent, and whether in parallel or sequentially, certain functional or structural regions are coupled with each other, on top of how their architechture shapes the measured dynamics~\cite{kotter2001neuroscience,shepherd1998human}.	Several neurological disorders like schizophrenia and dementia have been noted to have a clear linkage between the state of the disease and aberrations in overall brain architechture, such as changes in volume and density of gray and white matter~\cite{bressler2010large}. Many other neurological diseases are also directly related to degradation in neural matter~\cite{ross2004protein}. In contrast, just like how some parts of the brain are linked to function, many behavioural traits are also linked to neuroelectrical activity corresponding to perceived mental states. Such is the case for several induced emotive states, which have been linked to certain structural regions of the brain~\cite{fox1988patterns}. Nevertheless, making connections between the architechtural and the functional is difficult, as Sporns and Bullmore~\cite{honey2009predicting} demonstrate in their meta-analysis, where they conclude that strong functional connections persist between regions of the brain which have no direct structural connection, and therefore argue that it makes the effort of mapping structural to functional impractical. There is thus a clear ambiguity in trying to extract essential information out of structural analsyses, as there does not need to be any structural cues relating to function. At the same time, indirect connections explain some variance in functional connectivity~\cite{park2013structural}, which again emphasises the general lack of insight into how the brain processes information and achieves its function. 
+					          
+	% TOOLS AND LOGISTICS
+	The many investigations on brain activity under many different circumstances is also something which produces enormous amounts of data at a steady, if not increasing, rate. In addition to the concern about how to treat the data itself, the availability of modern imaging tools such as advanced, high-resolution MRI, neuroscience has like many other fields become a Big Data science. Resultingly, with vast supplies of data, a rising problem is how to store and process it. With no general practice for how the acquisition and accumulation is done, it is likely that the future will require general platforms and databases, similar to those that are seen in the -omics sciences. Furthermore, Gomez et al~\cite{gomez2014big} raise another problem in stating that 'Big data in neuroscience may revolutionise the field, but only if coupled with new theoretical frameworks'. Several other researchers have made similar remarks, forwarding the notion that big data indeed gives access to more thorough analaysis, but that it also might dilute the focus, and that studies therefore require better guidelines and frameworks when using such an approach~\cite{sejnowski2014putting,howe2008big,lynch2008big,ferguson2014big}. In other words, large-scale endeavors, project or model, are practically required to eventually confront the question of how to generate comprehensible platforms for data.
+Still, even when the data and the tools are well in place, the answer is still not clear about what to do with them; while data may describe the effect, models are what is required to ultimately explain the cause. In the still dimly lit field of computational neurosciences, what models to use and what philosophical stance to assume when establishing models are both significant and unresolved questions.   
+					          
+	\subsection*{Bottom's up! What to model -- and why?}
+	% What is bottom up? What is the alternative?
+	In perspectives on modeling, the most important question remains: What should we model? A major controversy with the HBP stems from this one fundamental question, where scientists of different philosophies have argued against Markram's reductionist view of how to approach the problem of the mind. Markram, in his Blue Brain project, which is now encapsulated in the larger HBP umbrella, is known for his headstrong views on how modeling of the brain should be done, namely by taking the so-called bottom-up approach~\cite{sarter2001cognitive}. Bottom-up modeling in the context of computational neuroscience can be seen to start out from a detailed model of the system it tries to explain -- its rules and its parts --, without necessarily taking the final behaviour into account, and instead investigating what comes out. In contrast, top-down modeling can be seen as breaking down a higher-order system into comprehensible sub-parts that together construct the outcome~\cite{sarter2001cognitive}.
+
+%	Reductionism
+	The Blue Brain project takes an inherently bottom-up approach by modeling the brain from a high-resolution perspective, and subsequently observing what dynamics arise. Individual neurons are constructed down to ion-channel resolution, which, while biolically relevant, requires immense computational power in order to simulate larger structures. While there are merits to this approach, the realism behind the goals set out to be achieved is one of the things which has been subject of heavy critique~\cite{theil2015human}. A natural counterpoint to the reductionist take is of course the question of 'where does it end?', as setting the limit for what is sufficient is inherently problematic. In essence, this is the basis for much of the critique towards the HBP, namely that so large sums of money are funneled into such a disputed approach, where the goals set and whether they are reachable has not been based on general consensus. 
+	A clear example of this is the ambition of the model the abstract concepts of consciousness and cognition. While important concepts to understand as a whole in the long term, the HBP has been unable to give clear description of what the concrete goals -- final and partial -- are, other than vague descriptions such as 'to develop a "deep learning" neuronal network that learns to recognize objects and functions in a way similar to real neurobiological systems'~\cite{understanding_cognition_2017}. Still, having biological accuracy can of course be useful for more applied approaches, such as drug discovery and effect analysis, when understanding large-scale events on a molecular level can be useful.
+					        
+	\subsection*{The future of large-scale models}
+	  Speculative scientific ground-work, such as investigating what effects might arise from systems of detailed models of neurons, are important cornerstones in progressing the current bounds to human knowledge, and essential in producing innovative results. The conflict arises when scientific one-sidedness is favoured for political reasons, and large amounts of money are directed to one of several equally promising approaches. Much due to the computational limitations and hence necessities, large-scale brain \textit{models} are often tighly knit with large-scale brain \textit{projects}, making the political and the scientific deeply inseparable when publically funded. 
+
+	  While the HBP cannot stand as a representative for precisely \textit{all} large-scale brain models, many lessons can be learned from both the political and scientific tours around the project, and in comparing it to the BRAIN Initiative. Still, the problem with large-scale brain models is universal -- single models are simply incapable of incorporating all factors due to the many technological limitations. It appears clear that one of the more important guidelines seems to be that large-scale models should have well-developed theoretical frameworks for what they aim to accomplish. In addition, whatever they set out to do must be tightly linked to the technological limitations that are at hand; large-scale models adhering to detailed descriptions are inherently in a less competetitive position at the current day, although the future might hold other things in mind.
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	% It seems clear that a prerequisite for a successful 
+	% Language, science, whatwhatwhat
+		
+	% Biologically detailed good for drug discovery etc.
+	% Costly projects should be based in well-defined science with attainable goals (when not funded through industry)
+					        
+	% The neuroscience community also struggles with defining the concept of emergence of \textit{cognition} and the consequences of such a definition \CC. 
+	% Behaviour is foundational, more is not always better.~\cite{gomez2014big}
+					        
+	%       There has been recent interest in large-scale models of the brain (Eliasmith and Trujillo, 2014). Write an essay that critically evaluates the utility or otherwise of these large scale models. Your essay should include citations to relevant literature, drawn from both the course and from our own literature searches (e.g. using pubmed.org and/or google scholar).
+					        
+	% LARGE SCALE MODELS:
+	%   - problems: 1) What is the architechture? 
+	%               2) What does the architechture mean for function? How does a network learn, no matter the detail? 
+	%               3) How do we map this? I.e. How do we measure function out of anatomical measurements, and how do we ascribe this function to the architechture?
+	%               4) How to we model something which is adaptable? Critique against the brain as a computer due to plasticity. Some parts of the brain can be substituted for others, showing that the architechture isn't one-ends-all. Still, some areas in the brain are linked to certain function / higher order behaviour. 
+	%               5) On bottom-up: What is the resolution? What is emergence? Is it necessary to know all the details of a system to model it? Reductionist slippery slope. 
+	%               6) What is emergence? How do we define many everyday concepts such as consciousness, and how do we measure them? Turing testing.  
+	%               7) Problems with higher-order behaviour: Most of psychology reports are false? 
+	%               
+	%   - pros:     1) Can simulate large-scale phenomenon and link these to behaviour.
+	%               2) We can directly link theories of learning / proliferation / architechtural development / etc. to simulated happenings. 
+	%               3) Given probable theories of how things happen we can simulate how brain-disease and damage affect the system as a whole.
+	%                 - Biologically relevant models should be especially useful for this.
+	% 
+					        
+	% \section{Technology for Acquiring Data}        
+	% Mapping functional connectivity to complement anatomical connectivity[edit]
+	% What is the correct resolution of biological processes? For example, is a detailed description of the neurons necessary to explain complex behaviour, or are the neurons just a tool for the job? Since science is aboiut finding what is sufficient, isn't postulating the baseline taking too big of a step in the presumtive direction? On the other hand, observing what parts are structurally related to each-other and observing their functional connections (i.e. investigations into the connectome of things) might be a more viable approach. When studying the "emergence" of consciousness, do we really need a biological brain? On the other hand, in order to assess what consciousness actually is, biological relevance is important.
+					        
+	% Complex higher-order behaviour can arise in e.g. games and neural networks playing whatever. Strategy, intelligence! Go-computer? 
+	% The brain is adaptable -- loss of matter in one part can be saved by reorganisation. Plasticity. 
+					        
+	% Important point: Where does it end? Redictionist slipery slope. If biological relevance is so important, why not incorporate deeper-down levels, such as the impact of NGF on neuronal development. 
+					        
+					        
+	% Using functional MRI (fMRI) in the resting state and during tasks, functions of the connectome circuits are being studied.[29] Just as detailed road maps of the earth's surface do not tell us much about the kind of vehicles that travel those roads or what cargo they are hauling, to understand how neural structures result in specific functional behavior such as consciousness, it is necessary to build theories that relate functions to anatomical connectivity.[30] However, the bond between structural and functional connectivity is not straightforward. Computational models of whole-brain network dynamics are valuable tools to investigate the role of the anatomical network in shaping functional connectivity.[31][32] In particular, computational models can be used to predict the dynamic effect of lesions in the connectome.[33][34]
+					
+	% \section{Mapping Data to Function}
+	% 
+	% \section{Complications and Future Outlook}
+					        
+	\bibliography{essay_references}
+\end{multicols*}
+\end{document}

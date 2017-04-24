@@ -17,7 +17,7 @@ sum.classify = function(input) {
   ifelse(sum(input) < 0,-1, 1)
 }
 prod.classify = function(input) {
-  ifelse(prod(input) < 0,-1, 1)
+  ifelse(prod(input) < 0, -1, 1)
 }
 
 train.hebb = function(weights, ...) {
@@ -79,7 +79,6 @@ results = lapply(ceiling(2 ^ (seq(1, 10, 1))), function(x)
       no.replicates, get.stat(x, 10, learning.rate = z)
     )))
 
-
 # OUTPUT FOR MULTIPLE learning.rate VALUES. no.inputs == 5.
 # res = lapply(results, function(x) x[[5]])
 # means = sapply(res, function(x)
@@ -92,12 +91,8 @@ results = lapply(ceiling(2 ^ (seq(1, 10, 1))), function(x)
 
 # OUTPUT FOR A SINGLE no.inputs VALUE
 results = results[[8]]
-means = sapply(results, function(x)
-  apply(x, 1, function(y)
-    mean(unlist(y))))
-stds  = sapply(results, function(x)
-  apply(x, 1, function(y)
-    sd(unlist(y)) / sqrt(no.replicates)))
+means = sapply(results, function(x) apply(x, 1, function(y) mean(unlist(y))))
+stds  = sapply(results, function(x) apply(x, 1, function(y) sd(unlist(y)) / sqrt(no.replicates)))
 
 # plot(ceiling(2^(seq(1,10,1))), means[1,], type="l", ylim=c(0,10), lwd = lw.s)
 # arrows(ceiling(2^(seq(1,10,1))), means[1,]-stds[1,], ceiling(2^(seq(1,10,1))), means[1,]+stds[1,], length=0.05, angle=90, code=3, cex = 2, lwd = lw.s)

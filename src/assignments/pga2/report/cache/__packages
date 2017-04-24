@@ -3,3 +3,5 @@ knitr
 RColorBrewer
 scales
 viridis
+viridisLite
+xtable

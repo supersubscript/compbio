@@ -94,12 +94,18 @@ escapeinside={\%*}{*)},         % if you want to add a comment within your code
 morekeywords={*,...}            % if you want to add more keywords to the set
 } 
 
-
 %%% Document specific
 \newcommand{\course}{Population Genetics}
 \newcommand{\ass}{2}
 \newcommand{\term}{Lent term 2017}
-%\bibliography{pga1}
+
+% Commands for this report
+\newcommand{\ABBA}{\texttt{ABBA}\xspace}
+\newcommand{\BABA}{\texttt{BABA}\xspace}
+\newcommand{\A}{\texttt{A}\xspace}
+\newcommand{\B}{\texttt{B}\xspace}
+\renewcommand{\C}{\texttt{C}\xspace}
+\newcommand{\D}{\texttt{D}\xspace}
 
 %%% Title page
 \title{
@@ -125,14 +131,7 @@ library(knitr)
 opts_chunk$set(fig.path='figure/twocolumn-', fig.align='center', fig.show='hold')
 render_listings()
 @
-% \date{\today}
 \maketitle
-\begin{abstract}
-{\bf 
-  %\begin{changemargin}{-.8cm}{-.8cm}
-  This is an abstract abstract.
-}
-\end{abstract}
 
 \begin{multicols*}{2}
 \section*{Preface}
@@ -143,8 +142,10 @@ Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
 <<codeblock,include = F, echo = F, warning = F>>=
 @
 \section*{Exercises}
-\subsection*{1}
-<<inference, echo=FALSE, fig.height = 4.5, fig.env='figure', fig.cap="Things", cache = FALSE, fig.pos="H",fig.align='center'>>=
+\paragraph*{1}
+Under the population size of $N \sim 10^7$, we get that the variance will be relatively low, and therefore not be a determining factor for the development of the allele frequency. We thus get the equation $$q(t) = q_{0} \dfrac{e^{\sigma t}}{1 - q_0 + q_0 e^{\sigma t}}$$ as an estimator for the development of $q$. Our likelihood function for a model $\mathcal M$ can then be describes as $$ \mathcal L = \sum_k \log \dfrac{N!}{n_A(t_k)! n_a(t_k)!}q_A(t_k)^{n_A(t_k)}q_a(t_k)^{n_a(t_k)},$$ where the $n$'s are our observations, and the $q$'s our model predictions, compared to some number of total observations $N$, which in our case is the number of reads. We optimise the log-likelihood using L-BFGS-B optimisation the \R~function \texttt{stats4::mle}, having set $q$ bounded at 0 and 1. 
+
+<<1_setup,include = F, echo = F, warning = F>>=
 setwd("~/compbio/src/assignments/pga2/code/")
 library(RColorBrewer)
 palette(brewer.pal(n = 8, name = "Set1"))
@@ -174,12 +175,21 @@ log.lik = function(q.init, sigma){
   -sum(ln.p)   
 }
 
-fit = mle(minuslogl = log.lik, start = list(q.init = .5, sigma = .5), method="L-BFGS-B", lower = 0, upper=c(1, Inf)) 
-coef = coef(summary(fit))
+fit = mle(
+  minuslogl = log.lik,
+  start = list(q.init = .5, sigma = .5),
+  method = "L-BFGS-B",
+  lower = 0,
+  upper = c(1, Inf)
+  )
+  coef = coef(summary(fit))
 
 # Calculate upper and lower bound of estimate
 yhigh = q(coef[1, 1] + coef[1, 2], coef[2, 1] + coef[2, 2], xs)
 ylow = q(coef[1, 1] - coef[1, 2], coef[2, 1] - coef[2, 2], xs)
+@
+
+<<1_inference, echo=FALSE, fig.height = 4.5, fig.env='figure', fig.cap="Allele development as given by data (red) and model. The shaded area denotes the 95~\\% confidence interval of the optimisation.", cache = FALSE, fig.pos="H",fig.align='center', message = F>>=
 
 # Plot it all
 plot(1, type="n", axes=T, xlab="Time [days]", ylab="Allele frequency", ylim=c(0,100/N), xlim = c(0,6), bty = "n")
@@ -192,8 +202,12 @@ lines(xs, q(coef[1, 1], coef[2, 1], xs), col = 2, lwd = 3, lty = 2)
 lines(xs, ylow, col = alpha(2, 1), lwd = 1)
 lines(xs, yhigh, col = alpha(2, 1), lwd = 1)
 @
+The results of the optimisation can be seen in \cref{fig:1_inference}, where the shaded area signifies the range of the standard error.  Compare this to our found optimal values of 
+$q_0 = \Sexpr{round(coef[1,1], 2)} \pm \Sexpr{round(coef[1,2], 2)}$ and
+$\sigma = \Sexpr{round(coef[2,1], 2)} \pm \Sexpr{round(coef[2,2], 2)}$
 
-<<inference2, echo=FALSE, fig.height = 4.5, fig.env='figure', fig.cap="Things", cache = TRUE, fig.pos="H",fig.align='center'>>=
+\Cref{fig:1_surface} shows the negative log-likelihood surface for $\sigma$ and $q$. Due to the growth rate of the log-likelihood, some configurations give rise to numerical errors, as shown by the white surface in the figure. Note in particular the darker shaded area, which signifies the most likely parameter configurations. 
+<<1_surface, echo=FALSE, fig.height = 4.5, fig.env='figure', fig.cap="Contour plot of the negative log-likelihood surface for different parameter configurations. Note how our optimised parameters indeed fall inside the optimum.", cache = TRUE, fig.pos="H",fig.align='center'>>=
 qvals = seq(0, 1, 0.01)
 svals = seq(0, 7.5, 0.02)
 
@@ -210,6 +224,227 @@ axis(2, at = seq(0, 1, 0.2), labels = seq(0, 7.5, 7.5 * 0.2))
 axis(4, at = seq(0, .9, 0.15), labels = seq(0, 3000, 500), las =2, line= -2)
 @
 
+\paragraph*{2}
+We download the \textit{Optimist} package according to instructions. For all of our investigations, we use a seed value of 2. For our simulations with this, we get a log-likelihood of $-92.5714$, without any variance. 
+
+<<2_setup,include = F, echo = F, warning = F>>=
+setwd("~/compbio/src/assignments/pga2/code/")
+.libPaths("/home/henrik/R/x86_64-pc-linux-gnu-library/3.3/")
+library("RColorBrewer")
+library(scales) #imports alpha
+palette(brewer.pal(n = 8, name = "Set1"))
+line.size = 3
+lw.s = 3
+
+# Read in data
+d1 = read.table("../data/Model_frequencies1.out")
+d2 = read.table("../data/Real_frequencies1.out")
+d3 = read.table("../data/Model_frequencies2.out")
+d4 = read.table("../data/Real_frequencies2.out")
+d5 = read.table("../data/Model_frequencies3.out")
+d6 = read.table("../data/Real_frequencies3.out")
+
+# Log-likelihoods produced.
+L1 = c( -92.5714,-92.5714,-92.5714,-92.5714,-92.5714,-92.5714,-92.5714,-92.5714,-92.5714,-92.5714)
+L2 = c(-81.7473,-81.7689,-81.75,-81.7561,-81.8105,-81.7567,-81.7759,-81.7451,-81.7841,-81.8126 )
+L3 = c(-81.1746,-81.7301,-81.0976,-81.4593,-81.3007,-81.3259,-81.7453,-81.356,-81.5501,-81.4329)
+
+AIC = function(params, log.L){
+  2*params - 2*log.L
+}
+
+BIC = function(n, k, log.L){
+  log(n)*k - 2*log.L
+}
+
+Ls = rbind(L1, L2, L3)
+means  = apply(Ls, 1, mean)
+stds = apply(Ls, 1, function(x) sd(x)/sqrt(length(x)))
+
+aics = AIC(c(4,7,10), means)
+bics = BIC(10, c(4,7,10), means)
+aics.err.up = AIC(c(4,7,10), means + stds)
+aics.err.do = AIC(c(4,7,10), means - stds)
+bics.err.up = BIC(10, c(4,7,10), means + stds)
+bics.err.do = BIC(10, c(4,7,10), means - stds)
+@
+
+When instead perform a more thorough optimisation, we get the results seen in \cref{fig:2_fitted_curves} for our three cases. We can visually note that two and three mutations seem to fit better with the data. When observing the average log-likelihoods, we can also note that increasing from two to three mutations does not seem to produce better results, hinting at redundancy in the number of free parameters.  Looking at the AIC and BIC scores in \cref{fig:2_aic_bic}, we see that two beneficial mutations indeed give us the best model for the data. 
+
+However, we must be aware of that because we have such little data, with few data points that have been manually acquired. We therefore have a high uncertainty in the data itself that must be considered. Possibly, this is what causes the majority of our observed variance, since the population size suggests that the fluctuations should be minor. With the error present, it might prove useful to fit a model with drift in order to account for the additional variability. Directly attempting to attain estimates of the acquisition errors would of course also be preferable, in case there is no possibility of performing repeated trials. 
+
+<<2_fitted_curves, echo=FALSE, fig.height = 7, fig.env='figure', fig.cap="Fitted curves under models with one, two, or three mutations respectively.", cache = TRUE, fig.pos="H",fig.align='center'>>=
+par(mfrow = c(3, 1),
+oma = c(10, 5, 4, 2) + 0.0,
+mai = c(.0, .6, .0, .5))
+
+plot(
+  d1[, 1],
+  d1[, 2],
+  col = 1,
+  type = "l",
+  pch = 16,
+  ylim = c(-.1, 1.1),
+  lwd = line.size,
+  lty = 1,
+  xaxt = "n",
+  ylab = "", bty = "l"
+  )
+points(d1[,1], d1[,3], col = 2, type = "l", pch = 17, lwd = line.size, lty = 1)
+lines(d2[,1], d2[,2], lwd = line.size, type = "p", col = alpha(1, .5))
+lines(d2[,1], d2[,3], lwd = line.size, type = "p", col = alpha(2, .5))
+
+plot(
+  d3[, 1],
+  d3[, 2],
+  col = 1,
+  type = "l",
+  pch = 16,
+  ylim = c(-.1, 1.1),
+  lwd = line.size,
+  lty = 1,
+  xaxt = "n",
+  ylab = "", bty = "l"
+  )
+points(d3[,1], d3[,3], col = 2, type = "l", pch = 17, lwd = line.size, lty = 1)
+lines(d4[,1], d4[,2], lwd = line.size, type = "p", col = alpha(1, .5))
+lines(d4[,1], d4[,3], lwd = line.size, type = "p", col = alpha(2, .5))
+mtext(side=2,las = 3, line = 3, "Allele frequency")
+
+plot(d5[, 1], d5[, 2], col = 1, type = "l", pch = 16, ylim = c(-.1, 1.1), lwd = line.size, lty = 1, ylab = "", bty = "l")
+points(d5[,1], d5[,3], col = 2, type = "l", pch = 17, lwd = line.size, lty = 1)
+lines(d6[,1], d6[,2], lwd = line.size, type = "p", col = alpha(1, .5))
+lines(d6[,1], d6[,3], lwd = line.size, type = "p", col = alpha(2, .5))
+mtext(side=1, las = 1, line = 3, "Time")
+@
+
+<<2_aic_bic, echo=FALSE, fig.height = 4.5, fig.env='figure', fig.cap="AIC and BIC scores, with errorbars corresponding to the standard error, for the 10 optimisations. Two mutations consistently performs the best, with significance.", cache = TRUE, fig.pos="H",fig.align='center', error=F,warning=F, message=F>>=
+par(mfrow=c(1,1))
+par(mfrow=c(1,1))
+plot(1:3, aics, col = 1, type = "b", lwd = lw.s, xlab = "", ylab = "", bty = "n")
+lines(1:3, bics, col = 2, type = "b", lwd = lw.s)
+arrows(1:3, aics.err.up, 1:3, aics.err.do, length = 0.05, angle = 90, code = 3, col = "1", lwd = lw.s)
+arrows(1:3, bics.err.up, 1:3, bics.err.do, length = 0.05, angle = 90, code = 3, col = "2", lwd = lw.s)
+mtext(side=2, line = 3, las = 3, "Score")
+mtext(side=1, line = 3, las = 1, "Number of mutations")
+legend("topright", col =1:2, lty = 1, pch = 21, c("AIC", "BIC"), inset = c(0.02,0.02), lwd = lw.s)
+@
+
+%e
+Antibiotic resistance can the achieved through many different ways, and depends largely on the type of organism, the population size, and the generation length. One example could be the accumulation of single-nucleotide polymorphisms which in various ways can affect the function of the antibiotic. A common inactivation method for several antibiotics is enzymatic inactivation through hydrolysis, which can occur due to SNP's increasing the likelihood of such events taking place~\cite{martinez2000mutation}. Several antibiotics, such as quinolone cipofloxacin, targets parts of the bacterial genome itself in order to prevent replication. Like antibiotics themselves can be target indirectly through mutations, resistance can also arise due to mutations altering the targets of the antibiotics~\cite{truong1997novel}. A third option for mutations to be beneficial is by having them alter the membrane selectivity such that the antibiotics are unable to reach their molecular targets~\cite{delcour2009outer}. 
+
+All these changes induce a selective pressure towards keeping the mutation within the population. These can thereafter progress through direct inheritance, as well as thorugh horizontal transfer. It might also be that the antibiotics wipe out most of the population aside for the select few who have acquired beneficial mutations, whereafter these instead can replicate successfully and establish a completely new population consisting primarily of resistant cells~\cite{martinez2000mutation}.
+
+% Windows, D-values similar
+\paragraph*{3}
+<<3_setup,include = F, echo = F, warning = F>>=
+setwd("~/compbio/src/assignments/pga2/code/")
+library(RColorBrewer)
+library(scales) #imports alpha
+library(stats)
+palette(brewer.pal(n = 8, name = "Set1"))
+line.size = 2
+
+data = read.csv("../data/four_population_sequencing_data.csv")
+data.firstind = data[, which(grepl("0", colnames(data)))] # get first individual
+
+get.D = function(test.data, frac = FALSE) {
+  if (!frac) {
+    n.abba = sum(apply(test.data, 1, function(x) x[1] == 0 & 
+                                                 x[1] != x[2] & 
+                                                 x[2] == x[3] & 
+                                                 x[3] != x[4])) # 0 = ancestral
+    n.baba = sum(apply(test.data, 1, function(x) x[1] == 1 & 
+                                                 x[1] != x[2] & 
+                                                 x[2] != x[3] & 
+                                                 x[3] != x[4]))
+    D = (n.abba - n.baba) / (n.abba + n.baba)
+  } else{
+    As = test.data[, which(grepl("A_", colnames(test.data)))]
+    Bs = test.data[, which(grepl("B_", colnames(test.data)))]
+    Cs = test.data[, which(grepl("C_", colnames(test.data)))]
+    Ds = test.data[, which(grepl("D_", colnames(test.data)))]
+    As = apply(As, 1, mean); Bs = apply(Bs, 1, mean); Cs = apply(Cs, 1, mean); Ds = Ds
+    ddd = cbind(As, Bs, Cs, Ds)
+    n1 = sum(apply(ddd, 1, function(x) (1 - x[1]) * x[2] * x[3] * (1 - x[4])))
+    n2 = sum(apply(ddd, 1, function(x) (x[1]) * (1 - x[2]) * x[3] * (1 - x[4])))
+    D = (n1 - n2) / (n1 + n2)
+  }
+  list(D=D, n.abba=n.abba, n.baba=n.baba)
+}
+first.data = get.D(data.firstind)
+D = first.data[[1]]
+n.abba = first.data[[2]]
+n.baba = first.data[[3]]
+
+abba.baba.test = function(data, n.folds = 10, frac = FALSE, Dval) {
+  folds.i = sample(rep(1:n.folds, length.out = nrow(data)))
+  Ds = vector(mode = "numeric", length = n.folds)
+  for (ii in 1:n.folds) {
+    test.i = which(folds.i == ii)
+    train = data[-test.i,]
+    Ds[ii] = get.D(train, frac)[[1]]
+  }
+  Z = Dval / sqrt(n.folds * var(Ds))
+  p = 1 - pnorm(abs(Z))
+  p
+}
+p.binom = binom.test(n.abba, n.abba + n.baba, 0.5) 
+
+D.frac = get.D(data, frac = TRUE)[[1]]
+p = abba.baba.test(data.firstind, n.folds = nrow(data.firstind), frac = FALSE, Dval = D)
+p.frac = abba.baba.test(data, n.folds = nrow(data), frac = TRUE, Dval = D.frac)
+@
+Using the data provided, we get the resulting values of $D = \Sexpr{round(D, 2)}, n_{abba} = \Sexpr{n.abba}$ and $n_{baba} = \Sexpr{n.baba}$. We clearly have a slightly higher number of \ABBA than \BABA, and therefore some inferred introgression between \A and \C. 
+
+Calculating a p-value for the D-value observed, we get a result of $\Sexpr{round(p.binom$p.value, 2)}$, saying we cannot reject the null-hypothesis. However, this assumes that the sites are independent of each other, which we know they are not, and we must go to additional lengths to ensure ourselves of the significance. In order to do this, we calculate the allele frequencies, whose first few rows indeed correspond with the example supplied, apart from an apparent typo in the instructions.
+
+When instead using the allele frequencies, we now get a result of $D = \Sexpr{round(D.frac,2)}$, i.e.\ higher than before now that more data is incorporated. Likewise, our p-value is significantly lower, reaching $p = \Sexpr{p.frac}$ In this scenario, our results are indeed significant, and we can reject the null-hypothesis. 
+
+Given the figure for the linkage disequilibirium between populations \A and \B, we see that there is indeed significant short-range interactions in both of the populations. We look at the distributions between minimum distances for our SNPs, we get \cref{fig:3_distances} and see that the distribution pans of quickly after a distance of ca 20000. Most SNPs are thus in this high-correlated zone that we see before the bend in our instruction figure. 
+
+<<3_distances, echo=FALSE, fig.height = 4, fig.env='figure', fig.cap="Minimum neighbour distance distribution. Apparently, most SNPs are within 20000-30000 basepairs of their closest neighbour.", cache = TRUE, fig.pos="H",fig.align='center'>>=
+  ll = c()
+  for(ii in 2:(nrow(data)-1)){
+    ll = c(ll, min(data[ii,1] - data[ii-1, 1], data[ii+1,1] - data[ii,1]))
+  }
+  ll = c(ll, data[2,1] - data[1,1])  
+  ll = c(ll, data[nrow(data),1] - data[nrow(data)-1,1])    
+  hist(ll, breaks = 7, col = 1, density = 100, xlab = "Minimal distance", main = "")
+@
+
+<<3_jack,include = F, echo = F, warning = F>>=
+jack.blockknife = 30000
+data[,1] = data[,1] / jack.blockknife
+blocks = as.integer(data[,1]) + 1
+frac = TRUE
+n.folds = length(unique(blocks))#max(blocks)
+
+Ds = vector(mode = "numeric", length = n.folds)
+count = 1
+for (ii in sort(unique(blocks))) {
+  test.i = which(blocks == ii)
+  train = data[-test.i, ]
+  Ds[count] = get.D(train, frac)[[1]]
+  count = count + 1 
+}
+Z.jack = D.frac / sqrt(n.folds * var(Ds, na.rm = T))
+p.jack = 1 - pnorm(abs(Z.jack))
+p.jack
+@
+
+We want too choose the jackknife when the correlation has panned out, and thus take it to be at a distance of 30000. Separating our data into chunks of this size and perform the analysis, we now get a p-value of $\Sexpr{p.jack}$, slightly worse than the  leave-one-out cross-validation case.
+
+In the last figure of the assignment, population \B appears to be affiliated with a slightly higher short-interaction density, and lower intermediate-interaction density. Since we know that populations which diverged long ago should display high short-range correlation, we can infer that \B diverged from \C earlier than \A. Comparing to above, where we note introgression between \A and \C, the results can indeed be said to be consistent. 
+
 \bibliography{references}
 \end{multicols*}
+
+\newpage
+\onecolumn
+  \appendix
+\section{Code}
+   \lstinputlisting{../code/exc1.R}
+   \lstinputlisting{../code/exc2.R}
+   \lstinputlisting{../code/exc3.R}
 \end{document}

@@ -1,4 +1,10 @@
 #!/usr/bin/env Rscript
+setwd("~/compbio/src/assignments/pga1/code/")
+library(RColorBrewer)
+library(scales) #imports alpha
+library(stats)
+palette(brewer.pal(n = 8, name = "Set1"))
+lw.s = 3
 
 # Params
 x.init = 0.5
@@ -62,25 +68,21 @@ f.stdev10 = apply(fs.10, 1, function(x)
 f.stdev10k = apply(fs.10k, 1, function(x)
   sd(x) / sqrt(length(mean10k)))
 
-par(
-  mfrow = c(2, 1),
-  oma = c(5, 2, 2, 0) + 0.0,
-  mai = c(.0, 1, .0, 1)
-)
+par(mfrow = c(2, 1), oma = c(5, 2, 2, 0) + 0.0, mai = c(.0, 1, .0, 1))
 plot(
   mean10,
   type = "l",
   #  ylim = c(-0, 1),
   ylim = c(-0.05, .5),
   lwd = 2,
-  col = "orange",
+  col = 1,
   xaxt = "n",
   xlab = "",
   ylab = "x"
 )
 lines(mean10k,
       type = "l",
-      col = "forestgreen",
+      col = 2,
       lwd = 2)
 # lines(
 #   1:no.generations,
@@ -96,7 +98,7 @@ arrows((2:no.generations)[seq(2, no.generations, skip)],
        length = 0.05,
        angle = 90,
        code = 3,
-       col = "orange",
+       col = 1,
        lwd = 3
 )
 arrows((2:no.generations)[seq(2, no.generations, skip)],
@@ -106,22 +108,22 @@ arrows((2:no.generations)[seq(2, no.generations, skip)],
        length = 0.05,
        angle = 90,
        code = 3,
-       col = "forestgreen",
+       col = 2,
        lwd = 3
 )
 
 # Plot those f-stats
 plot(
   f.mean10,
-  col = "orange",
+  col = 1,
   type = "l",
   lwd = 2,
   ylab = "Summed change \n in fitness",
   xlab = "Generation",
   ylim = c(0, 0.55)
 )
-mtext("Generation", side = 1, line = 2.5)
-lines(f.mean10k, col = "forestgreen", lwd = 2)
+
+lines(f.mean10k, col = 2, lwd = 2)
 arrows((2:no.generations)[seq(2, no.generations, skip)],
        f.mean10[seq(1, no.generations, skip)] - f.stdev10[seq(2, no.generations, skip)],
        (2:no.generations)[seq(2, no.generations, skip)],
@@ -129,7 +131,7 @@ arrows((2:no.generations)[seq(2, no.generations, skip)],
        length = 0.05,
        angle = 90,
        code = 3,
-       col = "orange",
+       col = 1,
        lwd = 3
 )
 arrows((2:no.generations)[seq(2, no.generations, skip)],
@@ -139,16 +141,34 @@ arrows((2:no.generations)[seq(2, no.generations, skip)],
        length = 0.05,
        angle = 90,
        code = 3,
-       col = "forestgreen",
+       col = 2,
        lwd = 3
 )
 
+# plot(
+#   cumsum(f.mean10),
+#   col = 1,
+#   type = "l",
+#   lwd = 2,
+#   ylab = "Summed change \n in fitness",
+#   # xlab = "Generation"
+#   # ylim = c(0, 0.55)
+# )
+# lines(
+#   cumsum(f.mean10k),
+#   col = 2,
+#   type = "l",
+#   lwd = 2,
+#   xlab = ""
+#   # ylim = c(0, 0.55)
+# )
+mtext("Generation", side = 1, line = 2.5)
 legend(
   "bottomright",
   c("N = 10", "N = 1000"),
   inset = 0.02,
   cex = 1.5,
-  col = c("orange", "forestgreen"),
+  col = 1:2,
   lty = c(1, 1),
   lwd = 2,
   bg = "white"

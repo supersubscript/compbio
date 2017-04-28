@@ -1,0 +1,62 @@
+Change lookup table: 3-3-2 RGB
+Gaussian blur -- remove noise? 
+
+Trackmate has filtering built-in. Won't have to threhold. 
+
+Run trackmate
+* LoG 5-20 pixels 
+  Estimate 15-20, median filter
+  Don't threshold here
+
+* Skip inital thresholding here as well
+
+* Hyperstack display-viewer
+  Quality, set that, play around.
+
+* Set spot filter optional? Signal/Noise ratio? 
+
+* LAP Tracker (not simple) 
+  No frame-frame linkage (how to disable?) 
+  Hen: Set x/y/z penalty?
+  Do track segment splitting
+  Play around with params
+
+
+(Set filter for start/stop time. Only want to keep track of things there
+throughout. Ignore tracks outside of the frame (cells that leave at any point).
+Set filters on edges? Hacky. Exclude all that fall within one of these groups.)
+NEW IDEA: Filter out tracks which which change in number from the exported data. 
+
+Plot N spots vs time -- answer to Q1. 
+
+Q?--: Export all spots statistics
+Can answer most of the rest of the Qs once everything is filtered correctly.
+
+Final thing: Automation. 
+Save file with tracking data. Website for trackmate has a script which reads
+trackmate file and reproduces results. (Enough?)'
+There is also a plugin which makes macro recording work in TrackMate.
+
+
+Limitations: 
+  Not all cells recognized.
+  Some cells disappear and emerge again.
+  A couple of cells join each other (from two separate tracks), joining into
+    one, but when they re-emerge, they will be part of the same track, even though
+    no cell division has happened. 
+  
+
+Notes: 
+  Number of division events = (number of cells after - number of cells before) - 1
+  "Get rid of everything that starts at 0"
+  
+  Procedure:
+    1. Set gaussian blur, 1 mikro-m
+    2. Ramp up contrast (max it), and add a little brightness
+    3. TrackMate: 15 mikro-m, median filter.
+    4. Thresholding
+    5. Set filter on cell quality
+    5. Set splitting. 15 mikro-m. 
+        - Don't change other params?
+
+

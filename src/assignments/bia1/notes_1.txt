@@ -1,0 +1,15 @@
+gaussian blur
+maximum
+rolling ball (?) 
+find edges
+
+----------
+
+Threshold
+Apply gaussian filter
+Fill cavities?
+Count number of pixels (track particles?) 
+
+x, y: 0.5 mikron / pixel
+z: 1.98 mikron   / pixel
+

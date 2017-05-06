@@ -13,3 +13,9 @@ Count number of pixels (track particles?)
 x, y: 0.5 mikron / pixel
 z: 1.98 mikron   / pixel
 
+-----------------
+
+Make thresholded image from intermediate slice
+Create binary mask from this
+Divide with range (0-255)
+Multiply original image with this guy.

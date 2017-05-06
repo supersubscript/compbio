@@ -1,0 +1,9 @@
+base
+knitr
+RColorBrewer
+scales
+plot3D
+scatterplot3d
+tiff
+sp
+raster

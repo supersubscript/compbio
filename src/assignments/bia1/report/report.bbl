@@ -1,0 +1,24 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[ima(2017)]{imagej_methods}
+Imagej methods, 2017.
+\newblock URL \url{https://imagej.nih.gov/ij/docs/guide/user-guide.pdf}.
+
+\bibitem[Li and Tam(1998)]{li}
+CH~Li and Peter Kwong-Shun Tam.
+\newblock An iterative algorithm for minimum cross entropy thresholding.
+\newblock \emph{Pattern Recognition Letters}, 19\penalty0 (8):\penalty0
+  771--776, 1998.
+
+\bibitem[Otsu(1979)]{otsu}
+Nobuyuki Otsu.
+\newblock A threshold selection method from gray-level histograms.
+\newblock \emph{IEEE transactions on systems, man, and cybernetics}, 9\penalty0
+  (1):\penalty0 62--66, 1979.
+
+\end{thebibliography}

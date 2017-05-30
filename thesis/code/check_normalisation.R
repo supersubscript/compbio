@@ -48,7 +48,6 @@ plotDensity(normalised.variable, lwd = lw.s)
 ##############################################
 ### Get plant data for all timepoints
 ##############################################
-
 # Modify for stretching factor
 stretching = readLines(paste0("/home/henrik/compbio/thesis/data/PNAS/plant", plant.no, "/plant", plant.no, "_tiff_resolutions.txt"))[-c(1:3)]
 stretching = sapply(stretching, function(x) strsplit(x, " ")[[1]][5])
@@ -69,5 +68,4 @@ times = (0:(ncol(all.data[[1]]) - 1))*4
 for(ii in 1:ncol(all.data[[1]])){
   points(rep(times[ii], nrow(all.data$z)), (all.data$z)[,ii], col = 1, pch = 19, type = "p")  
 }
-
 

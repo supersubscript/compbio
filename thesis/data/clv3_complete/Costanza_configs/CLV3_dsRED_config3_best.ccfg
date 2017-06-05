@@ -1,0 +1,18 @@
+#Costanza configuration
+#Thu Oct 30 14:14:57 GMT 2014
+useImageJCalibration=true
+peakRemover2=3.0 3.0
+backgroundExtraction0=15.0
+markCellCenters=true
+useExtendedNeighborhood=true
+intensityLevelsNumber=255
+displayWorkingStack=true
+workingDirectory=/home/jose/Costanza_configs
+displayIntensityBOAs=true
+usePlateauMarker=false
+scales=0.31933302 0.31933302 0.26
+displayBOAs=true
+markerRadius=2
+useSecondaryStack=false
+meanFilter1=0.5 5
+peakMerger3=3.0

@@ -1,0 +1,19 @@
+#Costanza configuration
+#Fri Jul 10 11:35:24 BST 2015
+intensityLevelsNumber=255
+useExtendedNeighborhood=true
+displayBOAs=true
+displayWorkingStack=false
+scales=0.1886968 0.1886968 1.0
+usePlateauMarker=false
+backgroundExtraction0=5.0
+peakMerger3=4.0
+workingDirectory=/home/jose/Meristem_Analysis/Costanza/Costanza_configs
+displayIntensityBOAs=false
+useImageJCalibration=true
+meanFilter1=0.8 6
+markerRadius=2
+peakRemover2=1.0 1.0
+useSecondaryStack=false
+NormalizeIntensities=false
+markCellCenters=false

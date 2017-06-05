@@ -1,0 +1,18 @@
+#Costanza configuration
+#Fri Apr 08 13:05:09 BST 2016
+useImageJCalibration=true
+peakRemover2=2.0 2.0
+backgroundExtraction0=1.0
+markCellCenters=false
+useExtendedNeighborhood=true
+intensityLevelsNumber=255
+displayWorkingStack=false
+workingDirectory=D\:\\Teles\\Work\\Costanza_configs
+displayIntensityBOAs=true
+usePlateauMarker=false
+scales=0.23961501 0.23961501 0.184659
+displayBOAs=true
+markerRadius=2
+useSecondaryStack=false
+meanFilter1=0.5 5
+peakMerger3=3.0

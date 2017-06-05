@@ -1,0 +1,71 @@
+selectWindow("Brightfield_timelapse.tif");
+run("Set Scale...", "distance=1 known=0.0390625 pixel=1 unit=um");
+
+run("Scale Bar...", "width=2 height=4 font=18 color=White background=None location=[Lower Left] bold");
+
+run("Fire");
+run("Calibration Bar...", "location=[Lower Right] fill=None label=White number=5 decimal=0 font=2 zoom=1");
+setForegroundColor(255, 175, 0);
+selectWindow("Brightfield_timelapse.tif");
+
+dir1 = "home/Protoplast_Analysis/TimeLapse_BLR_CLV3_190315/Widefield_dsRed";
+dir2 = "home/Protoplast_Analysis/TimeLapse_BLR_CLV3_190315/Widefield_dsRed_fire";
+dir3 = "home/Protoplast_Analysis/TimeLapse_BLR_CLV3_190315/Widefield_dsRed_treated";
+ 
+list = getFileList(dir1);
+setBatchMode(true);
+ 
+for (i=0; i<list.length; i++) {
+ 
+
+    showProgress(i+1, list.length);
+    open(dir1+list[i]);
+    run("Apply LUT");
+    setMinAndMax(521,957);
+    
+    run("8-bit");
+    title = getTitle();
+ 	saveAs("TIF", dir2+title);
+    run("Duplicate...", " ");
+    run("Gaussian Blur...", "sigma=3");
+    setAutoThreshold("Default");
+	setOption("BlackBackground", false);
+	run("Convert to Mask");
+	run("Close");
+ 	run("Analyze Particles...", "size=50-Infinity display add");
+ 	title = getTitle();
+ 	saveAs("TIF", dir3+title);
+ 	close();
+ 	run("Set Measurements...", "area mean integrated display redirect=None decimal=3");
+ 	roiManager("Select All");
+ 	roiManager("Measure");
+ 	close();
+ 	roiManager("Delete");
+}
+
+run("Label...", "format=00:00 starting=0 interval=3 x=370 y=505 font=40 text=[] range=1-277 use use_text");
+setForegroundColor(256, 256, 256);
+
+dir1 = getDirectory("Choose Source Directory ");
+dir2 = getDirectory("Choose Destination Directory - Fire LUT");
+
+list = getFileList(dir1);
+setBatchMode(true);
+ 
+for (i=0; i<list.length; i++) {
+ 
+
+    showProgress(i+1, list.length);
+    open(dir1+list[i]);
+    //run("Brightness/Contrast...");
+	call("ij.ImagePlus.setDefault16bitRange", 16);
+	setMinAndMax(499, 538);
+    run("8-bit");
+    run("Fire");
+    title = getTitle();
+ 	saveAs("TIF", dir2+title+i);
+ 	run("Fire");
+	run("Calibration Bar...", "location=[Lower Right] fill=None label=White number=5 decimal=0 font=2 zoom=1");
+	setForegroundColor(255, 175, 0);
+    saveAs("fir", dir2+"LUT_fire_"+i);
+}

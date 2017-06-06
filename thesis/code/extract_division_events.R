@@ -102,7 +102,11 @@ maxtime = 84
     }
     
     # Create new cell lines for the ones which aren't found
-    new.lines = cbind(cbind(matrix(list(NA), ncol = time - 1, nrow = length(all.mapping.data[[time]][-parents.found])), t(t(cbind(lapply(all.mapping.data[[time]][-parents.found], "[[", 1), lapply(all.mapping.data[[time]][-parents.found], "[", -1))))), matrix(list(NA), ncol = no.track.files - time, nrow = length(all.mapping.data[[time]][-parents.found])))
+    new.lines = cbind(cbind(
+      matrix(list(NA), ncol = time - 1, nrow = length(all.mapping.data[[time]][-parents.found])), 
+      t(t(cbind(lapply(all.mapping.data[[time]][-parents.found], "[[", 1), 
+                lapply(all.mapping.data[[time]][-parents.found], "[", -1))))), 
+      matrix(list(NA), ncol = no.track.files - time, nrow = length(all.mapping.data[[time]][-parents.found])))
     cell.lines = rbind(cell.lines, new.lines)
   }
   cell.lines = cell.lines[order(-apply(cell.lines, 1, function(x) sum(!is.na(unlist(x))))), ]
@@ -119,6 +123,8 @@ maxtime = 84
         cells.in.lineage = which(quant.data[[time]]$Cell.id %in% cell.lines[[ii, time]])
         topcell = quant.data[[time]][order(-quant.data[[time]]$z), 2:4][1, ] # Take top 3 cells
         top.coords = apply(topcell, 2, mean)
+        top.coords[1] = mean(quant.data[[time]]$x)
+        top.coords[2] = mean(quant.data[[time]]$y)
         
         if (length(cells.in.lineage) > 0){
           for (kk in 1:length(cells.in.lineage)){
@@ -135,9 +141,9 @@ maxtime = 84
     # Sort cell lines data by number fo members
     cell.lines.members = sapply(cell.lines.data, function(x) length(x[!is.na(x)]))
     # cell.lines.data = cell.lines.data[order(-cell.lines.members)]
-    cell.lines.data = cell.lines.data[!sapply(cell.lines.data, function(x) sum(!is.na(unlist(x))) < 50)]
+    # cell.lines.data = cell.lines.data[!sapply(cell.lines.data, function(x) sum(!is.na(unlist(x))) < 50)]
     cell.lines.data = lapply(cell.lines.data, function(x) apply(x, 1:2, function(y) unlist(y)))
-    cell.lines.data = cell.lines.data[order(sapply(cell.lines.data, function(x) median(x[,"dist2top"], na.rm = TRUE)))]
+    # cell.lines.data = cell.lines.data[order(sapply(cell.lines.data, function(x) median(x[,"dist2top"], na.rm = TRUE)))]
   }
   
   #############################################################################
@@ -158,8 +164,7 @@ maxtime = 84
                     sapply(all.mapping.data[[1]], "[[", 1))
   mothers = rbind(first.gen, mothers)
   colnames(mothers) = c("t", "mother.id", "cell.id")
-  
-  output.data = matrix(NA, ncol=17, nrow=0)
+  output.data = matrix(NA, ncol = 17, nrow = 0)
   colnames(output.data) = c("cell.id", "lineage.id", "mother.id", "daughter1.id", 
                             "daughter2.id", "age", "t","x","y","z", "vol", "expr", 
                             "dist2top", "daughter1.vol", "daughter2.vol", "daughter1.expr", "daughter2.expr")
@@ -173,6 +178,8 @@ maxtime = 84
     division.data = division.data[sapply(division.data, length) > 2] # Only keep division events
     topcell       = quant.data[[time]][order(-quant.data[[time]]$z), 2:4][1:3, ] # Take top 3 cells
     top.coords    = apply(topcell, 2, mean)
+    top.coords[1] = mean(quant.data[[time]]$x)
+    top.coords[2] = mean(quant.data[[time]]$y)
        
     # for every cell, take out the data FROM all.quant.data that is interesting for that and add it to a row. Append this to the output matrix.
     for(ii in 1:length(division.data)){
@@ -300,11 +307,13 @@ hist((sqrt(all.data[, "x"] ** 2 + all.data[, "y"] ** 2)), breaks = no.breaks, ma
 par(mfrow = c(4, 3))
 no.breaks = 30
 for(ii in 6:ncol(all.data)) if(!all(is.na(all.data[,ii]))) hist(all.data[, ii], breaks = no.breaks, main = colnames(all.data)[ii], freq = F)
+for(ii in 6:ncol(all.data)) if(!all(is.na(all.data[,ii]))) plotDensity(data.frame(x=all.data[, ii]), main = colnames(all.data)[ii])
 
 graphics.off(); plot.new()
-par(mfrow = c(3, 3))
+par(mfrow = c(3, 3), mar = c(2,2,2,2))
 plots = vector(mode="list", length=(ncol(all.data)-5));
 interesting = (1:ncol(all.data))[-c(1:5, 8:10)] # Remove xyz and indices
+counter = 1
 for (ii in interesting) {
   not.ii = interesting[interesting != ii]
   for (jj in not.ii) {
@@ -318,8 +327,9 @@ for (ii in interesting) {
       plot(all.data[, jj], all.data[, ii], main = title, xlab = x.lab, ylab = y.lab)
     }
   }
-  plots[[ii - 5]] = recordPlot()
+  plots[[counter]] = recordPlot()
   plot.new()
+  counter = counter+1
 }
 plots[[1]]
 plots[[2]]
@@ -330,11 +340,9 @@ plots[[6]]
 plots[[7]]
 plots[[8]]
 plots[[9]]
-plots[[10]]
-plots[[11]]
-plots[[12]]
 
-scatter.hist(all.data[,"expr"], all.data[,"dist2top"])
+scatter.hist(all.data[,"expr"], all.data[,"dist2top"], x.breaks=50, y.breaks=50)
+scatter.hist(all.data[,"expr"], all.data[,"dist2top"], x.breaks=50, y.breaks=50)
 
 
 # 
@@ -346,12 +354,20 @@ scatter.hist(all.data[,"expr"], all.data[,"dist2top"])
 ###################################
 ###################################
 plot(cell.lines.data[[1]][,"Time"])
-par(mfrow=c(4,3), mar = c(2,2,2,2))
+par(mfrow = c(4, 3), mar = c(2, 2, 2, 2))
 for(ii in 1:12){
   plot(cell.lines.data[[ii]][,"Time"], cell.lines.data[[ii]][, "Mean.cell.intensity"], ylim = c(0,160), xlim = c(0,84))
-  par(new=TRUE)
-  plot(cell.lines.data[[ii]][,"Time"], cell.lines.data[[ii]][, "dist2top"], col = 2, ylim=c(0,10), xaxt="n", yaxt="n", xlim = c(0,84))
+  par(new = TRUE)
+  plot(cell.lines.data[[ii]][,"Time"], cell.lines.data[[ii]][, "dist2top"], col = 2, ylim=c(0,10), xaxt="n", yaxt="n", xlim = c(0, 84))
   axis(4)
 }
 
+# plot(cell.lines.data[[1]][,"x"], cell.lines.data[[1]][, "y"], col = 1:22)
+# text(cell.lines.data[[1]][,"x"], cell.lines.data[[1]][, "y"], labels = 1:length(cell.lines.data[[1]][, "y"]))
 
+# par(mfrow = c(1, 1), mar = c(2, 2, 2, 2))
+# divisions.per.time = (as.integer(table(all.data[,"t"])))
+# expression.lvls = sapply(unique(all.data[,"t"]), function(x) mean(all.data[which(all.data[,"t"] == x), "vol"], na.rm=T))
+# plot(expression.lvls)
+# plot(divisions.per.time, expression.lvls, main=round(cor(divisions.per.time, expression.lvls, use="complete"), 2))
+# cor.test(divisions.per.time, expression.lvls, use="complete")

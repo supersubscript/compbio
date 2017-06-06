@@ -1,0 +1,264 @@
+Functional Genomics
+-------------------
+Overview
+-------------------
+	RNA Transcription / Gene expression
+	Measuring:	
+		Microarrays <---
+		High-throughput sequencing <---
+	Beyond gene expression:
+		Transcription factors <---
+		Epigenetics <---
+		Post-transcriptional regulation <---
+
+Q: How big is the genome?
+
+DNA to RNA
+	Polymerase <---
+	What is 5'-3'? <---
+	Which nucleotides? <---
+	What is a nucleotide composed of? <---
+
+RNA to protein
+	mRNA leaves nucleus and goes into cytoplasm <---
+	Ribosomes convert mRNA triples (codons) to a.a. <---
+
+Gene expression (RNA transcripts):
+	Cell specific function? <---
+	Experiments:
+		Check many genes in parallel
+		Proxy for protein levels -- not always true!
+		Analyses: 
+			Expression levels
+			Differences in expression levels
+			Patterns of expression
+			Splicing and isoforms <---
+	Interesting things:
+		Different tissues
+		Different organisms
+		Different conditions
+		Time course
+		In vivo vs In vitro
+	
+mRNA to cDNA (reverse transcription) <---
+	Using _reverse transcriptase_: CCUC (mRNA) -> GGAG (cDNA) <---
+	cDNA hybridisation <---
+
+Measuring cDNA: Microarrays
+	Use hybridisation to measure abundance of mRNA transcript
+	Fix probes (small segments of DNA to ground)
+	Hybridise labeled samples of mRNA to probes
+	Use labels to measure hybridisation intensity (they are fluorescent -- shot them with lasers)
+	
+Measuring cDNA: RNA-seq
+	Each sequence is "read" and mapped onto a reference genome to see where it was transcribed from
+	We can count how many transcripts come from each gene -- gene expression intensities!
+	
+Transcriptional regulation
+--------------------------
+Transcriptional regulation is the effect of proteins coming back and affection transcription and translation.
+Elements:
+	DNA methylation
+	Gene/protein interactions
+	Epigenetic structure (chromatin)
+	Small regulatory RNA (e.g. microRNA -- ~22 nucleotide long non-coding RNA strands which functions in RNA silencing and post-transcriptional modifications)
+	Gene transcription (i.e. longer RNAs)
+
+Regulatory elements:
+	TFs: ChIP
+	Histone marks: ChIP
+	DNA-methylation: MeDIP
+	Nucelosomes: ??? 
+	RNA-pol: Pol II ChIP
+	Open chromatin: DNase Hypersensitivity
+
+--------------------------------------------------------
+Lecture 2: INTRO TO MICROARRAYS
+--------------------------------------------------------
+DNA-level: 
+	Mutations (SNP, CNV, aneuploidy (more or fewer chromosomes))
+	Methylation
+RNA-level:
+	Gene expression
+	miRNA expression
+Protein-level:
+	Quantification -- how much?
+	Localisation -- where?
+	Post-translational modifications (e.g. phosphorylation -- addition of PO_3^-, involved in ATP/ADP production)
+
+Two colur microarrays:
+	Not really used anymore (I think) 
+
+One colour microarrays: Affymetrix
+	54000 probesets (11 probes each) 
+	Probes manufactured in situ using photolithography
+
+One colour microarrays: Illumina BeadArray
+	Each bead coated with 100k copies of the same 73-mer probe
+	23 base address linked to 50 base gene specific probe
+	30 copies of each bead type per array. 47k genes --> 1.4M beads!
+	Gives three levels where analysis is needed:
+		Bead level (singular beads)
+		Probe level (30 beads of same type)
+		Gene level	(How do different genes do?)
+	Needs background removal and such.
+
+
+Q: What are some analytical differences between microarrays and RNA-seq? 
+
+Workflow -- see image. Be able to replicate this
+
+Outlier detection:
+	Outlier detection is sensitive to log2 transformation. Doing outlier detection on unnormalised data gives more outliers _above the median_. 
+	Q: Which one is right? 
+	Controls can help
+	Also signal distribution. Should be gaussian.
+	Clustering and PCA can help
+	Number of detected probes
+
+Positive controls: Housekeeping genes (ones that are essential for basic cellular functions). Should always be there.
+Negative controls: Genes that should _not_ stick to target genome. Used to determine whether given probe expressed or not (i.e. as reference). 
+Illumina BeadArray does positive and negative.
+
+MA-plots: log ratio vs. mean log. Since most things shouldn't be differentially expressed, they should be close to 0. 
+	If not: LOESS -- intra-array normalisation
+	Should also be valid _between_ arrays: Simple scaling, loess, quantile, robust spline
+
+Quantile normalisation: per rank followed by replacing values with common reference distribution
+	Q: How to do this? 
+
+How to chose: MA-plots / PCA. Search for known patterns in data
+
+Q: Normalised data -- why? In what ways?
+Q: Probe annotation: In which ways is this important?
+
+Probe filtering:
+	Most not sig different from background. 
+		Filter based on:
+			Presence in number of samples
+			Inter-quartile range
+	Filtering reduces multiple testing problem: 50k data points w. p < 0.01. 500 there by chance!
+	BUT: 
+		Not all probes perform well. Do not average signals from different probes. ANNOTATION MATTERS.
+		Select best performing probe (highest detection rate / IQR).
+		Keep data at probe level if possible.
+
+Downstream analyses:
+	Class discovery:
+		Clustering: K-means, hierarchical, PCA
+	Class comparsion:
+		Genes / pathways associated with condition
+		Approaches: t-test, linear model, pathway analysis
+	Class prediction:
+		To identify set of genes representative of condition (e.g. in survival analsysis)
+		Approaches: PAM, SVM, survival analysis
+
+--------------------------------------------------------
+Lecture 3: INTRO TO SEQUENCING
+--------------------------------------------------------
+Cost: 1k$
+
+Microarrays vs sequencing:
+	Cross-hybridisation problem (incorrect DNA might match), limits:
+		Sensitivity: DE between 1trans/cell and 100trans/cell
+		Range: DE between 1ktrans/cell and 100ktrans/cell. Saturation levels (too bright to notice difference)
+		Probe coverage: Repeats might mess up. Limited probe density. 
+	Arrays give _relative_ abundance, sequencing _absolute_ (unless missmatch)
+	
+	High-end Sanger sequencing can sequence ca 2k fragments per day
+	Needs ca 30M fragments of data per sample (for human)
+	Microarrays better for access/time, maturity of analysis. Cost? Not really.
+	Microarrays preferable for many assays such as SNP and CNV. 
+	Sequencing has many downstream issues.
+	
+Next-generation sequencing:
+	DNA polymerase or ligase incorporates one base at a time. Detect which base with fluorescent tags, ion detection.
+	Methods:
+		Pyroseq (RIP)
+		Revesible terminators (Illumina Solexa)
+		Sequencing-by-ligation (Ion Torrent2)
+		Nanopores (coming)
+
+Illumina Solexa:
+	Prepare library:
+		1. Fragment DNA
+		2. Ligate different adaptors to each end.
+		3. Denature intp single strands.
+		4. Hybridise to flowcell covered with complementary primers
+	Cluster generation (bridge)
+		5. Hybridise to primers on platform.
+		6. Extend from primer to grow second strand
+		7. Free one terminus of each strand.
+		8. Denature the double strand. Now two strands, bound on each end.
+		9. Repeat from 5 around 1k times. 
+		10. Extend each strand by one fluorophore-labelled nucleotide followed by blocked terminus. 
+		11. Wash of leftovers.
+	Sequencing by synthesis:
+		12. Excite clusters with laser to determine which was incorporated.
+		13. Remove blocked terminus and fluorophore.
+	Complete a run:
+		14. Repeat n cycles, where n is length of sequence read.
+		15. Read each cluster's sequence by determining strongest signal for each cycle.
+
+Illumina HiSeq:
+	Flow cell divided into eight lanes, 350M reads/lane (2.8 billion reads total)
+	Lanes divided into three rows of eight = 24 image “tiles” on each side
+	4 images (AGCT) per cycle
+	In total: 153,600 images 
+	Most time spent imaging. 
+
+Sequencing modes:
+	Paired-end:
+		Pairs of short reads from each end of segment
+		Each end aligned separately.
+		Can detext: 
+			non-uniquely aligned reads
+			isoforms
+			duplications, inversions, chromosomal rearrangements
+		Calculate distribution of insert sizes. Why?
+	
+	Multiplexing / Barcoding:
+		1. Two DNA fragments from different samples.
+		2. Attach to barcode sequence that identifies them.
+		3. Create pools for each sample, and sequence them
+		4. Use barcode sequences to de-multiplex or differentiate reads from each sample.
+		5. Each set of reads is aligned to reference genome.		
+
+	Capture sequencing:
+		1. Hybridisation probes capture target DNA regions
+		2. Coat magnetic beads
+		3. Add sequencing sample
+		4. Apply magnet and wash
+			Get target sequences with beads
+		5. Standard sequencing from here
+
+Q: Describe Illumina Solexa
+Q: Describe Illumina Hi-Seq
+Q: What are the different sequencing modes? Describe them.
+
+Processing sequencing data:
+	Pipelines
+	Short-read sequencing relies on alignment to reference. 
+	Issues:
+		Filtered / unfiltered
+		Unique / non-unique (how unique is unique?)
+		Duplicates
+		Mismatches and indels
+		Adapters and index sequence (remove these -- but how?)
+
+Quality control!
+
+
+
+
+
+
+
+
+
+
+					
+
+
+
+

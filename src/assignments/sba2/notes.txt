@@ -1,0 +1,137 @@
+1. Use PDBe or PDB RCSB to find three entries
+2. Use molecular viewer (e.g. VMD, PyMOL, Avagadro). 
+  - Identify domain(s) complexed with the ligand. 
+  - If protein is too big, take a smaller one. sown
+  - Inspect complexed binding site, make list of residues facing the ligand or
+    interacting with the polypeptide backbone.
+	-	Are there any mutations (aa indels) close to binding sites?
+3. Using scPDB, use Database search to identify the PDB id I have collected(!?)
+  - Some might not be there. 
+  - Write short summary of what the scPDB says about the complexed binding
+    sites.
+4. Read original publication
+  - Summarise important arguments or suggestions for which residues are
+    important for ligand binding.
+5. Write brief paragraph comparing your findings with the publications'.
+
+Three entries: 
+	Paper 1-2: Haga	K,	Kobayashi	T.	Nature.	2012 Jan	25;482(7386):547-51.	
+	Paper 3: Kruse	AC,	Kobilka	BK.,	Nature	2013;	 504:101–106
+
+3UON 3.00 Å 
+	human	M2	muscarinic acetylcholine	receptor bound	to	an	antagonist
+4MQT 3.70 Å
+	active	human	M2 muscarinic	acetylcholine	receptor bound	to	the	agonist	
+	iperoxo	and	allosteric	modulator	LY2119620	
+4MQS 3.50 Å 
+	active	human	M2 muscarinic	acetylcholine	receptor bound	to	the	agonist	
+	iperoxo
+
+Haga (1-2), notes:
+
+The orthosteric binding pocket is formed by amino acids that are identical in all 5 muscarinic receptor subtypes
+
+A layer of tyrosine residues forms an aromatic cap restricting dissociation of the bound ligand
+
+A binding site for allosteric ligands has been mapped to residues at the entrance to
+the binding pocket near this aromatic cap
+
+An aromatic cage encloses the amine and forms a lid over the ligand, separating the orthosteric site from the extracellular vestibule. Asp1033.32 and Asn4046.52 serve to orient the ligand in the largely hydrophobic binding cavity, with Asn4046.52 forming paired hydrogen bonds with the hydroxyl and carbonyl groups in QNB while Asp1033.32 engages in a charge-charge interaction with the amine moiety of the ligand (Fig. 2). 
+
+Only Phe181, which extends downward from ECL2 and interacts with one of the two phenyl rings on QNB (Fig. 2), differs from all other muscarinic receptor subtypes which have leucine in the homologous position. 
+
+The importance of Asp3.32 for both agonist and antagonist binding has been demonstrated in mutagenesis and covalent-labeling experiments
+and modeling studies19–22.
+
+FIGURE 2:
+Like the M2 receptor, a nicotinic acetylcholine receptor homologue bound to acetylcholine (Fig. 3b) shows an aromatic cage comprised of three tyrosines and a
+tryptophan, although it notably lacks a counterion to the choline group28, whereas in the M2 receptor this role is filled by Asp1033.32. A bacterial acetylcholine binding protein ChoX
+from Sinorhizobium meliloti (Fig. 3c) also possesses an aromatic cage, and like M2 receptor has an aspartate in close proximity to the amine engaging in a charge-charge interaction29. Also like the M2 receptor, ChoX has an asparagine hydrogen bonding to the ligand carbonyl. Like these proteins, the enzyme acetylcholine esterase (Fig. 3d) employs an aromatic cage
+and a carboxylate to bind the choline group, while the (thio)acetyl group interacts with a phenylalanine, likely through π- π interactions30. Taken together, these structures suggest that an aromatic cage and buried carboxylate are likely to be critical elements for acetylcholine recognition and binding in general.
+
+----------------------------------------------------------------------
+
+antagonist 
+iperoxo: ASN404 IN BOTH, resembles QNB
+ASP103 iperoxo
+	TYR104, TYR403, TYR426
+
+TYR104
+ASP103
+TRP400
+ASN404
+TYR403
+
+
+Iperoxo (actually):
+ASN404
+ASP103
+
+
+Y = TYR
+N = ASN
+W = TRP
+E = GLU
+
+L112...
+ASN410
+TRP422
+TYR426
+TYR60
+ASN419
+TYR177
+GLU172
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------
+
+Molecular interactions
+	Entropic and Enthalpic Components of Binding: a noncovalent binding event takes place only when it is associated with a negative bind- ing free energy (ΔG), which is the well-known sum of an enthalpic term(ΔH) andan entropic term(-TΔS)
+	Flexibility and Cooperativity: noncovalent interactions can be positively co- operative; that is, the binding energy associated with their acting together is greater than the sum of the individual binding free energies.
+	Desolvation and the Hydrophobic Effect: A hydrophobic solute disrupts the structure of bulk water and decreases entropy because of stronger bonding and ordering of water molecules around the solute.
+	Structural Water: Enzyme binding sites are in fact char- acterized by easily displaceable water. Protein-ligand contacts are often mediated by water molecules situated in deep grooves in the binding site and forming multiple hydrogen bonds with both
+binding partners.
+	Repulsive Interactions: Severe repulsive interactions are not observed in nature, so distances significantly below the shortest experimentally observed ones are to be avoided.
+
+Specific Intermolecular Interactions Hydrogen
+IMPORTANT:
+	Hydrogen bonds: Hydrogen bonds are by far the most important specific interactions in biological recognition processes. 
+IMPORTANT:
+	Weak Hydrogen Bonds: Weak hydrogen bonds often do contribute to protein-ligand binding in a subtly directional fashion, and it is important to understand that they are, at the very least, not repulsive. Aromatic rings can act as acceptors of hydrogen bonds. In proteins, interactions be- tween NH donors and aromatic side chains are observed rarely and usually at long distances (>3.5 A˚ ). 
+	Halogen bonds:
+	Orthogonal Multipolar Interactions: Characterized by a close orthogonal contact between two dipolar functional groups, has only recently received detailed attention. Note that in a completely orthogonal arrangement between two dipoles, the actual dipole contribution to interaction energy is zero such that higher order electrostatic and dispersion terms must be responsible for the attractiveness of the interaction. The disappearance of the dipole term may turn a repulsive electrostatic interaction into an attractive one. 
+	Halogens and Aromatic Rings:
+IMPORTANT:
+	Hydrophobic Interactions: the single best structural parameter correlating with binding affinity is the amount of hydrophobic surface buried upon ligand binding. 
+
+	Aryl-Aryl and Alkyl-Aryl Interactions
+	Cation-π Interactions
+	Interactions Formed by Sulfur

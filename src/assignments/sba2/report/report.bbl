@@ -1,0 +1,37 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Haga et~al.(2012)Haga, Kruse, Asada, Yurugi-Kobayashi, Shiroishi,
+  Zhang, Weis, Okada, Kobilka, Haga, Kobayashi, Physiology, Biology, Project,
+  and Agency]{Haga2012}
+Kazuko Haga, Andrew~C Kruse, Hidetsugu Asada, Takami Yurugi-Kobayashi,
+  Mitsunori Shiroishi, Cheng Zhang, William~I Weis, Tetsuji Okada, Brian~K
+  Kobilka, Tatsuya Haga, Takuya Kobayashi, Cellular Physiology, Cell Biology,
+  Receptor~Crystallography Project, and Technology Agency.
+\newblock Structure of the human m2 muscarinic acetylcholine receptor bound to
+  an antagonist.
+\newblock \emph{Nature}, 482\penalty0 (7386):\penalty0 547--551, 2012.
+\newblock \doi{10.1038/nature10753.Structure}.
+
+\bibitem[Kruse et~al.(2013)Kruse, Ring, Manglik, Hu, Hu, Eitel, Hubner, Els,
+  Valant, Sexton, Christopoulos, Felder, Gmeiner, Steyaert, Weis, Garcia,
+  Jurgen, and Kobilka]{Kruse2013}
+Andrew~C Kruse, Aaron~M. Ring, Aashish Manglik, Jianxin Hu, Kelly Hu, Katrin
+  Eitel, Harald Hubner, Pardon Els, Celine Valant, Patrick~M. Sexton, Arthur
+  Christopoulos, Christian~C. Felder, Peter Gmeiner, Jan Steyaert, William~I.
+  Weis, Christopher~K. Garcia, Wess Jurgen, and Brian~K. Kobilka.
+\newblock {Activation and allosteric modulation of a muscarinic acetylcholine
+  receptor}.
+\newblock \emph{Nature}, 504\penalty0 (504):\penalty0 101--106, 2013.
+\newblock \doi{10.1038/nature12735}.
+
+\bibitem[Bissantz et~al.(2010)Bissantz, Kuhn, and Stahl]{Bissantz2010}
+Caterina Bissantz, Bernd Kuhn, and Martin Stahl.
+\newblock {A medicinal chemist's guide to molecular interactions}, 2010.
+\newblock ISSN 00222623.
+
+\end{thebibliography}

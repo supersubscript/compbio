@@ -1,0 +1,12 @@
+./clv3_complete/Costanza_versions
+./clv3_complete/Costanza_configs
+./clv3_complete/newStacks
+./clv3_complete/plant([0-9])[0-9]/*.tif
+./clv3_complete/plant([0-9])[0-9]/MAX\ intensity
+./clv3_complete/plant([0-9])[0-9]/segmented_costanza
+./clv3_complete/plant([0-9])[0-9]/segmented_MARS
+./clv3_complete/plant([0-9])[0-9]/Thumbs.db
+./clv3_complete/plant([0-9])[0-9]/Results/*.tif
+./clv3_complete/PNAS/plant([0-9])[0-9]/nuclear_segmentation_tiffs
+./clv3_complete/PNAS/plant([0-9])[0-9]/processed_tiffs
+./clv3_complete/PNAS/plant([0-9])[0-9]/segmentation_tiffs

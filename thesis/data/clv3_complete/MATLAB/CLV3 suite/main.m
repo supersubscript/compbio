@@ -8,7 +8,7 @@
 % file_16h.tif, so it sould be named file_00h.tif instead)
 
 % Nuclear segmentation files: segmentation tif files for each raw stack
-pathToFiles_segmented='/media/Seagate Backup Plus Drive/CLV3 project/plant#2/segmented_MARS/'; %insert full path here
+pathToFiles_segmented='/home/henrik/compbio/thesis/data/clv3_complete/PNAS/plant2/nuclear_segmentation_tiffs'; %insert full path here
 filelist_segmented=dir(strcat(pathToFiles_segmented,'*.tif')); % assumes .tif file extension
 
 % Import tracking data: csv files with MorphoGraphX file format
@@ -22,7 +22,7 @@ filelist_segmented=dir(strcat(pathToFiles_segmented,'*.tif')); % assumes .tif fi
 % Import Costanza data: txt files of Costanza quantification for each stack
 % NOT: Costanza exports .xls files, change extension to txt
 % Requires importDataCostanza.m file
-[data_costanza] = importDataCostanza_realID('./tables_plant2/')%insert full path here
+[data_costanza] = importDataCostanza_realID('/home/henrik/compbio/thesis/data/clv3_complete/MATLAB/CLV3 suite/tables_plant2'); %insert full path here
 
 %%
 
@@ -38,7 +38,6 @@ for k=1:size(filelist_segmented,1)
     resolutions(k,1)=info(1).Width;
     resolutions(k,2)=info(1).Height;
     info=[];
-    
 end
 
 %%
@@ -141,14 +140,14 @@ end
 centroids_mars={};
 boundingBoxes={};
 
-for i=1:size(nuclearData_plant2,1)
+for i=1:size(nuclearData_plant4,1)
     
-    for j=1:size(nuclearData_plant2,2)
+    for j=1:size(nuclearData_plant4,2)
         
-        if isempty(nuclearData_plant2{i,j})==0
+        if isempty(nuclearData_plant4{i,j})==0
         
-            centroids_mars{i}(j,:)=nuclearData_plant2{i,j}.Centroid;
-            boundingBoxes{i}(j,:)=nuclearData_plant2{i,j}.BoundingBox;
+            centroids_mars{i}(j,:)=nuclearData_plant4{i,j}.Centroid;
+            boundingBoxes{i}(j,:)=nuclearData_plant4{i,j}.BoundingBox;
             
         end
         
@@ -371,21 +370,21 @@ end
 time=[0:4:80];
 for i=1:size(correspondences,2)
     
-    fname = sprintf('ID_correspondence_plant#2_%d.txt',time(i));
+    fname = sprintf('ID_correspondence_plant4_%d.txt',time(i));
     csvwrite(fname,correspondences{i})
     
 end
 
 for i=1:size(centroids_mars_corrected,2)
     
-    fname = sprintf('centroids_mars_plant#2_%d.txt',time(i));
+    fname = sprintf('centroids_mars_plant4_%d.txt',time(i));
     csvwrite(fname,centroids_mars_corrected{i})
     
 end
 
 for i=1:size(centroids_costanza_corrected,2)
     
-    fname = sprintf('centroids_costanza_plant#2_%d.txt',time(i));
+    fname = sprintf('centroids_costanza_plant4_%d.txt',time(i));
     csvwrite(fname,centroids_costanza_corrected{i})
     
 end

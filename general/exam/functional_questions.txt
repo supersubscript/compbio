@@ -1,0 +1,481 @@
+
+What is functional genomics?
+  The study of how things with different genotypes can have different functions
+  (phenotypes!)
+
+How big the genome?
+  3Gb. 6 meters in each cell!
+
+What different types of proteins are there.
+  Structural, regulatory
+  Housekeeping (general), Luxury (specific)
+
+Why might RNA not be a good proxy for proteins?
+
+What are the 4 analyses you can do with RNA-seq?
+  Expression levels, DE, patterns in expression, splicing and isoforms
+
+What is cDNA?
+  DNA strands produced from RNA via revere transcriptase.
+
+Name 2 ways to measure RNA
+  Microarrays
+  RNA-seq
+
+Explain how microarrays work
+  Probes with solid support.
+  Hybridise labeled samples of mRNA to these.
+  Shoot with lasers.
+
+Explain how RNA-seq works
+ 
+Name elements in transcriptional regulation
+  Gene/protein interactions
+  DNA methylation
+  Chromatin (epigenetic structure)
+  microRNA
+  Gene expression
+
+----------------------------------------
+Lecture 2 -- analysis of microarray data
+----------------------------------------
+
+Explain 2-color microarrays
+  Experimental culture (red) + control culture (green)
+  Measure colour
+
+Explain 1-color microarrays and give examples of types
+  BeadArray: Beads coated with copies of probe
+    23 base address linked to 50-base gene specific probe
+    30 copies of each bead type per array: 47k genes => 1.3M probes
+
+Explain the general workflow when working with microarrays
+
+Explain the three cornerstones of experimental design
+
+How to detect outliers?
+  log-2 normalisation
+  Positive/negative controls
+  Number of deteceted probes per sample
+  Signal distribution
+  Clustering / PCA
+
+Explain how control probes work
+  Positive: Houskeeping genes -- should be there!
+  Negative: Things that should not be there!
+  Negative also used to determine background.
+
+What do MA-plots show?
+  log2 fraction vs. mean of logs. Should be straight.
+
+Name some normalisation techniques
+  Simple scaling, LOESS, Quantile, robust spline
+
+How does quantile normalisation work?
+
+What can be done to determine normalisation?
+  MA-plot / PCA
+  Search for patterns in data
+
+Describe the RNA-seq workflow
+  Align to sequence (genome/transcriptome), get annotation, compare with
+  databases
+
+Describe why and how to filter probes
+  p = 0.01 => lots of finds! 50k probes -> 500 false pos.
+  Remove probes not present in all samples.
+  Use multiple probes per gene
+
+Describe the three downstream analsysis categories
+  Class discovery: clustering, PCA
+  Class comparison: groups known, genes / pathways associated?
+  Class prediction: SVM, survival 
+
+----------------------------------------
+Lecture 3 -- general sequencing
+----------------------------------------
+  
+What is the cross-hybridisation problem and what does it limit?
+  In microarrays, dna tags to the wrong probes.
+  Sensitivity, range, probe coverage
+
+Benefits of RNA-seq
+  Can get isoform data -- not possible with microarray
+  Gives absolute abundance
+
+Benefit of microarrays
+  Faster, easier, more mature analysis
+
+How does sequencing work?
+  Reversible terminators
+  Sequencing by ligation
+  Nanopores
+
+Describe the Solexa sequencing structure
+  15 steps or so
+
+What are some modes of sequencing?
+  Paired-end: each end aligned separately
+  Multiplexing
+  Capture sequencing
+
+What are some benefits of paired end sequencing?
+  Disambiguate non-uniquely mapped reads
+  Detect isoforms
+  Detect duplications, inversions, chromosomal rearrangements
+  Calculation of distribution of insert sizes
+
+Describe multiplexing (probably not in it)
+  Look it up
+
+
+Describe capture sequncing
+  Magnetic strip to specific sequences
+  Flush away rest.
+
+Discuss problems with sequence alignment
+  Filtered / unfiltered (???)
+  Unique / non-unique
+  Duplicates (amplification bias)
+  Mismatches / indels
+  Adapters and index sequence
+
+Sequencing trends (probably not)
+
+----------------------------------------
+Lecture 4 -- Analysis of RNA-seq I
+----------------------------------------
+
+What questions are RNA and ChIP seq answering?
+  RNA: 1) WHAT is the sequence? 2) WHAT is he concentration?
+  ChIP: 1) WHERE does it bind? 2) HOW MUCH is bound?
+
+Why is RNA-seq imperfect?
+  Data consists of 1-2 sequences per fragment
+  Base call qualities for each base in each read varies
+  RNA-data is meta-data. Read -> cDNA library
+  Reference genome rarely sample genome, SNPs etc, indels, structural variants
+  Reads prone to error (1/1000) 
+
+Describe the ChIP-seq protocol
+  1. Crosslink and shear
+  2. Add protein specific antibody and immunoprecipitate
+  3. Sequence one end of each fragment
+  4. Get coverage!
+
+Describe the RNA-seq protocol
+  1. Select RNA of interest (e.g. mRNA)
+  2. Fragment and reverse-transcribe to dsDNA
+  3. Size select, denature to ss-cDNA
+  4. Sequence n bases from one/both ends of fragments (n ~ 50-100)
+
+How to map RNA reads to transcripts?
+  De novo assembly(???)
+  Alignment + gene model assembly (map to DNA)
+  Transcriptome alignment (map to RNA)
+
+Explain how de Bruijn graphs work (VERY POSSIBLE EXAM QUESTION)
+
+What is a kmer?
+  A substring of a read
+
+Explain how to choose k in RNA-seq assembly
+  
+How do SNPs/errors appear in Bruijn graphs?
+  Bubbles! Take path with highest coverage.
+
+Explain differences between genome and transcriptome alignment
+  G: Detection of novel genes. Spliced alignment is tricky. Insert sizes harder
+  to interpret.
+  T: No need for spliced alignment. Simplifies read counting for each isoform.
+  Simplifies discrimination between mappings using insert sizes. Novel genes go
+  undetected.
+
+What is TopHat? Describe workflow.
+  RNA-seq aligner. 
+
+What is a gene model?
+
+How does Cufflinks work?
+
+RNA-Skim, kallisto, Sailfish -- hash-table aligners
+
+Describe briefly how to filter alignments
+  Pick part SNP / variant with best coverage
+  Multiply matching sequences with outlying insert lengths
+  Take out repeats (sole peaks)
+  
+
+----------------------------------------
+Lecture 5 -- RNA-seq II
+----------------------------------------
+
+Why are isoforms interesting?
+  They give increased resolution of RNA-sequence (the variants)
+  We have two versions of each isoform sequence in diploid orgs
+
+What is a Poisson distribution?
+  Independent events occuring at given rate
+  Mean=Var=r8, pets_r8=dogs_r8+cats_r8
+
+
+What are three determining factor for how many reads align to a transcript?
+  Total nr reads
+  Length of transcript
+  Abundance of transcript
+
+What is a formula for estimated gene reads?
+  r_g = Poisson(b mu_g l_g)
+  mu_g: concentration, l_g effective length, b: norm
+  
+What are some problems with Poisson models?
+  Gene length ambigous due to isoforms
+  Cross-linkage
+  We don't get reads of isoforms
+
+Explain the multinomial distribution
+  >2 categories. Good when there are multiple SNPs and isoforms.
+
+MMSEQ
+
+Transcript amalgation
+
+What is gene imprinting?
+  Genes are expressed in a parent-of-origin specific manner
+  Gene from father imprinted -- only mother version expressed
+  
+----------------------------------------
+Lecture 6 -- RNA-seq III
+----------------------------------------
+
+What are the aims of read count normalisation?
+  Comparable across features (e.g. genes)
+  Comparable across samples
+  Human-friendly scale
+
+What is RPKM normalisation?
+  Set k_ig such that estimates of mu_ig are comparable between genes and
+  samples.
+  muhat_ig = r_ig / k_ig
+
+From Binomial to Poisson
+
+TMM normalisation
+
+Median log deviation normalisation
+
+What is a negative binomial distribution? When do we use it?
+  When rate of Poisson dist not fixed, but varies according to a gamma dist. 
+  Variance is greater than mean.
+
+----------------------------------------
+Lecture 7 -- ChIP-seq I 
+----------------------------------------
+How does ChIP-seq work?
+  1.Isolate chromatin 2. Cross-link and fragment 3. Antibodies, precipitate 4.
+  Reverse cross-links, purify DNA 5. Ligate adaports, sequence
+
+What is ChIP-seq interested in?
+  Where is the protein bound? 90 % background!
+  Where are proteins bound differentially?
+  What do the sites mean biologically?
+
+Describe the ChIP-seq workflow
+
+Why use a control track in ChIP-seq?
+  Get background. See tissue anomalies. Open chromatin???. Experimental /
+  techincal biases. Background distribution irregular. 
+
+Name three types of controls in ChIP-seq
+  Input
+  Vehicle
+  Non-specific antibody
+
+Explain good experimental design in ChIP-seq
+  Technical replicates: multiple lanes per flowcell
+  Biological: patient samples, model organisms
+  Experimental: repeat procedures, (different antibody)
+
+Name the important ChIP-seq parameters in expermiental design
+  Single end / paired end, read length (50bp), read depth (20-30M), batches and
+  randomisation, multiplexing (one pool is optimal)
+
+What are blacklists for?
+  Duplicates etc. 
+
+How would you perform quality assesment in ChIP-seq? 
+  Coverage histogram
+  Fragment length estimation (cross-correlation, cross coverage, normalised
+    score)
+
+How do you call peaks?
+  Identify maxima. Take region around it.
+
+Name three peak-based metrics
+  1. Reads in peaks (reads that overlap peaks, dist of read density)
+  2. Peak profiles (mean density at each position relative to summit)
+  3. Clustering and PCA
+  
+----------------------------------------
+Lecture 8 -- ChIP-seq II
+----------------------------------------
+
+What are the two types of differential binding analysis?
+  Overlap: peak/site occupancy
+  Quantitative: binding _affinity_
+    Binding site count density
+    Binding profile
+    Sliding windows
+
+What are consensus peaks?
+  Peaks found in several samples from the same tissue/experiment
+
+Explain the DiffBind workflow
+  1. Read in peaksets
+  2. Determine occupancy
+  3. Count reads
+  4. DBA
+  5. Plot and report, then re-evaluate. 
+
+Name plotting tools used in DBA
+  MA plots
+  Heatmaps / Clustering / PCA
+  Boxplots. Peak abundance / density.
+
+----------------------------------------
+Lecture 9 -- Regulatory genomics I: Reg elements
+----------------------------------------
+Name as man yas you can of the 7 regulatory elements:
+  TFs, Histone mods, Nucleosome pos, chromatin domains, Polycomb group (PcG)
+  proteins, DNA methylation, non-coding RNA.  
+
+Name four types of TFs
+  Master regulators, General TFs, Pioneer factors, Tissue specific factors
+
+What are the three classes of regulatory elements?
+  Core promotes
+  Enhancers & super enhancers
+  Locus control regions
+  Silencers
+  Insulators
+
+Core promoters
+
+Enhancers & super enhancers
+
+Locus control regions
+
+Silencers & insulators
+
+How to identify regulatory elements?
+  Motif analysis
+  Sequence binding sites
+  
+MEME
+MEME-ChIP
+HOMER
+Pscan-ChIP
+MEA
+
+----------------------------------------
+Lecture 11 -- Regulatory genomics II: Epigenomics
+----------------------------------------
+
+What is the difference between epigenetics and epigenomics?
+  genetics: gene expression
+  genomics: overall chromatin state of full genome
+    organism has single genome, many epigenomes
+
+What is a histone?
+  What the DNA coils around -> gives chromatin
+
+How can histone be modified?
+  5 common ways -- see slide
+
+What are chromatin marks?
+
+Chromatin segmentation
+
+WHAT ARE CHROMATIN MARKS?
+
+Explain how Hi-C works
+
+What are some Hi-C technical and biological biases?
+
+A-B compartments
+
+How to detect chromatin accessibility?
+
+ATAC-seq
+
+----------------------------------------
+Lecture 12 -- Regulatory genomics II: Pathway analysis
+----------------------------------------
+
+What is a pathway?
+  Series of conseq interactions that give rise to a certain state
+
+What are the three types of pathways?
+  Signalling
+  Genetic / transcriptional / regulatory
+  Metabolic (ana / cata / energy transport)
+
+How would you determine enrichment of gene lists?
+  Fisher's / hypergeom
+  Chi**2
+  Binomial
+  
+How would you determine enrichment of ranked lists?
+  Kolmogorov-Smirnov
+  Minimum hypergenometric test
+  Wilcoxon rank sum
+
+Where do the gene lists in PWA come from?
+  omics data: RNA / ChIP / proteomics
+
+What is Gene Ontology?
+  Contains information on cellular component, molecular function, biological
+  process
+
+----------------------------------------
+Lecture 14 -- Genotyping / CNV
+----------------------------------------
+What are some causes of SNPs? 
+  Replication errors
+  Repair error
+  Mutagens
+  Spontaneous
+
+What are some causes of INDELs?
+  Strand slippage
+  Aberrant repair
+  Retrotransposons
+
+What are some causes of Structural Variations?
+  Replication errors
+  Retrotransposition
+  Repair errors
+  Recombination errors
+
+What is a somatic variation?
+  Mutations acquired post conception
+  SNVs, not SNPs
+  CNAs, not CNVs
+  INDELs
+  SVs
+
+What is the difference between SNVs/SNPs and CNAs/CNVs?
+  ???
+
+Explain the copy number calling workflow
+  Quantify signal (depth / intensity)
+  Segment chromosome (HMM / smoothing)
+  Call changes (threshold, cluster, prob. models)
+
+B-allele frequency
+
+BAF-banding
+
+Some cancer types are mutation driven, some CNA driven
+
+

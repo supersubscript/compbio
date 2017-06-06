@@ -1,0 +1,176 @@
+How many neurons does the human brain have? How many connections?
+  10^11 neurons. Every neuron has 1-1000 connections.
+
+What are the parts of the neuron?
+  Dendritic tree, cell body, axon, axon terminal, synapses
+
+How does the neuron transmit signals?
+  When cell reaches threshold, spike travels along axon. All or nothing event.
+
+Describe a synaptic cleft
+  presyn. neuron, postsyn neuron, vesicles, neurotransmitters, receptor
+  gap junction!
+
+Describe how the neuron builds up voltage. Draw a curve. for how this looks like and why.
+  By ion channels. Some voltage gated. 10^2-10^6 channels per mikron^2.
+  Each channel ca. 10 nm high. 
+  Na+, K+ important. Selective transport. E_Na = 50 mV, E_K = -77 mV.
+
+How does myelin impact the propagation of the action potential? Draw figure.
+  It insulates part of the axon such that the resistance is lowered(?). The
+  signal then travels faster than when unmyelinated.
+
+Explain roughly how a membrane ion gate works
+  Selectivity filter, sensor, pore, anchor protein
+
+What is tau_n in the neuron equations? 
+  1 / (alpha + beta), i.e. the inverse of the total flow.
+
+Describe Hodgkin-Huxley's equations.
+  c_m dVdt = -i_m + I_e/A
+  Each ion:
+    i_m = sum(g_i[gating](V-E_i))
+    c_m dVdt = g_L(E_L - V) + g_Na m**3 h (E_Na-V) + g_K n**4 (E_K-V) + I_e/A
+    Plus equations for the other (gating) variables.
+
+Describe the parameters in common neuroscience equations
+  See slides
+  
+Describe some simplifications to HH
+  1. tau_m small. Eliminate dmdt.
+  2. tau_h approximately tau_n. Eliminate dhdt
+
+Describe FitzHugh-Nagumo's system
+  Membrane voltage + recovery variable
+  * Write down equations
+
+Explain Hopf bifurcation analysis
+  Stable, supercritical, subcritical, oscillating, etc.
+
+Explain van der Pol eqautions
+  vdP a non-conservative oscillator with non-linear damping.
+
+What are integrate and fire models?
+  We're just interested in the spikes.
+  I.e. When do we reach the threshold level? Then reset. 
+
+What are some features of ion channels?
+  They are stochastic
+  When many are open, the noise decreases.
+  Na channels have feedback loops. 
+
+Talk about modelling synaptic inputs
+  Stochastic release of vesicles
+  Postsynaptic conductance
+  Reversal potential of synapse
+
+Talk about postsynaptic / presynaptic release
+
+What are some feature differences between excitatory and inhibitory neurons?
+  Synchrony. Inhibitory neurons tend to fire in sync, whereas excitatory often
+  fail to do so unless they start out identical.
+
+Name a few networks for long and short term memory storage
+  Long: Hopfield
+  Short: Phase plane analysis of small networks; Wilson Cowan nets
+
+Why are firing rates more interesting than spike trains?
+  More profound -- more analysis
+  Computationally more tractable
+  Often fewer parameters
+  Can represent average of many neurons in one chunk
+
+Describe associative memories
+  Content addressable -- retrieve all from part
+  cf. direct access -- know location to find content
+
+What are auto- and heteroassociation?
+  Given x -- recall x
+  Given x -- recall y
+
+What are benefits / drawbacks of asynchronous update?
+  Select at random: Gibbs sampling
+  Poorly defined.
+  Will converge.
+
+Talk about the energy function
+  Describes trail to minimum
+  Each minima -- stable state (stored pattern)
+  Energy monotonically decreases
+
+Prove that E is always minimised
+  
+Describe how to solve the TSP using hopfield nets
+
+What are some problems Hopfield; how to solve them?
+  Inverse stable. Sign bit.
+  Mixture states. Mix of patterns.
+  Spin glass states. Not related to anything.
+
+What is a Boltzmann machine? 
+  Go to stochastic regime.
+  Update rule: P(v_i =1) = f(a_i)
+  f(a_i) = 1 / (1 + exp(-a_i))
+
+Explain general stability analysis
+
+Explain P-B and Hopf
+  PB: Suppose annulus, 1) containing no equilibrium points. 2) All trajectories that
+  cross boundary enter it. Then: E1 asymptotically stable limit cycle. If there
+  is a trapping region inside, ensure unstable repellor and make hole around it.
+  Hopf: Supercritical (stable limit cycle), subcritical (unstable limit cycle)
+  Do numerical analysis around critical value alpha to ensure type.
+
+Wilson and Cowan networks
+  Assume conditions for spatially uniform steady states to be unstable.
+  1. Short term memory
+  2. Spatially localized oscillations.
+  3. Travelling waves leading to visual hallucinations.
+  
+Simple cell selectivity (probably not)
+
+Complex cells
+
+Ben-Yishai (probably not)
+
+Why use dynamic clamp, and how? 
+
+-------------------------
+Lecture 6 -- supervised learning
+-------------------------
+Explain difference between the three types of learning
+  Supervised: "I know how to classify this data, I just need you(the classifier) 
+    to sort it."  
+  Unsupervised: "I have no idea how to classify this data, can you (the 
+    algorithm) create a classifier for me?"      
+  Reinforcement: "I have no idea how to classify this data, can you classify 
+    this data and I'll give you a reward if it's correct or I'll punish you if it's not."        
+
+Briefly introduce the perceptron
+  Binary input units
+  Various transfer functions depending on the desired outcome.
+  Defines a hyperplane in N-D space. Can solve linearly separable problems.
+
+How would you implement a bias unit? 
+  Always one. Update weights as ordinary. Compare output with 0.
+
+What is the perceptron convergence theorem?
+  If there are two ideal weights separating two classes, the perceptron rule
+  will find them.
+
+What are some modifications you can make to improve learning?
+  Weight decay 
+  Momentum
+  Prevents overfitting.
+
+NetTalk (probably not)
+
+What are encoder networks good for?
+  Reduce dimensionality
+
+Discovery of invariances???
+
+Name three applications of multi-layer perceptrons
+
+Show that errors backpropagate
+  

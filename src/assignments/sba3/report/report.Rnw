@@ -96,8 +96,8 @@ morekeywords={*,...}            % if you want to add more keywords to the set
 
 
 %%% Document specific
-\newcommand{\course}{Population Genetics}
-\newcommand{\ass}{1}
+\newcommand{\course}{Structural Biology}
+\newcommand{\ass}{3}
 \newcommand{\term}{Lent term 2017}
 %\bibliography{pga1}
 
@@ -127,12 +127,12 @@ render_listings()
 @
 % \date{\today}
 \maketitle
-\begin{abstract}
-{\bf 
-  %\begin{changemargin}{-.8cm}{-.8cm}
-  This is an abstract abstract.
-}
-\end{abstract}
+% \begin{abstract}
+% {\bf 
+%   %\begin{changemargin}{-.8cm}{-.8cm}
+%   This is an abstract abstract.
+% }
+% \end{abstract}
 
 \begin{multicols*}{2}
 \section*{Preface}
@@ -144,6 +144,54 @@ Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
 @
 \section*{Exercises}
 \subsection*{1}
+% this code reads in the output of get_constraints.m and compares it to the
+% experimentally solved crystal structure of a protein sequence from the
+% alignment. 
+
+% Fig 3: plots min all atom distance against DI ranking (x axis).
+% Fig 2: plots the distance in structure for each pair vs the rank of the pair
+% Fig 3/4:  contact map overlay plotsmia
+% 3: 	plot(plotRows,plotCols,'o','MarkerSize',6,'MarkerFaceColor',CRYSTAL_CONTACT_COLOR,'MarkerEdgeColor',CRYSTAL_CONTACT_COLOR);
+% 4: 	plot(plotRows,plotCols,'*','MarkerSize',4,'MarkerFaceColor',EIC_COLOR,'MarkerEdgeColor',EIC_COLOR);
+
+% Figure 1 shows the distribution of normalised frequency of the different amino acids in each respective column.
+\Cref{fig:fig1} shows the frequency distribution of the weighted pairwise distances between sequences, given that their similarity fraction is $> 70 \%$.
+\Cref{fig:fig2} shows the predicted protein contact map between the residues in each sequence, i.e.\ how correlated certain positions are with each other based on the evolutionarily inferred contact (EIC) scores. \Cref{fig:fig3} in turn depicts the minimal distance between the amino acids in the crystal as a function of the corresponding DI rank. Lastly, \cref{fig:fig4} shows the overlap between the experimentally observed structure and the predicted tertiary  interactions.  
+
+The accuracy of the method is certainly hampered due to the variance in evolutionary constraints. Functionally more important sites are likely to be more constrained if they are important for survival and dominance of the organism.
+
+
+% Second: COntact map
+% Third: Min distance
+% Fourth: Contact map overlay
+
+  \begin{figure*}[p]
+    \centering
+    \begin{subfigure}[b]{.49\textwidth}
+      \includegraphics[width=\textwidth, trim= 4cm -2cm 4cm 2cm, clip]{../figures/fig1}
+      \caption{Figure1}
+      \label{fig:fig1}
+    \end{subfigure}~
+    \begin{subfigure}[b]{.5\textwidth}
+      \includegraphics[width=\textwidth, trim= 10cm 0 10cm 0, clip]{../figures/fig2}
+      \caption{Figure2}
+      \label{fig:fig2}
+    \end{subfigure}\\
+    \begin{subfigure}[b]{.49\textwidth}
+      \includegraphics[width=\textwidth, trim= 4cm -2cm 4cm 2cm, clip]{../figures/fig3}
+      \caption{Figure3}
+      \label{fig:fig3}
+    \end{subfigure}~
+      \begin{subfigure}[b]{.5\textwidth}
+      \includegraphics[width=\textwidth, trim= 10cm 0cm 10cm 0, clip]{../figures/fig4}
+      \caption{Figure4}
+      \label{fig:fig4}
+    \end{subfigure}%
+    \caption{Figure of figures}
+    \label{fig:init_figures}
+  \end{figure*}
+
+
 \bibliography{references}
 \end{multicols*}
 \end{document}

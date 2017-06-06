@@ -1,0 +1,239 @@
+------------------------------
+- Lecture 1: Module Overview
+------------------------------
+How determine genome sequence of 10^9 bases when we can only read ca 500 bases
+at a time?
+  Chromosome, BACs, Tiling set, shotgun sequence + assembly -> contigs, assembly
+
+Name two issues with whole genome shotgun method
+  Cloning bias
+  Assembly prone to mistakes (lots)
+
+Describe the Mate-pairs method
+  Mark both ends, link together circularly and shear
+  Sequence inwards from new two ends. 
+
+------------------------------
+- Lecture 2: Next-gen sequencing
+------------------------------
+
+Roughly how many bases can Solexa sequence per run? Compare this to other
+techniques.
+  
+
+How long does single-read solexa take?
+  3h prep
+  4 days DNA -> data
+  Also says 8 days on other slide? 
+
+How is a DNA library made?
+  DNA-frag,emts -> blunting by fill-in and exonuclease -> Phosphorylation ->
+  addition of A-overhang -> ligation to adapters
+
+How many bases can Solexa sequence per run?
+  ~300 Gbases
+
+What is single molecule real-time sequencing?
+  Shoot laser while sequencing. Find methylated bp???
+
+Scoring using log-likelihood
+
+What is BLOSUM?
+  Score matrix based on prevalence of amino acids
+
+------------------------------
+- Lecture 3: Sequence alignment, part II
+------------------------------
+
+Dynamic programming
+
+An alignment is a path through a finite state machine
+Can also use dynamic programming for other types of alignments, i.e. gene
+function
+
+What can be done to improve efficiency in dynamic programming?
+  We don't need to know all of the intron sequences, so we can cut away most of
+    it. Piece together exons. 
+  Banded genetic programming. Don't compute whole matrix.
+
+Optimum tiling paths (Important!)
+  Pick minimally overlapping set of sequence for scaffolding.
+  Evaluate s = max_j |_j<i s_j q_i - g_ij
+  Keep pointer to best element j, then traceback
+
+What are the penalties in OTPs?
+  Abut: 0, Greater overlap / gap -> higher penalty
+  Gap cost > overlap cost
+  Banding: don't consider seqs farther away than distance d
+
+Explain BAC shotgun assembly
+  100-150 kb long BAC clones
+  Check for repeat content
+  Pairwise alignment
+  Assemble highest-scoring first
+  Assemble repeat containing
+  Paired-end important for contigs 
+  Generate consensus
+  Examine / edit / iterate
+
+What is N50?
+  The shortest sequence length at 50% of the genome
+  Length = 54. Longest contigs = 10+9+8 = 27. => 8!
+
+Describe the prokaryotic genome
+  Circular, no introns, high gene density
+
+What is in the human genome?
+  95 % intergenic sequence
+  Selfish DNA (transposons / retroviruses)
+
+How much of the genokme is repetitive?
+  50 %
+
+What are CpG islands?
+  C modified by methylation
+  Frequently mutates to T
+  CpG normally 5-fold underrepresented from genomic GC content in intergenic
+  regions. More frequent where methylation is supressed.
+
+What are transposons?
+  DNA sequence which can change position within the genome. 
+
+What can be done with repeats?
+  Filtering, repeat masker
+  Problem: false positive rate
+
+What are problems with removing adapters?
+
+
+------------------------------
+- Lecture 6: Annotation
+------------------------------
+Definition of gene tricky
+
+What types of genes are there?
+  Protein coding
+  Non-coding (structural or regulating)
+  Pseudogenes
+
+What is a pribnow box?
+  Standard promoter sequence in prokaryotes
+
+What is a TATA box?
+  Often promoter sequence denoting motif. 24 % of all genes.
+
+What is UTR?
+  Untranslated region. Part of gene.
+  5': Transcription start site; leader sequence. Hard to define.
+  3': Contains poly-adenylation signal. 70 % of all pre-mRNAs contain AAUAAA.
+  Target sequence for microRNAs. Also contain regulatory seqyebces for
+  transcript stability or translation efficiency.
+
+Explain splicing
+  Tightly controlled. Donor / acceptor site consensus sequences are highly
+  conserved between species.
+
+How to find human genes?
+  Human cDNA or EST sequences (EST: expressed sequence tag; short cDNA)
+  Vertevrate cDNA or EST sequences
+  Similarity in genome to known proteins
+  Ab initio
+  Combine predictions from multiple approaches
+
+GeneWise. GenScan. Maker. SNAP.
+
+What is a reading frame?
+  Conversion of DNA-sequence into sets of triplets, coding for different amino
+  acids. A shift in this shifts the whole sequence.
+
+What is a frameshift mutation? 
+  Mutation making nucleotides not divisible by three. Can alter the reading
+  frame.
+
+What are CEGs?
+  Core Eukaryotic Genes. Required for eukar. life. 
+
+tRNA
+  Partial structure pred: quick, high FDR
+  Full structure pred: slow, accurate
+
+miRNA
+  pre-miRNA forms stem-loop structure
+  Conserved across species
+  Homologous to target genes' 3' UTR
+  Annotation visa sec. structure pred. 
+
+Pseudogenes
+  Often resembling (imperfect copies of) genes.
+  May lack: complete ORF, functional splice sites, regulatory regions
+  May be transcribed
+
+How to find pseudogenes?
+  Search for sequence sim. to known genes. Check for stop codons.
+  Search for sim. to known protein structures (and contains stop)
+
+Name some open issues in annotation
+  Coding exon prediction -- accuracy
+  Non-coding exon prediction
+  polyA site prediction
+  TF binding site identification
+  Alternative splicing
+  Pseudogenes
+  Nested/overlapping genes
+  Small structural RNA gens (e.g. miRNA)
+  Replication origins.  
+
+Describe the Tuxedo pipeline
+  Tophat: align reads to genome (via bowtie)
+  Cufflinks: assemble transcripts and calc. expression
+  Cuffdiff: find DE
+  CummeRbund: visualise
+
+Explain what is wrong with the Minimum Path Cover Graph
+
+Abundance
+
+------------------------------
+- Lecture 9: More annotation
+------------------------------
+
+What is the 30 % rule?
+  > than this => same 3D structure 
+  BLAST: bidirectional best-hit
+
+How does GO works?
+  Is, part of
+
+------------------------------
+- Lecture 10: Comparative genomics
+------------------------------
+
+What is special about multiple alignment?
+  Heuristic. 
+  HMMs, e.g. HMMer
+
+What is synteny?
+  Recently diverged organisms have similar genetic codes (genes at same places)
+
+What are Hox genes?
+  Genes necessary for development.
+
+Explain difference between homolog, ortholog, paralog
+  Homo = {Ortho: between species; para: within species}
+
+Alignment says something about evolutionary relationship
+
+Tree building
+
+33 % of gene expression changes between species.
+
+Hourglass model
+
+
+
+
+
+
+
+
+

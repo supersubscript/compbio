@@ -31,3 +31,19 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+
+*.tif
+*.jar
+
+./thesis/data/clv3_complete/Costanza_versions
+./thesis/data/clv3_complete/Costanza_configs
+./thesis/data/clv3_complete/newStacks
+./thesis/data/clv3_complete/plant([0-9])[0-9]/*.tif
+./thesis/data/clv3_complete/plant([0-9])[0-9]/MAX\ intensity
+./thesis/data/clv3_complete/plant([0-9])[0-9]/segmented_costanza
+./thesis/data/clv3_complete/plant([0-9])[0-9]/segmented_MARS
+./thesis/data/clv3_complete/plant([0-9])[0-9]/Thumbs.db
+./thesis/data/clv3_complete/plant([0-9])[0-9]/Results/*.tif
+./thesis/data/clv3_complete/PNAS/plant([0-9])[0-9]/nuclear_segmentation_tiffs
+./thesis/data/clv3_complete/PNAS/plant([0-9])[0-9]/processed_tiffs
+./thesis/data/clv3_complete/PNAS/plant([0-9])[0-9]/segmentation_tiffs

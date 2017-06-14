@@ -2,39 +2,39 @@
 % experimentally solved crystal structure of a protein sequence from the
 % alignment. 
 
-% command: test_constraints('DYR_ECOLI_e3_n2_m40','DYR_ECOLI','3','1RX2.pdb')
+% command: faints('DYR_ECOLI_e3_n2_m40','DYR_ECOLI','3','1RX2.pdb')
 % here evalue needs to be a string, like '3'. 
 
-function test_constraints_PC(path,protein_name,evalue,pdbFilename, type) %type should be 'P', 'G' or 'M'
+function test_constraints_PC(path,protein_name,evalue,pdbFilename, type, theta, pc_weight) %type should be 'P', 'G' or 'M'
 set(0,'DefaultFigureColor','w')
  
 % input file names
-indexMappingFilename = horzcat(path,'.indextableplus')
+indexMappingFilename = horzcat(path, '.indextableplus');
 
 if type == 'P'
-    DIScoreFilename = horzcat(path,'_L2_DIScores.csv');  
+    DIScoreFilename = horzcat(path, '_L2_DIScores.csv');  
 else
     if type == 'G'
-    DIScoreFilename = horzcat(path,'_GREMLIN_DIScores.csv');  
+    DIScoreFilename = horzcat(path, '_GREMLIN_DIScores.csv');  
     else
-    DIScoreFilename = horzcat(path,'_DIScores.csv');  
+    DIScoreFilename = horzcat(path, '_DIScores.csv');  
     end
 end
 
 % output file names
 if type == 'P'
-    DIoutputfile = horzcat(path,'_L1_PSEUDO_DIScoresCompared.csv');  
+    DIoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_L1_PSEUDO_DIScoresCompared.csv');  
 else
     if type == 'G'
-    DIoutputfile = horzcat(path,'_GREMLIN_DIScoresCompared.csv');  
+    DIoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_GREMLIN_DIScoresCompared.csv');  
     else
-    DIoutputfile = horzcat(path,'_DIScoresCompared.csv');  
+    DIoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_DIScoresCompared.csv');  
     end
 end
-
-FPoutputfile = horzcat(path,'_FPplot');
-FPoutputfile2 = horzcat(path,'_SeqDists');
-Cmapoutputfile = horzcat(path,'_Cmap');
+theta
+FPoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_FPplot');
+FPoutputfile2 = horzcat(path, 'theta_', theta, '_pc_weight_', pc_weight, '_SeqDists');
+Cmapoutputfile = horzcat('../figures/', path, 'theta_', theta, '_pc_weight_', pc_weight, '_Cmap');
 
 % parameters
 BATCH_MODE = 'no'; %use 'yes' to inhibit window dependant functions
@@ -52,7 +52,7 @@ NON_EIC_COLOR = [.0,.0,.0];
 PREDICTION_CONTACT_COLOR = [.0,1.0,.0];
 
 %read in the index mapping file
-fid = fopen(indexMappingFilename)
+fid = fopen(indexMappingFilename)   
 fgetl(fid); %discard header
 uniprotIndexTable = textscan(fid,'%*s %c %c %s %s %s %c %c %s %s %s %s %s %s %s'); %aa ss_code ss_conf msa_ind msa_cons% msa_cons in_const atom# chain prot_coord aa xpos ypos zpos
 fclose(fid);
@@ -240,22 +240,23 @@ if (strcmp(BATCH_MODE,'yes') ~= 1)
 	set(gca,'YDir','reverse');
 	set(gca,'DataAspectRatio',[1,1,1]);
 	[plotRows,plotCols] = find(crystalInteractions);
+    csvwrite('crystal_contacts.csv', [plotRows,plotCols]);
 	plot(plotRows,plotCols,'o','MarkerSize',6,'MarkerFaceColor',CRYSTAL_CONTACT_COLOR,'MarkerEdgeColor',CRYSTAL_CONTACT_COLOR);
-    title('unknown')           
 	if (exist('predictedPDBFilename'))
 		[plotRows,plotCols] = find(predictionInteractions);
-		plot(plotRows,plotCols,'s','MarkerSize', 8, 'MarkerEdgeColor',PREDICTION_CONTACT_COLOR);
+		plot(plotRows,plotCols,'s','MarkerSize',8,'MarkerEdgeColor',PREDICTION_CONTACT_COLOR);
 	end
 	[plotRows,plotCols] = find(EIC_Pair);
+    csvwrite('prediction_contacts.csv', [plotRows,plotCols]);
     % plotRows = plotRows(33:end) - 9;
     % plotCols = plotCols(33:end) - 9;
 	plot(plotRows,plotCols,'*','MarkerSize',4,'MarkerFaceColor',EIC_COLOR,'MarkerEdgeColor',EIC_COLOR);
 	xlabel(['number of constraints = ' num2str(size(plotRows,1)/2)]);
 	rectangle('position',[alignmentStartOffset - 0.5,alignmentStartOffset - 0.5,alignmentEndOffset - alignmentStartOffset + 1,alignmentEndOffset - alignmentStartOffset + 1]);
 	title(sprintf('%s, red e%s alignment, grey %s residues < %.2f A apart',protein_name,evalue,pdbFilename,RESIDUE_PROXIMITY_THRESHOLD),'Interpreter','none')
-	eval(['print -dpdf -f' ' ' horzcat(Cmapoutputfile,'_',num2str(CONTACT_MAP_EIC_COUNT))]);
-    %eval(['print -dpdf -f' num2str(figurehandle2) ' ' FPoutputfile]);
-	%saveas(figurehandle4,[protein_name '_ContactMap.fig'],'fig');
+	eval(['print -dpdf -f'  ' ' horzcat(Cmapoutputfile,'_',num2str(CONTACT_MAP_EIC_COUNT))]);
+    eval(['print -dpdf -f' ' ' FPoutputfile]);
+%	saveas(figurehandle4,[protein_name '_ContactMap.fig'],'fig');
 end
 %exit
 end %function

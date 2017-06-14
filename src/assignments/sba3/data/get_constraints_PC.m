@@ -106,15 +106,13 @@ end
 
 DIScores(DIScores(:,2) == 0, : ) = []; %removes 0 values
 DIScores(DIScores(:,1) >=  length(uniprot_msa_cons), :  ) = []; %removes 0 values
-
 uniprot_msa_cons 
-
 max(DIScores(:,2))
 
 DIScores(:,5) = uniprot_msa_cons(DIScores(:,1));
 DIScores(:,6) = uniprot_msa_cons(DIScores(:,2));
 
-csvwrite(DIScoreFilename,DIScores);
+csvwrite(DIScoreFilename, DIScores);
 
 % make predicted constraint lots
 predicted_constraint = zeros(SeqLength,SeqLength);

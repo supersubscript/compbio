@@ -2,24 +2,23 @@
 % It takes in a protein sequence alignmnet, which will always be a .fas
 % file, and analyzes the covariance structure of the sequences. 
 
-function Frob = covariance_analysis2(msa_fasta_filename, seqid_of_interest, outputfile, pseudocount_weight, l2, apc)
+function Frob = covariance_analysis2(msa_fasta_filename, seqid_of_interest, outputfile, pseudocount_weight, l2, apc, theta, pc_weight, protein)
 % example of how to call the function: covariance_analysis('DYR_ECOLI_e3_n2_m40.fas','DYR_ECOLI','DYR_ECOLI_e3_n2_m40_MI_DIs.txt')
-
 % parameters
-theta = 0.3; % this is for the sequence weighting - if theta = 0.3 then more than 70% identical. 
+% theta = theta; % this is for the sequence weighting - if theta = 0.3 then more than 70% identical. 
 
 % function calls
-[Pij_true, Pi_true, alignment_width, q, encoded_seq_of_interest, focus_to_uniprot_offset_map, W] = read_alignment(msa_fasta_filename, seqid_of_interest, theta);
+[Pij_true, Pi_true, alignment_width, q, encoded_seq_of_interest, focus_to_uniprot_offset_map, W] = read_alignment(msa_fasta_filename, seqid_of_interest, theta, pc_weight, protein);
 [Pij, Pi] = with_pc(Pij_true, Pi_true, pseudocount_weight, alignment_width, q);
 number2letter_map = create_number2letter_map();
 C = Compute_C_gap(Pij, Pi, alignment_width, q);  
 
-lambda = 0.001;
+lambda = 0.001; 
 if l2 == 'Y'
 	penalty =  lambda * eye(length(C),length(C));%l2 reg
 	C = (penalty + 0.25 *C^2)^0.5 + 0.5 *C ;
 end
-
+theta
 invC = inv(C);
 for i=1:(alignment_width)
     for j=(i):alignment_width
@@ -53,23 +52,27 @@ end
 fclose(fp);
 end
 
-% these first two functions (read_alignment and read_alignment_fasta) simply
+% these first two functions (read_alignment and read_alignment_fasta simply
 % count the frequency with which each amino acid occurs in each column, and
 % with which each pair of amino acids occurs in each pair of columns. 
 
-function [Pij_true, Pi_true, alignment_width, q, encoded_seq_of_interest, focus_to_uniprot_offset_map, W] = read_alignment(msa_fasta_filename, seqid_of_interest, theta)
+function [Pij_true, Pi_true, alignment_width, q, encoded_seq_of_interest, focus_to_uniprot_offset_map, W] = read_alignment(msa_fasta_filename, seqid_of_interest, theta, pc_weight, protein)
 % this is the call to the data cleaning function read_alignmnet_fasta
-[encoded_focus_alignment, focus_index_of_interest, focus_to_uniprot_offset_map] = read_alignment_fasta(msa_fasta_filename, seqid_of_interest);
+[encoded_focus_alignment, focus_index_of_interest, focus_to_uniprot_offset_map] = read_alignment_fasta(msa_fasta_filename, seqid_of_interest, theta, pc_weight);
 encoded_seq_of_interest = encoded_focus_alignment(focus_index_of_interest,:);
 [alignment_height,alignment_width] = size(encoded_focus_alignment);
 W = ones(1, alignment_height);
 if(theta > 0.0)   
     W = (1./(1+sum(squareform(pdist(encoded_focus_alignment, 'hamm') < theta))));    
 end
+output = horzcat('/home/henrik/compbio/src/assignments/sba3/figures/', protein, '_hist_theta_', num2str(theta), '_pc_', num2str(pc_weight), '.pdf'); 
+% output = '/home/henrik/compbio/src/assignments/sba3/figures/';
 
 Meff=sum(W); % effective number of sequence in alignment counted using sequence weights
-
+figure
 hist(W,200)
+eval(['print -dpdf -f' ' ' output]);
+
 q = max(max(encoded_focus_alignment));
 Pij_true = zeros(alignment_width, alignment_width, q, q);
 Pi_true = zeros(alignment_width, q);
@@ -78,7 +81,7 @@ Pi_true = zeros(alignment_width, q);
 for j=1:alignment_height
 	for i=1:alignment_width
 		Pi_true(i, encoded_focus_alignment(j, i)) = Pi_true(i, encoded_focus_alignment(j, i)) + W(j);
-    end
+	end
 end
 Pi_true = Pi_true/Meff;
 
@@ -104,7 +107,7 @@ end
 end
 
 % (this just does some preprocessing of the data) . 
-function [encoded_focus_alignment, focus_index_of_interest, focus_to_uniprot_offset_map] = read_alignment_fasta(msa_fasta_filename, seqid_of_interest)
+function [encoded_focus_alignment, focus_index_of_interest, focus_to_uniprot_offset_map] = read_alignment_fasta(msa_fasta_filename, seqid_of_interest, theta, pc_weight)
 % sorts out ambiguous resiudes and how to handle them. 
 METHOD_TO_RESOLVE_AMBIGUOUS_RESIDUES = getenv('DI_METHOD_TO_RESOLVE_AMBIGUOUS_RESIDUES'); % 1 = change them to gaps .. 2 = mask entire sequence
 if (size(METHOD_TO_RESOLVE_AMBIGUOUS_RESIDUES,2) == 0)

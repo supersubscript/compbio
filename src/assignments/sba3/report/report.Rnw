@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[11pt]{article}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage[a4paper]{geometry}
@@ -40,6 +40,7 @@
 \addtolength{\evensidemargin}{-.35in}
 \addtolength{\textwidth}{.7in}
 \usepackage{multicol}
+\usepackage{afterpage}
 
 % Stephen's stuff
 \newcommand{\R}{\texttt{R}}
@@ -93,6 +94,8 @@ stringstyle=\color{Red},        % string literal style
 escapeinside={\%*}{*)},         % if you want to add a comment within your code
 morekeywords={*,...}            % if you want to add more keywords to the set
 } 
+\usepackage{graphicx}
+
 
 
 %%% Document specific
@@ -143,7 +146,67 @@ Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
 <<codeblock,include = F, echo = F, warning = F>>=
 @
 \section*{Exercises}
-\subsection*{1}
+  \begin{figure*}[p]
+    \centering
+    \phantom{p}
+    \vspace{-6cm}
+    \begin{subfigure}[b]{.49\textwidth}
+      \includegraphics[width=\textwidth, trim= 4cm 9.5cm 4cm 4cm, clip]{../figures/this_thing_histogram}
+      \caption{ }
+      \label{fig:human_fig1}
+    \end{subfigure}~
+    \begin{subfigure}[b]{.5\textwidth}
+      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{../figures/CADH1_HUMAN_e3_n2_m40_Predicted_Constraints}
+      % \includegraphics[width=\textwidth, trim= 10cm 0 10cm 0, clip]{../figures/fig2}
+      \caption{ }
+      \label{fig:human_fig2}
+    \end{subfigure}\\
+    \begin{subfigure}[b]{.49\textwidth}
+      \includegraphics[width=\textwidth, trim= 2cm 7cm 2cm 0cm, clip]{../figures/CADH1_HUMAN_e3_n2_m40_FPplot}
+      \caption{ }
+      \label{fig:human_fig3}
+    \end{subfigure}~
+      \begin{subfigure}[b]{.5\textwidth}
+      % \includegraphics[width=\textwidth, trim= 10cm 0cm 10cm 0, clip]{../figures/fig4 }
+      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{../figures/CADH1_HUMAN_e3_n2_m40_Cmap_200}
+      \caption{ }
+      \label{fig:human_fig4}
+    \end{subfigure}%
+    \caption{Figure of figures}
+    \label{fig:init_figures}
+  \end{figure*}
+
+
+  \begin{figure*}[p]
+    \centering
+    \phantom{p}
+    \vspace{-6cm}
+    \begin{subfigure}[b]{.49\textwidth}
+      \includegraphics[width=\textwidth, trim= 4cm 9.5cm 4cm 4cm, clip]{../figures/DYR_ECOLI_e3_n2_m40_histogram}
+      \caption{ }
+      \label{fig:fig1}
+    \end{subfigure}~
+    \begin{subfigure}[b]{.5\textwidth}
+      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{../figures/DYR_ECOLI_e3_n2_m40_Predicted_Constraints}
+      % \includegraphics[width=\textwidth, trim= 10cm 0 10cm 0, clip]{../figures/fig2}
+      \caption{ }
+      \label{fig:fig2}
+    \end{subfigure}\\
+    \begin{subfigure}[b]{.49\textwidth}
+      \includegraphics[width=\textwidth, trim= 2cm 7cm 2cm 0cm, clip]{../figures/DYR_ECOLI_e3_n2_m40_FPplot}
+      \caption{ }
+      \label{fig:fig3}
+    \end{subfigure}~
+      \begin{subfigure}[b]{.5\textwidth}
+      % \includegraphics[width=\textwidth, trim= 10cm 0cm 10cm 0, clip]{../figures/fig4 }
+      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{../figures/DYR_ECOLI_e3_n2_m40_Cmap_200}
+      \caption{ }
+      \label{fig:fig4}
+    \end{subfigure}%
+    \caption{Figure of figures}
+    \label{fig:init_figures}
+  \end{figure*}
+
 % this code reads in the output of get_constraints.m and compares it to the
 % experimentally solved crystal structure of a protein sequence from the
 % alignment. 
@@ -155,41 +218,39 @@ Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
 % 4: 	plot(plotRows,plotCols,'*','MarkerSize',4,'MarkerFaceColor',EIC_COLOR,'MarkerEdgeColor',EIC_COLOR);
 
 % Figure 1 shows the distribution of normalised frequency of the different amino acids in each respective column.
-\Cref{fig:fig1} shows the frequency distribution of the weighted pairwise distances between sequences, given that their similarity fraction is $> 70 \%$.
+%1
+\paragraph{1}
+\Cref{fig:fig1} shows the frequency distribution of the weighted pairwise matches between sequences, given that their similarity fraction is $> 70 \%$. For every sequence, the number of \textit{other} sequences with a $> 70~\%$ similarity to this adds an increment of one to the parameter $d_i$ in the equation 
+\begin{equation*}
+  W_i = \dfrac{1}{1 + d_i}.
+\end{equation*}
+ That is, we downscale for weights for the sequences that are high in abundance (given our similarity threshold), since they add little additional information to what is already known. This means that the histogram we see in \cref{fig:fig1} is given in fractions of $1, 1/2, 1/3, \ldots$, as this shows the frequency distribution of these weights.
+
 \Cref{fig:fig2} shows the predicted protein contact map between the residues in each sequence, i.e.\ how correlated certain positions are with each other based on the evolutionarily inferred contact (EIC) scores. \Cref{fig:fig3} in turn depicts the minimal distance between the amino acids in the crystal as a function of the corresponding DI rank. Lastly, \cref{fig:fig4} shows the overlap between the experimentally observed structure and the predicted tertiary  interactions.  
 
-The accuracy of the method is certainly hampered due to the variance in evolutionary constraints. Functionally more important sites are likely to be more constrained if they are important for survival and dominance of the organism.
+%2
+\paragraph{2}
+The accuracy of the method is directly dependent on the quality of the sequence alignment. As these often utilize multiple heuristic simplification in order to improve speed, longer sequences are bound to align improperly. While functionally important segments should be better conserved and align better, there is always the risk of error in this, which makes the method as a whole reliant both on the alignment method used, and the numbers of sequences aligned. Using more elaborate approaches such as direct dynamic programming is instead feasible when analysing smaller and/or fewer proteins. While cumbersome and time-consuming, one can also, by using prior information of how the sequences in question differ, tailor the alignment according to data at hand in order to improve upon this. Another obvious problem is the quality of the experimental correlations, which depends inherently on the sample size and resolution of the protein in question. This might obfuscate lowly correlated but functionally important residues, which affect the overall structure and stability by long-range interactions or simply aid the protein in folding into the native state. Lastly, sequence alignment data does not take into account environmental factors, such as how certain parts of the protein might interact with other molecules in a way such that protein functionality invisible in the primary sequence is conserved or maintained. If this is the case, and this functionality is not conserved spatially in relation to other residues, this might as well be obfuscated. In other words, as a high score indicates contact, a low score must not necessarily mean no contact between residues.
 
+% REWRITE ^
 
-% Second: COntact map
-% Third: Min distance
-% Fourth: Contact map overlay
+% 3
+\paragraph{3}
+% Write this
 
-  \begin{figure*}[p]
-    \centering
-    \begin{subfigure}[b]{.49\textwidth}
-      \includegraphics[width=\textwidth, trim= 4cm -2cm 4cm 2cm, clip]{../figures/fig1}
-      \caption{Figure1}
-      \label{fig:fig1}
-    \end{subfigure}~
-    \begin{subfigure}[b]{.5\textwidth}
-      \includegraphics[width=\textwidth, trim= 10cm 0 10cm 0, clip]{../figures/fig2}
-      \caption{Figure2}
-      \label{fig:fig2}
-    \end{subfigure}\\
-    \begin{subfigure}[b]{.49\textwidth}
-      \includegraphics[width=\textwidth, trim= 4cm -2cm 4cm 2cm, clip]{../figures/fig3}
-      \caption{Figure3}
-      \label{fig:fig3}
-    \end{subfigure}~
-      \begin{subfigure}[b]{.5\textwidth}
-      \includegraphics[width=\textwidth, trim= 10cm 0cm 10cm 0, clip]{../figures/fig4}
-      \caption{Figure4}
-      \label{fig:fig4}
-    \end{subfigure}%
-    \caption{Figure of figures}
-    \label{fig:init_figures}
-  \end{figure*}
+% 4
+\paragraph{4}
+The parameter $\theta$ sets, as previously hinted, the similarity percentage cutoff between sequences. In our case, as it is set to $\theta = 0.3$, only sequences with more than $1.0 - 0.3 = 0.7 = 70~\%$ similarity will be processed when calculating the weights. This makes it so that, according to the aforementioned equation, sequences which are very similar will add less to the corresponding weights, as the information is duplicated in several parts of the input data, which here are the homologues. By doing so, we smoothen our distribution of weights, and thus makes it more variable due to smaller variation.
+
+% question 5
+\paragraph{5}
+Pseudocounts are used for smoothing distributions in particular when some specific probabilistic outcomes are unlikely to occur in relation to the size of the data set. In the case of amino acids, this could be to add and increment to the number of times a residue has been observed. For each amino acid, a different increment would be attributed, based on a prior estimates of how likely they are to appear. This approach is done in order to avoid sharp peaks in the distribution of values in for example a position weight matrix, where small changes in the number of observations would have large effects the resulting value, in the case where pseudocounts are not used. In practice, pseudocounts can be set to calculate the posterior estimator of the mean as
+$$
+\theta^{PME}_i = \dfrac{n_i + \alpha_i}{|\mathbf n| + |\mathbf \alpha |}
+$$
+where $n_i$ is the number of observations of component $i$, and $\alpha$ is the pseudocounts for that component~\cite{durbin1998biological}.
+
+% The pseudocounts roughly reflect the chances of seeing the amino acid in a context in which we have not previously seen it. A low pseudocount for an amino acid means that the amino acid is not often seen in a context in which some other amino acid has already been observed. If the pseudocount is lower than we would expect from the background probabilities, then the amino acid must be more highly conserved than other amino acids. Using this reasoning, we expect that G, P, W, and C are often highly conserved. Using symmetric reasoning for pseudocounts that are higher than expected from the background probabilities,   we also expect that M, Q, and S are less conserved than other amino acids.
 
 
 \bibliography{references}

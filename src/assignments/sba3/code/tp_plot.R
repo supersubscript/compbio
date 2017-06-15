@@ -9,22 +9,33 @@ library(limma)
 palette(brewer.pal(n = 8, name = "Set1"))
 lw.s = 2
 par(lwd=lw.s, cex = 1.5, ps = 15)
+library(prodlim)
 
-real = read.csv("../data/crystal_contacts.csv", sep = ",")
-pred = read.csv("../data/prediction_contacts.csv", sep = ",")
 
-TP = 0
-FP = 0
-for(ii in 1:nrow(pred)){
-  added = FALSE
-  for(jj in 1:nrow(real)){
-    if(all(unlist(pred[ii, ]) == unlist(real[jj,]))) {
-      TP = TP +1
-      added = TRUE
-      break
-    }
-  }
-  if(!added)
-    FP = FP + 1
-}
+real.files = list.files("../figures/", pattern = "crystal_contacts.csv", full.names = T)
+real.files = grep("DYR", real.files, value = T)
+pred.files = list.files("../figures/", pattern = "prediction_contacts.csv", full.names = T)
+pred.files = grep("DYR", pred.files, value = T)
+
+results = sapply(1:length(real.files), function(x){
+  real = read.csv(real.files[x], sep = ",")
+  real = read.csv(real.files[x], sep = ",")
+  # real = read.csv("../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_crystal_contacts.csv", sep = ",")
+  # pred = read.csv("../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_prediction_contacts.csv", sep = ",")
+  TP = sum(!is.na(row.match(pred, real))) # Is in both
+  FP = sum(is.na(row.match(pred, real)))  # Is in pred but not in real
+  FN = sum(is.na(row.match(real, pred)))  # Is in real but not in pred
+  
+  sens = TP / (TP + FN)
+  prec = TP / (TP + FP)
+  list(TP = TP, FP = FP, FN = FN, sens=sens, prec=prec)    
+})
+
+# x is PC-weight, y is 
+prec = results["prec",]
+sens = results["sens",]
+prec.m = matrix(prec, ncol=11, nrow=11, byrow=T)
+sens.m = matrix(sens, ncol=11, nrow=11, byrow=T)
+
+
 

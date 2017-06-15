@@ -2,13 +2,13 @@
 % It takes in a protein sequence alignmnet, which will always be a .fas
 % file, and analyzes the covariance structure of the sequences. 
 
-function Frob = covariance_analysis2(msa_fasta_filename, seqid_of_interest, outputfile, pseudocount_weight, l2, apc, theta, pc_weight, protein)
+function Frob = covariance_analysis2(msa_fasta_filename, seqid_of_interest, outputfile, pseudocount_weight, l2, apc, theta, pc_weight, protein, name)
 % example of how to call the function: covariance_analysis('DYR_ECOLI_e3_n2_m40.fas','DYR_ECOLI','DYR_ECOLI_e3_n2_m40_MI_DIs.txt')
 % parameters
 % theta = theta; % this is for the sequence weighting - if theta = 0.3 then more than 70% identical. 
 
 % function calls
-[Pij_true, Pi_true, alignment_width, q, encoded_seq_of_interest, focus_to_uniprot_offset_map, W] = read_alignment(msa_fasta_filename, seqid_of_interest, theta, pc_weight, protein);
+[Pij_true, Pi_true, alignment_width, q, encoded_seq_of_interest, focus_to_uniprot_offset_map, W] = read_alignment(msa_fasta_filename, seqid_of_interest, theta, pc_weight, protein, name);
 [Pij, Pi] = with_pc(Pij_true, Pi_true, pseudocount_weight, alignment_width, q);
 number2letter_map = create_number2letter_map();
 C = Compute_C_gap(Pij, Pi, alignment_width, q);  
@@ -56,7 +56,7 @@ end
 % count the frequency with which each amino acid occurs in each column, and
 % with which each pair of amino acids occurs in each pair of columns. 
 
-function [Pij_true, Pi_true, alignment_width, q, encoded_seq_of_interest, focus_to_uniprot_offset_map, W] = read_alignment(msa_fasta_filename, seqid_of_interest, theta, pc_weight, protein)
+function [Pij_true, Pi_true, alignment_width, q, encoded_seq_of_interest, focus_to_uniprot_offset_map, W] = read_alignment(msa_fasta_filename, seqid_of_interest, theta, pc_weight, protein, name)
 % this is the call to the data cleaning function read_alignmnet_fasta
 [encoded_focus_alignment, focus_index_of_interest, focus_to_uniprot_offset_map] = read_alignment_fasta(msa_fasta_filename, seqid_of_interest, theta, pc_weight);
 encoded_seq_of_interest = encoded_focus_alignment(focus_index_of_interest,:);
@@ -65,13 +65,16 @@ W = ones(1, alignment_height);
 if(theta > 0.0)   
     W = (1./(1+sum(squareform(pdist(encoded_focus_alignment, 'hamm') < theta))));    
 end
-output = horzcat('/home/henrik/compbio/src/assignments/sba3/figures/', protein, '_hist_theta_', num2str(theta), '_pc_', num2str(pc_weight), '.pdf'); 
+output = horzcat('/home/henrik/compbio/src/assignments/sba3/figures/', name, '_theta_', num2str(theta), '_pc_weight_', num2str(pc_weight), '_histogram_.pdf'); 
 % output = '/home/henrik/compbio/src/assignments/sba3/figures/';
 
 Meff=sum(W); % effective number of sequence in alignment counted using sequence weights
-figure
+
+f = figure('visible','off');
+%figure 
 hist(W,200)
-eval(['print -dpdf -f' ' ' output]);
+saveas(f,output,'pdf')
+%eval(['print -dpdf -f' ' ' output]);
 
 q = max(max(encoded_focus_alignment));
 Pij_true = zeros(alignment_width, alignment_width, q, q);

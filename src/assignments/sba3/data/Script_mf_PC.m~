@@ -18,14 +18,12 @@
 
 % last param is theta
 tt = [0:0.1:1];
-parfor ii = 1:1024
-    
-for indxone=1:length(tt)
-    for indxtwo=1:length(tt)
-        theta = indxone;
-        pc_weight = indxtwo;
-        covariance_analysis2(horzcat(name, '.fas'), protein, horzcat(name, '_MI_DIs_', protein, '_theta_', num2str(theta), '_pc_weight_', num2str(pc_weight), '.txt' ), pc_weight,'N','Y', theta, pc_weight, protein);
-        get_constraints_PC(name,'M','FROB')
-        test_constraints_PC(name, protein, number, exper, 'M', num2str(theta), num2str(pc_weight))
-    end
-end
+for t_ind = 4:4 %1:length(tt)
+    for pc_ind = 6:6
+theta = .3;
+pc_weight = .5;
+covariance_analysis2(horzcat(name, '.fas'), protein, horzcat(name, '_MI_DIs_', protein, '_theta_', num2str(theta), '_pc_weight_', num2str(pc_weight), '.txt' ), pc_weight,'N','Y', theta, pc_weight, protein, name);
+get_constraints_PC(name,'M','FROB', num2str(theta), num2str(pc_weight), protein)
+test_constraints_PC(name, protein, number, exper, 'M', num2str(theta), num2str(pc_weight))
+%     end
+% end

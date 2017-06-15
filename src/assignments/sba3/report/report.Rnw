@@ -145,30 +145,31 @@ module in the Computational Biology course at the University of Cambridge,
 Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
 <<codeblock,include = F, echo = F, warning = F>>=
 @
+
 \section*{Exercises}
   \begin{figure*}[p]
     \centering
     \phantom{p}
     \vspace{-6cm}
     \begin{subfigure}[b]{.49\textwidth}
-      \includegraphics[width=\textwidth, trim= 4cm 9.5cm 4cm 4cm, clip]{../figures/this_thing_histogram}
+      \includegraphics[width=\textwidth, trim = 2cm 6cm 2cm 6cm, clip]{{../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_}.pdf}
       \caption{ }
       \label{fig:human_fig1}
     \end{subfigure}~
     \begin{subfigure}[b]{.5\textwidth}
-      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{../figures/CADH1_HUMAN_e3_n2_m40_Predicted_Constraints}
+      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{{../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constraints}.pdf}
       % \includegraphics[width=\textwidth, trim= 10cm 0 10cm 0, clip]{../figures/fig2}
       \caption{ }
       \label{fig:human_fig2}
     \end{subfigure}\\
     \begin{subfigure}[b]{.49\textwidth}
-      \includegraphics[width=\textwidth, trim= 2cm 7cm 2cm 0cm, clip]{../figures/CADH1_HUMAN_e3_n2_m40_FPplot}
+      \includegraphics[width=\textwidth, trim= 2cm 7cm 2cm 0cm, clip]{{../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot}.pdf}
       \caption{ }
       \label{fig:human_fig3}
     \end{subfigure}~
       \begin{subfigure}[b]{.5\textwidth}
       % \includegraphics[width=\textwidth, trim= 10cm 0cm 10cm 0, clip]{../figures/fig4 }
-      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{../figures/CADH1_HUMAN_e3_n2_m40_Cmap_200}
+      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{{../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200}.pdf}
       \caption{ }
       \label{fig:human_fig4}
     \end{subfigure}%
@@ -176,30 +177,29 @@ Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
     \label{fig:init_figures}
   \end{figure*}
 
-
   \begin{figure*}[p]
     \centering
     \phantom{p}
     \vspace{-6cm}
     \begin{subfigure}[b]{.49\textwidth}
-      \includegraphics[width=\textwidth, trim= 4cm 9.5cm 4cm 4cm, clip]{../figures/DYR_ECOLI_e3_n2_m40_histogram}
+      \includegraphics[width=\textwidth, trim = 2cm 6cm 2cm 6cm, clip]{{../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_}.pdf}
       \caption{ }
       \label{fig:fig1}
     \end{subfigure}~
     \begin{subfigure}[b]{.5\textwidth}
-      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{../figures/DYR_ECOLI_e3_n2_m40_Predicted_Constraints}
+      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{{../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constraints}.pdf}
       % \includegraphics[width=\textwidth, trim= 10cm 0 10cm 0, clip]{../figures/fig2}
       \caption{ }
       \label{fig:fig2}
     \end{subfigure}\\
     \begin{subfigure}[b]{.49\textwidth}
-      \includegraphics[width=\textwidth, trim= 2cm 7cm 2cm 0cm, clip]{../figures/DYR_ECOLI_e3_n2_m40_FPplot}
+      \includegraphics[width=\textwidth, trim= 2cm 7cm 2cm 0cm, clip]{{../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot}.pdf}
       \caption{ }
       \label{fig:fig3}
     \end{subfigure}~
       \begin{subfigure}[b]{.5\textwidth}
       % \includegraphics[width=\textwidth, trim= 10cm 0cm 10cm 0, clip]{../figures/fig4 }
-      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{../figures/DYR_ECOLI_e3_n2_m40_Cmap_200}
+      \includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{{../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200}.pdf}
       \caption{ }
       \label{fig:fig4}
     \end{subfigure}%
@@ -217,8 +217,18 @@ Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
 % 3: 	plot(plotRows,plotCols,'o','MarkerSize',6,'MarkerFaceColor',CRYSTAL_CONTACT_COLOR,'MarkerEdgeColor',CRYSTAL_CONTACT_COLOR);
 % 4: 	plot(plotRows,plotCols,'*','MarkerSize',4,'MarkerFaceColor',EIC_COLOR,'MarkerEdgeColor',EIC_COLOR);
 
+% Output files:
+%   4 figures
+%     Histogram
+%     Cmap
+%     FPplot
+%     Predicted constraints / interactions
+%   DIScores
+%   DIscoresCompared
+%   MI_DI
+
 % Figure 1 shows the distribution of normalised frequency of the different amino acids in each respective column.
-%1
+% 1
 \paragraph{1}
 \Cref{fig:fig1} shows the frequency distribution of the weighted pairwise matches between sequences, given that their similarity fraction is $> 70 \%$. For every sequence, the number of \textit{other} sequences with a $> 70~\%$ similarity to this adds an increment of one to the parameter $d_i$ in the equation 
 \begin{equation*}

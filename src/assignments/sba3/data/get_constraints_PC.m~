@@ -22,15 +22,15 @@ end
 IndexMappingFile = horzcat(path,'.indextable');
 
 % output file name
-DIScoreFilename = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_DIScores.csv');
+DIScoreFilename = horzcat(path,protein, '_theta_', theta, '_pc_weight_', pc_weights, '_DIScores.csv');
 if type == 'G'
-	DIScoreFilename = horzcat('../figures/', path,  '_theta_', theta, '_pc_weight_', pc_weight, '_GREMLIN_DIScores.csv');
+	DIScoreFilename = horzcat(path,protein, '_theta_', theta, '_pc_weight_', pc_weights, '_GREMLIN_DIScores.csv');
 end
 if type == 'P'
-	DIScoreFilename = horzcat('../figures/', path,  '_theta_', theta, '_pc_weight_', pc_weight, '_L1_PSEUDO_DIScores.csv');
+	DIScoreFilename = horzcat(path,'../figures/',protein, '_theta_', theta, '_pc_weight_', pc_weights, '_L1_PSEUDO_DIScores.csv');
 end
      
-Predicted_Constraints_name = horzcat('../figures/', path,  '_theta_', theta, '_pc_weight_', pc_weight, '_Predicted_Constraints');
+Predicted_Constraints_name = horzcat(path, '../figures/', protein, '_theta_', theta, '_pc_weight_', pc_weights, '_Predicted_Constraints');
 
 
 % parameter values
@@ -132,6 +132,6 @@ predicted_constraint = zeros(SeqLength,SeqLength);
 	end
 	spy(predicted_constraint(1:SeqLength,1:SeqLength),'r.',8)
 	rectangle('position',[DIStart,DIStart,DIEnd-DIStart,DIEnd-DIStart]);
-	eval(['print -dpdf -f'  ' ' Predicted_Constraints_name '.pdf']);
+	eval(['print -dpdf -f'  ' ' Predicted_Constraints_name]);
 %end
 end

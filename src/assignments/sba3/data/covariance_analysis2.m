@@ -65,7 +65,7 @@ W = ones(1, alignment_height);
 if(theta > 0.0)   
     W = (1./(1+sum(squareform(pdist(encoded_focus_alignment, 'hamm') < theta))));    
 end
-output = horzcat('/home/henrik/compbio/src/assignments/sba3/figures/', name, '_theta_', num2str(theta), '_pc_weight_', num2str(pc_weight), '_histogram_.pdf'); 
+output = horzcat('/local/data/public/hpa22/compbio/src/assignments/sba3/figures/', name, '_theta_', num2str(theta), '_pc_weight_', num2str(pc_weight), '_histogram_.pdf'); 
 % output = '/home/henrik/compbio/src/assignments/sba3/figures/';
 
 Meff=sum(W); % effective number of sequence in alignment counted using sequence weights
@@ -73,7 +73,7 @@ Meff=sum(W); % effective number of sequence in alignment counted using sequence 
 f = figure('visible','off');
 %figure 
 hist(W,200)
-saveas(f,output,'pdf')
+saveas(f, output, 'pdf')
 %eval(['print -dpdf -f' ' ' output]);
 
 q = max(max(encoded_focus_alignment));

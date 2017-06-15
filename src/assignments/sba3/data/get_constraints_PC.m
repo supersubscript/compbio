@@ -10,19 +10,19 @@ set(0,'DefaultFigureColor','w')
 
 % input file name
 if type == 'G'
-	AllPairConstraintScoreFile = horzcat(path,'_GREMLIN_PROCESSED');
+	AllPairConstraintScoreFile       = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_GREMLIN_PROCESSED');
 else
     if type == 'P'
-	AllPairConstraintScoreFile = horzcat(path,'_L1_PSEUDO_PROCESSED');
+	      AllPairConstraintScoreFile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_L1_PSEUDO_PROCESSED');
     else
-        AllPairConstraintScoreFile =   horzcat(path,'_MI_DIs.txt');
+        AllPairConstraintScoreFile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_MI_DIs.txt');
     end
 end
 %IndexMappingFile = horzcat(path,'.indextable');
 IndexMappingFile = horzcat(path,'.indextable');
 
 % output file name
-DIScoreFilename = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_DIScores.csv');
+DIScoreFilename   = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_DIScores.csv');
 if type == 'G'
 	DIScoreFilename = horzcat('../figures/', path,  '_theta_', theta, '_pc_weight_', pc_weight, '_GREMLIN_DIScores.csv');
 end

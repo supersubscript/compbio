@@ -9,21 +9,21 @@ function test_constraints_PC(path,protein_name,evalue,pdbFilename, type, theta, 
 set(0,'DefaultFigureColor','w')
 
 % input file names
-indexMappingFilename = horzcat(path, '.indextableplus');
+indexMappingFilename    = horzcat(path, '.indextableplus');
 
 if type == 'P'
-    DIScoreFilename = horzcat(path, '_L2_DIScores.csv');
+    DIScoreFilename     = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight,  '_L2_DIScores.csv');
 else
     if type == 'G'
-        DIScoreFilename = horzcat(path, '_GREMLIN_DIScores.csv');
+        DIScoreFilename = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight,  '_GREMLIN_DIScores.csv');
     else
-        DIScoreFilename = horzcat(path, '_DIScores.csv');
+        DIScoreFilename = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight,  '_DIScores.csv');
     end
 end
 
 % output file names
 if type == 'P'
-    DIoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_L1_PSEUDO_DIScoresCompared.csv');
+    DIoutputfile     = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_L1_PSEUDO_DIScoresCompared.csv');
 else
     if type == 'G'
         DIoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_GREMLIN_DIScoresCompared.csv');
@@ -32,9 +32,9 @@ else
     end
 end
 theta
-FPoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_FPplot');
-EICoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_EICplot');
-FPoutputfile2 = horzcat(path, 'theta_', theta, '_pc_weight_', pc_weight, '_SeqDists');
+FPoutputfile   = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_FPplot');
+EICoutputfile  = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_EICplot');
+FPoutputfile2  = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_SeqDists');
 Cmapoutputfile = horzcat('../figures/', path, '_theta_', theta, '_pc_weight_', pc_weight, '_Cmap');
 
 % parameters

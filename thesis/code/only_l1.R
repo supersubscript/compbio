@@ -4,38 +4,24 @@ source("read_data.R")
 source("process_data.R")
 
 plants = c(2)
+plant.no = 15
 data = read.data(plant.no, map.quant = TRUE)
 
 mapping.data = data$mapping.data
 quant.data   = data$quant.data
 timepoints   = data$timepoints
 
-quant.data = lapply(quant.data, function(x) cbind(x, dist2top=rep(NA, nrow(x))))
-quant.data[[1]] = quant.data[[1]][quant.data[[1]][, 1] %in% 
-                                    get.mom(mapping.data[[1]]), ]
-
-top.cell = quant.data[[1]][order(-quant.data[[1]][,"Mean.cell.intensity"]), ][1,]
-top.coords = top.cell[2:4]
-
-quant.data[[1]][, "dist2top"] = apply(quant.data[[1]], 1, function(x) 
-  sqrt(sum((x[2:4] - top.coords)**2)))
-
+# quant.data = lapply(quant.data, function(x) cbind(x, dist2top = rep(NA, nrow(x))))
+quant.data[[1]] = quant.data[[1]][quant.data[[1]][, 1] %in% get.mom(mapping.data[[1]]), ]
 
 for (ii in 2:length(mapping.data)){
   quant.data[[ii]] = quant.data[[ii]][
     quant.data[[ii]][,1] %in% union(get.mom(mapping.data[[ii]]), get.dau(mapping.data[[ii-1]])), ]
-  top.cell = quant.data[[ii]][order(-quant.data[[ii]][,"Mean.cell.intensity"]), ][1,]
-  top.coords = top.cell[2:4]
-  quant.data[[ii]][, "dist2top"] = apply(quant.data[[ii]], 1, function(x) sqrt(sum((x[2:4] - top.coords)**2)))
 }
 
 quant.data[[length(quant.data)]] =
   quant.data[[length(quant.data)]][quant.data[[length(quant.data)]][, 1] %in% 
                                      get.dau(mapping.data[[length(mapping.data)]]), ]
-top.cell = quant.data[[length(quant.data)]][order(-quant.data[[length(quant.data)]][, "Mean.cell.intensity"]), ][1,]
-top.coords = top.cell[2:4]
-quant.data[[length(quant.data)]][, "dist2top"] = 
-  apply(quant.data[[length(quant.data)]], 1, function(x) sqrt(sum((x[2:4] - top.coords)**2)))
 
 
 # return(list(timepoints=timepoints, quant.data=quant.data))
@@ -47,28 +33,19 @@ quant.data[[length(quant.data)]][, "dist2top"] =
 # timepoints = lapply(results, "[[", "timepoints")
 # all.data =   lapply(results, "[[", "quant.data")
 all.data = quant.data  
-
-
 timepoints = unlist(timepoints)
-
-# no.clv3.nuclei = sapply(lapply(all.data, function(x) sapply(x, nrow)), function(y) t(matrix(y)))
-# no.clv3.nuclei = rbind.fill.matrix(no.clv3.nuclei)
-# no.clv3.nuclei.within = lapply(all.data, function(x) nrow(x[which(x$dist2top < 10)]))
 
 no.clv3.nuclei = unlist(lapply(all.data, nrow))
 no.clv3.nuclei.within = unlist(lapply(all.data, function(x) nrow(x[which(x$dist2top < 5), ])))
-                        
-# no.clv3.nuclei.within = sapply(lapply(all.data, function(x) sapply(x, function(z) 
-  # nrow(z[z$dist2top < 10, ]))), function(y) t(matrix(y)))
 
-par(mfrow=c(2,1))
-plot(timepoints, no.clv3.nuclei, type = "b")
-plot(timepoints, no.clv3.nuclei.within, type = "b")
+par(mfrow = c(2, 1))
+plot(timepoints[-7], no.clv3.nuclei, type = "b")
+plot(timepoints[-7], no.clv3.nuclei.within, type = "b")
 
 par(mfrow=c(5,2))
 for(ii in 1:10){
   no.clv3.nuclei.within = unlist(lapply(all.data, function(x) nrow(x[which(x$dist2top < ii), ])))
-  plot(timepoints, no.clv3.nuclei.within/no.clv3.nuclei, type = "b", main = ii, ylim=0:1)
+  plot(timepoints[-7], no.clv3.nuclei.within/no.clv3.nuclei, type = "b", main = ii, ylim=0:1)
 }
 
 ############################################

@@ -1,7 +1,11 @@
+###############################################################################
+###############################################################################
 get.mom = function(x) {unlist(lapply(x, "[[", 1))}
 get.dau = function(x) {unlist(lapply(x, "[", -1))}
 
+###############################################################################
 # Read in all the cell lines that we observe throughout the data set
+###############################################################################
 get.cell.lines = function(all.mapping.data, remove.empty = TRUE, sort.order = "n"){
   cell.lines = cbind(cbind(t(t(cbind(lapply(all.mapping.data[[1]], "[[", 1), 
                                      lapply(all.mapping.data[[1]], "[", -1))))), 
@@ -59,21 +63,11 @@ get.cell.lines = function(all.mapping.data, remove.empty = TRUE, sort.order = "n
   }
   return(cell.lines)
 }
-
-# Take out the cell with the highest CLV3 expression (this should be the topmost one).
-#' Title
-#'
-#' @param quant.data 
-#' @param time 
-#' @param param 
-#' @param no.z 
-#' @param no.xy 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-get.top.coordinates = function(quant.data, time, param, no.z, no.xy) {
+###############################################################################
+# Take out the cell with the highest CLV3 expression (this should be the 
+# topmost one).
+###############################################################################
+get.top.coordinates = function(quant.data, time) {
   top.coords  = c(NA, NA, NA)
   high.to.low = order(-quant.data[[time]][, "Mean.cell.intensity"])
   top.cell    = quant.data[[time]][high.to.low,][1, ]
@@ -81,155 +75,109 @@ get.top.coordinates = function(quant.data, time, param, no.z, no.xy) {
   return(top.coords)
 }
 
-# 
-#' Title
-#'
-#' @param cell.lines 
-#' @param quant.data 
-#' @param timepoints 
-#' @param min.no.members 
-#' @param param 
-#' @param no.z 
-#' @param no.xy 
-#' @param sorting.param 
-#' @param sorting.fct 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-get.cell.line.data = function(cell.lines,
-                              quant.data,
-                              timepoints,
-                              min.no.members = 0,
-                              param,
-                              no.z           = 1,
-                              no.xy          = no.z,
-                              sorting.param  = "n",
-                              sorting.fct    = mean) {
-  cell.lines.data = vector("list", nrow(cell.lines))
-  no.cell.lines   = nrow(cell.lines)
-  no.timepoints   = length(timepoints)
-  
-  ### Extract the quantified information for the cells in the cell lines.
-  for (ii in 1:no.cell.lines) {
-    lineage.data = matrix(NA, nrow = 0, ncol = 1 + ncol(quant.data[[1]]) + 1) # add time and dist2top
-    
-    # How long we will iterate for depends on whether we have missing data points or not
-    time.len = ifelse(plant.no == 4 || plant.no == 15,
-                      length(timepoints) - 1,
-                      length(timepoints))
-    
-    for (time in 1:time.len) {
-      mod.time = ifelse((plant.no == 4  && timepoints[time] >= 24) ||
-                          (plant.no == 15 && timepoints[time] >= 12), 
-                        time + 1, 
-                        time)
-      cells.in.lineage = which(quant.data[[time]]$Cell.id %in% cell.lines[[ii, mod.time]])
-      top.coords       = get.top.coordinates(quant.data, time, param = param, no.z = no.z, no.xy = no.xy)
-      
-      # If the cell line finds any cells which have quantified information 
-      # about them, calculate distance to the center and add as a parameter.
-      no.cells.in.lineage = length(cells.in.lineage)
-      if (no.cells.in.lineage > 0) {
-        for (kk in 1:no.cells.in.lineage) {
-          dist2tops    = distance(quant.data[[time]][cells.in.lineage[kk], 2:4], top.coords)
-          lineage.data = rbind(lineage.data,
-                               c(Time = timepoints[mod.time],
-                                 quant.data[[time]][cells.in.lineage[kk], ],
-                                 dist2top = dist2tops))
-        }
-      } else 
-        lineage.data = rbind(lineage.data, rep(NA, ncol(lineage.data)))
-    }
-    cell.lines.data[[ii]] = lineage.data
-  }
-  
-  # Unlist
-  cell.lines.data = lapply(cell.lines.data, function(x) apply(x, 1:2, function(y) unlist(y)))
-  
-  # Remove cell lines with too few members
-  cell.lines.data = cell.lines.data[!sapply(cell.lines.data, function(x)
-    sum(!is.na(unlist(x))) < min.no.members * ncol(quant.data[[1]]))]
-  
-  # Sort the cell lines according to the set rule
-  if (sorting.param != "n") {
-    cell.lines.order = sapply(cell.lines.data, function(x) sorting.fct(x[, sorting.param], na.rm = TRUE))
-    cell.lines.data  = cell.lines.data[order(cell.lines.order)]
-  }
-  
-  return(cell.lines.data)
-}
-
+###############################################################################
+###############################################################################
+# get.cell.line.data = function(cell.lines,
+#                               quant.data,
+#                               timepoints,
+#                               min.no.members = 0,
+#                               param,
+#                               no.z           = 1,
+#                               no.xy          = no.z,
+#                               sorting.param  = "n",
+#                               sorting.fct    = mean) {
+#   cell.lines.data = vector("list", nrow(cell.lines))
+#   no.cell.lines   = nrow(cell.lines)
+#   no.timepoints   = length(timepoints)
+#   
+#   ### Extract the quantified information for the cells in the cell lines.
+#   for (ii in 1:no.cell.lines) {
+#     lineage.data = matrix(NA, nrow = 0, ncol = 1 + ncol(quant.data[[1]])) # add time and dist2top
+#     
+#     # How long we will iterate for depends on whether we have missing data points or not
+#     time.len = ifelse(plant.no == 4 || plant.no == 15,
+#                       length(timepoints) - 1,
+#                       length(timepoints))
+#     
+#     for (time in 1:time.len) {
+#       mod.time = ifelse((plant.no == 4  && timepoints[time] >= 24) ||
+#                           (plant.no == 15 && timepoints[time] >= 12), 
+#                         time + 1, 
+#                         time)
+#       cells.in.lineage = which(quant.data[[time]]$Cell.id %in% cell.lines[[ii, mod.time]])
+#       # top.coords       = get.top.coordinates(quant.data, time, param = param, no.z = no.z, no.xy = no.xy)
+#       
+#       # If the cell line finds any cells which have quantified information 
+#       # about them, calculate distance to the center and add as a parameter.
+#       no.cells.in.lineage = length(cells.in.lineage)
+#       if (no.cells.in.lineage > 0) {
+#         for (kk in 1:no.cells.in.lineage) {
+#           # dist2tops    = distance(quant.data[[time]][cells.in.lineage[kk], 2:4], top.coords)
+#           lineage.data = rbind(lineage.data,
+#                                c(Time = timepoints[mod.time],
+#                                  quant.data[[time]][cells.in.lineage[kk], ]))
+#         }
+#       } else 
+#         lineage.data = rbind(lineage.data, rep(NA, ncol(lineage.data)))
+#     }
+#     cell.lines.data[[ii]] = lineage.data
+#   }
+#   
+#   # Unlist
+#   cell.lines.data = lapply(cell.lines.data, function(x) apply(x, 1:2, function(y) unlist(y)))
+#   
+#   # Remove cell lines with too few members
+#   cell.lines.data = cell.lines.data[!sapply(cell.lines.data, function(x)
+#     sum(!is.na(unlist(x))) < min.no.members * ncol(quant.data[[1]]))]
+#   
+#   # Sort the cell lines according to the set rule
+#   if (sorting.param != "n") {
+#     cell.lines.order = sapply(cell.lines.data, function(x) sorting.fct(x[, sorting.param], na.rm = TRUE))
+#     cell.lines.data  = cell.lines.data[order(cell.lines.order)]
+#   }
+#   
+#   return(cell.lines.data)
+# }
+###############################################################################
 # Process which cells have which mother at what time
-#' Title
-#'
-#' @param all.mapping.data 
-#' @param timepoints 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-get.mothers = function(all.mapping.data, timepoints) {
-  mothers = lapply(1:length(all.mapping.data), function(time)
-    lapply(all.mapping.data[[time]], function(this.mapping.data) {
-      
-      mother.id = this.mapping.data[1]
-      cell.ids  = this.mapping.data[-1]
-      
-      mums      = rep(mother.id, length(cell.ids))
-      times     = rep(timepoints[time + 1], length(cell.ids))
-      
-      return(cbind(
-        t         = times,
-        mother.id = mums,
-        cell.id   = cell.ids
-      ))
-    }))
-  
-  # Bind the mothers together in a matrix
-  mothers = do.call(rbind, unlist(mothers, recursive = F))
-  
-  # Add the first generation
-  first.gen.t          = rep(0, length(all.mapping.data[[1]]))
-  first.gen.mother.ids = rep(NA, length(all.mapping.data[[1]]))
-  first.gen.cell.ids   = sapply(all.mapping.data[[1]], "[[", 1)
-  
-  mothers = rbind(cbind(t         = first.gen.t, 
-                        mother.id = first.gen.mother.ids, 
-                        cell.id   = first.gen.cell.ids), 
-                  mothers)
-  
-  return(mothers)
-}
+###############################################################################
+# get.mothers = function(all.mapping.data, timepoints) {
+#   mothers = lapply(1:length(all.mapping.data), function(time)
+#     lapply(all.mapping.data[[time]], function(this.mapping.data) {
+#       
+#       mother.id = this.mapping.data[1]
+#       cell.ids  = this.mapping.data[-1]
+#       
+#       mums      = rep(mother.id, length(cell.ids))
+#       times     = rep(timepoints[time + 1], length(cell.ids))
+#       
+#       return(cbind(
+#         t         = times,
+#         mother.id = mums,
+#         cell.id   = cell.ids
+#       ))
+#     }))
+#   
+#   # Bind the mothers together in a matrix
+#   mothers = do.call(rbind, unlist(mothers, recursive = F))
+#   
+#   # Add the first generation
+#   first.gen.t          = rep(0, length(all.mapping.data[[1]]))
+#   first.gen.mother.ids = rep(NA, length(all.mapping.data[[1]]))
+#   first.gen.cell.ids   = sapply(all.mapping.data[[1]], "[[", 1)
+#   
+#   mothers = rbind(cbind(t         = first.gen.t, 
+#                         mother.id = first.gen.mother.ids, 
+#                         cell.id   = first.gen.cell.ids), 
+#                   mothers)
+#   
+#   return(mothers)
+# }
 
 ###############################################################################
-#' Title
-#'
-#' @param all.mapping.data 
-#' @param quant.data 
-#' @param cell.lines 
-#' @param param 
-#' @param no.z 
-#' @param no.xy 
-#' @param plant.no 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-get.division.events = function(mapping.data, quant.data, cell.lines, param, no.z, no.xy = no.z, plant.no){
+###############################################################################
+get.division.events = function(mapping.data, quant.data, sublines, plant.no){
   no.quant.data.files = length(quant.data)
-  
-  # Take in quant data
-  if (no.quant.data.files != 0) {
-    all.quant.data = lapply(1:ncol(quant.data[[1]]), function(x)
-      t(ldply(unname(
-        sapply(quant.data, "[", x)
-      ), rbind)))
-    names(all.quant.data) = colnames(quant.data[[1]])
-  }
   
   # Preallocate space
   no.division.events = sum(unlist(lapply(mapping.data, function(x) length(x[sapply(x, length) > 2]))))
@@ -242,105 +190,91 @@ get.division.events = function(mapping.data, quant.data, cell.lines, param, no.z
   for(time in 1:length(mapping.data)){
     division.data = mapping.data[[time]]
     division.data = division.data[sapply(division.data, length) > 2] # Only keep division events
-    top.coords    = get.top.coordinates(quant.data, time, param, no.z = no.z, no.xy = no.xy)
     
-    # for every cell, take out the data FROM all.quant.data that is 
-    # interesting for that and add it to a row. Append this to the output matrix.
+    if((plant.no == 4  && timepoints[time] == 20) ||
+       (plant.no == 15 && timepoints[time] == 8)) {
+      p.time = time
+      d.time = NA
+    } else if((plant.no == 4  && timepoints[time] > 20) ||
+              (plant.no == 15 && timepoints[time] > 12)) {
+      p.time = ifelse((plant.no == 4  && timepoints[time] == 24) ||
+                      (plant.no == 15 && timepoints[time] == 12), 
+                      NA, time - 1)
+      d.time = time
+    } else if (plant.no == 18 && timepoints[time] == 36){
+      p.time = time
+      d.time = time + 2
+    } else if (plant.no == 18 && timepoints[time] >= 44){
+      p.time = time + 1
+      d.time = time + 2
+    } else {
+      p.time = time
+      d.time = time + 1
+    }
+    
+    # for every cell, take out the data FROM quant.data that is 
+    # interesting for that and add it to a row. 
     for(ii in 1:length(division.data)){
-      xyzvid          = rep(NA, 6)
-      this.cell.index = NA
-      daughter1.index = NA
-      daughter2.index = NA
-      mother.expr     = NA
-      daughter1.vol   = NA
-      daughter2.vol   = NA
-      daughter1.expr  = NA
-      daughter2.expr  = NA
-      dist2top        = NA
+      xyzvid = rep(NA, 6); this.cell.index = NA; daughter1.index = NA; daughter2.index = NA
+      daughter1.vol = NA;  daughter2.vol   = NA; daughter1.expr  = NA; daughter2.expr  = NA
+      d1.d2t = NA; d2.d2t = NA
       
-      if(plant.no != 1){
-        this.cell.index = all.quant.data$Cell.id[, time] %in% division.data[[ii]][1] 
-        daughter1.index = all.quant.data$Cell.id[, time] %in% division.data[[ii]][2]
-        daughter2.index = all.quant.data$Cell.id[, time] %in% division.data[[ii]][3]
+      if (plant.no != 1) {
+        this.cell.index = match(division.data[[ii]][1], quant.data[[p.time]][, "Cell.id"])
+        daughter1.index = match(division.data[[ii]][2], quant.data[[d.time]][, "Cell.id"])
+        daughter2.index = match(division.data[[ii]][3], quant.data[[d.time]][, "Cell.id"])
         
         # Does this cell exist in the quantified data?
-        if (any(this.cell.index)) {
-          # Do the daughter cells exist in the quantified data?
-          if ((plant.no == 4  && timepoints[time] > 24) | 
-              (plant.no == 15 && timepoints[time] > 12)) { # Is this right for plant 18?
-            xyzvid = c(
-              all.quant.data$x[, time-1][which(this.cell.index)],
-              all.quant.data$y[, time-1][which(this.cell.index)],
-              all.quant.data$z[, time-1][which(this.cell.index)],
-              all.quant.data$Boa.volume[, time-1][which(this.cell.index)],
-              all.quant.data$Mean.cell.intensity[, time-1][which(this.cell.index)],
-              sqrt((all.quant.data$x[, time-1][which(this.cell.index)] - top.coords[1]) ** 2 +
-                     (all.quant.data$y[, time-1][which(this.cell.index)] - top.coords[2]) ** 2 +
-                     (all.quant.data$z[, time-1][which(this.cell.index)] - top.coords[3]) ** 2)
-            )
-            
-            daughter1.expr = ifelse(any(daughter1.index), all.quant.data$Mean.cell.intensity[, time][which(daughter1.index)], NA)
-            daughter2.expr = ifelse(any(daughter2.index), all.quant.data$Mean.cell.intensity[, time][which(daughter2.index)], NA)
-            daughter1.vol  = ifelse(any(daughter1.index), all.quant.data$Boa.volume[, time][which(daughter1.index)], NA)
-            daughter2.vol  = ifelse(any(daughter2.index), all.quant.data$Boa.volume[, time][which(daughter2.index)], NA)
-          } else {
-            xyzvid = c(
-              all.quant.data$x[, time][which(this.cell.index)],
-              all.quant.data$y[, time][which(this.cell.index)],
-              all.quant.data$z[, time][which(this.cell.index)],
-              all.quant.data$Boa.volume[, time][which(this.cell.index)],
-              all.quant.data$Mean.cell.intensity[, time][which(this.cell.index)],
-              sqrt((all.quant.data$x[, time][which(this.cell.index)] - top.coords[1]) ** 2 +
-                     (all.quant.data$y[, time][which(this.cell.index)] - top.coords[2]) ** 2 +
-                     (all.quant.data$z[, time][which(this.cell.index)] - top.coords[3]) ** 2)
-            )
-            daughter1.expr = ifelse(any(daughter1.index), all.quant.data$Mean.cell.intensity[, time + 1][which(daughter1.index)], NA)
-            daughter2.expr = ifelse(any(daughter2.index), all.quant.data$Mean.cell.intensity[, time + 1][which(daughter2.index)], NA)
-            daughter1.vol  = ifelse(any(daughter1.index), all.quant.data$Boa.volume[, time + 1][which(daughter1.index)], NA)
-            daughter2.vol  = ifelse(any(daughter2.index), all.quant.data$Boa.volume[, time + 1][which(daughter2.index)], NA)
-          }
-        }
+        # print(this.cell.index)
+        # print(length(this.cell.index))
+        xyzvid         = c(unlist(quant.data[[p.time]][this.cell.index, -1]))
+        if(is.null(xyzvid))
+          xyzvid = rep(NA, 6)
+        daughter1.expr = quant.data[[d.time]][daughter1.index, "Mean.cell.intensity"]
+        daughter1.vol  = quant.data[[d.time]][daughter1.index, "Boa.volume"]
+        daughter2.expr = quant.data[[d.time]][daughter2.index, "Mean.cell.intensity"]
+        daughter2.vol  = quant.data[[d.time]][daughter2.index, "Boa.volume"]
+        daughter1.vol  = ifelse(is.null(daughter1.vol),  NA, daughter1.vol)
+        daughter1.expr = ifelse(is.null(daughter1.expr), NA, daughter1.expr)
+        daughter2.vol  = ifelse(is.null(daughter2.vol),  NA, daughter2.vol)
+        daughter2.expr = ifelse(is.null(daughter2.expr), NA, daughter2.expr)
       }
       
       ### Get the identifiers
-      lineage.id   = which(sapply(1:nrow(cell.lines), function(x) division.data[[ii]][1] %in% cell.lines[[x, time]]))
-      this.cell.id = division.data[[ii]][1] 
-      mother.id    = mothers[mothers[, "cell.id"] == this.cell.id & 
-                               mothers[, "t"]       == timepoints[time], "mother.id"] 
-      mother.id    = ifelse(length(mother.id) == 0, NA, mother.id)
+      this.cell.id = division.data[[ii]][1]
+      lineage.id   = extract.numbers(rownames(sublines)[match(this.cell.id, sublines[, time])])[1, ]
+      mother.id    = sublines[match(this.cell.id, sublines[, time]), time - 1][1]
       
       ### Find how long the mother has been alive for
       age = 0
-      last.mother = mother.id
-      for (kk in (time - 1):1) {
-        mother.to.mother = mothers[mothers[, "cell.id"]   == last.mother &
-                                     mothers[, "t"]         == timepoints[kk], "mother.id"][1] 
-        no.offspring     = length(which(
-          mothers[, "mother.id"] == mother.to.mother &
-            mothers[, "t"]         == timepoints[kk]))
-        # If the mother to this one had children, or if this came out of nowhere, we have found the age.
-        if (no.offspring > 1) break
-        if (no.offspring == 0) {age = NA; break}
+      subline = sublines[match(this.cell.id, sublines[, time]), ]
+      for (kk in time:2) {
+        parent      = subline[kk - 1]
+        lines       = sublines[which(sublines[, kk - 1] == parent), ]
+        no.siblings = length(unique(lines[nna(lines[, kk]), kk]))
         
-        # Update reference and age
-        last.mother = mother.to.mother
-        age         = age + timepoints[kk + 1] - timepoints[kk]
+        # print(no.siblings)
+        if(no.siblings > 1) break
+        if(no.siblings == 0) {age = NA; break}
+        
+        # If this is the only offspring
+        age = age  + timepoints[kk + 1] - timepoints[kk]
       }
       
       # Print output data
-      output.data[count,] = c(
-        this.cell.id,
-        lineage.id,
-        mother.id,
-        division.data[[ii]][2],
-        division.data[[ii]][3],
-        age,
-        timepoints[time],
+      output.data[count, ] = c(
+        this.cell.id   = this.cell.id,
+        lineage.id     = lineage.id,
+        mother.id      = mother.id,
+        daughter1.id   = division.data[[ii]][2],
+        daughter2.id   = division.data[[ii]][3],
+        age            = age,
+        t              = timepoints[time],
         xyzvid,
-        daughter1.vol,
-        daughter2.vol,
-        daughter1.expr,
-        daughter2.expr
+        daughter1.vol  = daughter1.vol,
+        daughter2.vol  = daughter2.vol,
+        daughter1.expr = daughter1.expr / xyzvid[5],
+        daughter2.expr = daughter2.expr / xyzvid[5]
       )
       count = count + 1
     }
@@ -348,8 +282,11 @@ get.division.events = function(mapping.data, quant.data, cell.lines, param, no.z
   return(output.data)
 }
 
+###############################################################################
 ### Get sublines from normal lineages
+###############################################################################
 get.sublines = function(mapping.data, timepoints) {
+  
   # Add first generation
   lines = do.call(rbind, unlist(sapply(mapping.data[[1]], function(mapping)
     lapply(mapping[-1], function(child) c(mapping[1], child))), recursive = F))
@@ -409,6 +346,8 @@ get.sublines = function(mapping.data, timepoints) {
   lines.sorted
 }
 
+###############################################################################
+###############################################################################
 get.lineage.data = function(lineage, quant.data, timepoints) {
   # lineage = lineages[["803"]]
   no.timepoints = length(timepoints)
@@ -424,42 +363,43 @@ get.lineage.data = function(lineage, quant.data, timepoints) {
   counter = 1
   for (time in 1:time.len) {
     m.time = ifelse((plant.no == 4  && timepoints[time] >= 24) ||
-                      (plant.no == 15 && timepoints[time] >= 12),
+                    (plant.no == 15 && timepoints[time] >= 12),
                     time + 1,
                     time)
-    top.coords = get.top.coordinates(quant.data, time, param = param, no.z = no.z, no.xy = no.xy)
+    q.time = ifelse(plant.no == 18 && timepoints[time] >= 40, time + 1, time)
+    
+    top.coords = get.top.coordinates(quant.data, q.time, param = param, no.z = no.z, no.xy = no.xy)
     
     for (member in 1:nrow(lineage)) {
-      qd.match = match(lineage[member, m.time], quant.data[[time]]$Cell.id)
+      qd.match = match(lineage[member, m.time], quant.data[[q.time]]$Cell.id)
       
       # If the member exists in the quantified data, add it
       if (nna(qd.match)) {
-        dist2tops = distance(quant.data[[time]][qd.match, 2:4], top.coords)
+        # dist2tops = distance(quant.data[[time]][qd.match, 2:4], top.coords)
         lineage.data[counter,] =
           c(timepoints[m.time],
-            unlist(quant.data[[time]][qd.match, ]),
-            dist2tops)
+            unlist(quant.data[[q.time]][qd.match, ]))
         counter = counter + 1
       }
     }
   }
-  colnames(lineage.data) = c("Time", colnames(quant.data[[1]]), "dist2top")
+  colnames(lineage.data) = c("Time", colnames(quant.data[[1]]))
   lineage.data
 }
 
+###############################################################################
+###############################################################################
 get.lineage.sublines.data = function(lineage, quant.data, timepoints) {
-  # lineage = lineages[["248"]] # 248
   no.timepoints = length(timepoints)
+  no.q.cols     = ncol(quant.data[[1]]) + 1 # add time and dist2top
   
   time.len = ifelse(plant.no == 4 || plant.no == 15,
                     no.timepoints - 1,
                     no.timepoints)
   
   members       = apply(lineage, 1, function(x) sum(nna(x) & unlist(x) < 10000))
-  sublines.data = replicate(length(members), 
-                            matrix(NA,
-                                   nrow = members,
-                                   ncol = 1 + ncol(quant.data[[1]]) + 1), simplify = F) # add time and dist2top
+  sublines.data = lapply(members, function(x)
+    matrix(NA, nrow = x, ncol = no.q.cols)) # preallocate space
   
   for (subline in 1:length(members)) {
     counter = 1
@@ -468,69 +408,107 @@ get.lineage.sublines.data = function(lineage, quant.data, timepoints) {
                         (plant.no == 15 && timepoints[time] >= 12),
                       time + 1,
                       time)
-      top.coords = get.top.coordinates(quant.data, time, param = param, no.z = no.z, no.xy = no.xy) 
-      qd.match   = match(lineage[subline, m.time], quant.data[[time]]$Cell.id)
+      q.time = ifelse(plant.no == 18  && timepoints[time] >= 40,
+                      time + 1,
+                      time)
+      
+      # top.coords = get.top.coordinates(quant.data, time) 
+      qd.match = match(lineage[subline, m.time], quant.data[[q.time]]$Cell.id)
       
       # If the member exists in the quantified data, add it
       if (nna(qd.match)) {
-        dist2tops = distance(quant.data[[time]][qd.match, 2:4], top.coords)
+        # dist2tops = distance(quant.data[[time]][qd.match, 2:4], top.coords)
         sublines.data[[subline]][counter,] =
           c(timepoints[m.time],
-            unlist(quant.data[[time]][qd.match, ]),
-            dist2tops)
+            unlist(quant.data[[q.time]][qd.match, ]))
         counter = counter + 1
       }
     }
-    colnames(sublines.data[[subline]]) = c("Time", colnames(quant.data[[1]]), "dist2top")
+    colnames(sublines.data[[subline]]) = c("Time", colnames(quant.data[[1]]))
   }
   sublines.data
 }
 
+###############################################################################
+###############################################################################
+# get.sublines.data = function(sublines,
+#                              mapping.data,
+#                              quant.data,
+#                              timepoints,
+#                              min.no.members,
+#                              param,
+#                              no.z           = 1,
+#                              no.xy          = no.z,
+#                              sorting.param  = "n",
+#                              sorting.fct    = mean) {
+#   sublines.data = vector("list", nrow(sublines))
+#   no.sublines   = nrow(sublines)
+#   no.timepoints = length(timepoints)
+#   
+#   ### Extract the quantified information for the cells in the cell lines.
+#   for (ii in 1:no.sublines) {
+#     lineage.data = matrix(NA, nrow = 0, ncol = 1 + ncol(quant.data[[1]]) + 1) # add time and dist2top
+#     
+#     # How long we will iterate for depends on whether we have missing data points or not
+#     time.len = ifelse(plant.no == 4 || plant.no == 15,
+#                       length(timepoints) - 1,
+#                       length(timepoints))
+#     
+#     for (time in 1:time.len) {
+#       mod.time = ifelse((plant.no == 4  && timepoints[time] >= 24) ||
+#                           (plant.no == 15 && timepoints[time] >= 12),
+#                         time + 1,
+#                         time)
+#       
+#       qd.idx     = which(quant.data[[time]]$Cell.id %in% sublines[[ii, mod.time]])[1]
+#       # top.coords = get.top.coordinates(quant.data, time, param = param, no.z = no.z, no.xy = no.xy)
+#       
+#       if(!is.na(qd.idx)){
+#         # dist2top = distance(quant.data[[time]][qd.idx, 2:4], top.coords)
+#         lineage.data = rbind(lineage.data,
+#                              c(Time = timepoints[mod.time],
+#                                quant.data[[time]][qd.idx, ]))
+#       } else
+#         lineage.data = rbind(lineage.data, rep(NA, ncol(lineage.data)))
+#     }
+#     sublines.data[[ii]] = lineage.data
+#   }
+#   return(sublines.data)
+# }
+###############################################################################
+###############################################################################
+get.lineages = function(sublines){
+  subline.ids = rownames(sublines)
+  lineage.ids = factor(sapply(subline.ids, function(x)
+    strsplit(x, "\\.")[[1]][1]))
+  return(split(as.data.frame(sublines), lineage.ids))
+}
+###############################################################################
+###############################################################################
+get.subline = function(sublines, line.id, all.lineages = NULL) {
+  if (!is.null(all.lineages))
+    return(all.lineages[line.id])
+  else
+    return(get.lineages(sublines)[line.id])
+}
+###############################################################################
+###############################################################################
+collapse.lineage = function(lineage) {
+  all.rows = do.call(rbind, lineage)
+  return(unique(all.rows))
+}
 
-
-get.sublines.data = function(sublines,
-                             mapping.data,
-                             quant.data,
-                             timepoints,
-                             min.no.members,
-                             param,
-                             no.z           = 1,
-                             no.xy          = no.z,
-                             sorting.param  = "n",
-                             sorting.fct    = mean) {
-  sublines.data = vector("list", nrow(sublines))
-  no.sublines   = nrow(sublines)
-  no.timepoints = length(timepoints)
+###############################################################################
+###############################################################################
+get.roc = function(subline){
+  rocs = lapply(1:length(subline), function(x) {
+    intensities = subline[[x]][, "Mean.cell.intensity"]
+    shift = 4
+    if(length(intensities) > shift)
+      return(cbind(subline[[x]][-((length(intensities)-(shift-1)):length(intensities)), "dist2top"], diff(intensities, lag = shift) / intensities[-((length(intensities)-(shift-1)):length(intensities))]))
+  })
   
-  ### Extract the quantified information for the cells in the cell lines.
-  for (ii in 1:no.sublines) {
-    lineage.data = matrix(NA, nrow = 0, ncol = 1 + ncol(quant.data[[1]]) + 1) # add time and dist2top
-    
-    # How long we will iterate for depends on whether we have missing data points or not
-    time.len = ifelse(plant.no == 4 || plant.no == 15,
-                      length(timepoints) - 1,
-                      length(timepoints))
-    
-    for (time in 1:time.len) {
-      mod.time = ifelse((plant.no == 4  && timepoints[time] >= 24) ||
-                          (plant.no == 15 && timepoints[time] >= 12),
-                        time + 1,
-                        time)
-      
-      qd.idx     = which(quant.data[[time]]$Cell.id %in% sublines[[ii, mod.time]])[1]
-      top.coords = get.top.coordinates(quant.data, time, param = param, no.z = no.z, no.xy = no.xy)
-      
-      if(!is.na(qd.idx)){
-        dist2top = distance(quant.data[[time]][qd.idx, 2:4], top.coords)
-        lineage.data = rbind(lineage.data,
-                             c(Time = timepoints[mod.time],
-                               quant.data[[time]][qd.idx, ],
-                               dist2top = dist2top))
-      } else
-        lineage.data = rbind(lineage.data, rep(NA, ncol(lineage.data)))
-    }
-    sublines.data[[ii]] = lineage.data
-  }
-  return(sublines.data)
+  result = unique(do.call(rbind, rocs))
+  result
 }
 

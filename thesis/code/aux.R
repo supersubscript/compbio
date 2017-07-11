@@ -2,8 +2,13 @@
 ### GENERAL IMPORT AND PLOT SETTINGS
 ###############################################################################
 setwd("/home/henrik/compbio/thesis/code/")
-library(parallel)
-library(RColorBrewer)
+
+# Load packages
+packages = c("reshape", "scales", "stringr", "plyr", "parallel", "limma", 
+             "affy", "RColorBrewer", "ggplot2", "grid", "gridExtra")
+try(lapply(packages, library, character.only = TRUE), silent = TRUE)
+
+# Set general colour palette
 palette(brewer.pal(n = 8, name = "Set1"))
 lw.s = 2
 par(lwd = lw.s, cex = 1.5, ps = 15)
@@ -33,64 +38,14 @@ init.counter = function() {
   }
 }
 
-get.lineages = function(sublines){
-  subline.ids = rownames(sublines)
-  lineage.ids = factor(sapply(subline.ids, function(x)
-    strsplit(x, "\\.")[[1]][1]))
-  return(split(as.data.frame(sublines), lineage.ids))
-}
-
-get.subline = function(sublines, line.id, all.lineages = NULL) {
-  if (!is.null(all.lineages))
-    return(all.lineages[line.id])
-  else
-    return(get.lineages(sublines)[line.id])
-}
-
 # Is not NA
 nna = function(data){!is.na(unlist(data))}
 
 ### Extract numbers from string
 extract.numbers = function(strs) {
-  unname(sapply(strs, function(str) {
-    matches = gregexpr('[0-9]+', str)
-    sapply(regmatches(str, matches), as.numeric)
-  }))
+    return(unname(sapply(strs, function(str) {
+      matches = gregexpr('[0-9]+', str)
+      sapply(regmatches(str, matches), as.numeric)
+    })))
 }
 
-
-###############################################################################
-### CUSTOM PLOT FUNCTIONS
-###############################################################################
-plot.lineage = function(lineage.sublines.data){
-  for(ii in lineage.sublines.data) lines(ii[,"Time"], ii[,"Mean.cell.intensity"], type = "b", lwd = lw.s) 
-}
-
-###############################################################################
-### HELPER PLOT FUNCTIONS
-###############################################################################
-
-plot.12 = function(data,
-                   x1 = "Time",
-                   y1 = "Mean.cell.intensity",
-                   x2 = "Time",
-                   y2 = "dist2top", batch = 1) {
-  par(mfrow = c(4, 3), mar = c(2, 2, 2, 2))
-  for (ii in ((batch-1)*12 + 1):((batch)*12)) {
-    plot(data[[ii]][, x1],
-         data[[ii]][, y1],
-         ylim = c(0, 160),
-         xlim = c(0, 84))
-    par(new = TRUE)
-    plot(
-      data[[ii]][, x2],
-      data[[ii]][, y2],
-      col = 2,
-      ylim = c(0, 10),
-      xaxt = "n",
-      yaxt = "n",
-      xlim = c(0, 84)
-    )
-    axis(4)
-  }
-}

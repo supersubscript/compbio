@@ -20,7 +20,7 @@ quant.files = lapply(1:length(quant.files), function(x) quant.files[[x]][order(o
 
 # Sort 
 timepoints = lapply(quant.files, function(file) sapply(file, function(times) tail(strsplit(times, "/")[[1]], 1)))
-timepoints = lapply(timepoints, function(file) unname(sapply(file, function(times) unname(as.integer(gsub("t|\\.txt", "", times))))))
+timepoints = lapply(timepoints,  function(file) unname(sapply(file, function(times) unname(as.integer(gsub("t|\\.txt", "", times))))))
 
 quant.files = lapply(1:length(quant.files), function(x) quant.files[[x]][order(timepoints[[x]])])
 
@@ -40,11 +40,12 @@ timepoints = rbind.fill.matrix(sapply(timepoints, function(x) t(matrix(x))))
 
 for(plant in 1:nrow(timepoints)){
   for(time in 2:ncol(timepoints)){
-    if(!is.na(timepoints[plant, time]) && !is.na(timepoints[plant, time-1])){
+    if(nna(timepoints[plant, time]) && nna(timepoints[plant, time-1])){
       if(timepoints[plant, time] != timepoints[plant, time - 1] + 4){
-        timepoints[plant, (time + 1):(ncol(timepoints))] = timepoints[plant, (time):(ncol(timepoints) - 1)]
+        timepoints[plant, (time + 1):(ncol(timepoints))]     = timepoints[plant, (time):(ncol(timepoints) - 1)]
         no.clv3.nuclei[plant, (time + 1):(ncol(timepoints))] = no.clv3.nuclei[plant, (time):(ncol(timepoints) - 1)]
-        timepoints[plant, time] = NA
+        
+        timepoints[plant, time]     = NA
         no.clv3.nuclei[plant, time] = NA
       }
     }
@@ -66,7 +67,6 @@ vol.sd = lapply(all.quant.data, function(x) sapply(x, function(y) sd(y[[5]])))
 par(mfrow = c(3,2))
 for(ii in 1:nrow(no.clv3.nuclei)) plot(timepoints[ii,], no.clv3.nuclei[ii,], type = "b", main = "no.clv3.nuclei", xlim=c(0,84))
 plot(seq(0,84,4), mean.no.clv3.nuclei, type = "b", main = "mean.no.clv3.nuclei")
-
 
 par(mfrow = c(3,1))
 plot(seq(0,84,4), mean.no.clv3.nuclei, type = "b", main = "mean.no.clv3.nuclei")
@@ -95,7 +95,7 @@ lapply(1:length(vol.sd), function(x) plot(vol.sd[[x]], type = "b", main = paste0
 plant.index = 1
 data = all.all.quant.data[[plant.index]]
 names(data) = c("id", "x","y","z","vol","int")
-topcells = apply(data$z, 2, function(x) which(unlist(x) == max(x[!is.na(x)]))[1])
+topcells = apply(data$z, 2, function(x) which(unlist(x) == max(x[nna(x)]))[1])
 # apply(data$z, 2, function(x) which(unlist(x) == max(x[!is.na(x)]))[1])
 top.x = sapply(1:length(topcells), function(x) data$x[topcells[x], x])
 top.y = sapply(1:length(topcells), function(x) data$y[topcells[x], x])
@@ -138,12 +138,6 @@ plot(c(all.dist2top), c(all.int), col = alpha(1,.1))
 cor.test(c(all.dist2top), c(all.int), use="complete")
 
 # plot(c(all.dist2top[which(all.dist2top < 2)]), c(all.int[which(all.dist2top < 2)]))
-
-
-
-
-
-
 
 
 ###### Observation: all vol to int plots seem to be composed of two functions. One linear-ish and one sigmoidal. Cells about to divide?

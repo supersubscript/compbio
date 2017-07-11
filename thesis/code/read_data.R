@@ -26,7 +26,7 @@ map.children = function(mapping.data, id.maps, m.time, i.time, mapping, shift = 
 ###############################################################################
 # READ DATA
 ###############################################################################
-read.data = function(plant.no, map.quant = TRUE) {
+read.data = function(plant.no, map.quant = TRUE, only.l1 = FALSE, only.l2 = FALSE) {
   
   # Read in the right files
   mapping.files = list.files(paste0("../data/PNAS/plant", plant.no, "/tracking_data"), full.names = TRUE)
@@ -39,11 +39,13 @@ read.data = function(plant.no, map.quant = TRUE) {
   no.quant.files = length(quant.files)
   
   # Put in right order
-  order.plant = extract.numbers(mapping.files)[3,]
-  order.quant = extract.numbers(quant.files)[3,]
+  if(plant.no != 1) {
+    order.quant = extract.numbers(quant.files)[3,]
+    quant.files = quant.files[order(order.quant)]
+  }
   
+  order.plant = extract.numbers(mapping.files)[3,]
   mapping.files = mapping.files[order(order.plant)]
-  quant.files   = quant.files[order(order.quant)]
   timepoints    = c(0, timepoints[order(order.plant)])
   
   # Read in the mapping data between timepoints
@@ -54,15 +56,13 @@ read.data = function(plant.no, map.quant = TRUE) {
   })
   
   # Read in quantified data
-  quant.data = lapply(quant.files, function(x) 
-    read.table(x, header = T, sep = "\t"))
-  if(length(quant.data) != 0){
-    all.quant.data = lapply(1:ncol(quant.data[[1]]), function(x) 
-      t(ldply(unname(sapply(quant.data, "[", x)), rbind)))
-    names(all.quant.data) = colnames(quant.data[[1]])
-  }
+  quant.data = lapply(quant.files, function(x) read.table(x, header = T, sep = "\t"))
   
-  if (map.quant) {
+
+  
+  if (map.quant && 
+      plant.no != 18 && 
+      plant.no != 1) {
     id.files       = list.files(paste0("../data/plant", plant.no, "_correspondence"), full.names = T, pattern="correspondence")
     id.files.order = extract.numbers(id.files)[3,]
     id.files       = id.files[order(id.files.order)]
@@ -73,7 +73,8 @@ read.data = function(plant.no, map.quant = TRUE) {
     no.mapping.data = length(mapping.data)
     for (time in 1:(no.mapping.data)) {
       no.mapping.events = length(mapping.data[[time]])
-      # print(time) 
+      
+      ### Account for the missing data points in quantification for plant 4 and 15
       if ((plant.no == 4  && timepoints[time] == 20) ||
           (plant.no == 15 && timepoints[time] == 8)) {
         
@@ -102,10 +103,108 @@ read.data = function(plant.no, map.quant = TRUE) {
       }
     }
   }
+  
+  if(plant.no != 1 && only.l1){
+    quant.data[[1]] = quant.data[[1]][quant.data[[1]][, 1] %in% get.mom(mapping.data[[1]]), ]
+    for(ii in 2:length(mapping.data)) {
+      
+      # TODO: Make this look nice
+      if (plant.no == 18 & timepoints[ii] == 44) {
+        quant.data[[ii]] = matrix(NA, nrow = 0, ncol = ncol(quant.data[[ii]]))
+        colnames(quant.data[[ii]]) = colnames(quant.data[[ii]] - 1)
+      } else if (plant.no == 18 & timepoints[ii] == 48) {
+        quant.data[[ii]] = quant.data[[ii]][quant.data[[ii]][,1] %in% 
+                                              get.mom(mapping.data[[ii - 1]]), ]
+      } else if (plant.no == 18 & timepoints[ii] >= 52) {
+        quant.data[[ii]] = quant.data[[ii]][quant.data[[ii]][,1] %in% 
+                                              union(get.mom(mapping.data[[ii - 1]]), 
+                                                    get.dau(mapping.data[[ii - 2]])), ]
+      } else if ((plant.no == 4  & timepoints[[ii]] == 24) ||
+                 (plant.no == 15 & timepoints[[ii]]  == 12)) {
+        quant.data[[ii]] = quant.data[[ii]][quant.data[[ii]][, 1] %in% 
+                                              get.dau(mapping.data[[ii]]), ]
+      } else if ((plant.no == 4  & timepoints[[ii]] == timepoints[length(timepoints) - 1]) ||
+                 (plant.no == 15 & timepoints[[ii]] == timepoints[length(timepoints) - 1])) {
+        quant.data[[ii]] = quant.data[[ii]][quant.data[[ii]][, 1] %in% 
+                                              get.dau(mapping.data[[ii]]), ]
+      } else if ((plant.no == 4  & timepoints[[ii]] > 24) ||
+                 (plant.no == 15 & timepoints[[ii]] > 12)) {
+        quant.data[[ii]] = quant.data[[ii]][quant.data[[ii]][, 1] %in% 
+                                              union(get.mom(mapping.data[[ii + 1]]), 
+                                                    get.dau(mapping.data[[ii]])), ]
+      } else
+        quant.data[[ii]] = quant.data[[ii]][quant.data[[ii]][,1] %in% 
+                                              union(get.mom(mapping.data[[ii]]), 
+                                                    get.dau(mapping.data[[ii - 1]])), ]
+    }
+    if (plant.no == 18) {
+      quant.data[[length(timepoints) + 1]] =
+        quant.data[[length(timepoints) + 1]][quant.data[[length(timepoints) + 1]][, 1] %in%
+                                               get.dau(mapping.data[[length(timepoints) - 1]]), ]
+    }
+  }  
+  # Actually it's !L1
+  if(plant.no != 1 && only.l2) {
+    quant.data[[1]] = quant.data[[1]][!quant.data[[1]][, 1] %in% get.mom(mapping.data[[1]]), ]
+    for(ii in 2:length(mapping.data)) {
+      # TODO: Make this look nice
+      if (plant.no == 18 & timepoints[ii] == 44) {
+        quant.data[[ii]] = matrix(NA, nrow = 0, ncol = ncol(quant.data[[ii]]))
+        colnames(quant.data[[ii]]) = colnames(quant.data[[ii]] - 1)
+      } else if (plant.no == 18 & timepoints[ii] == 48) {
+        quant.data[[ii]] = quant.data[[ii]][!quant.data[[ii]][,1] %in% 
+                                              get.mom(mapping.data[[ii - 1]]), ]
+      } else if (plant.no == 18 & timepoints[ii] >= 52) {
+        quant.data[[ii]] = quant.data[[ii]][!quant.data[[ii]][,1] %in% 
+                                              union(get.mom(mapping.data[[ii - 1]]), 
+                                                    get.dau(mapping.data[[ii - 2]])), ]
+      } else if ((plant.no == 4  & timepoints[[ii]] == 24) ||
+                 (plant.no == 15 & timepoints[[ii]]  == 12)) {
+        quant.data[[ii]] = quant.data[[ii]][!quant.data[[ii]][, 1] %in% 
+                                              get.dau(mapping.data[[ii]]), ]
+      } else if ((plant.no == 4  & timepoints[[ii]] == timepoints[length(timepoints) - 1]) ||
+                 (plant.no == 15 & timepoints[[ii]] == timepoints[length(timepoints) - 1])) {
+        quant.data[[ii]] = quant.data[[ii]][!quant.data[[ii]][, 1] %in% 
+                                              get.dau(mapping.data[[ii]]), ]
+      } else if ((plant.no == 4  & timepoints[[ii]] > 24) ||
+                 (plant.no == 15 & timepoints[[ii]] > 12)) {
+        quant.data[[ii]] = quant.data[[ii]][!quant.data[[ii]][, 1] %in% 
+                                              union(get.mom(mapping.data[[ii + 1]]), 
+                                                    get.dau(mapping.data[[ii]])), ]
+      } else
+        quant.data[[ii]] = quant.data[[ii]][!quant.data[[ii]][,1] %in% 
+                                              union(get.mom(mapping.data[[ii]]), 
+                                                    get.dau(mapping.data[[ii - 1]])), ]
+    }
+    if (plant.no == 18) {
+      quant.data[[length(timepoints) + 1]] =
+        quant.data[[length(timepoints) + 1]][!quant.data[[length(timepoints) + 1]][, 1] %in%
+                                               get.dau(mapping.data[[length(timepoints) - 1]]), ]
+    }
+  }  
+  
+  # Add distance to the top
+  if(plant.no != 1){
+    top.coords = lapply(1:length(quant.data), function(time) get.top.coordinates(quant.data, time))
+    dist2tops  = lapply(1:length(quant.data), function(time)
+      apply(quant.data[[time]], 1, function(x)
+        distance(x[2:4], top.coords[[time]])))
+    quant.data = lapply(1:length(quant.data), function(x)
+      cbind(quant.data[[x]], dist2top = dist2tops[[x]]))
+  }
+  
+  for(ii in quant.data) colnames(ii) = c("Cell.id", "x", "y", "z", "Boa.volume", "Mean.cell.intensity", "dist2top")
+  
   return(list(
     mapping.data = mapping.data,
     quant.data   = quant.data,
     timepoints   = timepoints
   ))
+}
+
+get.q.timepoints = function(plant.no) {
+  quant.files = list.files(paste0("../data/clv3_complete/plant", plant.no, "/Results"), full.names = TRUE, pattern=".txt")
+  times = extract.numbers(quant.files)[3,]
+  sort(times)  
 }
 

@@ -1,0 +1,171 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%*********************************** First Chapter *****************************
+%*******************************************************************************
+
+\chapter{Introduction}  %Title of the First Chapter
+
+\ifpdf
+    \graphicspath{{Chapter1/Figs/Raster/}{Chapter1/Figs/PDF/}{Chapter1/Figs/}}
+\else
+    \graphicspath{{Chapter1/Figs/Vector/}{Chapter1/Figs/}}
+\fi
+
+%********************************** %First Section  **************************************
+%\section{The Shoot Apical Meristem of \textit{Arabidopsis thaliana}} %Section - 1.1 
+
+% first letter Z is for Acronyms 
+% first letter A is for Roman symbols
+% first letter G is for Greek Symbols
+% first letter G is for Greek Symbols
+% first letter G is for Greek Symbols
+% first letter X is for Other Symbols
+% first letter R is for superscripts
+% first letter S is for subscripts
+\nomenclature[z-CZ]{CZ}{Central zone}                                          
+\nomenclature[z-SAM]{SAM}{Shoot Apical Meristem}                               
+\nomenclature[z-RAM]{RAM}{Root Apical Meristem}                               
+\nomenclature[z-CLV3]{CLV3}{CLAVATA-3}                                         
+\nomenclature[z-WUS]{WUS}{WUSCHEL}                                             
+\nomenclature[z-KAN]{KAN1}{KANADI-1}                                           
+\nomenclature[z-AT]{AT}{\textit{Arabidopsis thaliana}}
+\nomenclature[z-L1]{L1}{Layer-1. The outermost cell layer of the SAM}
+\nomenclature[z-CZ]{CZ}{Central Zone. The region harboring stem cells in the SAM.}                                                                        
+\nomenclature[z-GRN]{GRN}{Gene Regulatory Network}
+
+%********************************** %Second Section  *************************************
+\section{The Shoot Apical Meristem of \textit{Arabidopsis thaliana}} %Section - 1.2
+% The Shoot and the Root
+Plant stem cells are governed by two developing centra -- the Shoot Apical
+Meristem (SAM) and the Root Apical Meristem (RAM). The SAM is the region
+responsible for development of all aerial organs in the plant, which includes
+aspects of cell proliferation and specification, as well as an ability of the plant to
+maintain and regulate the stem cell identity of the cells at the very apex of
+the shoot. \CITE As opposed to the RAM, which has two stem cell pools in the
+inside of the root, the SAM maintains a single stem cell pool centered at the
+apex. It also lacks the root's cap, which protects the stem cells on the inside
+of the root, whereas these in the shoot are directly exposed to the plant's surroundings. 
+
+% What stem cells do
+The stem cells at the SAM contribute to the construction of new organs and
+general tissue by dividing frequently at the top and subsequently being
+mechanically pushed out of the center in order to differentiate. The steady
+maintenance of the stem cell niche allows for a constant production and supply
+of cells that the plant utilises during both growth and repair of damaged
+tissue. \CITE
+
+% Structure composition of the plant
+In a simple outline of the SAM, it can be said to consist of three core regions:
+1. The \textit{central zone} (CZ), which harbors the aerial \textit{stem cell niche} 
+of the plant; 2. The \textit{Rib Meristem}, which is located beneath
+the CZ and consists of the cells constructing the stem of the plant; 3. The
+\textit{Peripheral Zone} (PZ), where cells form organs and new tissue through
+differentiation. In addition to these regions, the SAM is also often separated
+into the different layers of the dermis, denoted \textit{L1} for the epidermal
+layer, \textit{L2} for the sub-epidermal one, and \textit{L3} for the inner ground
+and vascular tissues. For cells in both L1 and L2, proliferation happens
+orthogonally to the shoot surface, i.e.\ so that cell lineages are preserved
+within L1 or L2 correspondingly. In contrast, this is not the case for L3, where
+cells can divide in all directions. In addition, it has been shown that the epidermis is
+involved in both promoting and restricting shoot development, adding to the
+notion of coordination and regulation between the different cell layers in order
+to accurately direct plant growth. % Expand on this
+
+% TODO: Lead into modelling
+
+\section{Modelling Biological Systems} %Section - 1.2
+% Systems biology
+Due to the interaction of molecules in various ways, e.g. the activation or
+repression of transcription by certain proteins, organismal development can be
+considered in the framework of being a \textit{complex system}. In a
+\textit{systems biology} setting, molecular and mechanical interactions are
+treated as abstract entities, each representing some fundamental part of the
+whole system in question, much like how machinery can be explained by its
+separate cogs and gears working together. In a molecular setting, the typical
+descriptive approach is through \textit{Gene Regulatory Networks} (GRNs), where
+each component represents some molecular aspect of the system that is involved in
+producing expression levels of mRNA and proteins. \CITE
+
+% Gene regulatory networks and mathematical modelling
+GRNs are commonly understood both through analytical and computational means,
+where in the latter computer-generated models provides as a modern tool for
+better understand the complex nature of many biological systems. Typically,
+reaction kinetics are modelled using various types of \textit{Ordinary
+  Differential Equations} (ODEs). However, due to the large supplies of computer
+power available in the modern day, many recent studies also utilise more
+computationally demanding resources such as \textit{Stochastic Differential
+  Equations} (SDEs), where also the inherently random nature of molecular
+motions, interactions, and processes are accounted for. The increase in
+computability has also allowed for the development of spatiotemporal modelling,
+where models are evaluated not only in a static context, but also in a changing
+setting. A straightforward example taken directly out of the context of plant
+development is how the distribution of gene expression varies during plant
+growth and organ formation, both spatially and over time. Typical modelling
+aspects at such a problem case involves the formulation of which genes and
+molecules are imporant for the problem of interest, as well as how the
+discretisation and representation of spatial elements is done. \CITE
+
+% Model prediction and verification 
+Computer models in general have two separate aims: exploration and verification.
+In the former case, computer simulations can be the core for designing
+experimental experiments, where observed theoretical phenomena can be
+experimentally tested. An example of this is the classic example of the
+\textit{Repressilator} \CITE, where researchers set up a model framework for how
+oscillations could occur due to cyclic repressive interactions between three
+genes. This was then verified to occur by synthetically implementing the system
+in a bacterium, showing how gene expression profiles could oscillate due to the
+system motif constructed. 
+
+% TODO: 
+In the latter case, which is the more prevalent in modern computational biology,
+computer models are established in order to verify or support the potential of
+an hypothesis due to experimental observations. \CITE
+
+
+
+\section{Regulatory Mechanics of Plant Stem Cells} %Section - 1.2
+% Patterning
+In order for the plant to undergo phyllotaxis in the correct manner, and to know
+when and where to initiate new organs -- primordia -- patterning of various
+types play an important role. In particular genetic and molecular patterning due
+to hormones, proteins and gene expression are known to be essential parts in understanding
+plant development, although also patterns of stress and strain have in recent
+studies been shown to play a role in determining growth. \CITE 
+
+
+
+
+
+
+%While gene expression can consist of both directly functional RNA, such as tRNA, and
+%mRNA, the studying gene expression in developmental biology is often done as a
+%proxy for protein localisation.
+
+% Gene expression is the process by which information from a gene is used in the
+% synthesis of a functional gene product. These products are often proteins, but
+% in non-protein coding genes such as transfer RNA (tRNA) or small nuclear RNA
+% (snRNA) genes, the product is a functional RNA. The process of gene expression
+% is used by all known life—eukaryotes (including multicellular organisms),
+% prokaryotes (bacteria and archaea), and utilized by viruses—to generate the
+% macromolecular machinery for life. 
+% Several steps in the gene expression process may be modulated, including the
+% transcription, RNA splicing, translation, and post-translational modification of
+% a protein. Gene regulation gives the cell control over structure and function,
+% and is the basis for cellular differentiation, morphogenesis and the versatility
+% and adaptability of any organism. Gene regulation may also serve as a substrate
+% for evolutionary change, since control of the timing, location, and amount of
+% gene expression can have a profound effect on the functions (actions) of the
+% gene in a cell or in a multicellular organism.  
+% In genetics, gene expression is the most fundamental level at which the genotype
+% gives rise to the phenotype, i.e. observable trait. The genetic code stored in
+% DNA is "interpreted" by gene expression, and the properties of the expression
+% give rise to the organism's phenotype. Such phenotypes are often expressed by
+% the synthesis of proteins that control the organism's shape, or that act as
+% enzymes catalysing specific metabolic pathways characterising the organism.
+% Regulation of gene expression is thus critical to an organism's development.
+
+
+
+\subsection{The role of WUSCHEL-CLAVATA interactions} %Section - 1.2.1
+
+

@@ -1,0 +1,130 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%****************************** Second Chapter *********************************
+%*******************************************************************************
+
+\chapter{Methodology}
+
+\ifpdf
+\graphicspath{{Chapter2/Figs/Raster/}{Chapter2/Figs/PDF/}{Chapter2/Figs/}}
+\else
+\graphicspath{{Chapter2/Figs/Vector/}{Chapter2/Figs/}}
+\fi
+
+\section[Raw data]{Describe the data here}
+The Yellow Fluorescent Protein (YFP) marker for the plasma membrane was
+amplified using PCR with primers attb1-mYfwd
+(5'-AGAAAGCTGGGTTTACTTGTACAGCTCGTCCATGCCGAGAGTG) and attb2-YFPrev
+(5'-AGAAAGCTGGGTTTACTTGTACAGCTCGTCCATGCCGAGAGTG), with the forward primer
+sequence containing a motif known to acetylate in plant cells~CITEHERE. 50
+$\mu$L solution was amplified in 96 $^\circ$C for 1 minute, followed by 25
+cycles of 96 $^\circ$C for 30 seconds, and a final elongation for 30 seconds. 5
+$\mu$L of the result was then used in a second reaction consisting of
+40~$\mu$L solution in total, with primers B1 adapt (5'-GGGGACAAGTTTGTACAAAAAAGCAGGCT)
+and B2 adapt (5'-GGGGACCACTTTGTACAAGAAAGCTGGGT) included. Similar to the first
+solution, the second mixture was amplified by PCR in 95 $^\circ$C for 2 minutes,
+followed by 94 $^\circ$C for 30 seconds, 48 $^\circ$C for 30 seconds, and 72
+$^\circ$C for 1 minute, 20 cycles of 94 $^\circ$C for 30 seconds,
+55 $^\circ$C for 30 seconds, and 72 $^\circ$C for 1 minute. Finally, elongation
+took place under 72 $^\circ$C for 1 minute.
+
+
+
+
+% Construction of a YFP Plasma Membrane Marker and Other Transgenic Lines.
+% DNA containing the coding sequence for YFP was amplified by PCR using
+% primers attb1-mYfwd (5′-AAAAAGCAGGCTATGGGAGGATGCTTCTCTAAGAAGGTGAGC)
+% and attb2-YFPrev (5′-AGAAAGCTGGGTTTACTTGTACAGCTCGTCCATGCCGAGAGTG).
+% The total reaction volume was 50 μL. The forward primer contains a short
+% sequence encoding a motif that is acylated in plant cells (54). Both primers
+% contain a portion of the attB gateway sites. Amplification conditions were
+% 96 °C for 1 min followed by 25 cycles of 96 °C for 30 s, 54 °C for 55 s, and
+% 72 °C for 30 s, and a final elongation of 72 °C for 30 s. After checking for
+% products on a gel, 5 μL of the PCR was used in a second reaction (40 μL total)
+% containing primers B1 adapt (5′-GGGGACAAGTTTGTACAAAAAAGCAGGCT)
+% and B2 adapt (5′-GGGGACCACTTTGTACAAGAAAGCTGGGT).
+% Amplification conditions were 95 °C for 2 min followed by five cycles of
+% 94 °C for 30 s, 48 °C for 30 s, and 72 °C for 1 min; 20 cycles of 94 °C for 30 s,
+% 55 °C for 30 s, and 72 °C for 1 min; and a final elongation of 72 °C for 1 min.
+% Products were PCR-purified (Qiagen) and then used in a one-tube format
+% Gateway reaction as per the manufacturer’s instructions, with the destination
+% vector pUB-DEST containing the UBQ10 promoter upstream of the
+% Gateway site (55). The resulting vector, pUBQ10::acyl-YFP, was transformed
+% into A. thaliana Col-0 containing pPIN1::PIN1-GFP (56, 57). The pUBQ10::acylYFP/pPIN1::PIN1-GFP
+% plants were taken to the second filial (F2) generation
+% and crossed with pCLV3::dsRED-N7 (58), a nuclear-localizing reporter for
+% CLAVATA3 expression. This cross was taken to the F3 generation, yielding
+% pUBQ10::acyl-YFP/pPIN1::PIN1-GFP/pCLV3::dsRED-N7 A. thaliana seeds. The
+% pUBQ10::acyl-YFP reporter localized strongly and uniformly to cell membranes;
+% it was stably expressed without cellular internalization and without
+% affecting plant growth or development. These features permitted the accurate
+% segmentation and tracking of cells. The reporter pCLV3::dsRED-N7, a
+% nuclear-localized CLAVATA3 reporter, identified the stem cell niche’s center
+% and, in a subset of SAM cells, enabled nuclear volume quantification (59) (SI
+% Appendix, Supplemental Materials and Methods). The pPIN1::PIN1-GFP reporter
+% was not analyzed as part of this study.
+% Plant Growth Conditions. NPA-treated pUBQ10::acyl-YFP/pPIN1::PIN1-GFP/
+% pCLV3::dsRED-N7 A. thaliana Col-0 plants were grown on plates with Arabidopsis
+% medium supplemented with 10 μM NPA (31) at 20 °C with 16 h of
+% light per day. These plants were later selected for imaging between 24 and
+% 28 d after germination. NPA was used to inhibit organ formation (31)
+% without substantially slowing proliferation in the SAM’s central zone (15) so
+% that time-lapse images could be acquired without dissection, and therefore
+% with minimal disturbance to cell proliferation.
+% Time-Lapse Image Acquisition and Quantification. NPA-grown plantlets with
+% naked, organ-free meristems were selected and gently transferred to lidded
+% boxes measuring 5 × 5 × 3 cm3 containing room-temperature Arabidopsis
+% medium supplemented with 10 μM NPA to a depth of ∼1 cm. Plantlets were
+% screened for the expression of pUBQ10::acyl-YFP, pPIN1::PIN1-GFP, and
+% pCLV3::dsRED-N7 using confocal microscopy, and then left to recover for
+% 12 h in the same 16/8-h light/dark cycle. All three reporters were expressed in
+% each of SAMs 2–6; SAM 1 expressed only pUBQ10::acyl-YFP and pPIN::PIN1-
+% GFP. Confocal z-stacks were acquired every 4 h for 3–3.5 d at a resolution of
+% 0.22 × 0.22 × 0.26 μm3 per voxel using a 63×/1.0 N.A. water immersion objective;
+% excitation wavelengths of 488 nm and 561 nm; the corresponding
+% dichroic filters; and a precalibrated spectral unmixing that enabled accurate
+% separation of the YFP, GFP, and RFP signals. The confocal scan speed was no
+% more than 9, and line averaging was set to 2. Each z-stack took ∼10 min to
+% acquire. At the end of each high-z-resolution z-stack acquisition, a second
+% low-z-resolution z-stack was rapidly acquired over ∼10 s with a z-step of
+% 5–6 μm (to enable correction of a major artifact, a stretching in the z-direction
+% owing to growth/movement in the stem during image acquisition; SI Appendix,
+% Supplemental Materials and Methods). Data on cell size and growth kinetics
+% were extracted by application of our 4D cellular quantification and
+% tracking pipeline using MARS/ALT software (60) (SI Appendix, Supplemental
+% Materials and Methods and Movies S5–S7).
+% Statistical Analysis, Modeling, and Simulations. Cellular quantification and
+% tracking data were analyzed with Python 2.7 scripts using the NumPy and
+% SciPy libraries and StatsModels package. Simulations were performed based
+% on a generalization of the models originally proposed (4, 37); simulations are
+% detailed in SI Appendix, Text S3.
+
+% GFP
+% NPA
+% Images of Meristem (not segmented)
+
+\section[Processed data]{Describe the processing of the data here}
+% Images of meristem (segmented)
+
+\section[Stochastic Simulations]{Mathematical formulation of molecular
+ interactions}
+% Probability of event
+% 
+% Rate equations
+% 
+
+\subsection[Stochastic Simulations]{Numerically solving stochastic systems}
+% Gillespie?
+% Milstein?
+
+\section[Organism]{Organism}
+
+\section[GRN Models]{Models of Gene Regulatory Networks}
+% Optimisation
+
+\section[Epidermal]{Epidermal Model}
+% Birth / death
+% Bith / death / self-activation
+
+\section[Internal]{Internal Model}
+

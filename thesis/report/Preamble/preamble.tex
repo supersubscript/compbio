@@ -1,16 +1,54 @@
-% Warnings
-\newcommand{\CITE}{{\color{red} \bf ADD CITATION}}
-\newcommand{\FIG}{{\color{red} \bf ADD FIGURE}}
+% ******************************************************************************
+% ***************************** Custom Packages ********************************
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\usepackage{xspace}
+\usepackage{hyperref}
+\hypersetup{colorlinks, citecolor=green, filecolor=black, linkcolor=blue,
+  urlcolor=blue}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} 
+\usepackage{chemarr} 
+\usepackage{lipsum}                     % Dummytext
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+%
+
+
+
+% ******************************************************************************
+% ***************************** Custom Commands ********************************
+% Warnings 
+\newcommand{\CITE}{{\color{red}        \bf ADD CITATION\xspace}}
+\newcommand{\FIG}{{\color{cyan}        \bf ADD FIGURE\xspace}}
+\newcommand{\REWRITE}{{\color{magenta} \bf REWRITE\xspace}}
+\newcommand{\ADD}{{\color{green}       \bf ADD\xspace}}
 
 % Shortcuts
 \newcommand{\Lone}{\textit{L1}}
 \newcommand{\Ltwo}{\textit{L2}}
 \newcommand{\Lthree}{\textit{L3}}
+\newcommand{\pone}{\textit{plant 1}}
+\newcommand{\ptwo}{\textit{plant 2}}
+\newcommand{\pfour}{\textit{plant 4}}
+\newcommand{\pthirt}{\textit{plant 13}}
+\newcommand{\pfift}{\textit{plant 15}}
+\newcommand{\peight}{\textit{plant 18}}
 \newcommand{\AT}{\textit{Arabidopsis thaliana}}
+\newcommand{\MA}{\textit{MARS-ALT}}
+\newcommand{\Rplus}{\protect\hspace{-.1em}\protect\raisebox{.35ex}{\smaller{\smaller\textbf{+}}}}
+\newcommand{\Cpp}{\mbox{C\Rplus\Rplus}\xspace}
+
+
 
 % ******************************************************************************
 % ****************************** Custom Margin *********************************
-
 % Add `custommargin' in the document class options to use this section
 % Set {innerside margin / outerside margin / topmargin / bottom margin}  and
 % other page dimensions
@@ -120,7 +158,7 @@
 % *****************************************************************************
 % *************************** Bibliography  and References ********************
 
-%\usepackage{cleveref} %Referencing without need to explicitly state fig /table
+\usepackage{cleveref} %Referencing without need to explicitly state fig /table
 
 % Add `custombib' in the document class option to use this section
 \ifuseCustomBib
@@ -191,13 +229,13 @@
 % ******************************** Todo Notes **********************************
 %% Uncomment the following lines to have todonotes.
 
-\ifsetDraft
-	\usepackage[colorinlistoftodos]{todonotes}
-  \newcommand{\mynote}[1]{\todo[author=hpa22,size=\small,inline,color=green!40]{#1}}
-\else
-	\newcommand{\mynote}[1]{}
-	\newcommand{\listoftodos}{}
-\fi
+%\ifsetDraft
+%	\usepackage[colorinlistoftodos]{todonotes}
+%  \newcommand{\mynote}[1]{\todo[author=hpa22,size=\small,inline,color=green!40]{#1}}
+%\else
+%	\newcommand{\mynote}[1]{}
+%	\newcommand{\listoftodos}{}
+%\fi
 
 % Example todo: \mynote{Hey! I have a note}
 

@@ -32,6 +32,7 @@
 \nomenclature[z-L1]{L1}{Layer-1. The outermost cell layer of the SAM}
 \nomenclature[z-CZ]{CZ}{Central Zone. The region harboring stem cells in the SAM.}                                                                        
 \nomenclature[z-GRN]{GRN}{Gene Regulatory Network}
+\nomenclature[z-SLCU]{SLCU}{Sainsbury Laboratory at the University of Cambridge}
 
 %********************************** %Second Section  *************************************
 \section{The Shoot Apical Meristem of \textit{Arabidopsis thaliana}} %Section - 1.2
@@ -72,6 +73,7 @@ notion of coordination and regulation between the different cell layers in order
 to accurately direct plant growth. % Expand on this
 
 % TODO: Lead into modelling
+TODO: Lead into modelling
 
 \section{Modelling Biological Systems} %Section - 1.2
 % Systems biology
@@ -84,7 +86,7 @@ whole system in question, much like how machinery can be explained by its
 separate cogs and gears working together. In a molecular setting, the typical
 descriptive approach is through \textit{Gene Regulatory Networks} (GRNs), where
 each component represents some molecular aspect of the system that is involved in
-producing expression levels of mRNA and proteins. \CITE
+producing expression levels of mRNA, proteins and hormones. \CITE
 
 % Gene regulatory networks and mathematical modelling
 GRNs are commonly understood both through analytical and computational means,
@@ -95,9 +97,19 @@ reaction kinetics are modelled using various types of \textit{Ordinary
 power available in the modern day, many recent studies also utilise more
 computationally demanding resources such as \textit{Stochastic Differential
   Equations} (SDEs), where also the inherently random nature of molecular
-motions, interactions, and processes are accounted for. The increase in
-computability has also allowed for the development of spatiotemporal modelling,
-where models are evaluated not only in a static context, but also in a changing
+motions, interactions, and processes are accounted for. In particular stochastic
+modelling of biological systems able to capture dynamical features that
+deterministic versions cannot. For example, cells often require in various ways to be
+able to switch between active and inactive states, e.g. when commiting to
+producing a certain protein or not. Utilising the inherent noise of microscopic
+systems, cells have been shown to probabilistically tune their responses; \CITE 
+modelling these types of phenomena using stochastic approaches has gained much
+insight into the decision-making process of cells both specifically and in
+general. \CITE 
+
+In addition to stochasticity, the increase in computability has also allowed for the development of
+spatiotemporal modelling,   where models are evaluated not only in a static
+context, but also in a changing  
 setting. A straightforward example taken directly out of the context of plant
 development is how the distribution of gene expression varies during plant
 growth and organ formation, both spatially and over time. Typical modelling
@@ -119,53 +131,154 @@ system motif constructed.
 % TODO: 
 In the latter case, which is the more prevalent in modern computational biology,
 computer models are established in order to verify or support the potential of
-an hypothesis due to experimental observations. \CITE
-
-
+an hypothesis due to experimental observations. \CITE 
+\REWRITE
 
 \section{Regulatory Mechanics of Plant Stem Cells} %Section - 1.2
+\subsection{Molecular tuning determines cell phenotype} %Section - 1.2.1
+% Cell decision making
+The ultimate phenotype of a cell is to a large degree determined by the underlying
+expressed genes and proteins, which in turn are regulated by the core GRN. Cells
+that have not yet undergone the differentiation process are those which are
+broadly described as stem cells. In addition to not having a specialised phenotype,
+stem cells continuously proliferate in order to give rise to new cells that can
+be used for development or repair. \CITE
+Similar to in animals, stem cells require an intricate network both specifying
+the pluripotency to the cell, and being able to maintain this both when the plant
+conformation or the environment changes. Effectively, this regulation causes the
+stem cell niches of the plant to be determined by various types of patterning,
+which also plays a role in specifying zones of initiation of primordia.
 % Patterning
-In order for the plant to undergo phyllotaxis in the correct manner, and to know
-when and where to initiate new organs -- primordia -- patterning of various
-types play an important role. In particular genetic and molecular patterning due
-to hormones, proteins and gene expression are known to be essential parts in understanding
-plant development, although also patterns of stress and strain have in recent
-studies been shown to play a role in determining growth. \CITE 
+A viable and robust network maintaining patterning is thus important for 
+the plant in order undergo phyllotaxis in a functional manner, and to know when
+and how to commit to more structural changes. Patterning can consist of several
+types of molecular spatiotemporal expression, including hormones, proteins and
+RNA localisation, although also patterns of stress and strain have in recent
+studies been shown to play a role in determining both growth and cell identity.
+\CITE (TWICE) Typically, whenever gene expression is the focus of a study, it
+is often used as a proxy for protein expression, as fluorescent tagging
+and tracking of proteins sometimes interfere with the function or transport of
+the molecule. 
+
+\subsection{Role of the WUSCHEL-CLAVATA feedback loop} %Section - 1.2.1
+The GRN in the SAM is determined mainly by two core genes -- \textit{WUSCHEL} (WUS) and
+\textit{CLAVATA} (CLV). Their corresponding network consists of the homeodomain protein
+WUS and a ligand-receptor complex made up by CLV1 (receptor), CLV3 (ligand) and
+an assumed accessory protein CLV2. In particular CLV3, which is expressed at
+the very apex and is known to diffuse out of the CZ, correlates strongly with
+stem cell identity of the cells. \FIG WUS, in turn, is expressed in the RM and 
+activates the CLV pathway, making it necessary for maintaining the correct stem
+cell niche. In contrast, CLV3 has an antagonistic impact on WUS, repressing its
+expression pattern at the very apex. Together, the CLV3-WUS feedback interaction
+forms the core of the GRN regulating cell identity in the niche. In the
+PZ however, differentiating genes such as KAN1 \CITE are known to promote cell
+specification. In extension, also other homeobox genes such as \textit{Shoot
+  Meristemless} (STM) have roles in the growth network, but are as of today
+unknown for their role in specifying pluripotency. \CITE % Rewrite this shit part
+
+
+
+% Time-coordination through network motifs
+
+\REWRITE
+% What do CLV3 / WUS mutants do?
+CLV3 / WUS mutants \\
+
+% CLV3 stem cells orrrr\ldots? 
+HORMONES \\
+STM / Cytokinin / Auxin \\
+
+How much of the details in GRN is known? \\
+
+% Alongside CLV3 and WUS, the peripheral gene KANADI-1 (KAN1) plays and important role in
+% regulating differentiation and organ initiation. While KAN1 is known to be bound and repressed
+% by WUS, and hence preventing differentiation, there are both computational and experimental
+% results pointing towards the opposite also being true – KAN1 repressing WUS. Together, this
+% would form a double negative, i.e. positive, feedback loop [3], which is hypothesised to tempo-
+% rally coordinate stem cell differentiation. However, these feedback loops can also be involved
+% in amplifying noise, making it currently unclear what purpose these types of networks serve in
+% the developmental programme of the SAM. A major focus of my project will involve verifying
+% and exploring such gene regulatory mechanisms driving patterning and subsequent effects on
+% developmental features such as cell size and growth rate.
+
+
+\section{Lead into what I've done (TODO)}
+An important question in developmenal biology is how organisms can have robust
+development despite consisting of many independetly variable parts. \CITE (x3)
 
 
 
 
+% Quantification of the SAM tissue at the single cell level
+% Stable regulation
+% CLV3 tracking and anisotropic growth
+
+% A key feature of stem cells is their ability to maintain their population over time, effectively
+% forming a replenishing source of building material for the plant throughout its lifetime. In the
+% SAM, pluripotent cells are maintained in the central zone by a genetic feedback loop consisting
+% of genes CLAVATA-3 (CLV3) and WUSCHEL (WUS), where the former is expressed in the
+% central zone itself, and the latter in the uppermost parts of the rib meristem. The coordination
+% between the different parts of regulation must be tightly organised in order to assure correct
+% spatiotemporal formation of new tissues. Nevertheless, plants exhibit developmental variability
+% in such a way that stochasticity appears to be conserved [2], which raises the unresolved ques-
+% tion of how robust SAM development incorporates noisy expression. Using in vivo imaging data
+% on multi-gene reporter systems, I hope to quantify the extent of noise in the regulatory network
+% of the SAM, and subsequently develop computational models describing how this impacts cell
+% division, differentiation and homeostasis throughout the life-span of the plant; all these vari-
+% ables being factors which affect the final phenotype, and hence the ultimate functionality of the
+% organism.
+
+% Given that modern imaging tools now are capable of capturing high-resolution
+% development both in the spatial and temporal sense, the need for
+% models describing the underlying dynamics of these processes is rapidly
+% increasing. The improvement in the attainable data also allows for far more  
+% fine-grained analyses on, for example, the role of stochasticity in development,
+% and in extension, how local homogeneity is maintained also in shifting  
+% environments – that is, how cellular systems adapt to external perturbations. On
+% the more macroscopic scale, the relevant question becomes how  
+% fundamentally variable systems can give rise to stable heterogeneity in
+% developmental processes. Specifically, I would like to research how stable  
+% spatial gene expression patterning is maintained by stochastic processes, and
+% how stochasticity can drive heterogeneous growth, which in the bigger  
+% picture can have implications for more applied fields such as crop improvement
+% and regenerative medicine.  
+% 
 
 
-%While gene expression can consist of both directly functional RNA, such as tRNA, and
-%mRNA, the studying gene expression in developmental biology is often done as a
-%proxy for protein localisation.
-
-% Gene expression is the process by which information from a gene is used in the
-% synthesis of a functional gene product. These products are often proteins, but
-% in non-protein coding genes such as transfer RNA (tRNA) or small nuclear RNA
-% (snRNA) genes, the product is a functional RNA. The process of gene expression
-% is used by all known life—eukaryotes (including multicellular organisms),
-% prokaryotes (bacteria and archaea), and utilized by viruses—to generate the
-% macromolecular machinery for life. 
-% Several steps in the gene expression process may be modulated, including the
-% transcription, RNA splicing, translation, and post-translational modification of
-% a protein. Gene regulation gives the cell control over structure and function,
-% and is the basis for cellular differentiation, morphogenesis and the versatility
-% and adaptability of any organism. Gene regulation may also serve as a substrate
-% for evolutionary change, since control of the timing, location, and amount of
-% gene expression can have a profound effect on the functions (actions) of the
-% gene in a cell or in a multicellular organism.  
-% In genetics, gene expression is the most fundamental level at which the genotype
-% gives rise to the phenotype, i.e. observable trait. The genetic code stored in
-% DNA is "interpreted" by gene expression, and the properties of the expression
-% give rise to the organism's phenotype. Such phenotypes are often expressed by
-% the synthesis of proteins that control the organism's shape, or that act as
-% enzymes catalysing specific metabolic pathways characterising the organism.
-% Regulation of gene expression is thus critical to an organism's development.
-
-
-
-\subsection{The role of WUSCHEL-CLAVATA interactions} %Section - 1.2.1
+% Maintaining stem cell homeostasis in the shoot and root
+% stem cell niches is essential to ensure that an equal number
+% of new cells are generated to replace those that are
+% displaced from the niche, to differentiate and to enable
+% the growth and formation of new tissues and organs.
+% Remarkably, the RETINOBLASTOMA-RELATED
+% (RBR) protein, the plant homologue of the RB tumour
+% suppressor protein, has a crucial role in both niches3,11.
+% As in animals, RBR inhibits cell cycle progression by
+% interacting with an E2F transcription factor homologue12.
+% Moreover, reduced levels of RBR result in an increase
+% in stem cell numbers, and increased RBR levels lead to
+% stem cell differentiation, which indicates a prominent
+% role for RBR in stem cell maintenance13–15. At present,
+% RBR is the only known protein involved in stem cell
+% function that is conserved between the animal and plant
+% kingdoms.
+% Maintaining shoot stem cells. Maintenance of a stable
+% shoot stem cell pool mainly involves a feedback loop
+% between the homeodomain protein WUSCHEL (WUS)
+% and a ligand–receptor signalling cascade, which is
+% collectively known as the CLAVATA (CLV) pathway.
+% Expression of the WUS gene defines the organizing
+% centre and the WUS protein acts as a non-autonomous
+% signal to maintain stem cells and, at least in meristems,
+% is sufficient to promote stem cell identity16–21. Restricting
+% WUS movement results in premature loss of stem cells,
+% which indicates that its movement is important for stem
+% cell maintenance22. WUS binds to and activates the promoter
+% of CLV3, which encodes a signal peptide that is
+% expressed in stem cells and, in turn, CLV3 signalling
+% represses WUS transcription20,22–27 (FIG. 3a). However,
+% although CLV3 is a marker for stem cells, clv3 mutants
+% retain a stem cell population, which suggests that the
+% CLV3 protein is not essential for stem cell specification, 
 
 

@@ -1,4 +1,4 @@
-%!TEX root = ../thesis.tex
+%TEX root = ../thesis.tex
 %*******************************************************************************
 %****************************** Second Chapter *********************************
 %*******************************************************************************
@@ -11,25 +11,28 @@
 \graphicspath{{Chapter2/Figs/Vector/}{Chapter2/Figs/}}
 \fi
 
-\section[Raw data]{Describe the data here}
-The Yellow Fluorescent Protein (YFP) marker for the plasma membrane was
-amplified using PCR with primers attb1-mYfwd
-(5'-AGAAAGCTGGGTTTACTTGTACAGCTCGTCCATGCCGAGAGTG) and attb2-YFPrev
-(5'-AGAAAGCTGGGTTTACTTGTACAGCTCGTCCATGCCGAGAGTG), with the forward primer
-sequence containing a motif known to acetylate in plant cells~CITEHERE. 50
-$\mu$L solution was amplified in 96 $^\circ$C for 1 minute, followed by 25
-cycles of 96 $^\circ$C for 30 seconds, and a final elongation for 30 seconds. 5
-$\mu$L of the result was then used in a second reaction consisting of
-40~$\mu$L solution in total, with primers B1 adapt (5'-GGGGACAAGTTTGTACAAAAAAGCAGGCT)
-and B2 adapt (5'-GGGGACCACTTTGTACAAGAAAGCTGGGT) included. Similar to the first
-solution, the second mixture was amplified by PCR in 95 $^\circ$C for 2 minutes,
-followed by 94 $^\circ$C for 30 seconds, 48 $^\circ$C for 30 seconds, and 72
-$^\circ$C for 1 minute, 20 cycles of 94 $^\circ$C for 30 seconds,
-55 $^\circ$C for 30 seconds, and 72 $^\circ$C for 1 minute. Finally, elongation
-took place under 72 $^\circ$C for 1 minute.
+\section[Raw data]{Data consists of \textit{in vivo} confocal timelapses}
+Six plants, labelled \textit{plant 1},
+\textit{2},\textit{4},\textit{13},\textit{15}, and \textit{18}, were grown on a
+solution consisting of 10$\mu M$ auxin transport inhibitor NPA to a depth of
+roughly 1 cm for 22-26 days. The inhibition of auxin prevents formation of new
+primordia, and this gives rise to a small and naked, organ-free meristem which is
+tractable for imaging. 
 
+The plantlets were marked with pUBQ10::acyl-YFP, which localises in the cell
+membrane \CITE, as well as with pCLV3::dsRED-N7, which was used as a nuclear tracker
+for CLV3 mRNA expression. Also pPin1::PIN1-GFP was tracked, but not quantified
+in this study. In addition, \textit{plant 1} did not express the nuclear marker
+for CLV3.
 
-
+Using confocal microscopy, the six plantlings were tracked in
+intervals of 4 hours up to 76 (\textit{plants 1, 2, 4}) or 84 hours
+(\textit{plants 13, 15, 18}), using a 63x/1.0 N.A. water immersion objective.
+Due to the high resolution of the images, the acquisition of each z-stack took
+$\sim$10 minutes, which induced vertical stretching in the images due to stem
+elongation. Because of this, a second batch of z-stacks was acquired, using
+low-resolution imaging over $\sim$10 seconds. The original images were then
+corrected, using this second batch as reference. \CITE 
 
 % Construction of a YFP Plasma Membrane Marker and Other Transgenic Lines.
 % DNA containing the coding sequence for YFP was amplified by PCR using
@@ -99,32 +102,344 @@ took place under 72 $^\circ$C for 1 minute.
 % on a generalization of the models originally proposed (4, 37); simulations are
 % detailed in SI Appendix, Text S3.
 
-% GFP
-% NPA
-% Images of Meristem (not segmented)
+\section[Processed Image data]{Image Pre-processing and Segmentation}
+\todo{Add figure of segmented plants}
+In order to eliminate segmentation errors, the ImageJ plugin StackReg was used
+to perform a translation transformation for each stack. Individual slices which
+contained horizontal shifts because of vibrations or other types of system
+disturbances were identified and replaced with the nearest slice that contained
+no such shift. The z-directional stretching due to stem elongation was corrected for by mapping
+the low-resolution stacks to the high-resolution ones in order to attain
+stretching factors that the images were thereafter corrected for. 
 
-\section[Processed data]{Describe the processing of the data here}
-% Images of meristem (segmented)
+For the membrane channel, noise removal was done by Gaussian and alternative-sequential
+filtering. The filtered z-stacks were then watershed in 3D using the
+algorithm implemented in the segmentation software \MA. Segmentation and
+tracking was thereafter done using the same software. Cellular volumes were from
+this then calculated as the sum of voxel volumes belonging to the same cell.
+The tracking, also performed using \MA, was assessed for quality using an F1
+score between the parent and corresponding daughter cell. For all analyses
+discussed in this report, a cutoff value of 0.30 was set for the tracking in
+order to account for likely incorrect mappings. These cells are included in the
+overall analysis, but excluded from all cell line related investigations.
 
-\section[Stochastic Simulations]{Mathematical formulation of molecular
- interactions}
-% Probability of event
-% 
-% Rate equations
-% 
+A longer outline of this is presented
+in \cref{sec:data_errors}. 
+
+The nuclear data were deconvolved to account for the microscope's point-spread
+function using the \textit{PSF distiller} tool from Huygens software 15.05
+\CITE. As in the membrane case, the nuclear channels were adjusted with the
+corresponding stretching factors and thereafter segmented using segmentation
+tool \textit{Costanza} \CITE. 
+
+% Nuclear and membrane mapping
+In order to link nuclei to membranes, the coordinates of each variable were
+fitted using a least square approach. Duplicately mapping nuclei were then
+consolidated as described in \cref{sec:filtering}. Note that whenever spatial
+coordinates are referenced in relation to membrane or nuclei, they are done so
+as the centroid coordinates of the basin of attraction found in the segmentation
+process.
+
+% Distance measures (d2t / circ)
+Measures of distances to the top were done in multiple ways. The three methods
+herein considered consist of a definition of the top based on 1) the spatial
+coordinates, 2) the expression value, and 3) a least-square fit of a parabloid to
+raw meristem images. In the case of spatial coordinates, the average $x-y$
+coordinates of $n$ nuclei were chosen, complemented with the highest $z$ value
+registered in the corresponding timeframe. For the second case, the apex was
+defined as the $n$ average spatial coordinates of the highest expressing CLV3
+nuclei. Lastly, the parabloid fit to the meristem was used to define the apex by
+taking the coordinates of the region have a zero-valued derivative. For both the
+segmentation-dependent approaches, the data was set to exclude subepidermal
+layers in order to prevent biases.
+\todo{Correct for overshooting?}
+
+In order to achieve a cell-resolution description of distances in the SAM,
+an auxilliary measure of cell distances was used in the form of a cell-wise
+grouping. In the cell value utilising definitions of the apex above, cells
+included in the definition was set to have a cell-wise distance of 0. The
+neighbours of these cells were in turn defined to have a distance value of 1,
+and so on recursively. 
+
+\section[Data Filtering]{Data Filtering}
+\label{sec:filtering}
+Due to thresholding effects for cell nuclei during the segmentation, some
+individual nuclei are
+occasionally identified as two or more. In order to accound for this, nuclei
+were mapped to the corresponding membranes using a minimum euclidian distance
+measure between the respective centroids. The nuclear quantified metrics were
+then corrected using the functions found in \cref{tab:consolidation_methods}. In
+addition to this, all mentions of numbers of nuclei are with respect to the
+number of cell membranes containing at least one nuclear volume identified
+within them.
+
+\begin{table}
+  \centering
+  \caption{Consolidation methods applied for duplicate nuclei.}
+  \label{tab:consolidation_methods}
+  \begin{tabular}{lc}                                 \\ \toprule
+    \textbf{Metric}       & \textbf{Summary function} \\ \midrule
+    Coordinates (x, y, z) & mean                      \\
+    Nuclear volume        & sum                       \\ 
+    Nuclear expression    & mean                      \\ \bottomrule
+  \end{tabular}
+\end{table}
+
+For the data analysis section, data was excluded due to apparent segmentation
+errors. This was done for each plant in isolation, with the outline of the
+filtering described below in \cref{tab:filtering}. The choice of allowed
+deviance was done based on the distribution shape \unsure{figure of these?}, with particular consideration
+taken to the nuclear and membrane volumes, where no lower boundary was set. The
+maximal neighbour distance was chosen due to the typical lack of data for cells more
+than $7$ cell distances from the apex. Lastly, due to division events where
+loss of nuclear signal took place, we filter out expression values which are
+less than 70~\% of the magnitude in the previous, as well as subsequent timepoint.
+
+\begin{table}
+  \centering
+  \begin{tabular}{ll}    \toprule
+    Parameter & Value \\ \midrule
+    Maximal membrane volume & $\mu + 3\sigma$ \\
+    Minimal membrane volume & 0 \\
+    Maximal nuclear volume  & $\mu + 5\sigma$ \\
+    Minimal nuclear volume  & 0 \\
+    Maximal apical distance & $\mu + 3\sigma$ \\
+    Maximal neighbour distance & $7$ \\
+  \end{tabular}
+  \caption{Filtering settings}
+  \label{tab:filtering}
+\end{table}
+
+For reference, a quality assessment of the data can be found in
+\cref{sec:data_errors}. In addition, descriptions of the software used in
+segmentation and tracking are briefly introduced in \cref{sec:software_descr}.
+
+\section[Models of Gene Regulatory Networks]{Models of Gene Regulatory Networks}
+\subsection[Mathematical Formulation]{Mathematical Formulation of Biochemical
+  Reactions}
+
+\subsubsection[Mass-action Kinetics]{Mass-action Kinetics}
+The formulation of processes in GRNs focus primarily on two aspects: synthesis
+and degradation of matter, which usually takes the form of molecular
+concentrations or absolute abundance. As implied in \cref{sec:modelling}
+(modelling biological systems), we here work using an ODE or SDE description of
+our regulatory systems. 
+
+We in this thesis represent our molecular reactions using mass-action
+interactions and Michaelis-Menten kinetics; both here relying on the na\"ive
+assumption that our primary reagents here act in isolation of other possibly
+intervening molecules. As part of our formalism, we write
+\begin{equation}
+  S \xrightleftharpoons[k_{f}]{k_{b}} P
+  \label{eq:simple_reac}
+\end{equation}
+to express that some substrate $S$ is turned into a product $P$ by some given
+\textit{forward affinity} $k_f$. Likewise, as the reaction is \textit{reversible}, the
+product $P$ is transformed back into $S$ with the \textit{backward affinity}
+$k_b$. 
+
+The \textit{law of mass action} states that the rate of a reaction
+is proportional to its affinity, e.g.\ $k_f$, and the concentration of the
+reacting species, here $S$. The reaction rate of the production of $P$ would thus be
+$r_f = k_f S$. However, the rate of change of reactant $P$ also depends
+on the backward affinity, which would give the overall rate-of-change for $P$ as
+\begin{equation}
+  \Delta P = k_f S - k_b P.
+  \label{eq:mass_action_noninf}
+\end{equation}
+In the infinitesimal limit, we analogously have 
+\begin{equation}
+  \frac{\dd P}{\dd t} = k_f S - k_b P,
+  \label{eq:mass_action_inf}
+\end{equation}
+i.e.\ on the form of a differential equation, which will be the baseline for our
+formulations. Similar to the formulation of rate-of-change of $P$, we can do the
+same for species $S$, and our system is then fully represented as a system of
+differential equations.
+
+Expanding on this, we can easily solve for the steady-state concentrations of
+the system by assming that all rates average to zero. In our example above, this
+gives us 
+\begin{equation}
+  \frac{k_f}{k_b} = \frac{P}{S},
+  \label{eq:mass_action_ss}
+\end{equation}
+which holds in general, regardless of the number of reacting species.
+
+\subsubsection[Michaelis-Menten Kinetics]{Michaelis-Menten Kinetics}
+A conceptual drawback of the mass-kinetics formulation is the possibility to
+have infinite reaction rates, whereas the molecular reactions in nature typically
+are restricted by some means. One way to account for this is through
+\textit{Michaelis-Menten kinetics}, which describes enzymatic chemical
+reactions. In these, the trivial example introduced in \cref{eq:simple_reac} is
+expanded to include an enzymatic agent such that
+\begin{equation}
+  E + S \xrightleftharpoons[k_f]{k_b} ES \xrightarrow{k_p} E + P.
+  \label{eq:enzymatic_react}
+\end{equation}
+In other words, an enzyme-like molecule binds to the substrate $S$ such that the
+complex $ES$ is formed. This complex is thereafter transformed into the product
+molecule $P$ and again the enzyme $E$. Assuming a total enzyme concentration of
+$E_{tot}$ and the assumption that the enzyme-substrate binding process is in
+equilibrium, the rate-of-change of the product can be rephrased to be on the
+form 
+\begin{equation}
+  \frac{\dd P}{\dd t} = V_{max} \frac{S}{K + S},
+  \label{eq:michaelis-menten}
+\end{equation}
+where $K = K_f / K_b$ and $V_{max} = k_pE_{tot}$. This expression is said to be
+on \textit{Michaelis-Menten} form, where $V_{max}$ is the maximal
+activation rate of the protein, and $K$ can be thought of as a saturation
+coefficient.
+
+Extrapolating on this type of reaction, introducing $n$ enzymatically acting
+molecules instad gives the standard \textit{Hill equation} form, namely
+\begin{align}
+  \frac{\dd P}{\dd t} &= V_{max} \frac{S^n}{K^n + S^n},\hspace{.8em} \text{and} \\
+  \frac{\dd P}{\dd t} &= V_{max} \frac{K^n}{K^n + S^n}
+  \label{eq:hill}
+\end{align}
+for an activating and repressing reaction respectively.
 
 \subsection[Stochastic Simulations]{Numerically solving stochastic systems}
-% Gillespie?
-% Milstein?
+\subsubsection{Gillespie Algorithm}
+The Gillespie algorithm is a discrete approach for simulating stochastic
+molecular dynamics. It first appeared in print by Dan Gillespie in 1977, and has
+since been widely used for stochastic simulations in multiple fields.
 
-\section[Organism]{Organism}
+While being computationally expensive, the Gillespie algorithm compensates for
+its lack in tractability by producing a statistically exact trace of the
+molecular dynamics of a system. 
 
-\section[GRN Models]{Models of Gene Regulatory Networks}
-% Optimisation
+The algorithm originates in the formulation of the \textit{chemical master equation},
+which specifies the rate of change of the transition probabilty between states
+in the form of 
+\begin{equation}
+  \dfrac{\partial P\left( x,t | x_0, t_0 \right)}{\partial t} = 
+  \sum_{j =
+    1}^{M} \left[ a_j\left( x-v_j \right)P\left( x-v_j, t|x_0,t_0 \right) -
+    a_j(x)P\left( x,t|x_0,t_0 \right) \right]
+\end{equation}
+where $a$ defines to reaction probability, or propensity, for each type of reaction, and
+$v$ the stoichiometry, i.e. information of how the molecular species are changed
+due to the reaction. $P(x,t | x_0, t_0)$ on its own denotes the probability of
+$X(t) = x$, given that the initial value is $x_0$. Solving the master equation
+analytically is usually complicated, so  
+simulating a complex biological system using the Gillespie approach can often be
+far more tractable.
 
-\section[Epidermal]{Epidermal Model}
-% Birth / death
-% Bith / death / self-activation
+Proceduraly, the algorithm can be formulated in four steps: 
+\begin{description}
+  \item[Initialisation] Generation of number of molecules and reaction
+    parameters. 
+  \item[Randomisation] Generation of random numbers to determine 1) next
+    interaction, and 2) the time increment.
+  \item[Update of system] Time and molecular numbers are update correspondingly
+    to the determined event in step 2.
+  \item[Repetition] Step 2-4 are repeated until some stop condition is met.
+\end{description}
 
-\section[Internal]{Internal Model}
+In principle, the Gillespie algorithm is interested in two fundamental
+questions: 1) When does the next reaction happen? 2) Which is the next reaction?
+The time until the next reaction at time $t$ is denoted $\tau$ and can be shown
+to be an exponential distribution centered  
+at $1 / \sum_{j=1}^{M}a_j(x)$ for some molecular concentration $x$, i.e.
+\begin{equation}
+  p(\tau = t') = \sum_{j=1}^M a_j(x)e^{-\sum_{j=1}^M a_j(x)t'}
+  \label{eq:gill:time}
+\end{equation}
+with the reaction probability instead being described by the normalised
+propensity. Historically, due to the limitation of random number generators, the
+time update has been described as being drawn from 
+\begin{equation} 
+  \displaystyle
+  \tau = \dfrac{1}{\sum_{j=1}^M a_j(x)} \ln\dfrac{1}{r_1}
+  \label{eq:gill_time_update}
+\end{equation}
+although modern high-level programming languages do in some cases perform better using the
+inherent random number generator for a specific type of distribution. \CITE
+
+\subsubsection{Milstein's Method}
+If there is no requirement for exactness, less computationally intense
+alternatives to Gillespie's algorithm exists. One such example is the
+\textit{Langevin} formulation of chemical systems, which utilises SDEs to
+attain an approximate solution to the system trajectory, and is particularly
+useful when the number of molecular reagents is high. 
+
+The Langevin formulation, like Gillespie's, utilises the chemical master
+equation to compute the behaviour of the system. In principle, the Langevin
+formulation can be said to reformulate a deterministic increment of the form
+\begin{equation}
+  X_i(t + \dd{t}) = X_{i}(t) + \sum_{j=1}^M
+  v_{ji}a_j(X(t))\dd{t}
+  \label{eq:deterministic}
+\end{equation}
+to the stochastic form
+\begin{equation}
+  X_i(t + \dd{t}) = X_{i}(t) + \sum_{j=1}^M
+  v_{ji}a_j(X(t))\dd{t} + \sum_{j=1}^M
+  v_{ji}a_j^{1/2}N_j(t)\dd{t}^{1/2}
+  \label{eq:stoch}
+\end{equation}
+where $X$ denotes the molecular number, $v$ the stochiometric coefficient of the
+equation in question, and $N_j$ are temporally uncorrelated and statistically
+independent, Gaussian random numbers with mean 0. From this stage, the equation
+is then easily extended to its multivariate form, namely
+\begin{equation}
+  X_i(t + \dd{t}) = \sum_{j=1}^Mv_{ji}a_j(\bar x) \dd{t} +
+  \sum_{j=1}^M v_{ji}{a_j}^{1/2}(\bar x) N_j(t) \left( \dd t \right)^{1/2}
+  \label{eq:stoch_multi}
+\end{equation}
+
+Milstein's approach to solving this equation numerically utilises
+\cref{eq:stoch} on the differential form 
+\begin{equation}
+  \dd X_t = a(X_t) + b(X_t) \dd W_t
+  \label{eq:milstein_form}
+\end{equation}
+where $W_t$ is a continuous-time stochastic process. The simulation interval
+$\left[ t_0, T \right]$is then partitioned into parts of size $\Delta t = T /
+N$, where $N$ is the number of partitions. We thereafter define the update
+\begin{align}
+  Y_{n+1} &= Y_n + 
+  a(Y_n)\Delta t + 
+  b(Y_n)\Delta W_n +
+  \dfrac{1}{2}b(Y_n)b'(Y_n)\left( \left( \Delta W_n \right)^2 - \Delta t \right) \\
+  Y_{n+1} &= Y_n + 
+  a(Y_n)\Delta t + 
+  b(Y_n)\Delta W_n + 
+  \dfrac{1}{2} b(Y_n)b'(Y_n) \left(\Delta W_n\right)^2 
+  \label{eq:milstein_deriv}
+\end{align}
+on It\={o} and Stratonovich form respectively. Here $b'$ denotes the spatial
+derivative of $b$, whereas $\Delta W_n = W_{\tau_{n+1}} - W_{\tau_n}$. The
+difference between the It\={o} and Stratonovich form in turn is the
+interpretation of the integral of $\dd W_t$. \CITE In many cases, it is
+preferable to express the numerical update on a derivative-free form, which can
+be done through a Runge-Kutta like approach \CITE and gives the final,
+multivariate expression as 
+\begin{equation}
+  Y_{i, n+1} = Y_{i, n} + a_i\left( Y_{i,n} \right) \Delta t + 
+  b_{ii}(Y_{i,n}) \sqrt{\Delta t} N_i + \dfrac{1}{2\sqrt{\Delta t}} \left[
+    b_{ii}(\bar x, n) - b_{ii} \right]
+  \Delta t (N_i)^2 
+  \label{eq:milstein_deriv_free}
+\end{equation}
+where a supporting predictory step is calculated in the form of 
+\begin{equation}
+  \bar {x_i} = x_i + a_i\left( Y_n \right)\Delta t + b_{ii}\sqrt {\Delta t}.
+  \label{eq:milstein_predictor}
+\end{equation}
+Algorithmically, the Milstein approach is of strong order of convergence
+$\mathcal O \left( \sqrt{\Delta t }\right)$ and weak order $\mathcal O \left(
+  \Delta t \right)$. In this thesis, we utilise the Milstein approach under the
+Stratonovich interpretation.
+
+
+% \section[Epidermal]{Epidermal Model}
+% % Birth / death
+% % Birth / death / self-activation
+% 
+% \section[Internal]{Internal Model}
+% Will I even do this? 
 

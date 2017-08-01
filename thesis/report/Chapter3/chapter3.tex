@@ -13,7 +13,7 @@
 \fi
 
 % Oscillations 
-\section{The CLV3 domain is periodically regulated}
+\section{Regulation of the CLV3 domain induces periodicity when perturbed}
 When tracking the number of CLV3 nuclei identified by Costanza, the results
 observable in \cref{fig:clv3_trajs} shows the number of observed CLV3 nuclei
 increasing for plants 2, 4, 13, and 15, corresponding to a visually observable
@@ -25,7 +25,7 @@ correlate with the mean expression as described in
 \begin{figure}[H]
   \centering
   \includegraphics[width=.8\textwidth]{clv3nucl_trajectories.pdf}
-  \caption{\todo{Add caption}
+  \caption{Add caption}
   \label{fig:clv3_trajs}
 \end{figure}
 
@@ -51,28 +51,48 @@ biased towards the fourth mode in each respective transformation, as depicted in
 \todo{map this to light / dark hour cycles?}
 % and are hence not circadian
 
-In addition to this periodicity, the number of nuclei identified correlated
+In addition to this periodicity, the number of nuclei identified correlates
 positively with the number of division events observed in each timepoint for
-three out of the four plants. Due to the typical prevalence of loss in nuclear
-signal during cellular division
+three out of the four plants (\cref{fig:corr_nNucl_nDivs}. Plant 13, like in 
+\cref{fig:clv3_trajs} is the one anomously behaving specimen.
+\unsure{Should I add other correlations and just draw plots?}
 
-
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{corr_nNucl_nDivs.pdf}
+  \caption{Add caption}
+  \label{fig:corr_nNucl_nDivs}
+\end{figure}
 
 % Trajectories
 % Fourier analysis
 
-\section{Epidermal regulation maintains low variance in CZ}
+\section{Distribution shifting suggests epidermal regulation}
+\subsection{CLV3 is induced in the epidermis}
+A layer-wise separation of the CLV3 expression can be seen in particular between
+\Lone and \Ltwo, as visualised in \cref{fig:clv3_layer_sep}. 
 
-\subsection{Layer-wise separation in the distribution of nuclear volume 
-  suggests Epidermal activation}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{clv3_layer_sep.pdf}
+  \caption{Add caption}
+  \label{fig:corr_nNucl_nDivs}
+\end{figure}
 
-\subsection{Radial decay in CLV3 expression shows robustness in apical expression}
+% Support this with simple model?
 
-\subsection{A simple model supports L1 activation hypothesis (hopefully)}
+\subsection{Low variance in CZ indicates tight regulation at apex}
+% This holds regardless of what distribution looks like
 
-\section{Trajectorial analysis suggests CLV3 decay outside of apex}
-This goes in line with previous point. What do I want to say about this? 
+\section{Cell lineage tracking implies dsRED technical artefacts}
+Just show lineages or quantify behaviour? \\
 
-\section{Longevity thingy (?)}
+TODO: Justification for decay. Assume movement out of CZ proportional to
+division rate $k_{div}$, such that $\dot{R} \propto k_{div}$. We thus have
+$R = kt$. Assume linear degradation of CLV3 such that $\dot{C} = -k_{deg} =
+\frac{\dd C}{\dd t} = \frac{\dd C}{\dd R} \frac{\dd R}{\dd t}$. We therefore have
+$\frac{\dd C}{\dd R} = \frac{\dd C}{\dd t} = -\frac{k_{deg}}{k_{div}}$. Justify
+decay rate observed in trajectories or smth like that?
 
-\section{Extended data analysis. Include this at all?} 
+\section{Deep-tissue cells divide at a slower rate}
+Still unknown.

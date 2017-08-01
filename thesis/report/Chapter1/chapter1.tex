@@ -72,8 +72,7 @@ involved in both promoting and restricting shoot development, adding to the
 notion of coordination and regulation between the different cell layers in order
 to accurately direct plant growth. % Expand on this
 
-% TODO: Lead into modelling
-TODO: Lead into modelling
+\todo{Lead into modelling}
 
 \section{Modelling Biological Systems} %Section - 1.2
 % Systems biology
@@ -148,70 +147,93 @@ the pluripotency to the cell, and being able to maintain this both when the plan
 conformation or the environment changes. Effectively, this regulation causes the
 stem cell niches of the plant to be determined by various types of patterning,
 which also plays a role in specifying zones of initiation of primordia.
+
 % Patterning
 A viable and robust network maintaining patterning is thus important for 
 the plant in order undergo phyllotaxis in a functional manner, and to know when
-and how to commit to more structural changes. Patterning can consist of several
-types of molecular spatiotemporal expression, including hormones, proteins and
-RNA localisation, although also patterns of stress and strain have in recent
-studies been shown to play a role in determining both growth and cell identity.
-\CITE (TWICE) Typically, whenever gene expression is the focus of a study, it
+and how to commit to more structural changes. Substances which rule this type of
+process are known as \textit{morphogens}, and guide the initiation of organs and
+specialised cells by signalling processes, where cells are tuned to respond
+accordingly depending on its local configuration of molecular concentration.
+
+Morphogen patterns can consist of several
+types of spatiotemporal expression, including that of hormones, proteins and
+RNA localisation, although in extension to molecular interactions, also patterns
+of stress and strain have in recent studies been shown to play a role in
+determining both growth and cell identity. 
+\CITE (x2) Typically, whenever gene expression is the focus of a study, it
 is often used as a proxy for protein expression, as fluorescent tagging
 and tracking of proteins sometimes interfere with the function or transport of
 the molecule. 
 
-\subsection{Role of the WUSCHEL-CLAVATA feedback loop} %Section - 1.2.1
+\subsection{Developmental Regulation in the Apical Meristem} %Section - 1.2.1
+% WUS and CLV3
 The GRN in the SAM is determined mainly by two core genes -- \textit{WUSCHEL} (WUS) and
-\textit{CLAVATA} (CLV). Their corresponding network consists of the homeodomain protein
-WUS and a ligand-receptor complex made up by CLV1 (receptor), CLV3 (ligand) and
-an assumed accessory protein CLV2. In particular CLV3, which is expressed at
-the very apex and is known to diffuse out of the CZ, correlates strongly with
-stem cell identity of the cells. \FIG WUS, in turn, is expressed in the RM and 
-activates the CLV pathway, making it necessary for maintaining the correct stem
-cell niche. In contrast, CLV3 has an antagonistic impact on WUS, repressing its
-expression pattern at the very apex. Together, the CLV3-WUS feedback interaction
-forms the core of the GRN regulating cell identity in the niche. In the
-PZ however, differentiating genes such as KAN1 \CITE are known to promote cell
-specification. In extension, also other homeobox genes such as \textit{Shoot
-  Meristemless} (STM) have roles in the growth network, but are as of today
-unknown for their role in specifying pluripotency. \CITE % Rewrite this shit part
+\textit{CLAVATA} (CLV). Their corresponding network consists of the homeodomain
+protein WUS and a ligand-receptor complex made up by CLV1 (receptor), CLV3 (ligand) and
+an assumed accessory protein CLV2. In particular CLV3, which is expressed in a
+few cells at the very apex CZ, correlates strongly with stem cell identity of
+the cells. In these cells, CLV3 encodes a small, secreted peptide which diffuses quickly
+out of the cell. The clv3 gradient extends down to the OZ where it acts
+repressively on the WUS gene.\todo{Add information on CLV mutants}
 
+\FIG \todo{Add flowchart of shoot network}
 
+In contrast, WUS agonistically  
+activates the CLV pathway through diffusion of its homeobox protein. This activating
+interaction makes it necessary for maintaining an appropriate stem
+cell niche, and for repressing the differentation process of the cells at the
+apex. This is particularly noticable in WUS loss-of-function mutants, where the
+lack of the correct WUS gradient leads to defective shoots that terminate in
+aberrant flat structures. \CITE (Laux 1996) 
 
-% Time-coordination through network motifs
+Together, the CLV3-WUS feedback loop forms the core of the GRN regulating stem
+cell identity. Outside of the CZ, peripherally expressed genes such as KAN1 \CITE 
+are known to promote cell differentiation. The core network itself is naturally
+also affected by the activity of other genes in extension, including hormonal
+intervenience on WUS by the small and diffusive hormone cytokinin, which itself
+is activated by enzymes present in the meristem. Also other homeobox encoding
+genes such as \textit{Shoot Meristemless} (STM) are essential for correct
+development of the shoot. 
 
-\REWRITE
-% What do CLV3 / WUS mutants do?
-CLV3 / WUS mutants \\
+Aside of the system regulating the cellular
+identity, even further substances are key to the overall development.
+The plant hormone auxin in particular has been repeatedly shown to have an
+essential role in the coordination of growth, both in 
+signalling initiation points of new primordia and elongation of the core stem.
+Because of this, auxin transport is key to asserting apical dominance in plants
+through the help of active transporters such as the PIN-FORMED (PIN) family,
+inhibition of this process leads to development of organless meristems.
+\CITE 
 
-% CLV3 stem cells orrrr\ldots? 
-HORMONES \\
-STM / Cytokinin / Auxin \\
+As a whole, the molecular regulation of the
+development of the SAM consists of an intricate system that requires both tight
+regulation and precise coordination. This allows the plant to both counter and 
+utilise noise that might be present due to volatile environements, or inherent
+molecular processes, so that functional and robust development can be ensured.
 
-How much of the details in GRN is known? \\
-
-% Alongside CLV3 and WUS, the peripheral gene KANADI-1 (KAN1) plays and important role in
-% regulating differentiation and organ initiation. While KAN1 is known to be bound and repressed
-% by WUS, and hence preventing differentiation, there are both computational and experimental
-% results pointing towards the opposite also being true – KAN1 repressing WUS. Together, this
-% would form a double negative, i.e. positive, feedback loop [3], which is hypothesised to tempo-
-% rally coordinate stem cell differentiation. However, these feedback loops can also be involved
-% in amplifying noise, making it currently unclear what purpose these types of networks serve in
-% the developmental programme of the SAM. A major focus of my project will involve verifying
-% and exploring such gene regulatory mechanisms driving patterning and subsequent effects on
-% developmental features such as cell size and growth rate.
-
-
-\section{Lead into what I've done (TODO)}
+\section{Background (etc.)}
 An important question in developmenal biology is how organisms can have robust
-development despite consisting of many independetly variable parts. \CITE (x3)
+development despite consisting of many independetly variable parts. \CITE (x3) \\
+At the same time, genotypically similar plants can nevertheless exhibit
+significant differences in phenotype, raising the questions of how, where and
+why noise impacts the development of the plant. 
+
+While plants, and AT in particular, have been studied throughly over the years,
+it is not until recently where significant advances in imaging has allowed for
+more fine-grained analyses both on 1) development of the plant \textit{in vivo},
+and 2) the extent and regulation of noise during development. The modern
+possibility of using 3D confocal microscopy to observe growth at the
+single cell level has in this spirit opened the door for quantified analyses on
+plant and cellular behaviour on the single cell level. Because of this, it is now
+possible to expand on this using timelapses of confocal images taken under a
+period to resolve not only the static image, but also the dynamic. 
+
+Quantification of the SAM tissue at the single cell level\\
+Stable regulation (and regulation \textit{per se})\\
+CLV3 tracking and anisotropic growth \\
 
 
-
-
-% Quantification of the SAM tissue at the single cell level
-% Stable regulation
-% CLV3 tracking and anisotropic growth
 
 % A key feature of stem cells is their ability to maintain their population over time, effectively
 % forming a replenishing source of building material for the plant throughout its lifetime. In the

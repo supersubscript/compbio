@@ -436,6 +436,24 @@ $\mathcal O \left( \sqrt{\Delta t }\right)$ and weak order $\mathcal O \left(
 Stratonovich interpretation.
 
 
+\section{My models (come up with title)}
+In this thesis, we model regulation of gene expression using hill equations for
+production and exponential decay for degradation. Gene products are instead
+set to undergo linear production with respect to the activating gene, as well as
+diffusion. Like for gene expression, proteins are modelled using exponential
+decay. In total, the equations governing the regulation for a gene $X$ and its
+protein $x$ can then be formulated as
+
+\begin{align}
+  \frac{\dd X}{\dd t} = 
+  \prod_{a=1} V_{max}\frac{X_a^{n_{a}}}{K_a^{n_a} + X_a^{n_a}}
+  \prod_{r=1} \frac{K_r^{n_{r}}}{K_r^{n_r} + X_r^{n_r}} -
+  dX, \ \ \ \text{and} \\
+  \frac{\dd x}{\dd t} = pX + D\Delta x - dx,
+  \label{eq:gene_expr_reg}
+\end{align}
+where $\nabla$ is the \textit{Laplace operator}.
+
 % \section[Epidermal]{Epidermal Model}
 % % Birth / death
 % % Birth / death / self-activation

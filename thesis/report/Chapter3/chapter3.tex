@@ -17,89 +17,121 @@
 When tracking the number of CLV3 nuclei identified by Costanza, the results
 observable in \cref{fig:clv3_trajs} shows the number of observed CLV3 nuclei
 increasing for plants 2, 4, 13, and 15, corresponding to a visually observable
-enlargement of the CLV3 domain in \FIG (timelapse of example plant over 4
-timepoints?). Similarly, fluctuations in this number can be seen not to 
-correlate with the mean expression as described in
-\cref{tab:corr_nNucl_meanExpr}. % and therefore ought to be structural
+enlargement of the CLV3 domain analogous to the one seen in
+\cref{fig:visual_osc}. The fluctuations do not significantly correlate with the
+mean intensity level except for plant 15, and thus generally corresponds to an
+enlargement of the domain as opposed to pulsations in the CLV3 intensity.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=.8\textwidth]{nNucl_trajectories.pdf}
-  \caption{Add caption}
+  \caption[Number of CLV3 nuclei over time]{Development of number of CLV3 nuclei
+    over time, as mapped next to the mean nuclear intensity. All plants exhibit
+    an increase in the number of nuclei over time, and appear to dip in a
+    systematic manner. The mean intensity occasionally shifts in accordance with
+    the number of CLV3 nuclei, but in a non-systematic manner.}
   \label{fig:clv3_trajs}
 \end{figure}
 
-\begin{table}
+\begin{figure}[H]
   \centering
-  \caption{TODO}
-  \label{tab:corr_nNucl_meanExpr}
-  \begin{tabular}{ll}  \toprule
-    Plant & p-value \\ \midrule
-    2     & 0.48    \\
-    4     & 0.84    \\
-    13    & 0.91    \\
-    15    & 0.11    \\ \midrule
-    All   & 0.50    \\ \bottomrule
-  \end{tabular}
-\end{table}
+  \includegraphics[width=\textwidth]{visual_osc.pdf}
+  \caption[Raw image CLV3 domain fluctuations]{Visually observable fluctuations
+    in the CLV3 domain. Images are taken from plant 4 in a linear fashion
+    between 56 and 76 hours.}
+  \label{fig:visual_osc}
+\end{figure}
+
+%\begin{table}
+%  \centering
+%  \label{tab:corr_nNucl_meanExpr}
+%  \begin{tabular}{ll}  \toprule
+%    Plant & p-value \\ \midrule
+%    2     & 0.48    \\
+%    4     & 0.84    \\
+%    13    & 0.91    \\
+%    15    & 0.11    \\ \midrule
+%    All   & 0.50    \\ \bottomrule
+%  \end{tabular}
+%  \caption{TODO}
+%\end{table}
 
 In order to assess the extent of the fluctuations the lines were detrended using
 a second order Loess fit to each curve. When performing a continuous time
-Fourier transform in order to extract amplified modes, the plants have are
-biased towards the fourth mode in each respective transformation, as depicted in
-\cref{fig:modes}, which corresponds to periodicity of $\sim$16~hours. 
+Fourier transform in order to extract amplified modes, the plants are
+biased towards the fourth mode, i.e.\ a period of $\sim$16~hours, in each respective transformation, as depicted in
+\cref{fig:periodogram}.
+\vspace{2em}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.7\textwidth]{periodogram.pdf}
-  \caption{Add caption}
-  \label{fig:periodogram}
-\end{figure}
+\begin{minipage}{\textwidth}
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=.95\textwidth]{periodogram.pdf}
+    \captionof{figure}[Periodogram of nuclear trajectories]{Plant-wise periodogram for detrended number of nuclei
+      trajectories. All plants show an emphasised fourth harmonic (blue),
+      denoting periodicity with a 16-hour period.}
+    \label{fig:periodogram}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{.47\textwidth}
+    \centering
+    \includegraphics[width=.95\textwidth]{corr_nNucl_nDivs.pdf}
+    \captionof{figure}[Link between number of nuclei and number of divisions]{The number of division events correlates linearly
+      with the number of CLV3 nuclei, signifying a functional variation due
+      to the number of CLV3 nuclei.
+    }
+  \end{minipage}
+\end{minipage}
 
-\todo{map this to light / dark hour cycles?}
 % and are hence not circadian
+\vspace{2em}
+In addition to the apparent periodicity, the number of division events
+correlates strongly with the number of active CLV3 nuclei when normalised by the
+total number of cells observed, howing that the number of division scales with
+the size of the CLV3 domain.
 
-In addition to this periodicity, the number of nuclei identified correlates
-positively with the number of division events observed in each timepoint for
-three out of the four plants (\cref{fig:corr_nNucl_nDivs}). Plant 13, like in 
-\cref{fig:clv3_trajs} is the only anomously behaving specimen.
-\unsure{Should I add other correlations and just draw plots?}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.7\textwidth]{corr_nNucl_nDivs.pdf}
-  \caption{Add caption}
-  \label{fig:corr_nNucl_nDivs}
-\end{figure}
-
-\section{CLV3 noise is kept at bay at apex}
-
+\section{CLV3 expression is stable for apical cells}
 Variance in the expression of CLV3 is suppressed in the apical cells, as can be
-seen in \cref{fig:expr_vs_d2t}. This appears true for all plants, although plant
-in particular shows tendencies of having a few lowly expressing apical cells at
+seen in \cref{fig:clv3d2t}. Generally, the CLV3 distribution assumes a
+shape with low variance close to the apex, larger variance at intermediate
+distances, and again low variance at larger distances. 
+This appears true for all plants, although plant
+13 in particular shows tendencies of having a few lowly expressing apical cells at
 several timepoints. It should however be noted that it is possible that errors
-in the tracking produces this type of data. Accounting for this possibility, all
-plants have hysteresis-like shapes. Nevertheless, the distribution of expression
-values at distinct distances does not appear to be bimodal, as would indicate
-bistability in stem cell regulation. Instead, the data suggests an apparent CLV3
-gradient, proportional to the distance to the apex more in radial terms than
-in bimodal. 
+in the tracking produces this type of data. 
 
-Using a simple model replicating the epidermis, we are possible to replicate the
-shape of the distribution assuming enzymatic CLV3 activation by a WUS gradient
-(\cref{}). The enzymatic activation is in this formulation necessary in order to
-attain the sigmoidal shape of the curve, where the extent of noise ultimately
-depends on tha abundance of the WUS protein.
-\FIG
+Closer investigations in the distribution of expression
+values at distinct distances shows non-bimodal tendencies. Instead, the data
+suggests an apparent CLV3 gradient, proportional to the distance to the apex
+more in radial terms than in bimodal ones.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=.8\textwidth]{clv3_vs_d2t.pdf}
-  \caption{Add caption}
+  \caption[CLV3 distributions]{CLV3 expression distributions for the L1, with the apex of the
+    meristem defined as the mean coordinates of the 4 topmost expressing cells
+    at each given timepoint. The distributions all assume a hysteresis-like
+    appearance, with minor variance at the apex, a highly variable body, and a
+    yet again lowly variable tail.}
   \label{fig:clv3d2t}
 \end{figure}
 
-A layer-wise separation of the CLV3 expression can be seen in particular between
+Using a simple model mimic the epidermis, we are possible to
+replicate the shape of the distribution assuming enzymatic CLV3 activation by a WUS gradient
+(\cref{fig:model1}). The enzymatic activation is in this formulation necessary in order to
+attain the sigmoidal shape of the curve.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.5\textwidth]{model1_results.pdf}
+  \caption[Epidermis model]{Epidermis model recreating the results observed in
+    \cref{fig:clv3d2t}. Here, a gradient of WUS induces sufficient
+    activating mechanics for producing the correct CLV3 gradient.}
+  \label{fig:model1}
+\end{figure}
+
+Aside of the CLV3 distribution in the L1, we observe a layer-wise separation of
+the CLV3 expression in the comparison between
 L1 and L2, as visualised in \cref{fig:epireg}. In L1, the correlation between
 CLV3 expression and nuclear volume appears sigmoidal, although consideration
 should be taken to the fluorescence ceiling due to the laser. In contrast, both
@@ -108,68 +140,231 @@ activation alternatively subepidermal repression altering the distributions.
 Also in the distributions of CLV3 expression in relation to the distance to the
 apex this effect is observable.
 
-
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{epireg.pdf}
-  \caption{Add caption}
+  \caption[Cues of epidermal regulation]{Distribution data suggest differing
+    regulation between L1 and the subepidermal layers. In penetrating deeper
+    into the tissue, the CLV3 expression relative the nuclear volume changes
+    from a sigmoidal to linear relationship (left). Similarly, the CLV3
+    expression relative the distance to the apex appears to have similar shape
+    in the L2 as in the L1,
+    but shifted.}
   \label{fig:epireg}
 \end{figure}
 
 %\section{Distribution shifting suggests epidermal regulation}
 %\subsection{CLV3 is induced in the epidermis}
 
-
-
-
  % This holds regardless of what distribution looks like
 
  \section{Functional clustering implies dsRED technical artefacts}
+ The apical cells appear to be clustered functionally, suggesting that a
+ significant portion of the CLV3 expression observed outside of these topmost
+ cells may in fact be reporter remnants, steming from the decay time of the
+ dsRED reporter. 
+ 
+ \Cref{fig:mvol_apex} shows a tendency of the apical cells to
+ assume a lower average membrane volume, as opposed to its L1 neighbours, with
+ the only plant 2 being the only example for which a significant separation
+ between the apical and penapical cell layer is not noted. This
+ contrasts with the observed nuclear volume, where instead an overall decreasing
+ trend in the response to CLV3 appears, as \cref{fig:nvol_apex} depicts.
+ 
+ In addition, the topmost cells undergo significantly fewer divisions per cell in
+ that region as opposed to the other cells in the L1 (\cref{fig:nDivs_apex}).
+ Most division events instead appear to be focused in the first to third cell
+ layer away from the apex, and thereafter decline. Under the assumption that the
+ number of cells scale with the area such that $N \propto r^2$, we should expect
+ to see the number of division events increase linearly with $r$; here we
+ instead see the linear tendency only for cell distances 1-3, where the topmost cells
+ behave differently. Generally, the observations can be observed in three
+ points:
+ \begin{enumerate}
+   \item Topmost cells divide less frequently than cells in layer 1-3
+   \item Cells in layers 1-3 divide at a similar frequency per cell
+   \item At cell distances $>3$, the number of divisions per cell decreases
+     steadily
+ \end{enumerate}
+
+ % Discussion: Growth rate
+ % Discussion: Fuzziness due to definition
 
  \begin{figure}[H]
    \centering
    \includegraphics[width=\textwidth]{mvol_apex.pdf}
-  \caption{Add caption}
+   \caption[Membrane volume clustering]{Membrane volumes in the L1 clustered at different distances from the apex in
+     number of cells. Cells as part of the apex here are defined as the 4
+     topmost expressing cells; their neighbours in turn correspond to the cells
+     at distance 1, and so on. Here all examples but plant 2 have a
+     statistically significant separation of average membrane sizes between bin
+     0 and bin 1.}
   \label{fig:mvol_apex}
 \end{figure}
 
 \begin{figure}[H]
    \centering
    \includegraphics[width=\textwidth]{nDivs_apex.pdf}
-   \caption{Add caption}
-  \label{fig:mvol_apex}
+   \caption[Division rate clustering]{Division analogue to \cref{fig:mvol_apex}, with the average number of
+     divisions normalised by the number of cells at that corresponding
+     distance, along with the standard error of the mean. As in the membrane
+     volume case, plant 2 shows a different trend  
+     than the other plants and in particular exhibits a larger variance,
+     showing noise in the definition of the topmost cells. 
+   }  
+   \label{fig:nDivs_apex}
 \end{figure}
 
+Separating out the lineages which are present throughout the full time course
+reveals an apparent contained maintenance of ca four cells where decline in the
+CLV3 expression can not be noted (\cref{fig:trajectories}; lineages 7, 16,
+17). Overall, cells appear to be in either one of two state with respect to
+the rate of change of their CLV3 expression, in a few select trajectories, where
+further analysis indicates that cells  
+assume a declining state when pushed out of the very apex. Cells that in
+contrast remain in this region maintain their high expression profiles,
+signifying the possibility of only the very apical cells effectively expressing
+CLV3. 
+
+It is unclear whether the resolution of the trajectories is significant
+enough to observe the exponential decay in dsRED, or whether a linear
+approximation is sufficient. \Cref{fig:dsred_decay} shows these two alternatives
+where the interpretation of the half-life differs with a factor of two depending
+on the interpretation, where the exponential one corresponds to a half-life of
+roughly 41.7 hours, and the linear correspondingly 83.3 hours, assuming a Taylor
+expansion to the first order. 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{plant2_trajectories.pdf}
-  \caption{Add caption}
-  \label{fig:corr_nNucl_nDivs}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.5\textwidth]{select_trajectories.pdf}
-  \caption{Add caption. }
-  \label{fig:select_trajs}
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{plant2_trajectories.pdf}
+    \vspace{1cm}
+      \centering
+      \begin{minipage}{0.49\textwidth}
+      \centering
+      \includegraphics[trim={2cm 15.3cm 20cm 0}, clip, width=.85\textwidth]{apex_definition.pdf}
+    \end{minipage}\hfill
+    \begin{minipage}{.49\textwidth}
+      \centering
+      \includegraphics[width=.95\textwidth]{select_trajectories.pdf} 
+    \end{minipage}
+  \end{minipage}
+  \caption[Cell line trajectories]{Cell line trajectories for lineages in plant 2 with cells present
+      at both the initial and final timepoint in the series. Cells generally
+      have a declining or maintained behaviour corresponding to the two cases
+      (cell line 5 and 7)
+      emphasised in the bottom right. This corresponds in to the behaviour
+      illustrated in the bottom left, with cell lineages at the very top having
+      preserved expression levels, and with decreasing signal outside outside of
+      this region. Lacking timepoints in trajectories in most cases correspond
+      to data filtered out due to division events (see \cref{sec:filtering}).}
+    \label{fig:trajectories}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{dsred_plant2.pdf}
-  \caption{Add caption}
+  \caption[Approximation of dsRED decay]{Exponential and linear approximation of
+    dsRED decay respectively. Data shows plant 2, with all sublines with at
+    least 12 data points, downshifted to timepoint 0 hours for comparison, and
+    divided by the timeseries maximum.
+
+    Fitted lines are taken as the mean coefficients of singular fits to each
+    individual line, presented with the 95~\% confidence interval.
+    Also plants 4, 13 and 15 produce results within the margin of errors for
+    both approximations.
+  }
   \label{fig:dsred_decay}
 \end{figure}
 
-TODO: Justification for decay. Assume movement out of CZ proportional to
-division rate $k_{div}$, such that $\dot{R} \propto k_{div}$. We thus have
-$R = kt$. Assume linear degradation of CLV3 such that $\dot{C} = -k_{deg} =
-\frac{\dd C}{\dd t} = \frac{\dd C}{\dd R} \frac{\dd R}{\dd t}$. We therefore have
-$\frac{\dd C}{\dd R} = \frac{\dd C}{\dd t} = -\frac{k_{deg}}{k_{div}}$. Justify
-decay rate observed in trajectories or smth like that?
+Assuming a situation where dsRED is not produced, we can hypothesise of the
+formulation of at what rate CLV3 decays with the distance to the apex. Given
+that cells are on average pushed out of the CZ at a rate $\dot R = k_R$, the
+rate of change for the CLV3 expression can be written on the form 
+\begin{align*}
+  \dot C = \frac{\dd C}{\dd t} &= \frac{\dd C}{\dd R} \frac{\dd R}{\dd t}
+  \Rightarrow \\
+  \frac{\dd C}{\dd R} &= \frac{1}{k_R} \frac{\dd C}{\dd t} 
+  \label{eq:decayrate}
+\end{align*}
+where $R$ denotes the radial distance. Under linear CLV3 decay, e.g.\ $\dot C =
+-k_{C}$, CLV3 should decay linearly with the radius as $\frac{\dd C}{\dd R} =
+\frac{k_{C}}{k_{R}}$, which appears possible given the distribution in
+\cref{fig:clv3d2t}.
+
+\section{Long-lived cells are amassed in the deep tissue}
+A clear cluster of cells are clustered at an age corresponding to roughly
+$3\times$ the normal cell cycle in the deeper layers. Notably, this effect is
+not accompanied by a similar cluster at $2\times$ the normal cell length, which
+would be expected in the event of missed divisions in the tracking. The effect
+is the most noticeable in plants 2, 4, and 15, where all of these show an
+amassment of division events at the 60 hour mark, most protruding in the L3. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{age_l3.pdf}
+  \caption[Layer-wise age distribution]{Distribtion of ages before division. The subepidermal layers have an
+    amassment of cells dividing around the 60 hour mark, i.e.\ at ca 3$\times$
+    the normal cell cycle.}
+  \label{fig:age}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{ages_52plus.pdf}
+  \caption[Clustering of high-longevity cells]{Cell coordinates grouped by plant and time for cells not in L1, coloured by age, with division events for cells with
+    age $>48$ denoted as red triangles. There appears to be clustering in the
+    center of the meristem in several cases. Note also how primordia are appearing in plants 1
+    and 18, and how cells in the boundary between primordia tend to be
+    affiliated with higher ages.}
+  \label{fig:ages}
+\end{figure}
+
+\section{The CLV3 apex does not coincide with the geometric}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{.8\textwidth}
+		\begin{minipage}[t]{0.49\textwidth}
+      \centering
+			\includegraphics[trim={2cm 1.2cm 4.1cm 0cm},clip,width=.80\textwidth]{plant02.pdf} 
+    \end{minipage}\hfill
+		\begin{minipage}[t]{.49\textwidth}
+      \centering
+			\includegraphics[trim={2cm 1.2cm 1.5cm 0cm},clip, width=\textwidth]{plant04.pdf} 
+    \end{minipage}
+  \end{minipage}\\
+  \begin{minipage}{.8\textwidth}
+		\begin{minipage}[t]{0.49\textwidth}
+      \centering
+			\includegraphics[trim={2cm 0cm 4.1cm 0cm},clip, width=.80\textwidth]{plant13.pdf} 
+    \end{minipage}\hfill
+		\begin{minipage}[t]{.49\textwidth}
+      \centering
+			\includegraphics[trim={2cm 0cm 1.5cm 0cm},clip, width=\textwidth]{plant15.pdf} 
+    \end{minipage}
+  \end{minipage}
+	\caption[Comparison between geometric and genetic apex]{Distributions of
+    radial distances from the geometric apex, as fitted with a paraboloid shape,
+    for plants 2, 4, 13 and 15.
+    CLV3 apices are defined as the mean coordinates of the four highest
+    expressing CLV3 cells. Notably, all plants have distributions peaking at
+    a distance of roughly 10-20 $\mu$m.
+  }
+  \label{fig:age_clusters}
+\end{figure}
+Notably, the CLV3 peak and the geometric apex does typically not coincide, with
+the CLV3-based apex typically at a distance of $10-20\mu$m, corresponding to 2-4
+cells in distance. While the quality of the fit can be affected by the presence
+of primordia, the evolution of paraboloid parameters over time is relatively
+constant, as can be see in \cref{fig:para_time}.
 
 
-\section{Deep-tissue cells divide at a slower rate}
-Still unknown.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{para_time.pdf}
+  \caption[Paraboloid time evolution]{Evolution of paraboloid parameters, where
+    the paraboloid has been fit according to the equation $ax^2 + by^2 = z$. We
+    have here defined $b$ as determining the axis of largest curvature.}
+  \label{fig:para_time}
+\end{figure}

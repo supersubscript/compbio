@@ -11,19 +11,138 @@
 \graphicspath{{Chapter4/Figs/Vector/}{Chapter4/Figs/}}
 \fi
 
-\section{NPA dilution induces oscillations}
-Henrik makes it sound like we actually see oscillations? Might be better to be a
-bit conservative here. 
+\section{NPA dilution induces a periodic response}
+% NPA is diluted -- oscillations
+It is likely that the state transition that appears in \cref{fig:clv3_trajs} are
+caused by the slight dilution of NPA that occurs during imaging. Hypothetically,
+was NPA is diluted, auxin transport would incrementally be restored in the plant
+and cause initiation of primordia. In support of this, the fact that the
+observed cyclicity appears to  
+happen in a $\sim$16 hour interval suggests that the fluctuations are not
+primarily driven by the circadian clock, which could otherwise be a cause of the
+periodicity. Since it is well-known that the network regulating
+the niche at the SAM consists of multiple feedback loops, it is
+possible that these are what causes the oscillatory tendencies as the
+plants trends towards the new steady state induced by the NPA dilution.
 
-\section{\textit{In vivo} tracking of apical stem cells agrees with hypothesis}
+% CLV3-WUS creating oscillations?
+While some of the variations between plants can be attributed to biological
+differences, the overall tendency of the four plants in their behaviour over
+time indicate a biochemical response to the NPA dilution in a periodic manner. A
+possible direct pathway for this type of effect could be through the direct WUS
+or CLV1/CLV3 interaction of NPA, although more likely is downstream factors
+being influenced by the initialisation of auxin patterns. Nevertheless, a
+feedback motif responding to the system perturbations would be precisely the
+type of mechanism which would be expected to drive a periodic response.
 
-\section{Distributional cues give hints at regulatory scheme}
-\subsection{Activation of CLV3}
-Might be a good place to discuss errors and why we don't see stem cells in L2.
+% Possible mechanism driving increased oscillations
+That the fluctuations have an increasing amplitude as time progresses can be
+explained by the iterative dilution of NPA, and a resulting avalanche effect,
+where more auxin present in the cells effectively reduce the
+electric repulsion induced by the former. That auxin transport is indeed being
+restored is emphasised by multiple plants beginning to form primordia throughout
+the timecourse, as exemplified in \cref{fig:NPA_primordia}.
 
-\subsection{Longevity (Don't know what this shows yet)}
-Spatial cues from division data
+% Number of divisions increase
+As the number of division events correlates clearly with the number of nuclei
+identified, the perturbations in the system seem structural in the sense that
+the stem cell niche grows not only in size, but also in what number of cells
+actively proliferate. As the plant grows, we are therefore observing not only a
+larger number of cells in general, but also a larger number of cells that are
+part of the effective stem cell niche.
 
-\subsection{Defnition of center}
-Peak intensity in CLV3 follows general direction of growth? Reasons to doubt
-this?
+\section{Distributional cues hints at possible regulatory mechanisms}
+% WUS activating CLV3
+The regulation of noise at the SAM is explained by our simple activating model,
+where the upregulation of CLV3 by WUS is sufficient to produce the
+hysteresis-like features of the distribution. The reason for this is explained
+by production saturation at the apex when CLV3 levels are already high, and the
+highest activating concentration being present in this region, such that when
+CLV3 experiences a minor stochastic degradation event, the activating signal
+quickly overcomes this downgrading and resets the high expression in the apical
+cells. Technically, with our configurations used herein, our GRN creates a
+bistability in the system, where the saturation of the CLV3 activating agent
+causes high amounts of noise at intermediate distances from the apex. Because of
+this, the enzymatic activation is sufficient to produce the CLV3 distribution.
+In the peripheral tissue, WUS is simply not abundant enough for producing a
+high CLV3 concentration, which also results in a lower tail variance. 
+
+While our simple model is suffient to explain the type of distribution in the
+epidermis, the apparent scaling in values due to deeper penetration in the
+tissue suggests a mechanism for repressing CLV3 expression in this region. While
+both direct repression and repression of an activator such as WUS are
+possible regulatory causes, previous research has suggested epidermal
+signalling as a possible mechanism to scaling the stem cell niche. In addition, the
+distribution differences between the epidermis and the subepidermal layers with
+respect to the relationship between nuclear volume and CLV3 expression indicate
+differing regulation between the layers, as we otherwise would expect to see the
+same types of distributions, albeit scaled. Lastly, as the number of divisions seem to
+quickly decline in cells beyond the fourth cell from the apex, it possible that cells at that
+point are entering a regime which is under the influence of differentiation
+inducing signals, making them less prone to proliferate. In support of this, the
+average membrane size per layer does not vary significantly, suggesting that
+molecular signals, rather than growth and size related ones, are what gives
+rise to the observed effect.  
+
+% Definition of apex
+\section{\textit{In vivo} tracking sheds light on steady regulation of the true stem
+  cell niche}
+The behavioural discrepancy between the topmost cells and their
+neighbours suggests a phenotypic separation between the roughly four highest
+expressing cells and their neighbours. The fact
+that plant 2 disagrees  might be due to the
+absolute definition of which cells are the topmost ones, i.e.\ four in our
+configuration. It is possible that plant 2 simply maintains a differently sized
+stem cell niche, or is generally more variable in its expression levels, which
+would introduce significantly more noise in the measure and explain the lack of
+observed clusters.  
+
+The \textit{in vivo} tracking of lineages in the L1 reveals insight into the
+maintenance of CLV3 expression at the top. A select few cells are clearly
+subject to highly regulated CLV3 expression values, whereas the cells outside of
+this regime appear to be steadily degraded. The repeated signs of the apical
+cells being special with respect to their phenotype does however suggest that
+a significant portion of the observed CLV3 expression in fact stems from the
+long half-life of dsRED, which is known to be able to last for extended periods
+on the order of magnitude of several days. Our analysis allows us to better
+approximate the extent of the factual CLV3  
+domain, as we through our analysis can account for the degradation time of dsRED.
+While our approximation of the reporter half-life is approximate and hampered by
+the lack of complete data, it shows promise for extended analyses of how dsRED
+is degraded within the living tissue. 
+
+%Might be a good place to discuss errors and why we don't see stem cells in L2.
+
+\subsection{Longevity could be induced by the WUS domain}
+The observed cluster of cells surviving for extended periods of time could most
+easily be explained by tracking errors and failure to identify a division event,
+which would cause an amassment of cells living for multiples of the average cell
+cycle length. However, this type of effect would in principle cause an peak in
+the division age density also at roughly the 40 hour mark, which we do not see
+in \cref{fig:age}. The only clusters seen are instead emphasised around the
+$~20$ and $~60$ hour mark, with a slight downwards shift for $L2$ and $L3+$ due
+to cells being lost in the tracking reappearing as newly cells in the analysis.
+
+In addition, the longevity cells appear to be clustered to regions close to the
+center of the meristem, as depicted in \cref{fig:age_clusters}. A causation of this
+could be an influencing factor in the OZ, e.g.\ WUS, which significantly
+represses proliferation. 
+
+A possible factor affecting the results could be the penetretion depth of the
+laser in the deeper tissue, which due to the paraboloid-like shape of the
+meristem could cause errors in tracking. Nevertheless, this would not explain
+the lack of peaks at the $\sim$40 hour mark. 
+
+% Spatial cues from division data
+\subsection{Non-centric CLV3 apex for directed development}
+That the CLV3 peaks typically tend to be shifted slightly from the geometric
+apex could have a role in directing growth in phyllotaxis. The fact that we
+can note a seemingly normal distribution of distances for the CLV3 peaks might
+indicate that the CLV3 peak rotates slightly around the geometric center over
+time, in order to specify the direction of growth for organ primordia, which in
+AT are initiated sequentially in a spiral-like structure. 
+It is also possible that we see under correct angles would be able to see a
+slight wiggling over the apex over time, although the lack of control of the
+angle in which the plants were imaged makess this analysis difficult.  
+
+%Paraboloid + definition of apex given n cells

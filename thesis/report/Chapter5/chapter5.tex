@@ -11,16 +11,139 @@
 \graphicspath{{Chapter5/Figs/Vector/}{Chapter5/Figs/}}
 \fi
 
-\section{Model expansion}
-Epidermal regulation \\
-Cell size at CZ + division rate \\
-Longevity stuff
+\section{Significance of results}
+% Few single cells at apex maintained
+Our analysis presented herein has given extensive novel insights into the dynamics of
+the stem cell niche of AT. In particular, we have showed how the SAM appears to
+maintain a few single cells that are truly expressing CLV3, and thus also set
+the grounds for further investigations into the variance in and extent of this small
+pool of cells; for example, questions we have not addressed herein are the
+variability in the size of the true CLV3 domain in relationship to the overall
+size and eccentricity of the SAM itself. 
+
+% Dynamic perspective
+While previous research has primarily focused on the static view of the stem
+cell niche, we have here provided parts also of the dynamic perspective --
+something which has previously been severely lacking. Because of this, we are
+able to better support the hypothesis of epidermal regulation in the
+CZ, and also pointed at cues of the extent of differentiation driving peripheral
+signals. That is, our observed differences in functional behaviour for cells at
+various distances from the CZ suggests a possible domain for where peripheral
+signalling is either present, or simply begins to affect cell functionality.
+Using this information can be of use in particular for modelling, where
+understanding the extent of unknown regulatory mechanisms can aid in unraveling
+their nature.
+
+% 
+We have also shown how the CLV3 apex does not coincide with the geometrical
+apex, which might have an impact on anisotropic growth and phyllotaxis. This is
+a completely unprecedented result, which might provide future insights into how
+the interplay is orchestrated between the CZ and the peripheral regions which
+undergo primordia initiation.
+
+\section{Expansion of modelling framework}
+Our models herein have taken an abstract approach, which while sufficient for
+our purposes does not capture the complexity and intricacies of the real tissue.
+Modern software tools are now able to generate contact maps from confocal
+images, thus creating the means for accurately comparing model simulations to
+the real tissue. This is a possible extension to the work herein, which would
+also be a natural future validation step. 
+
+Establishing models for the $>1$D case would in addition allow for validating
+models relating to the combined aspect of our results. For example, is epidermal
+regulation sufficient for producing both our distribution for the CLV3
+intensities with respect to the distance to the apex, as well as the apparent
+distributional shift between the L1 and L2? A simple model in e.g.\ 2D could
+likely verify the potentiality of such an hypothesis.
+
+Also a spatial model relating to growth rates could be established to test if
+there are mechanical constraints limiting the growth rate of the apical cells in
+comparison of their neighbours, and possible biochemical signals regulating
+this. The combined mechanical and biochemical framework is likely also something
+which will be able to provide a more complete picture of meristem growth,
+relating to both scaling of the stem cell niche itself, but also how that
+relates to cell features such as growth and division rates depending on their
+spatial localisation.
 
 \section{Data investigation}
-Quality reassessment \\
-PIN1 data \\
-Control for feedback -- wildtype? \\
-dsRED decay time. Might be time to do some simple analysis?
+A natural and very feasible next step in quantifying the dynamics of the genes
+present in the SAM would able to also include the PIN1 reporter and observe how
+this behaves in relation to the CLV3 signal. Possibly this aid in elucidating
+the extent of both technical noise and what observed fluctuations are true
+biological events. It also allows insight into the actual auxin transport
+perspective of the setting, clearly showing that auxin transport is indeed
+resumed, as well as a glimpse into how this affects the periodicity we observe
+for the stem cell niche. 
+
+Like for PIN1, there are multiple pieces of the data analysis not fully
+investigated in this thesis. This includes more thourough research into
+differences between the different layers of the SAM, and how the spatial
+localisation relates to e.g.\ cell growth. In partiuclar the CZ of the SAM,
+steady maintenance between the highest expressing cells and their corrsponding
+wall surface areas facing the CZ could prove to gain a better understanding of
+the extent and regulation of the CLV3 expressing cells. 
+
+The possible clustering of long-lived cells in the deeper, central regions
+tending towards the OC is a fascinating suggestive discovery, which is somewhat
+hampered by the difficulty to accurately identify cells within the tissue.
+One possibility in this case would be to develop methods able to determine
+cellular age from static images, where the plant can then be cut in the coronal
+plane in order to improve imaging. This would be enabled by information about, among
+other measures, relative cell wall angles between neighbouring cells. An
+additional approach could be to tag cells with cell cycle identifying markers,
+although also in this case it is likely to be hampered by the penetration depth
+of imaging tools.
+
+As the data in addition includes multiple segmentation errors of various types,
+a reevaluation of these could help in better narrowing down the behaviour of
+especially individual cell lines -- something which in our analysis is slightly
+hampered due to lesser tracking quality outside of the CZ. This holds especially
+true for the individual timepoints in the tracking which have been manually
+corrected for, and therefore do not include cells outside of the CZ; a simple
+re-tracking of these timepoints would provide both more data for the data set
+overall, but would in particular enable insight into the cell line dynamics of
+the subepidermis, and how they correspond to the ones in the L1. Performing an
+accurate segmentation step also for plant 18 would on top of this provide a
+larger data set to base the extended analysis on.
+
+%Quality reassessment \\
+%PIN1 data \\
+%Control for feedback -- wildtype? \\
 
 \section{New experiments}
-CLV3-WUS
+% WUS or other tracker
+Because of the difficulty in unraveling which parts of a GRN is essential for
+giving it its correct functionality, it is also difficult to know which
+molecules to track for in \textit{in vivo} time-lapse assays.
+In the analysis of the regulation of the stem cell niche, having access to
+tracker information also for the WUS would improve upon the identification of
+core network dynamics significantly, although this type of data has not been
+available until recently. Extending the network further, to be able to also
+track also the patterning activity of auxin on top of the PIN1 data give useful
+information not only of when and how much auxin transport is activated, but also
+where this localisation happens in the tissue. Being able to relate this
+information in particular to the behaviour of cells in particular lineages would
+provide information of how the CLV3 and cell dynamics depend on auxin localisation.
+
+% Division driving gene?
+As the CLV3 level of expression does not appear to provide cues for when a cell
+is to undergo a division event, identifying the driving genes causing this
+event to happen is a future endeavour. In the event that no such gene exists,
+and that it is predominantly mechanical signalling that determines
+proliferation, the interplay between the mechanical and the chemical is perhaps
+the more relevant. The question in that case would then primarily be to identify
+growth-inducing agents, rather than direct division event markers.
+
+% Wildtype
+A drawback with the analysis presented herein in the reliance on meristems grown
+on NPA for the analysis which is better suited for the steady state. However, as
+physically removing organsm and primordia for enhancing imaging is majorly
+perturbing the system in itself, doing so at this point is not feasible. The
+future might hold tools for performing this type of research, which would
+greatly enhance to quality and robustness by which the analysis of e.g.\ the
+CLV3 distributions and behaviour over time is done.
+
+
+% What is the division driving gene?
+% CLV3-WUS
+% What is driving the oscillations? How does auxin regulate CLV3-WUS?

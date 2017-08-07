@@ -1,10 +1,16 @@
 %!TEX root = ../thesis.tex
 % ******************************* Thesis Appendix C ********************************
 
+\ifpdf
+\graphicspath{{Appendix3/Figs/Raster/}{Appendix3/Figs/PDF/}{Appendix3/Figs/}}
+\else
+\graphicspath{{Appendix3/Figs/Vector/}{Appendix3/Figs/}}
+\fi
 \chapter{Software Descriptions}
+\label{sec:software_descr}
 
 \section{Costanza}
-Costanza (COnfocal STack ANalyZer Application) \CITE is an ImageJ plugin for
+Costanza (COnfocal STack ANalyZer Application)~\cite{costanza} is an ImageJ plugin for
 segmenting compartments in the form of cells and extract quantitative data,
 including intensities. Primarily, Costanza is used to segment nuclei marked
 cells in three dimensions and effectively extract information relating to the
@@ -41,10 +47,10 @@ between them than some defined value. The background is then extracted from the
 largest connected component found in the image after thresholding. Cells are
 thereafter watershed using the seeds as references, with cell volumes less than
 some specified value are filtered. Markers are subsequently removed from the
-seeds, and the watershed algorithm is repeated until convergence. \CITE
+seeds, and the watershed algorithm is repeated until
+convergence~\cite{fernandez2010imaging}.
 
 \section{Organism}
-\subsection{Main software}
 Organism is C++ software for simulating biological systems, in particular with
 multiple compartments primarily in the form of cells. It includes both
 biochemical and mechanical rules, including rules for proliferation, for
@@ -54,7 +60,8 @@ variables and parameters, such as spheres, cylinders and similar. It can also be
 used for simulations of natural tissues, extracted from confocal microscopy
 images. As part of the Organism toolset, software for visually inspecting
 simulated tissue from output data is accessible (Newman), as well tools for
-performing parameter optimisation of GRNs. \CITE
+performing parameter optimisation of
+GRNs~\cite{jonsson2005explicit,gruel2016epidermis}.
 
 For this thesis, an R wrapper for interacting with parts of the Organism software was
 constructed, allowing for R-based solver, model, parameter, and initialisation file setup.
@@ -63,7 +70,28 @@ Code relating to this is hosted at the \textit{Sainsbury Laboratory at the Unive
 \url{https://gitlab.com/slcu/teamHJ/henrik_aahl/organism_wrappeR}.
 
 \section{extractoR}
-Add flowchart \\[3cm]
+\begin{figure}[H]
+  \centering
+  \includegraphics[trim={1.5cm 0 1.5cm .5cm}, clip, width=\textwidth]{extractor.pdf}
+  \caption[extractoR flowchart]{Flowchart description of the extractoR software used within this
+    study.}
+  \label{fig:extractor}
+\end{figure}
 
-Something about Max's software, or include that in TissueViewer?
+extractoR is convenience software developed for the data analysis part of this
+thesis, with the general workflow described in \cref{fig:extractor}. The
+software in developed in $R$, with minor data import scripts written in Python.
+It builds on the \textit{tidyverse}\CITE principle, with data separated
+primarily into tabular format. For convenience, extractoR outputs the three
+tabular data objects  
+\begin{enumerate}
+  \item Segmentation data
+  \item Division data
+  \item Cell line data
+\end{enumerate}
+all consisting of identifiers for the corresponding plant, timepoint, cell ID,
+and other metrics accessible. Code and related files are as of the date of
+publication accessible on the SLCU GitLab page via 
+\url{https://gitlab.com/slcu/teamHJ/henrik_aahl/extractoR}.
 
+%Something about Max's software, or include that in TissueViewer?

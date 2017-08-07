@@ -12,98 +12,46 @@
 \fi
 
 \section[Raw data]{Data consists of \textit{in vivo} confocal timelapses}
-Six plants, labelled \textit{plant 1},
-\textit{2},\textit{4},\textit{13},\textit{15}, and \textit{18}, were grown on a
+The majority of data used in this report is directly acquiried from Willis et
+al.~\cite{willis2016cell}, and thus largely follows their approach for data
+acquisition and processing. An introductory description is nevertheless outlined
+below. 
+
+Six plants, labelled plant 1, 2, 4, 13, 15, and 18, were grown on a
 solution consisting of 10$\mu M$ auxin transport inhibitor NPA to a depth of
-roughly 1 cm for 22-26 days. The inhibition of auxin prevents formation of new
+roughly 1~cm for 22-26 days. The inhibition of auxin prevents formation of new
 primordia, and this gives rise to a small and naked, organ-free meristem which is
 tractable for imaging. 
 
 The plantlets were marked with pUBQ10::acyl-YFP, which localises in the cell
-membrane \CITE, as well as with pCLV3::dsRED-N7, which was used as a nuclear tracker
-for CLV3 mRNA expression. Also pPin1::PIN1-GFP was tracked, but not quantified
-in this study. In addition, \textit{plant 1} did not express the nuclear marker
-for CLV3.
+membrane, as well as with pCLV3::dsRED-N7, which was used
+as a nuclear tracker for CLV3 mRNA expression. Also pPin1::PIN1-GFP was tracked,
+but not quantified in this study. In addition, plant 1 did not express the nuclear marker
+for CLV3, whereas plant 18 did not undergo successful nuclear segmentation. Both
+are therefore completely excluded from the nuclear analysis.
 
 Using confocal microscopy, the six plantlings were tracked in
-intervals of 4 hours up to 76 (\textit{plants 1, 2, 4}) or 84 hours
-(\textit{plants 13, 15, 18}), using a 63x/1.0 N.A. water immersion objective.
+intervals of 4 hours up to 76 (plants 1, 2 and 4) or 84 hours
+(plants 13, 15 and 18), using a 63x/1.0 N.A.\ water immersion objective.
 Due to the high resolution of the images, the acquisition of each z-stack took
-$\sim$10 minutes, which induced vertical stretching in the images due to stem
+$\sim$10 minutes, which caused vertical stretching in the images due to stem
 elongation. Because of this, a second batch of z-stacks was acquired, using
 low-resolution imaging over $\sim$10 seconds. The original images were then
-corrected, using this second batch as reference. \CITE 
+corrected, using this second batch as reference.
 
-% Construction of a YFP Plasma Membrane Marker and Other Transgenic Lines.
-% DNA containing the coding sequence for YFP was amplified by PCR using
-% primers attb1-mYfwd (5′-AAAAAGCAGGCTATGGGAGGATGCTTCTCTAAGAAGGTGAGC)
-% and attb2-YFPrev (5′-AGAAAGCTGGGTTTACTTGTACAGCTCGTCCATGCCGAGAGTG).
-% The total reaction volume was 50 μL. The forward primer contains a short
-% sequence encoding a motif that is acylated in plant cells (54). Both primers
-% contain a portion of the attB gateway sites. Amplification conditions were
-% 96 °C for 1 min followed by 25 cycles of 96 °C for 30 s, 54 °C for 55 s, and
-% 72 °C for 30 s, and a final elongation of 72 °C for 30 s. After checking for
-% products on a gel, 5 μL of the PCR was used in a second reaction (40 μL total)
-% containing primers B1 adapt (5′-GGGGACAAGTTTGTACAAAAAAGCAGGCT)
-% and B2 adapt (5′-GGGGACCACTTTGTACAAGAAAGCTGGGT).
-% Amplification conditions were 95 °C for 2 min followed by five cycles of
-% 94 °C for 30 s, 48 °C for 30 s, and 72 °C for 1 min; 20 cycles of 94 °C for 30 s,
-% 55 °C for 30 s, and 72 °C for 1 min; and a final elongation of 72 °C for 1 min.
-% Products were PCR-purified (Qiagen) and then used in a one-tube format
-% Gateway reaction as per the manufacturer’s instructions, with the destination
-% vector pUB-DEST containing the UBQ10 promoter upstream of the
-% Gateway site (55). The resulting vector, pUBQ10::acyl-YFP, was transformed
-% into A. thaliana Col-0 containing pPIN1::PIN1-GFP (56, 57). The pUBQ10::acylYFP/pPIN1::PIN1-GFP
-% plants were taken to the second filial (F2) generation
-% and crossed with pCLV3::dsRED-N7 (58), a nuclear-localizing reporter for
-% CLAVATA3 expression. This cross was taken to the F3 generation, yielding
-% pUBQ10::acyl-YFP/pPIN1::PIN1-GFP/pCLV3::dsRED-N7 A. thaliana seeds. The
-% pUBQ10::acyl-YFP reporter localized strongly and uniformly to cell membranes;
-% it was stably expressed without cellular internalization and without
-% affecting plant growth or development. These features permitted the accurate
-% segmentation and tracking of cells. The reporter pCLV3::dsRED-N7, a
-% nuclear-localized CLAVATA3 reporter, identified the stem cell niche’s center
-% and, in a subset of SAM cells, enabled nuclear volume quantification (59) (SI
-% Appendix, Supplemental Materials and Methods). The pPIN1::PIN1-GFP reporter
-% was not analyzed as part of this study.
-% Plant Growth Conditions. NPA-treated pUBQ10::acyl-YFP/pPIN1::PIN1-GFP/
-% pCLV3::dsRED-N7 A. thaliana Col-0 plants were grown on plates with Arabidopsis
-% medium supplemented with 10 μM NPA (31) at 20 °C with 16 h of
-% light per day. These plants were later selected for imaging between 24 and
-% 28 d after germination. NPA was used to inhibit organ formation (31)
-% without substantially slowing proliferation in the SAM’s central zone (15) so
-% that time-lapse images could be acquired without dissection, and therefore
-% with minimal disturbance to cell proliferation.
-% Time-Lapse Image Acquisition and Quantification. NPA-grown plantlets with
-% naked, organ-free meristems were selected and gently transferred to lidded
-% boxes measuring 5 × 5 × 3 cm3 containing room-temperature Arabidopsis
-% medium supplemented with 10 μM NPA to a depth of ∼1 cm. Plantlets were
-% screened for the expression of pUBQ10::acyl-YFP, pPIN1::PIN1-GFP, and
-% pCLV3::dsRED-N7 using confocal microscopy, and then left to recover for
-% 12 h in the same 16/8-h light/dark cycle. All three reporters were expressed in
-% each of SAMs 2–6; SAM 1 expressed only pUBQ10::acyl-YFP and pPIN::PIN1-
-% GFP. Confocal z-stacks were acquired every 4 h for 3–3.5 d at a resolution of
-% 0.22 × 0.22 × 0.26 μm3 per voxel using a 63×/1.0 N.A. water immersion objective;
-% excitation wavelengths of 488 nm and 561 nm; the corresponding
-% dichroic filters; and a precalibrated spectral unmixing that enabled accurate
-% separation of the YFP, GFP, and RFP signals. The confocal scan speed was no
-% more than 9, and line averaging was set to 2. Each z-stack took ∼10 min to
-% acquire. At the end of each high-z-resolution z-stack acquisition, a second
-% low-z-resolution z-stack was rapidly acquired over ∼10 s with a z-step of
-% 5–6 μm (to enable correction of a major artifact, a stretching in the z-direction
-% owing to growth/movement in the stem during image acquisition; SI Appendix,
-% Supplemental Materials and Methods). Data on cell size and growth kinetics
-% were extracted by application of our 4D cellular quantification and
-% tracking pipeline using MARS/ALT software (60) (SI Appendix, Supplemental
-% Materials and Methods and Movies S5–S7).
-% Statistical Analysis, Modeling, and Simulations. Cellular quantification and
-% tracking data were analyzed with Python 2.7 scripts using the NumPy and
-% SciPy libraries and StatsModels package. Simulations were performed based
-% on a generalization of the models originally proposed (4, 37); simulations are
-% detailed in SI Appendix, Text S3.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.4\textwidth]{raw_channels.png}
+  \caption[Confocal microscopy data]{Topview of raw data as produced by the
+    confocal imaging, taken from plant 2 at timepoint 0 hours. In red can be
+    seen the membrane channel, merged with the
+    nuclear response in green. The nuclear vacuole is observable as shaded dots
+    in the green channel. Note also how the L2 and L3 produce a percieved
+    fuzziness in the peripheral regions.}
+  \label{fig:rawdata}
+\end{figure}
 
-\section[Processed Image data]{Image Pre-processing and Segmentation}
-\todo{Add figure of segmented plants}
+\section[Processed image data]{Image pre-processing and segmentation}
 In order to eliminate segmentation errors, the ImageJ plugin StackReg was used
 to perform a translation transformation for each stack. Individual slices which
 contained horizontal shifts because of vibrations or other types of system
@@ -114,81 +62,96 @@ stretching factors that the images were thereafter corrected for.
 
 For the membrane channel, noise removal was done by Gaussian and alternative-sequential
 filtering. The filtered z-stacks were then watershed in 3D using the
-algorithm implemented in the segmentation software \MA. Segmentation and
-tracking was thereafter done using the same software. Cellular volumes were from
+algorithm implemented in the segmentation software MARS-ALT (see
+\cref{sec:software_descr}). Segmentation and
+tracking was thereafter performed using the same software. Cellular volumes were from
 this then calculated as the sum of voxel volumes belonging to the same cell.
-The tracking, also performed using \MA, was assessed for quality using an F1
+The tracking, also performed using MARS-ALT, was assessed for quality using an F1
 score between the parent and corresponding daughter cell. For all analyses
 discussed in this report, a cutoff value of 0.30 was set for the tracking in
-order to account for likely incorrect mappings. These cells are included in the
+order to account for incorrect mappings. These cells are included in the
 overall analysis, but excluded from all cell line related investigations.
-
-A longer outline of this is presented
-in \cref{sec:data_errors}. 
+A longer outline of errors and exceptions in the segmentation is presented in
+\cref{sec:data_errors}.   
 
 The nuclear data were deconvolved to account for the microscope's point-spread
-function using the \textit{PSF distiller} tool from Huygens software 15.05
-\CITE. As in the membrane case, the nuclear channels were adjusted with the
+function using the \textit{PSF distiller} tool from Huygens software 15.05. As
+in the membrane case, the nuclear channels were adjusted with the  
 corresponding stretching factors and thereafter segmented using segmentation
-tool \textit{Costanza} \CITE. 
+tool Costanza~\cite{costanza}. 
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{plant18_t0.png}
+      \end{minipage}\hfill
+      \begin{minipage}{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plant18_t0_n.png}
+      \end{minipage}
+      \caption[Segmented data]{Segmented membrane and nuclear channels as output by
+        visualisation software \textit{TissueViewer} after \textit{MARS-ALT} and
+        \textit{Costanza} segmentation respectively. Note in the nuclear channel
+        how the loss of signal due to the vacuole causes missegmentation in
+        multiple cases. Figures taken from plant 18, timepoint 0 hours. Nuclear
+        and membrane channels not to scale.}  
+\end{figure}
 
 % Nuclear and membrane mapping
-In order to link nuclei to membranes, the coordinates of each variable were
-fitted using a least square approach. Duplicately mapping nuclei were then
+In order to link nuclei to membranes, the coordinates of each variable
+were fitted using a least square approach. Duplicately mapping nuclei were then
 consolidated as described in \cref{sec:filtering}. Note that whenever spatial
 coordinates are referenced in relation to membrane or nuclei, they are done so
 as the centroid coordinates of the basin of attraction found in the segmentation
 process.
 
 % Distance measures (d2t / circ)
-Measures of distances to the top were done in multiple ways. The three methods
+Measures of distances to the top were done in multiple ways. The four methods
 herein considered consist of a definition of the top based on 1) the spatial
-coordinates, 2) the expression value, and 3) a least-square fit of a parabloid to
-raw meristem images. In the case of spatial coordinates, the average $x-y$
+coordinates, 2) the expression value, 3) expression-weighted spatial
+coordinates, and 4) a least-square fit of a paraboloid to raw meristem images.
+For the paraboloid fit, this is done by taking the top 75 images part of the
+confocal z-stack, in order to minimise the fitting impact of primordia that
+are more prominent in the deeper levels.
+In the case of spatial coordinates, the average $x-y$  
 coordinates of $n$ nuclei were chosen, complemented with the highest $z$ value
 registered in the corresponding timeframe. For the second case, the apex was
-defined as the $n$ average spatial coordinates of the highest expressing CLV3
-nuclei. Lastly, the parabloid fit to the meristem was used to define the apex by
+defined as the mean spatial coordinates of the $n$ highest expressing CLV3
+nuclei. The weighted apices were similarly determined through transformation via
+$\bar{x}_{w} = \sum^{n}_{i} \bar{x}_{i}I_i / \sum_{i} I_i$, where $n$ again denotes number of cells included,
+arranged by highest z-value, and $I$ the CLV3 intensity for the
+corresponding cell.
+Lastly, the parabloid fit to the meristem was used to define the apex by
 taking the coordinates of the region have a zero-valued derivative. For both the
 segmentation-dependent approaches, the data was set to exclude subepidermal
-layers in order to prevent biases.
-\todo{Correct for overshooting?}
+layers in order to prevent biases. 
 
-In order to achieve a cell-resolution description of distances in the SAM,
+To achieve a cell-resolution description of distances in the SAM,
 an auxilliary measure of cell distances was used in the form of a cell-wise
 grouping. In the cell value utilising definitions of the apex above, cells
 included in the definition was set to have a cell-wise distance of 0. The
 neighbours of these cells were in turn defined to have a distance value of 1,
-and so on recursively. 
+and so on recursively. Again, we exclude the plants lacking nuclear data from
+measures utilising this. In addition, whenever cells deeper in the tissue than L2 are
+referenced, we refer to these as L3 and L3$+$ interchangeably.
 
 \section[Data Filtering]{Data Filtering}
 \label{sec:filtering}
 Due to thresholding effects for cell nuclei during the segmentation, some
-individual nuclei are
-occasionally identified as two or more. In order to accound for this, nuclei
-were mapped to the corresponding membranes using a minimum euclidian distance
+individual nuclei are occasionally identified as two or more. Nuclei were
+therefore mapped to the corresponding membranes using a minimum euclidian distance
 measure between the respective centroids. The nuclear quantified metrics were
 then corrected using the functions found in \cref{tab:consolidation_methods}. In
 addition to this, all mentions of numbers of nuclei are with respect to the
 number of cell membranes containing at least one nuclear volume identified
 within them.
 
-\begin{table}
-  \centering
-  \caption{Consolidation methods applied for duplicate nuclei.}
-  \label{tab:consolidation_methods}
-  \begin{tabular}{lc}                                 \\ \toprule
-    \textbf{Metric}       & \textbf{Summary function} \\ \midrule
-    Coordinates (x, y, z) & mean                      \\
-    Nuclear volume        & sum                       \\ 
-    Nuclear expression    & mean                      \\ \bottomrule
-  \end{tabular}
-\end{table}
-
 For the data analysis section, data was excluded due to apparent segmentation
 errors. This was done for each plant in isolation, with the outline of the
 filtering described below in \cref{tab:filtering}. The choice of allowed
-deviance was done based on the distribution shape \unsure{figure of these?}, with particular consideration
+deviance was done based on the distribution shape, (TODO: Put these in appendix)
+with particular consideration 
 taken to the nuclear and membrane volumes, where no lower boundary was set. The
 maximal neighbour distance was chosen due to the typical lack of data for cells more
 than $7$ cell distances from the apex. Lastly, due to division events where
@@ -196,23 +159,42 @@ loss of nuclear signal took place, we filter out expression values which are
 less than 70~\% of the magnitude in the previous, as well as subsequent timepoint.
 
 \begin{table}
-  \centering
-  \begin{tabular}{ll}                            \toprule
-    \textbf{Parameter} & \textbf{Value}       \\ \midrule
-    Maximal membrane volume & $\mu + 3\sigma$ \\
-    Minimal membrane volume & 0 \\
-    Maximal nuclear volume  & $\mu + 5\sigma$ \\
-    Minimal nuclear volume  & 0 \\
-    Maximal apical distance & $\mu + 3\sigma$ \\
-    Maximal neighbour distance & $7$          \\ \bottomrule   
-  \end{tabular}
-  \caption{Filtering settings}
-  \label{tab:filtering}
+  \parbox{.47\linewidth}{
+    \centering
+    \begin{tabular}{ll}                            \toprule
+      \textbf{Parameter} & \textbf{Value}       \\ \midrule
+      Maximal membrane volume & $\mu + 3\sigma$ \\
+      Minimal membrane volume & 0               \\
+      Maximal nuclear volume  & $\mu + 5\sigma$ \\
+      Minimal nuclear volume  & 0               \\
+      Maximal apical distance & $\mu + 3\sigma$ \\
+      Maximal neighbour distance & $7$          \\ \bottomrule   
+      \vspace{.1em}
+    \end{tabular}
+    \caption[Filtering settings]{Filtering settings in order to account for outliers in the data.
+      Typical causes of these are missegmentation such as the merging of multiple
+      nuclear membranes of nuclei. Because the quaility declines with the distance to the
+      apex we here limit our analysis to cases where cells are within a distance
+      of 7 cells from the defined apex.}
+    \label{tab:filtering}
+  }
+  \hfill
+  \parbox{.47\linewidth}{
+    \centering
+    \begin{tabular}{lc}                                 \\ \toprule
+      \textbf{Metric}       & \textbf{Summary function} \\ \midrule
+      Coordinates (x, y, z) & mean                      \\
+      Nuclear volume        & sum                       \\ 
+      Nuclear expression    & mean                      \\ \bottomrule
+      \vspace{.1em}
+    \end{tabular}
+    \caption[Consolidation methods for duplicate nuclei]{Consolidation methods applied for cases where multiple nuclei were
+      mapped as belonging to the same membrane cell. This happens mainly due to
+      errors  when one nuclei is identified as multiple in the
+      binarisation step of the segmentation.}
+    \label{tab:consolidation_methods}
+  }
 \end{table}
-
-For reference, a quality assessment of the data can be found in
-\cref{sec:data_errors}. In addition, descriptions of the software used in
-segmentation and tracking are briefly introduced in \cref{sec:software_descr}.
 
 \section[Models of Gene Regulatory Networks]{Models of Gene Regulatory Networks}
 \subsection[Mathematical Formulation]{Mathematical Formulation of Biochemical
@@ -221,11 +203,11 @@ segmentation and tracking are briefly introduced in \cref{sec:software_descr}.
 \subsubsection[Mass-action Kinetics]{Mass-action Kinetics}
 The formulation of processes in GRNs focus primarily on two aspects: synthesis
 and degradation of matter, which usually takes the form of molecular
-concentrations or absolute abundance. As implied in \cref{sec:modelling}
-(modelling biological systems), we here work using an ODE or SDE description of
+concentrations or absolute abundance. As outlined in \cref{sec:modelling}, we
+here work using an ODE or SDE description of  
 our regulatory systems. 
 
-We in this thesis represent our molecular reactions using mass-action
+In this study, we represent our molecular reactions using mass-action
 interactions and Michaelis-Menten kinetics; both here relying on the na\"ive
 assumption that our primary reagents here act in isolation of other possibly
 intervening molecules. As part of our formalism, we write
@@ -253,7 +235,7 @@ In the infinitesimal limit, we analogously have
   \label{eq:mass_action_inf}
 \end{equation}
 i.e.\ on the form of a differential equation, which will be the baseline for our
-formulations. Similar to the formulation of rate-of-change of $P$, we can do the
+formulations. Similar to the formulation of a rate-of-change of $P$, we can do the
 same for species $S$, and our system is then fully represented as a system of
 differential equations.
 
@@ -334,7 +316,7 @@ Proceduraly, the algorithm can be formulated in four steps:
     parameters. 
   \item[Randomisation] Generation of random numbers to determine 1) next
     interaction, and 2) the time increment.
-  \item[Update of system] Time and molecular numbers are update correspondingly
+  \item[System update] Time and molecular numbers are update correspondingly
     to the determined event in step 2.
   \item[Repetition] Step 2-4 are repeated until some stop condition is met.
 \end{description}
@@ -356,8 +338,8 @@ time update has been described as being drawn from
   \tau = \dfrac{1}{\sum_{j=1}^M a_j(x)} \ln\dfrac{1}{r_1}
   \label{eq:gill_time_update}
 \end{equation}
-although modern high-level programming languages do in some cases perform better using the
-inherent random number generator for a specific type of distribution. \CITE
+with $r_1$ denoting a uniformly distribution random number in the interval
+$(0,1]$.
 
 \subsubsection{Milstein's Method}
 If there is no requirement for exactness, less computationally intense
@@ -414,9 +396,9 @@ N$, where $N$ is the number of partitions. We thereafter define the update
 on It\={o} and Stratonovich form respectively. Here $b'$ denotes the spatial
 derivative of $b$, whereas $\Delta W_n = W_{\tau_{n+1}} - W_{\tau_n}$. The
 difference between the It\={o} and Stratonovich form in turn is the
-interpretation of the integral of $\dd W_t$. \CITE In many cases, it is
+interpretation of the integral of $\dd W_t$~\cite{klimontovich1990ito}. In many cases, it is
 preferable to express the numerical update on a derivative-free form, which can
-be done through a Runge-Kutta like approach \CITE and gives the final,
+be done through a Runge-Kutta like approach~\cite{garcia2011comparison} in order to state the final,
 multivariate expression as 
 \begin{equation}
   Y_{i, n+1} = Y_{i, n} + a_i\left( Y_{i,n} \right) \Delta t + 
@@ -432,12 +414,11 @@ where a supporting predictory step is calculated in the form of
 \end{equation}
 Algorithmically, the Milstein approach is of strong order of convergence
 $\mathcal O \left( \sqrt{\Delta t }\right)$ and weak order $\mathcal O \left(
-  \Delta t \right)$. In this thesis, we utilise the Milstein approach under the
+  \Delta t \right)$~\cite{garcia2011comparison}. In this thesis, we utilise the Milstein approach under the
 Stratonovich interpretation.
 
-
-\section{My models (come up with title)}
-In this thesis, we model regulation of gene expression using hill equations for
+\section{Network modelling approach}
+In this study, we model regulation of gene expression using hill equations for
 production and exponential decay for degradation. Gene products are instead
 set to undergo linear production with respect to the activating gene, as well as
 diffusion. Like for gene expression, proteins are modelled using exponential
@@ -445,19 +426,14 @@ decay. In total, the equations governing the regulation for a gene $X$ and its
 protein $x$ can then be formulated as
 
 \begin{align}
-  \frac{\dd X}{\dd t} = 
+  \frac{\dd X}{\dd t} &= 
   \prod_{a=1} V_{max}\frac{X_a^{n_{a}}}{K_a^{n_a} + X_a^{n_a}}
   \prod_{r=1} \frac{K_r^{n_{r}}}{K_r^{n_r} + X_r^{n_r}} -
   dX, \ \ \ \text{and} \\
-  \frac{\dd x}{\dd t} = pX + D\Delta x - dx,
+  \frac{\dd x}{\dd t} &= pX + D\Delta x - dx,
   \label{eq:gene_expr_reg}
 \end{align}
-where $\nabla$ is the \textit{Laplace operator}.
-
-% \section[Epidermal]{Epidermal Model}
-% % Birth / death
-% % Birth / death / self-activation
-% 
-% \section[Internal]{Internal Model}
-% Will I even do this? 
-
+where $\Delta$ is the Laplace operator. In a deterministic framework, the steady
+state of the system can then be solved algebraically if the
+parameters of the system are known. In this thesis, whenever we simulate our
+stochastic networks, we first compute the steady state of the system using this approach.

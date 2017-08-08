@@ -19,8 +19,9 @@ observable in \cref{fig:clv3_trajs} shows the number of observed CLV3 nuclei
 increasing for plants 2, 4, 13, and 15, corresponding to a visually observable
 enlargement of the CLV3 domain analogous to the one seen in
 \cref{fig:visual_osc}. The fluctuations do not significantly correlate with the
-mean intensity level except for plant 15, and thus generally corresponds to an
-enlargement of the domain as opposed to pulsations in the CLV3 intensity.
+mean intensity level except for plant 15 ($p = 0.99, 0.36, 0.76, 0.01$), and
+thus generally correspond to a pulsating enlargement of the domain as opposed to
+fluctuations in the CLV3 intensity.  
 
 \begin{figure}[H]
   \centering
@@ -42,36 +43,24 @@ enlargement of the domain as opposed to pulsations in the CLV3 intensity.
   \label{fig:visual_osc}
 \end{figure}
 
-%\begin{table}
-%  \centering
-%  \label{tab:corr_nNucl_meanExpr}
-%  \begin{tabular}{ll}  \toprule
-%    Plant & p-value \\ \midrule
-%    2     & 0.48    \\
-%    4     & 0.84    \\
-%    13    & 0.91    \\
-%    15    & 0.11    \\ \midrule
-%    All   & 0.50    \\ \bottomrule
-%  \end{tabular}
-%  \caption{TODO}
-%\end{table}
-
 In order to assess the extent of the fluctuations the lines were detrended using
-a second order Loess fit to each curve. When performing a continuous time
-Fourier transform in order to extract amplified modes, the plants are
-biased towards the fourth mode, i.e.\ a period of $\sim$16~hours, in each respective transformation, as depicted in
+a second order Loess fit to each curve, producing the curves found in
+\cref{fig:detrended}. When thereafter performing a continuous time
+Fourier transform to extract amplified modes, we see that the plants are
+biased towards the fourth mode, i.e.\ a period of $\sim$16~hours, in each
+respective transformation, as depicted in  
 \cref{fig:periodogram}.
 \vspace{2em}
 
 \begin{minipage}{\textwidth}
   \begin{minipage}[t]{0.47\textwidth}
     \centering
-    \includegraphics[width=.95\textwidth]{periodogram.pdf}
+  \includegraphics[width=.95\textwidth]{periodogram.pdf}
     \captionof{figure}[Periodogram of nuclear trajectories]{Plant-wise periodogram for detrended number of nuclei
       trajectories. All plants show an emphasised fourth harmonic (blue),
       denoting periodicity with a 16-hour period.}
     \label{fig:periodogram}
-  \end{minipage}\hfill
+  \end{minipage}~~
   \begin{minipage}[t]{.47\textwidth}
     \centering
     \includegraphics[width=.95\textwidth]{corr_nNucl_nDivs.pdf}
@@ -107,7 +96,7 @@ more in radial terms than in bimodal ones.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.8\textwidth]{clv3_vs_d2t.pdf}
+\includegraphics[width=.9\textwidth]{clv3_vs_d2t.pdf}
   \caption[CLV3 distributions]{CLV3 expression distributions for the L1, with the apex of the
     meristem defined as the mean coordinates of the 4 topmost expressing cells
     at each given timepoint. The distributions all assume a hysteresis-like
@@ -116,14 +105,14 @@ more in radial terms than in bimodal ones.
   \label{fig:clv3d2t}
 \end{figure}
 
-Using a simple model mimic the epidermis, we are possible to
+Using a simple model mimicking the epidermis, we are possible to
 replicate the shape of the distribution assuming enzymatic CLV3 activation by a WUS gradient
 (\cref{fig:model1}). The enzymatic activation is in this formulation necessary in order to
 attain the sigmoidal shape of the curve.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.5\textwidth]{model1_results.pdf}
+  \includegraphics[width=.6\textwidth]{model1_results.pdf}
   \caption[Epidermis model]{Epidermis model recreating the results observed in
     \cref{fig:clv3d2t}. Here, a gradient of WUS induces sufficient
     activating mechanics for producing the correct CLV3 gradient.}

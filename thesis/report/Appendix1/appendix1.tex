@@ -46,11 +46,65 @@
         corresponds to situations where the automatic tracking failed. These
         timepoints have been manually tracked for cells in the L1 within 30
         $\mu$m of the topmost CLV3 expressing cell.}
+      \label{fig:tracking_quality}
 \end{figure}
+The data tracking quality is defined as the F1 score, also known as the
+Dice-S{\o}rensen score, between timepoints. The
+F1 score gives an appreciation of the overall accuracy of a test on the form of
+\begin{equation}
+  F_1 = 2 \frac{precision\times recall}{precision + recall},
+  \label{eq:f1}
+\end{equation}
+i.e.\ as the harmonic mean between precision and recall. It can also be
+expressed on set form as 
+\begin{equation}
+  F_1 = 2 \frac{X_t \cap X_{t+1}}{X_t \cup X_{t+1}}
+  \label{eq:f1_set}
+\end{equation}
+where $X_t$ denotes the set in question in timepoint $t$. In other words, the more cells are
+contained between timepoints, the higher the F1 score.
+
+As \cref{fig:tracking_quality} shows, the quality for the tracking is overall
+relatively high, with only a few timepoints having bigger clusters with low F1
+scores. These cells are however typically positioned at the periphery of the
+SAM, at the very edges of the segmentation, and are therefore both of lesser
+interest and importance for the dynamics of the stem cell niche. As described in
+\cref{sec:filtering}, we have in all of our analyses excluded the tracking of
+cells whose F1 scores are less than $0.30$. 
+
+That a timepoints 40 and 48 hours in plant 2, as well as timepoint 20 hours in
+plant 4 have perfect F1 scores are due to the tracking procedure failing at
+these points. The tracking has therefore been manually corrected for the cells
+within $30\mu$m of the highest CLV3 expressing cell.
 
 \section{Segmentation errors}
 \label{sec:data_errors_segmentation}
-Discussion of quality decay with increasing d2t.
+The data is affilited with several types of segmentation errors. For both the
+nuclear and the membrane segmentation, this typically takes the form of basins
+of attraction identified as either one when there in fact are multiple, or
+multiple when there is in fact only one. In particular, this causes errors with
+respect to the apprciation of membrane and nuclear volumes. It also indirectly
+affects the tracking quality, as clumped cells in one timepoint can lead to an
+erronously identified division event in the next, in case the segmentation
+becomes correct. 
+
+Segmentation errors are however the most prevalent in the peripheral regions of
+the SAM, and with deeper penetration into the tissue. Generally, the membrane
+segmentation holds higher quality than the nuclear one, where the latter
+degrades quickly after deeper penetration than the L2. The overall quality is
+also decreasing with the distance from the apex, although to a minor extent in
+the L1. 
+
+Generally, the overall quality for the membrane segmentation is high in all
+three layers, although the number of errors increase with deeper tissue
+penetration. For the nuclear segmentation, mostly cells from the L1 and L2 are
+sufficiently reliable, with declining quality with larger distance to the CZ. 
+
+
+
+
+
+%Discussion of quality decay with increasing d2t.
 
 
 %\subsubsection{Tracking errors}

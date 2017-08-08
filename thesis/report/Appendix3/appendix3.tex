@@ -85,16 +85,19 @@ Code relating to this is hosted at the \textit{Sainsbury Laboratory at the Unive
 extractoR is convenience software developed for the data analysis part of this
 thesis, with the general workflow described in \cref{fig:extractor}. The
 software in developed in $R$, with minor data import scripts written in Python.
-It builds on the \textit{tidyverse}\CITE principle, with data separated
-primarily into tabular format. For convenience, extractoR outputs the three
-tabular data objects  
+It builds on the \textit{tidyverse}, or \textit{split-apply-combine},
+principle~\cite{wickham2011split} with data separated primarily into tabular
+format. For convenience, extractoR
+outputs the three  tabular data objects  
 \begin{enumerate}
   \item Segmentation data
   \item Division data
   \item Cell line data
 \end{enumerate}
 all consisting of identifiers for the corresponding plant, timepoint, cell ID,
-and other metrics accessible. Code and related files are as of the date of
+and other related metrics. The software utilises minor parallelisation in
+several processing steps for optimisation purposes.
+Code and related files are as of the date of
 publication accessible on the SLCU GitLab page via 
 \url{https://gitlab.com/slcu/teamHJ/henrik_aahl/extractoR}.
 

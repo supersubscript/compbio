@@ -78,7 +78,9 @@ The nuclear data were deconvolved to account for the microscope's point-spread
 function using the \textit{PSF distiller} tool from Huygens software 15.05. As
 in the membrane case, the nuclear channels were adjusted with the  
 corresponding stretching factors and thereafter segmented using segmentation
-tool Costanza~\cite{costanza}. 
+tool Costanza~\cite{costanza} (see \cref{sec:costanza}). Whenever we in this
+thesis mention the CLV3 expression, we refer to the mean fluorescence of the
+voxels belonging to the corresponding nucleus. 
 
 \begin{figure}[H]
     \centering
@@ -91,20 +93,21 @@ tool Costanza~\cite{costanza}.
         \includegraphics[width=\textwidth]{plant18_t0_n.png}
       \end{minipage}
       \caption[Segmented data]{Segmented membrane and nuclear channels as output by
-        visualisation software \textit{TissueViewer} after \textit{MARS-ALT} and
-        \textit{Costanza} segmentation respectively. Note in the nuclear channel
+        visualisation software TissueViewer after MARS-ALT and
+        Costanza segmentation respectively (see \cref{sec:software_descr}). Note in the nuclear channel
         how the loss of signal due to the vacuole causes missegmentation in
         multiple cases. Figures taken from plant 18, timepoint 0 hours. Nuclear
         and membrane channels not to scale.}  
 \end{figure}
 
 % Nuclear and membrane mapping
-In order to link nuclei to membranes, the coordinates of each variable
-were fitted using a least square approach. Duplicately mapping nuclei were then
-consolidated as described in \cref{sec:filtering}. Note that whenever spatial
-coordinates are referenced in relation to membrane or nuclei, they are done so
-as the centroid coordinates of the basin of attraction found in the segmentation
-process.
+Due to the membrane and nuclear segmentations originating from different
+softwares, a separate mapping step was required in order to relate nuclei to
+their corresponding cell membranes. This was done by taking the centroid spatial
+coordinates, as defined by the basins of attraction acquired during
+segmentation, of all respective segmented items, and mapping them using a
+least-squares approach. Duplicately mapping nuclei were then
+consolidated as described in \cref{sec:filtering}. 
 
 % Distance measures (d2t / circ)
 Measures of distances to the top were done in multiple ways. The four methods
@@ -136,7 +139,17 @@ and so on recursively. Again, we exclude the plants lacking nuclear data from
 measures utilising this. In addition, whenever cells deeper in the tissue than L2 are
 referenced, we refer to these as L3 and L3$+$ interchangeably.
 
-\section[Data Filtering]{Data Filtering}
+\section[Data processing]{Data processing}
+\label{sec:data_processing}
+\subsection[Data analysis tools]{Development of a data analysis pipeline}
+\label{sec:pipeline}
+Data was analysed predominantly using R through the development of a single
+modular pipeline, denoted \textit{extractoR}. This was designed to build 
+primarily on a sequential software design pattern,  
+incorporating parallelisation and batch processing for treatment of the multiple
+timelapses. A more descriptive explanation is outlined in~\cref{extractoR}.
+
+\subsection[Data filtering]{Data filtering}
 \label{sec:filtering}
 Due to thresholding effects for cell nuclei during the segmentation, some
 individual nuclei are occasionally identified as two or more. Nuclei were
@@ -149,7 +162,7 @@ within them.
 
 For the data analysis section, data was excluded due to apparent segmentation
 errors. This was done for each plant in isolation, with the outline of the
-filtering described below in \cref{tab:filtering}. The choice of allowed
+filtering described in \cref{tab:filtering}. The choice of allowed
 deviance was done based on the distribution shape, (TODO: Put these in appendix)
 with particular consideration 
 taken to the nuclear and membrane volumes, where no lower boundary was set. The
@@ -197,10 +210,13 @@ less than 70~\% of the magnitude in the previous, as well as subsequent timepoin
 \end{table}
 
 \section[Models of Gene Regulatory Networks]{Models of Gene Regulatory Networks}
+\label{sec:models_of_grns}
 \subsection[Mathematical Formulation]{Mathematical Formulation of Biochemical
   Reactions}
+\label{sec:mathematical_form}
 
 \subsubsection[Mass-action Kinetics]{Mass-action Kinetics}
+\label{sec:mass_action}
 The formulation of processes in GRNs focus primarily on two aspects: synthesis
 and degradation of matter, which usually takes the form of molecular
 concentrations or absolute abundance. As outlined in \cref{sec:modelling}, we
@@ -249,6 +265,7 @@ gives us
 which holds in general, regardless of the number of reacting species.
 
 \subsubsection[Michaelis-Menten Kinetics]{Michaelis-Menten Kinetics}
+\label{sec:mm}
 A conceptual drawback of the mass-kinetics formulation is the possibility to
 have infinite reaction rates, whereas the molecular reactions in nature typically
 are restricted by some means. One way to account for this is through
@@ -284,7 +301,9 @@ molecules instad gives the standard \textit{Hill equation} form, namely
 for an activating and repressing reaction respectively.
 
 \subsection[Stochastic Simulations]{Numerically solving stochastic systems}
+\label{sec:stoch_sim}
 \subsubsection{Gillespie Algorithm}
+\label{sec:gillespie}
 The Gillespie algorithm is a discrete approach for simulating stochastic
 molecular dynamics. It first appeared in print by Dan Gillespie in 1977, and has
 since been widely used for stochastic simulations in multiple fields.
@@ -342,6 +361,7 @@ with $r_1$ denoting a uniformly distribution random number in the interval
 $(0,1]$.
 
 \subsubsection{Milstein's Method}
+\label{sec:milstein}
 If there is no requirement for exactness, less computationally intense
 alternatives to Gillespie's algorithm exists. One such example is the
 \textit{Langevin} formulation of chemical systems, which utilises SDEs to
@@ -418,6 +438,7 @@ $\mathcal O \left( \sqrt{\Delta t }\right)$ and weak order $\mathcal O \left(
 Stratonovich interpretation.
 
 \section{Network modelling approach}
+\label{sec:modelling_approach}
 In this study, we model regulation of gene expression using hill equations for
 production and exponential decay for degradation. Gene products are instead
 set to undergo linear production with respect to the activating gene, as well as

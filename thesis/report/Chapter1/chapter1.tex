@@ -27,7 +27,7 @@
 \nomenclature[z-RAM]{RAM}{Root apical meristem}                               
 \nomenclature[z-CZ]{CZ}{Central zone. The region harboring stem cells in the SAM.}                                                                        
 \nomenclature[z-PZ]{PZ}{Peripheral zone}                                          
-\nomenclature[z-OZ]{OZ}{Organising center}                        
+\nomenclature[z-OC]{OC}{Organising center}                        
 \nomenclature[z-RM]{RM}{Rib meristem}                                          
 \nomenclature[z-L1]{L1}{Layer-1. The outermost cell layer of the SAM.}
 \nomenclature[z-L2]{L2}{Layer-2. See L1.}
@@ -49,7 +49,7 @@
 \nomenclature[z-SLCU]{SLCU}{Sainsbury Laboratory at the University of Cambridge}
 
 %********************************** %Second Section  *************************************
-\section{The Shoot Apical Meristem of \textit{Arabidopsis thaliana}} %Section - 1.2
+\section{The shoot apical meristem of \textit{Arabidopsis thaliana}} %Section - 1.2
 \label{sec:arabidopsis}
 % The Shoot and the Root
 Plant stem cells are organised by two developing centra -- the Shoot Apical
@@ -63,15 +63,16 @@ the shoot~\cite{clark2001cell}. As opposed to the RAM, which has two stem cell p
 inside of the root, the SAM maintains a single stem cell pool centered at the
 apex. It also lacks the root's cap, which protects the stem cells on the inside
 of the root, whereas these in the shoot are directly exposed to the plant's
-surroundings. Thus, because of its highly exposed stem cell niche, the 
-regulatory system must be organised in such a way that it can withstand
-significant perturbations, both due to molecular noise, as well as enviromental
+surroundings. Because of its highly exposed stem cell niche, the plant's
+regulatory system must therefore be organised in such a way that it can withstand  
+significant perturbations, both due to molecular noise and changes in environmental
 conditions~\cite{heidstra2014plant}.
 
 % What stem cells do
 The stem cells at the SAM contribute to the development of new organs and
-general tissue by dividing frequently at the top and from there 
-mechanically being pushed out of the apex in order to differentiate. The steady
+tissue by dividing frequently at the top and from there 
+mechanically being pushed out of the apex in order to differentiate, as
+illustrated in \cref{fig:structure}. The steady
 maintenance of the stem cell niche allows for a constant production and supply
 of cells that the plant utilises during both growth and repair of damaged
 tissue, and is therefore completely essential for the plants
@@ -97,6 +98,7 @@ survival~\cite{heidstra2014plant}.
     separated into three distinct layers that are of functional
     importance, here denoted L1, L2 and L3. Figure adapted from
     Clark~\cite{clark2001cell}.}
+  \label{fig:structure}
 \end{figure}
 
 % Structure composition of the plant
@@ -123,7 +125,7 @@ notion of coordination and regulation between the different cell layers in order
 to accurately direct plant growth. 
 % Rewrite last sentence?
 
-\section{Modelling Biological Systems} %Section - 1.2
+\section{Modelling biological systems} %Section - 1.2
 \label{sec:modelling}
 % Systems biology
 From a theoretical point of view, organismal development can be
@@ -172,7 +174,10 @@ experimental experiments, where hypotheses from observed theoretical phenomena
 can be experimentally tested. In the latter, models are established in order to
 support hypotheses surrounding experimental findings, and can directly guide
 experiments through the identification possible mechanism behind an observed
-behaviour.
+behaviour. The interplay between models and experiments, exploration and
+validation, causes the iterative process displayed in~\cref{fig:expl_val},
+through which computational models and direct experiments work in conjunction to further
+common knowledge.
 \begin{figure}[H]
   \centering
   \includegraphics[width=.5\textwidth]{exploration_validation.pdf}
@@ -184,7 +189,6 @@ behaviour.
     process of continued research.}  
   \label{fig:expl_val}
 \end{figure}
-
 
 \section{Regulatory Mechanics of Plant Stem Cells} %Section - 1.2
 \subsection{Molecular tuning determines cell phenotype} %Section - 1.2.1
@@ -205,7 +209,7 @@ initiation zones for new primordia~\cite{reinhardt2003regulation}.
 
 % Patterning
 A viable and robust network maintaining patterning is thus important for 
-the plant in order to undergo phyllotaxis in a functional manner. Substances
+the plant in order to undergo phyllotaxis in a functional manner. Molecules
 which rule this type of  
 process are known as \textit{morphogens}, and guide the initiation of organs and
 specialised cells by signalling processes, where cells are tuned to respond
@@ -252,7 +256,7 @@ terminate development prematurely~\cite{brand2002regulation}.
     via their protein products. To the left is shown the regimes of a few
     key agents in the SAM. Stem cell identifier CLV3 is expressed at the
     very apex, with its corresponding receptor molecule CLV1 present in the
-    OZ. Together with WUS, CLV forms an dynamic feedback loop which is
+    OC. Together with WUS, CLV forms an dynamic feedback loop which is
     essential to maintaining a functional stem cell niche. Figure (left) partly
     adapted from Clark~\cite{clark2001cell}.}
   \label{fig:sam_grn}
@@ -273,12 +277,13 @@ differentiation~\cite{kerstetter2001kanadi}. The core network
 itself is naturally  
 also affected by the activity of other genes in extension, including hormonal
 intervenience on WUS by the small and diffusive hormone cytokinin, which itself
-is activated by enzymes present in the meristem~\cite{hutchison2002cytokinin}. Also other homeobox encoding
-genes such as \textit{Shoot Meristemless} (STM) are essential for correct
-development of the shoot by activation of CLV3.~\cite{scofield2013arabidopsis}
+is activated by enzymes present in the meristem~\cite{hutchison2002cytokinin}.
+Also other homeobox encoding genes such as \textit{Shoot Meristemless} (STM) are
+essential for correct development of the shoot by activation of
+CLV3~\cite{scofield2013arabidopsis}.
 
-Aside of the system regulating the cellular identity, even further substances
-are key to the overall development.  
+Aside of the system regulating the cellular identity, also other classes of
+molecules  are key to the overall development.  
 The plant hormone auxin in particular has been repeatedly shown to have an
 essential role in the coordination of growth, both in 
 signalling initiation points of new primordia and elongation of the core stem.

@@ -17,7 +17,8 @@
         \includegraphics[width=.95\textwidth]{tracking_quality_layer.pdf}
         \centering
         \includegraphics[width=.95\textwidth]{tracking_quality_time.pdf} % second figure itself
-        \caption[Tracking quality]{Quality distributions per plant and timepoint for all plants.
+        \caption[Tracking quality]{Quality distributions per plant, layer, and timepoint
+          for all plants.
         Some timepoints have distributions scoring in the $\sim$1 regime, which
         corresponds to situations where the automatic tracking failed. These
         timepoints have been manually tracked for cells in the L1 within 30
@@ -73,19 +74,28 @@ degrades quickly after deeper penetration than the L2. The overall quality is
 also decreasing with the distance from the apex, although to a minor extent in
 the L1. 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{layer_quality_segm.pdf}
+  \caption[Membrane segmentation quality per layer]{Membrane segmentation
+    quality separated into L1, L2 and L3 respectively. L1 shows a smooth upper
+    surface with well-segmented cells. Also L2 and L3 show high segmentation
+    quality, but with a rougher surface to the cells being restricted by the
+    cell layer on top, causing a ruggedness in the cell surface. Note in
+    particular how the quality in the periphery of the SAM generally are of
+    lesser quality, with occasional cell remnants being identified as actual
+    cells, e.g.\ in the bottom right.}
+  \label{fig:layer_quality_segm}
+\end{figure}
+
 Generally, the overall quality for the membrane segmentation is high in all
-three layers, although the number of errors increase with deeper tissue
+three layers, as shown in \cref{fig:layer_quality_segm}, although the number of errors increase with deeper tissue
 penetration. For the nuclear segmentation, mostly cells from the L1 and L2 are
 sufficiently reliable, with declining quality with larger distance to the CZ.
 The errors with multiply matching nuclei are occuring mostly in the subepidermal
 cells, and in those cases largely in the peripheral regions.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{layer_quality_segm.pdf}
-  \caption[TODO]{TODO}
-  \label{fig:layer_quality_segm}
-\end{figure}
+
 
 
 

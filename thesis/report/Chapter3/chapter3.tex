@@ -359,7 +359,6 @@ cells in distance. While the quality of the fit can be affected by the presence
 of primordia, the evolution of paraboloid parameters over time is relatively
 constant, as can be see in \cref{fig:para_time}.
 
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{para_time.pdf}
@@ -367,4 +366,21 @@ constant, as can be see in \cref{fig:para_time}.
     the paraboloid has been fit according to the equation $ax^2 + by^2 = z$. We
     have here defined $b$ as determining the axis of largest curvature.}
   \label{fig:para_time}
+\end{figure}
+
+For emphasis, we have included an example of the evolution of the largest axis
+of curvature for plant 15 (\cref{fig:timeevol_ex}). In general, the paraboloid
+shape does not vary greatly between timepoints, demonstrating the reliability in
+the defintion of the geometric apex.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.6\textwidth]{timevol_paravl_15.pdf}
+  \caption[Example of paraboloid shape evolution]{Example depiction of evolution
+    of paraboloid parameters, taken from plant 15, where
+    we have here visualised the axes of curvature according to the equation
+    $y = -bx^2$, where $b$ thus has the same significance as in
+    \cref{fig:para_time}. One significant outlier can be seen, corresponding to
+    $t = 48$ hours; other parabola have curvatures similar in magnitude.}
+  \label{fig:timeevol_ex}
 \end{figure}

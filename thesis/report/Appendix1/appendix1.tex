@@ -8,37 +8,13 @@
 \graphicspath{{Appendix1/Figs/Vector/}{Appendix1/Figs/}}
 \fi
 
-
-
 \chapter{Data quality and errors} 
-
-%\section{Experimental procedure} 
-%The Yellow Fluorescent Protein (YFP) marker for the plasma membrane was
-%amplified using PCR with primers attb1-mYfwd
-%(5'-AGAAAGCTGGGTTTACTTGTACAGCTCGTCCATGCCGAGAGTG) and attb2-YFPrev
-%(5'-AGAAAGCTGGGTTTACTTGTACAGCTCGTCCATGCCGAGAGTG), with the forward primer
-%sequence containing a motif known to acetylate in plant cells~CITEHERE. 50
-%$\mu$L solution was amplified in 96 $^\circ$C for 1 minute, followed by 25
-%cycles of 96 $^\circ$C for 30 seconds, and a final elongation for 30 seconds. 5
-%$\mu$L of the result was then used in a second reaction consisting of
-%40~$\mu$L solution in total, with primers B1 adapt (5'-GGGGACAAGTTTGTACAAAAAAGCAGGCT)
-%and B2 adapt (5'-GGGGACCACTTTGTACAAGAAAGCTGGGT) included. Similar to the first
-%solution, the second mixture was amplified by PCR in 95 $^\circ$C for 2 minutes,
-%followed by 94 $^\circ$C for 30 seconds, 48 $^\circ$C for 30 seconds, and 72
-%$^\circ$C for 1 minute, 20 cycles of 94 $^\circ$C for 30 seconds,
-%55 $^\circ$C for 30 seconds, and 72 $^\circ$C for 1 minute. Finally, elongation
-%took place under 72 $^\circ$C for 1 minute.
-%Membrane \\
-%Nuclei \\
-%Unnused data (PIN) \\
-
-
-\section{Tracking errors}
+\section{Tracking quality}
 \label{sec:data_errors}
 \begin{figure}[p]
     \centering
         \centering
-        \includegraphics[width=.95\textwidth]{tracking_quality_plant.pdf}
+        \includegraphics[width=.95\textwidth]{tracking_quality_layer.pdf}
         \centering
         \includegraphics[width=.95\textwidth]{tracking_quality_time.pdf} % second figure itself
         \caption[Tracking quality]{Quality distributions per plant and timepoint for all plants.
@@ -70,14 +46,16 @@ scores. These cells are however typically positioned at the periphery of the
 SAM, at the very edges of the segmentation, and are therefore both of lesser
 interest and importance for the dynamics of the stem cell niche. As described in
 \cref{sec:filtering}, we have in all of our analyses excluded the tracking of
-cells whose F1 scores are less than $0.30$. 
+cells whose F1 scores are less than $0.30$. The errors in tracking occasionally
+causes one cell to be recognized as more than two in the next timeframe. In
+these cases, we choose the two daughter cells by order of tracking quality.
 
 That a timepoints 40 and 48 hours in plant 2, as well as timepoint 20 hours in
 plant 4 have perfect F1 scores are due to the tracking procedure failing at
 these points. The tracking has therefore been manually corrected for the cells
 within $30\mu$m of the highest CLV3 expressing cell.
 
-\section{Segmentation errors}
+\section{Segmentation quality}
 \label{sec:data_errors_segmentation}
 The data is affilited with several types of segmentation errors. For both the
 nuclear and the membrane segmentation, this typically takes the form of basins
@@ -98,9 +76,16 @@ the L1.
 Generally, the overall quality for the membrane segmentation is high in all
 three layers, although the number of errors increase with deeper tissue
 penetration. For the nuclear segmentation, mostly cells from the L1 and L2 are
-sufficiently reliable, with declining quality with larger distance to the CZ. 
+sufficiently reliable, with declining quality with larger distance to the CZ.
+The errors with multiply matching nuclei are occuring mostly in the subepidermal
+cells, and in those cases largely in the peripheral regions.
 
-
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{layer_quality_segm.pdf}
+  \caption[TODO]{TODO}
+  \label{fig:layer_quality_segm}
+\end{figure}
 
 
 

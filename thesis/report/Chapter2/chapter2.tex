@@ -12,7 +12,7 @@
 \fi
 
 \section[Raw data]{Data consists of \textit{in vivo} confocal timelapses}
-The majority of data used in this report is directly acquiried from Willis et
+The majority of data used in this report is directly acquired from Willis et
 al.~\cite{willis2016cell}, and thus largely follows their approach for data
 acquisition and processing. An introductory description is nevertheless outlined
 below. 
@@ -20,8 +20,8 @@ below.
 Six plants, labelled plant 1, 2, 4, 13, 15, and 18, were grown on a
 solution consisting of 10$\mu M$ auxin transport inhibitor NPA to a depth of
 roughly 1~cm for 22-26 days. The inhibition of auxin prevents formation of new
-primordia, and this gives rise to a small and naked, organ-free meristem which is
-tractable for imaging. 
+primordia, and this gives rise to a small and naked, organ-free meristem which
+allows for easy imaging. 
 
 The plantlets were marked with pUBQ10::acyl-YFP, which localises in the cell
 membrane, as well as with pCLV3::dsRED-N7, which was used
@@ -42,17 +42,18 @@ corrected, using this second batch as reference.
 \begin{figure}[H]
   \centering
   \includegraphics[width=.4\textwidth]{raw_channels.png}
-  \caption[Confocal microscopy data]{Topview of raw data as produced by the
+  \caption[Confocal microscopy data]{Top view of raw data as produced by the
     confocal imaging, taken from plant 2 at timepoint 0 hours. In red can be
     seen the membrane channel, merged with the
     nuclear response in green. The nuclear vacuole is observable as shaded dots
-    in the green channel. Note also how the L2 and L3 produce a percieved
+    in the green channel. Note also how the L2 and L3 produce a perceived
     fuzziness in the peripheral regions.}
   \label{fig:rawdata}
 \end{figure}
 
 \section[Processed image data]{Image pre-processing and segmentation}
-In order to eliminate segmentation errors, the ImageJ plugin StackReg was used
+In order to eliminate segmentation errors, the ImageJ~\cite{abramoff2004image}
+plugin StackReg~\cite{thevenaz1998pyramid} was used
 to perform a translation transformation for each stack. Individual slices which
 contained horizontal shifts because of vibrations or other types of system
 disturbances were identified and replaced with the nearest slice that contained
@@ -63,9 +64,9 @@ stretching factors that the images were thereafter corrected for.
 For the membrane channel, noise removal was done by Gaussian and alternative-sequential
 filtering. The filtered z-stacks were then watershed in 3D using the
 algorithm implemented in the segmentation software MARS-ALT (see
-\cref{sec:software_descr}). Segmentation and
-tracking was thereafter performed using the same software. Cellular volumes were from
-this then calculated as the sum of voxel volumes belonging to the same cell.
+\cref{sec:marsalt}). Segmentation and
+tracking were thereafter performed using the same software. Cellular volumes
+were calculated as the sum of voxel volumes belonging to the same cell.
 The tracking, also performed using MARS-ALT, was assessed for quality using an F1
 score between the parent and corresponding daughter cell. For all analyses
 discussed in this report, a cutoff value of 0.30 was set for the tracking in
@@ -74,8 +75,9 @@ overall analysis, but excluded from all cell line related investigations.
 A longer outline of errors and exceptions in the segmentation is presented in
 \cref{sec:data_errors}.   
 
-The nuclear data were deconvolved to account for the microscope's point-spread
-function using the \textit{PSF distiller} tool from Huygens software 15.05. As
+The nuclear and membrane data were deconvolved to account for the microscope's point-spread
+function using the \textit{PSF distiller} tool from Huygens software
+15.05~\cite{ponti2007huygens}. As
 in the membrane case, the nuclear channels were adjusted with the  
 corresponding stretching factors and thereafter segmented using segmentation
 tool Costanza~\cite{costanza} (see \cref{sec:costanza}). Whenever we in this
@@ -95,9 +97,9 @@ voxels belonging to the corresponding nucleus.
       \caption[Segmented data]{Segmented membrane and nuclear channels as output by
         visualisation software TissueViewer after MARS-ALT and
         Costanza segmentation respectively (see \cref{sec:software_descr}). Note in the nuclear channel
-        how the loss of signal due to the vacuole causes missegmentation in
+        how the loss of signal due to the vacuole causes miss-segmentation in
         multiple cases. Figures taken from plant 18, timepoint 0 hours. Nuclear
-        and membrane channels not to scale.}  
+        and membrane channels not on same scale.}  
 \end{figure}
 
 % Nuclear and membrane mapping
@@ -110,11 +112,11 @@ least-squares approach. Duplicately mapping nuclei were then
 consolidated as described in \cref{sec:filtering}. 
 
 % Distance measures (d2t / circ)
-Measures of distances to the top were done in multiple ways. The four methods
-herein considered consist of a definition of the top based on 1) the spatial
+Measures of distances to the apex were done in multiple ways. The four methods
+herein considered consist of a definition of the tip based on 1) the spatial
 coordinates, 2) the expression value, 3) expression-weighted spatial
 coordinates, and 4) a least-square fit of a paraboloid to raw meristem images.
-For the paraboloid fit, this is done by taking the top 75 images part of the
+For the paraboloid fit, this was done by taking the top 75 images part of the
 confocal z-stack, in order to minimise the fitting impact of primordia that
 are more prominent in the deeper levels.
 In the case of spatial coordinates, the average $x-y$  
@@ -125,51 +127,55 @@ nuclei. The weighted apices were similarly determined through transformation via
 $\bar{x}_{w} = \sum^{n}_{i} \bar{x}_{i}I_i / \sum_{i} I_i$, where $n$ again denotes number of cells included,
 arranged by highest z-value, and $I$ the CLV3 intensity for the
 corresponding cell.
-Lastly, the parabloid fit to the meristem was used to define the apex by
+Lastly, the paraboloid fit to the meristem was used to define the apex by
 taking the coordinates of the region have a zero-valued derivative. For both the
 segmentation-dependent approaches, the data was set to exclude subepidermal
-layers in order to prevent biases. 
+layers in order to prevent biases. For most of our measures relating to a
+definition of the apex in this thesis, we refer to the top as the one defined by
+the four highest expressing cells, unless otherwise stated.
 
 To achieve a cell-resolution description of distances in the SAM,
-an auxilliary measure of cell distances was used in the form of a cell-wise
+an auxiliary measure of cell distances was used in the form of a cell-wise
 grouping. In the cell value utilising definitions of the apex above, cells
-included in the definition was set to have a cell-wise distance of 0. The
+included in the definition were set to have a cell-wise distance of 0. The
 neighbours of these cells were in turn defined to have a distance value of 1,
 and so on recursively. Again, we exclude the plants lacking nuclear data from
-measures utilising this. In addition, whenever cells deeper in the tissue than L2 are
+measures utilising this, as described in \cref{sec:missingtp}. In addition,
+whenever cells deeper in the tissue than L2 are  
 referenced, we refer to these as L3 and L3$+$ interchangeably.
 
 \section[Data processing]{Data processing}
 \label{sec:data_processing}
+
 \subsection[Data analysis tools]{Development of a data analysis pipeline}
 \label{sec:pipeline}
 Data was analysed predominantly using R through the development of a single
 modular pipeline, denoted \textit{extractoR}. This was designed to build 
 primarily on a sequential software design pattern,  
 incorporating parallelisation and batch processing for treatment of the multiple
-timelapses. A more descriptive explanation is outlined in~\cref{extractoR}.
+timelapses. A more detailed description is outlined in~\cref{sec:extractoR}.
 
 \subsection[Data filtering]{Data filtering}
 \label{sec:filtering}
-Due to thresholding effects for cell nuclei during the segmentation, some
+Due to thresholding effects during the segmentation, some
 individual nuclei are occasionally identified as two or more. Nuclei were
-therefore mapped to the corresponding membranes using a minimum euclidian distance
+therefore mapped to the corresponding cells using a minimum euclidian distance
 measure between the respective centroids. The nuclear quantified metrics were
 then corrected using the functions found in \cref{tab:consolidation_methods}. In
 addition to this, all mentions of numbers of nuclei are with respect to the
-number of cell membranes containing at least one nuclear volume identified
+number of cells containing at least one nuclear volume identified
 within them.
 
 For the data analysis section, data was excluded due to apparent segmentation
 errors. This was done for each plant in isolation, with the outline of the
 filtering described in \cref{tab:filtering}. The choice of allowed
-deviance was done based on the distribution shape, (TODO: Put these in appendix)
+deviance was done based on the distribution shape, 
 with particular consideration 
 taken to the nuclear and membrane volumes, where no lower boundary was set. The
 maximal neighbour distance was chosen due to the typical lack of data for cells more
 than $7$ cell distances from the apex. Lastly, due to division events where
 loss of nuclear signal took place, we filter out expression values which are
-less than 70~\% of the magnitude in the previous, as well as subsequent timepoint.
+less than 70~\% of the magnitude in the previous, as well as subsequent, timepoint.
 
 \begin{table}
   \parbox{.47\linewidth}{
@@ -217,14 +223,14 @@ less than 70~\% of the magnitude in the previous, as well as subsequent timepoin
 
 \subsubsection[Mass-action Kinetics]{Mass-action Kinetics}
 \label{sec:mass_action}
-The formulation of processes in GRNs focus primarily on two aspects: synthesis
+The formulation of processes in GRNs focuses primarily on two aspects: synthesis
 and degradation of matter, which usually takes the form of molecular
 concentrations or absolute abundance. As outlined in \cref{sec:modelling}, we
 here work using an ODE or SDE description of  
 our regulatory systems. 
 
 In this study, we represent our molecular reactions using mass-action
-interactions and Michaelis-Menten kinetics; both here relying on the na\"ive
+interactions and Michaelis-Menten kinetics; both relying on the na\"ive
 assumption that our primary reagents here act in isolation of other possibly
 intervening molecules. As part of our formalism, we write
 \begin{equation}
@@ -232,8 +238,8 @@ intervening molecules. As part of our formalism, we write
   \label{eq:simple_reac}
 \end{equation}
 to express that some substrate $S$ is turned into a product $P$ by some given
-\textit{forward affinity} $k_f$. Likewise, as the reaction is \textit{reversible}, the
-product $P$ is transformed back into $S$ with the \textit{backward affinity}
+\textit{forward rate constant} $k_f$. Likewise, as the reaction is \textit{reversible}, the
+product $P$ is transformed back into $S$ with the \textit{backward rate constant}
 $k_b$. 
 
 The \textit{law of mass action} states that the rate of a reaction
@@ -256,13 +262,14 @@ same for species $S$, and our system is then fully represented as a system of
 differential equations.
 
 Expanding on this, we can easily solve for the steady-state concentrations of
-the system by assming that all rates average to zero. In our example above, this
+the system by assuming that all rates average to zero. In our example above, this
 gives us 
 \begin{equation}
   \frac{k_f}{k_b} = \frac{P}{S},
   \label{eq:mass_action_ss}
 \end{equation}
-which holds in general, regardless of the number of reacting species.
+which holds in general, regardless of the number of reacting
+species~\cite{horn1972general}.
 
 \subsubsection[Michaelis-Menten Kinetics]{Michaelis-Menten Kinetics}
 \label{sec:mm}
@@ -298,14 +305,15 @@ molecules instad gives the standard \textit{Hill equation} form, namely
   \frac{\dd P}{\dd t} &= V_{max} \frac{K^n}{K^n + S^n}
   \label{eq:hill}
 \end{align}
-for an activating and repressing reaction respectively.
+for an activating and repressing reaction respectively~\cite{chou1977simple}.
 
 \subsection[Stochastic Simulations]{Numerically solving stochastic systems}
 \label{sec:stoch_sim}
 \subsubsection{Gillespie Algorithm}
 \label{sec:gillespie}
 The Gillespie algorithm is a discrete approach for simulating stochastic
-molecular dynamics. It first appeared in print by Dan Gillespie in 1977, and has
+molecular dynamics. It first appeared in print by Dan Gillespie in
+1977~\cite{gillespie1977exact}, and has
 since been widely used for stochastic simulations in multiple fields.
 
 While being computationally expensive, the Gillespie algorithm compensates for
@@ -313,7 +321,7 @@ its lack in tractability by producing a statistically exact trace of the
 molecular dynamics of a system. 
 
 The algorithm originates in the formulation of the \textit{chemical master equation},
-which specifies the rate of change of the transition probabilty between states
+which specifies the rate of change of the transition probability between states
 in the form of 
 \begin{equation}
   \dfrac{\partial P\left( x,t | x_0, t_0 \right)}{\partial t} = 
@@ -321,7 +329,8 @@ in the form of
     1}^{M} \left[ a_j\left( x-v_j \right)P\left( x-v_j, t|x_0,t_0 \right) -
     a_j(x)P\left( x,t|x_0,t_0 \right) \right]
 \end{equation}
-where $a$ defines to reaction probability, or propensity, for each type of reaction, and
+where $a$ defines the reaction probability, or propensity, for each type of
+reaction ($j \in {1, \ldots, M}$), and
 $v$ the stoichiometry, i.e. information of how the molecular species are changed
 due to the reaction. $P(x,t | x_0, t_0)$ on its own denotes the probability of
 $X(t) = x$, given that the initial value is $x_0$. Solving the master equation
@@ -329,7 +338,7 @@ analytically is usually complicated, so
 simulating a complex biological system using the Gillespie approach can often be
 far more tractable.
 
-Proceduraly, the algorithm can be formulated in four steps: 
+Procedurally, the algorithm can be formulated in four steps: 
 \begin{description}
   \item[Initialisation] Generation of number of molecules and reaction
     parameters. 
@@ -340,8 +349,8 @@ Proceduraly, the algorithm can be formulated in four steps:
   \item[Repetition] Step 2-4 are repeated until some stop condition is met.
 \end{description}
 
-In principle, the Gillespie algorithm is interested in two fundamental
-questions: 1) When does the next reaction happen? 2) Which is the next reaction?
+In principle, the Gillespie algorithm is calculating two variables determining
+1) when the next reaction happens, and 2) which the next reaction is.
 The time until the next reaction at time $t$ is denoted $\tau$ and can be shown
 to be an exponential distribution centered  
 at $1 / \sum_{j=1}^{M}a_j(x)$ for some molecular concentration $x$, i.e.
@@ -362,7 +371,7 @@ $(0,1]$.
 
 \subsubsection{Milstein's Method}
 \label{sec:milstein}
-If there is no requirement for exactness, less computationally intense
+If there is no requirement for exactness, less computationally intensive
 alternatives to Gillespie's algorithm exists. One such example is the
 \textit{Langevin} formulation of chemical systems, which utilises SDEs to
 attain an approximate solution to the system trajectory, and is particularly
@@ -383,8 +392,8 @@ to the stochastic form
   v_{ji}a_j^{1/2}N_j(t)\dd{t}^{1/2}
   \label{eq:stoch}
 \end{equation}
-where $X$ denotes the molecular number, $v$ the stochiometric coefficient of the
-equation in question, and $N_j$ are temporally uncorrelated and statistically
+where $X$ denotes the molecular number, $v$ the stoichiometric coefficient of the
+reaction in question, and $N_j$ are temporally uncorrelated and statistically
 independent, Gaussian random numbers with mean 0. From this stage, the equation
 is then easily extended to its multivariate form, namely
 \begin{equation}
@@ -439,10 +448,10 @@ Stratonovich interpretation.
 
 \section{Network modelling approach}
 \label{sec:modelling_approach}
-In this study, we model regulation of gene expression using hill equations for
+In this thesis, we model regulation of gene expression using Hill equations for
 production and exponential decay for degradation. Gene products are instead
 set to undergo linear production with respect to the activating gene, as well as
-diffusion. Like for gene expression, proteins are modelled using exponential
+diffusion. As for gene expression, proteins are modelled using exponential
 decay. In total, the equations governing the regulation for a gene $X$ and its
 protein $x$ can then be formulated as
 
@@ -458,3 +467,27 @@ where $\Delta$ is the Laplace operator. In a deterministic framework, the steady
 state of the system can then be solved algebraically if the
 parameters of the system are known. In this thesis, whenever we simulate our
 stochastic networks, we first compute the steady state of the system using this approach.
+
+The two models we herein consider consist of 1) simple, enzymatic WUS actvation
+of CLV3, and 2) the former with multiplicative L1 activation. That, is our
+activation of CLV3 can in the two models be described by the equations 
+
+\begin{align}
+  \frac{\dd C}{\dd t} &= v_{max} \frac{w^n}{K^n + w^n} - dC, \ \ \
+  \text{and} \\
+  \frac{\dd C}{\dd t} &= v_{max} 
+  \frac{w^{n_{w}}}{K_{w}^{n_{w}} + w^{n_{w}}} 
+   \frac{L1^n}{K_{L1}^{n_{L1}} + L1^{n_{L1}}} - dC
+  \label{eq:model_eqs}
+\end{align}
+
+respectively. For our simulations, we use Gillespie to simulate the former, and
+transition into Langevin formalism in the latter case due to the increase in
+system size. Parameter sets used can be found in \cref{sec:modelparams}. The
+spatial structure of the model in both cases consist of a 1D line of cells
+undergoing diffusion with their nearest neighbours. WUS activation is located to
+a single leftmost cell, denoting the apex, whereas the rightmost end contains a
+``sink'' molecule, through which molecules in interaction with can diffuse out of
+the system.
+
+

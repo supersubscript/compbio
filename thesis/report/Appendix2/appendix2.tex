@@ -7,7 +7,8 @@
 \graphicspath{{Appendix2/Figs/Vector/}{Appendix2/Figs/}}
 \fi
 
-\chapter{Supplemental figures}
+\chapter{Supplemental data}
+\section{Supplemental figures}
 
 \begin{figure}[H]
   \centering
@@ -32,7 +33,7 @@
   \centering
   \includegraphics[width=\textwidth]{detrended.pdf}
   \caption[Detrended nuclear trajectories]{Detrended view of trajectories
-    visualised in \cref{fig:nNucl_trajectories}}. The detrending is done by
+    visualised in \cref{fig:clv3_trajs}}. The detrending is done by
   subtracting the value curve attained by fitting a second order Loess curve to
   each individual nuclear trace.
   \label{fig:detrended}
@@ -57,10 +58,48 @@
     \centering
     \includegraphics[width=\textwidth]{apexcomp_topview.png}
   \end{minipage}
-  \caption[Non-overlapping apices]{Raw data illustration in sideview (left) and
-    topview (right). The CLV3 peak expression, defining the CLV3 apex, can be
+  \caption[Non-overlapping apices]{Raw data illustration in side view (left) and
+    top view (right). The CLV3 peak expression, defining the CLV3 apex, can be
     seen in green, clearly not coinciding with the geometric apex. Example taken
     plant 4, timepoint 48 hours.}
   \label{fig:apex_center}
 \end{figure}
 
+
+\section{Model parameters}
+\label{sec:modelparams}
+Model parameters for both epidermal models are chosen by visual extraction from
+\cref{fig:clv3d2t}. In the simple, WUS activating model of CLV3, we chose our
+parameters as
+\begin{align*}
+  wp &= 5   \\
+  wD &= 5   \\
+  wd &= 1   \\
+  ws &= wD  \\
+  Cv &= 150 \\
+  Ck &= 2   \\ 
+  Cn &= 2   \\
+  Cd &= 1   
+\end{align*}
+
+where $w$ denotes the WUS protein and $C$ the CLV3 mRNA molecule. Likewise, the
+second character denotes the type of reaction. Here, $p$, $D$ and $d$ stand for
+the production, diffusion and degradation rate respectively. The $s$ parameter
+represents the loss of molecules through the sink, which is set to have the same rate
+as the diffusion itself. Other parameters follow those given in the equation
+formulation in \cref{sec:modelling_approach}.
+
+For the second model, the parameters are chosen as
+\begin{align*}
+  wp   &= 5 \\
+  wD   &= 2 \\
+  wd   &= 1 \\
+  ws   &= wD \\
+  Cv   &= 150 \\
+  Ck   &= 6 \\
+  Cn   &= 4 \\
+  Cl1k &= 2 \\
+  Cl1n &= 4 \\
+  Cd   &= 1 \\
+\end{align*}
+under the same reasoning as above.

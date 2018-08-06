@@ -1,0 +1,9 @@
+base
+knitr
+plyr
+RColorBrewer
+prodlim
+lattice
+gridExtra
+viridisLite
+viridis

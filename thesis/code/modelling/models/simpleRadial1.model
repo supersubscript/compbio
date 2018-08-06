@@ -1,0 +1,69 @@
+######################################
+### MODEL NAME AND SPECIFICATION
+######################################
+
+simple2	1	5	0	1	
+
+######################################
+### TOPOLOGIES
+######################################
+
+topology	4	0	0	
+
+######################################
+### SPECIES
+######################################
+
+Sink	4	0	
+
+aWUS	5	0	
+
+pWUS	6	4	
+creationOne	1	1	1	
+2
+5
+diffusionSimple	1	0	
+0.4
+degradationOne	1	0	
+0.2
+degradationTwo	1	1	1	
+0.4
+4
+
+CLV3	7	2	
+hill	6	2	2	0	
+0.2
+0.1
+2
+0.2
+0.1
+2
+6
+8
+degradationOne	1	0	
+0.9
+
+pCLV3	8	4	
+creationOne	1	1	1	
+0.8
+7
+diffusionSimple	1	0	
+0.8
+degradationOne	1	0	
+0.2
+degradationTwo	1	1	1	
+0.4
+4
+
+######################################
+### REACTIONS
+######################################
+
+######################################
+### NEIGHBORHOOD RULES
+######################################
+
+neighborhoodDistanceSphere	3	0	
+1
+0
+0

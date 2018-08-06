@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.12.24)  15 JUN 2017 00:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.12.24)  15 JUN 2017 23:37
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -876,14 +876,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (./report.aux
-
-LaTeX Warning: Label `fig:init_figures' multiply defined.
-
-
-LaTeX Warning: Label `fig:init_figures@cref' multiply defined.
-
-)
+ (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
@@ -902,7 +895,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 136.
 LaTeX Font Info:    ... okay on input line 136.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 136.
 LaTeX Font Info:    ... okay on input line 136.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count151
 \scratchdimen=\dimen160
@@ -997,134 +991,142 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 139.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-<../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf, id=5,
- 597.23125pt x 845.1575pt>
-File: ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf G
-raphic file (type pdf)
+) [1
 
-<use ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf>
-Package pdftex.def Info: ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0
-.5_histogram_.pdf used on input line 165.
-(pdftex.def)             Requested size: 241.69154pt x 251.84624pt.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<figure/twocolumn-TP_plot-1.pdf, id=33, 505.89pt x 325.215pt>
+File: figure/twocolumn-TP_plot-1.pdf Graphic file (type pdf)
 
-<../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constraints
-.pdf, id=7, 597.23125pt x 845.1575pt>
-File: ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constr
-aints.pdf Graphic file (type pdf)
+<use figure/twocolumn-TP_plot-1.pdf>
+Package pdftex.def Info: figure/twocolumn-TP_plot-1.pdf used on input line 184.
 
-<use ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constra
-ints.pdf>
-Package pdftex.def Info: ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0
-.5_Predicted_Constraints.pdf used on input line 170.
-(pdftex.def)             Requested size: 246.62126pt x 227.94965pt.
+(pdftex.def)             Requested size: 241.62126pt x 155.32729pt.
 
-<../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf, id=9, 597
-.23125pt x 845.1575pt>
-File: ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf Graph
-ic file (type pdf)
+<figure/twocolumn-varying-1.pdf, id=36, 505.89pt x 867.24pt>
+File: figure/twocolumn-varying-1.pdf Graphic file (type pdf)
 
-<use ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf>
-Package pdftex.def Info: ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0
-.5_FPplot.pdf used on input line 176.
-(pdftex.def)             Requested size: 241.69154pt x 322.97362pt.
+<use figure/twocolumn-varying-1.pdf>
+Package pdftex.def Info: figure/twocolumn-varying-1.pdf used on input line 211.
 
-<../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf, id=11, 
-597.23125pt x 845.1575pt>
-File: ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf Gra
-phic file (type pdf)
+(pdftex.def)             Requested size: 241.62126pt x 414.20613pt.
+ [2 <./figure/twocolumn-TP_plot-1.pdf>]
+<figure/twocolumn-sensandso-1.pdf, id=52, 505.89pt x 433.62pt>
+File: figure/twocolumn-sensandso-1.pdf Graphic file (type pdf)
 
-<use ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf>
-Package pdftex.def Info: ../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0
-.5_Cmap_200.pdf used on input line 182.
-(pdftex.def)             Requested size: 246.62126pt x 227.94965pt.
+<use figure/twocolumn-sensandso-1.pdf>
+Package pdftex.def Info: figure/twocolumn-sensandso-1.pdf used on input line 22
+4.
+(pdftex.def)             Requested size: 241.62126pt x 207.10306pt.
 
-<../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf, id=13, 
-597.23125pt x 845.1575pt>
+<figure/twocolumn-otherprot-1.pdf, id=54, 505.89pt x 433.62pt>
+File: figure/twocolumn-otherprot-1.pdf Graphic file (type pdf)
+
+<use figure/twocolumn-otherprot-1.pdf>
+Package pdftex.def Info: figure/twocolumn-otherprot-1.pdf used on input line 23
+7.
+(pdftex.def)             Requested size: 241.62126pt x 207.10306pt.
+ [3 <./figure/twocolumn-varying-1.pdf>]
+[4 <./figure/twocolumn-sensandso-1.pdf> <./figure/twocolumn-otherprot-1.pdf>]
+(./report.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 27--31
+\OT1/cmr/m/n/10.95 strong, MS Don-nen-berg, EJ Sund-berg,
+ []
+
+) [5]
+<../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf, id=106,
+ 614.295pt x 794.97pt>
 File: ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf Gra
 phic file (type pdf)
 
 <use ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf>
 Package pdftex.def Info: ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5
-_histogram_.pdf used on input line 195.
-(pdftex.def)             Requested size: 241.69154pt x 251.84624pt.
+_histogram_.pdf used on input line 285.
+(pdftex.def)             Requested size: 241.69154pt x 219.02399pt.
 
 <../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constraints.p
-df, id=15, 597.23125pt x 845.1575pt>
+df, id=108, 614.295pt x 794.97pt>
 File: ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constrai
 nts.pdf Graphic file (type pdf)
 
 <use ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constrain
 ts.pdf>
 Package pdftex.def Info: ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5
-_Predicted_Constraints.pdf used on input line 200.
-(pdftex.def)             Requested size: 246.62126pt x 227.94965pt.
+_Predicted_Constraints.pdf used on input line 290.
+(pdftex.def)             Requested size: 246.62126pt x 195.44655pt.
 
-<../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf, id=17, 597.
-23125pt x 845.1575pt>
+<../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf, id=110, 614
+.295pt x 794.97pt>
 File: ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf Graphic
  file (type pdf)
 
 <use ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf>
 Package pdftex.def Info: ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5
-_FPplot.pdf used on input line 206.
-(pdftex.def)             Requested size: 241.69154pt x 322.97362pt.
+_FPplot.pdf used on input line 296.
+(pdftex.def)             Requested size: 241.69154pt x 287.72661pt.
 
-<../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf, id=19, 59
-7.23125pt x 845.1575pt>
+<../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf, id=112, 6
+14.295pt x 794.97pt>
 File: ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf Graph
 ic file (type pdf)
 
 <use ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf>
 Package pdftex.def Info: ../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5
-_Cmap_200.pdf used on input line 212.
-(pdftex.def)             Requested size: 246.62126pt x 227.94965pt.
+_Cmap_200.pdf used on input line 302.
+(pdftex.def)             Requested size: 246.62126pt x 195.44655pt.
 
-[1
+(../code/exc_3.R
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 14.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 15.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./report.bbl) [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 278.
-
-[3 <../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf> <.
-./figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constraints.p
-df> <../figures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf> <../f
-igures/CADH1_HUMAN_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf>] [4 <../figu
-res/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf> <../figures/DYR
-_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constraints.pdf> <../figures
-/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf> <../figures/DYR_ECOLI_
-e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 15.
+) (../code/exc_6.R
+[6]) (../code/tp_plot.R [7]) (../code/varying.R [8])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
+ [9] [10 <../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_.pdf
+> <../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constraints
+.pdf> <../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot.pdf> <../f
+igures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 278.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 278.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 317.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 317.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 278.
+(rerunfilecheck)             Checksum: 6B997A417C91FAC5190E58F1CD33E25C;76.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 317.
  ) 
 Here is how much of TeX's memory you used:
- 16999 strings out of 494358
- 252545 string characters out of 6164526
- 494191 words of memory out of 5000000
- 20109 multiletter control sequences out of 15000+600000
- 12627 words of font info for 47 fonts, out of 8000000 for 9000
+ 18292 strings out of 494358
+ 265678 string characters out of 6164526
+ 735191 words of memory out of 5000000
+ 21168 multiletter control sequences out of 15000+600000
+ 15434 words of font info for 58 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 42i,9n,40p,1712b,615s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,9n,42p,931b,2008s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (4 pages, 398126 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+
+Output written on report.pdf (10 pages, 383348 bytes).
 PDF statistics:
- 563 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
- 16 named destinations out of 1000 (max. 500000)
- 89 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 653 PDF objects out of 1000 (max. 8388607)
+ 494 compressed objects within 5 object streams
+ 220 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 

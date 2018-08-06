@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,5 +11,36 @@ Richard Durbin, Sean~R Eddy, Anders Krogh, and Graeme Mitchison.
 \newblock \emph{Biological sequence analysis: probabilistic models of proteins
   and nucleic acids}.
 \newblock Cambridge university press, 1998.
+
+\bibitem[Thompson et~al.(1994)Thompson, Higgins, and
+  Gibson]{thompson1994clustal}
+Julie~D Thompson, Desmond~G Higgins, and Toby~J Gibson.
+\newblock Clustal w: improving the sensitivity of progressive multiple sequence
+  alignment through sequence weighting, position-specific gap penalties and
+  weight matrix choice.
+\newblock \emph{Nucleic acids research}, 22\penalty0 (22):\penalty0 4673--4680,
+  1994.
+
+\bibitem[Pena et~al.()Pena, Mulvey, Snyder, De~Masi, von Rosenvinge,
+  G{\"u}nther, Armstrong, Donnenberg, Sundberg, Tomich,
+  et~al.]{pena77consensus}
+CF~Pena, GL~Mulvey, GA~Snyder, L~De~Masi, EC~von Rosenvinge, S~G{\"u}nther,
+  GD~Armstrong, MS~Donnenberg, EJ~Sundberg, M~Tomich, et~al.
+\newblock A consensus on protein structure accuracy in nmr?
+\newblock \emph{Biol. Rev}, 77:\penalty0 323--341.
+
+\bibitem[Rakesh and Srinivasan(2016)]{rakesh2016improving}
+Ramachandran Rakesh and Narayanaswamy Srinivasan.
+\newblock Improving the accuracy of fitted atomic models in cryo-em density
+  maps of protein assemblies using evolutionary information from aligned
+  homologous proteins.
+\newblock \emph{Data Mining Techniques for the Life Sciences}, pages 193--209,
+  2016.
+
+\bibitem[Marks et~al.(2012)Marks, Hopf, and Sander]{marks2012protein}
+Debora~S Marks, Thomas~A Hopf, and Chris Sander.
+\newblock Protein structure prediction from sequence variation.
+\newblock \emph{Nature biotechnology}, 30\penalty0 (11):\penalty0 1072--1080,
+  2012.
 
 \end{thebibliography}

@@ -2,5 +2,3 @@
 Author: Henrik Åhl
 All material is freely available to use, but please give me a shoutout if you
 do, either in person or at hpa22@cam.ac.uk.
-
-Currently ongoing course. 

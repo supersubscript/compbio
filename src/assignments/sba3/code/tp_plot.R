@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-setwd("/local/data/public/hpa22/compbio/src/assignments/sba3/code/")
+setwd("/home/henrik/compbio/src/assignments/sba3/code/")
 # Do the track analysis
 library(plyr)
 library(RColorBrewer)
@@ -9,6 +9,7 @@ par(lwd=lw.s, cex = 1.5, ps = 15)
 library(prodlim)
 library(lattice)
 library(gridExtra)
+library(viridis)
 
 real.files = list.files("../figures", pattern = "crystal_contacts.csv", full.names = T)
 real.files = grep("DYR", real.files, value = T)
@@ -28,8 +29,7 @@ name = paste(a[,1], a[,2], sep = "_")
 results = sapply(1:length(real.files), function(x){
   pred = read.csv(pred.files[x], sep = ",")
   real = read.csv(real.files[x], sep = ",")
-  # real = read.csv("../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_crystal_contacts.csv", sep = ",")
-  # pred = read.csv("../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_prediction_contacts.csv", sep = ",")
+  
   TP = sum(!is.na(row.match(pred, real))) # Is in both
   FP = sum(is.na(row.match(pred, real)))  # Is in pred but not in real
   FN = sum(is.na(row.match(real, pred)))  # Is in real but not in pred
@@ -50,6 +50,3 @@ par(mfrow=c(2,1))
 plot1 = levelplot(prec.m,  col.regions = viridis(21), xlab = "Pseudocount weight", ylab = expression(theta), main = "Precision", panel = panel.levelplot.raster)
 plot2 = levelplot(sens.m,  col.regions = viridis(21), xlab = "Pseudocount weight", ylab = expression(theta), main = "Sensitivity")
 grid.arrange(plot1, plot2, ncol = 1)
-
-
-

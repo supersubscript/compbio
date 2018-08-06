@@ -1,0 +1,500 @@
+\documentclass[11pt]{article}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[a4paper]{geometry}
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage[numbers]{natbib}
+\bibliographystyle{unsrtnat}
+\usepackage{subcaption}
+\usepackage[font={small}]{caption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{cleveref}
+\usepackage{lipsum}
+\newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{=}}}
+\newcommand{\matr}[1]{\mathbf{#1}}
+\newcommand{\partt}[2]{\ensuremath{\dfrac{\partial {#1}}{\partial {#2}}}}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}} % non-italized differentials
+\newcommand{\h}[0]{\ensuremath{\hbar}} % hbar
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\usepackage{amsthm}
+\theoremstyle{plain}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist    
+\usepackage{xcolor}
+\definecolor{Red}{rgb}{0.7,0,0}
+\definecolor{Blue}{rgb}{0,0,0.8}
+\usepackage{verbatim}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+\addtolength{\oddsidemargin}{-.35in}
+\addtolength{\evensidemargin}{-.35in}
+\addtolength{\textwidth}{.7in}
+\usepackage{multicol}
+\usepackage{afterpage}
+
+% Stephen's stuff
+\newcommand{\R}{\texttt{R}}
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\mbox{\normalfont\textsf{#1}}}}
+\usepackage{xcolor}
+\definecolor{Red}{rgb}{0.7,0,0}
+\definecolor{Blue}{rgb}{0,0,0.8}
+\hypersetup{%
+pdfusetitle,
+bookmarks = {true},
+bookmarksnumbered = {true},
+bookmarksopen = {true},
+bookmarksopenlevel = 2,
+unicode = {true},
+breaklinks = {false},
+hyperindex = {true},
+colorlinks = {true},
+linktocpage = {true},
+plainpages = {false},
+linkcolor = {Blue},
+citecolor = {Blue},
+urlcolor = {Red},
+pdfstartview = {Fit},
+pdfpagemode = {UseOutlines},
+pdfview = {XYZ null null null}
+}
+%% Listings
+\lstset{ 
+language=R,                     % the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1, each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+title=\lstname,                 % show the filename of files included with \lstinputlisting;
+% also try caption instead of title
+keywordstyle=\color{Blue},      % keyword style
+commentstyle=\color{orange},    % comment style
+stringstyle=\color{Red},        % string literal style
+escapeinside={\%*}{*)},         % if you want to add a comment within your code
+morekeywords={*,...}            % if you want to add more keywords to the set
+} 
+\usepackage{graphicx}
+
+
+
+%%% Document specific
+\newcommand{\course}{Structural Biology}
+\newcommand{\ass}{3}
+\newcommand{\term}{Lent term 2017}
+%\bibliography{pga1}
+
+%%% Title page
+\title{
+\bf \course: Assignment \ass \\[1em]
+\small{University of Cambridge}
+}
+
+\author{Henrik Åhl}
+\date{\today}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+%%% Actual document
+\begin{document}
+\date{\today}
+\maketitle
+\setcounter{page}{1}
+
+<<setup, include=FALSE, cache=FALSE, echo = FALSE, warning=FALSE, message = FALSE>>=
+library(knitr)
+opts_chunk$set(fig.path='figure/twocolumn-', fig.align='center', fig.show='hold')
+render_listings()
+@
+% \date{\today}
+\maketitle
+% \begin{abstract}
+% {\bf 
+%   %\begin{changemargin}{-.8cm}{-.8cm}
+%   This is an abstract abstract.
+% }
+% \end{abstract}
+
+\begin{multicols*}{2}
+\section*{Preface}
+This is an assignment report in connection to the \textit{\course}
+module in the Computational Biology course at the University of Cambridge,
+\term. All related code is as of \date{\today} available through a
+Github repository by contacting \href{mailto:hpa22@cam.ac.uk}{hpa22@cam.ac.uk}.
+<<codeblock,include = F, echo = F, warning = F>>=
+@
+
+\section*{Exercises}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DYR  
+\begin{figure*}[p]
+\centering
+\phantom{p}
+\vspace{-6cm}
+\begin{subfigure}[b]{.49\textwidth}
+\includegraphics[width=\textwidth, trim = 2cm 6cm 2cm 6cm, clip]{{../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_histogram_}.pdf}
+\caption{ }
+\label{fig:dyr_fig1}
+\end{subfigure}~
+\begin{subfigure}[b]{.5\textwidth}
+\includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{{../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Predicted_Constraints}.pdf}
+% \includegraphics[width=\textwidth, trim= 10cm 0 10cm 0, clip]{../figures/fig2}
+\caption{ }
+\label{fig:dyr_fig2}
+\end{subfigure}\\
+\begin{subfigure}[b]{.49\textwidth}
+\includegraphics[width=\textwidth, trim= 2cm 7cm 2cm 0cm, clip]{{../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_FPplot}.pdf}
+\caption{ }
+\label{fig:dyr_fig3}
+\end{subfigure}~
+\begin{subfigure}[b]{.5\textwidth}
+% \includegraphics[width=\textwidth, trim= 10cm 0cm 10cm 0, clip]{../figures/fig4 }
+\includegraphics[width=\textwidth, trim=2cm 7cm 2cm 7cm, clip]{{../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_Cmap_200}.pdf}
+\caption{ }
+\label{fig:dyr_fig4}
+\end{subfigure}%
+\caption{ }
+\label{fig:dyr_init_figures}
+\end{figure*}
+
+% 1
+\paragraph{1}
+The code produces in total eight different files, each representing various types of information produced throughout the analysis. The four figures produced can be seen in \cref{fig:dyr_init_figures} for DYR\_ECOLI under the default parameters. \Cref{fig:dyr_fig1} corresponds to the distribution of weighted pairwise matches between sequences, given that their similarity fraction is greater than $\theta$ (70~\%). Here, for every sequence, the number of \textit{other} sequences with a $> 70~\%$ similarity to this adds an increment of one to the parameter $d_i$ in the equation 
+\begin{equation*}
+W_i = \dfrac{1}{1 + d_i}.
+\end{equation*}
+in order to downscale weights for the sequences that are high in abundance (given our similarity threshold), since they add little additional information to what is already known. \Cref{fig:dyr_fig2} shows the predicted protein contact map between the residues in each sequence, i.e.\ how correlated certain positions are with each other based on the evolutionarily inferred contact (EIC) scores. \Cref{fig:fig3} in turn depicts the minimal distance between the amino acids in the crystal as a function of the corresponding DI rank, for the top 200 pairs. Lastly, \cref{fig:dyr_fig4} shows the overlap between the experimentally observed structure and the predicted tertiary interactions, i.e.\ \cref{fig:dyr_fig2} overlaid on the experimental data.
+
+% FP Plot
+The output text and data files in turn contain information used in these plots to various extents. The MI\_DI files contain information about the pairwise residues and their corresponding mutual information (MI) and direct information (DI) scores. Similarly, the aptly named DIScores files contain collected information about all the DI scores in the predicted and experimental case, as well as information about the physical distance and the conservation percentage for the pair in the alignments.
+
+%2
+\paragraph{2}
+The accuracy of the method is directly dependent on the quality of the sequence alignment. As these often utilize multiple heuristic simplification in order to improve speed, longer sequences are bound to align improperly. While functionally important segments should be better conserved and align better, there is always the risk of error in this, which makes the method as a whole reliant both on the alignment method used, and the numbers of sequences aligned. Using more elaborate approaches such as direct dynamic programming is instead feasible when analysing smaller and/or fewer proteins. While cumbersome and time-consuming, one can also, by using prior information of how the sequences in question differ, tailor the alignment according to data at hand in order to improve upon this. 
+
+Another problem is the quality of the experimental correlations, which depend both on the sample size and resolution of the protein in question. Depending on how different the homologs are from each other, they might suffer from severly different biological and technical variances.This problem might also obfuscate lowly correlated but functionally important residues, which affect the overall structure and stability by long-range interactions or simply aid the protein in folding into the native state. 
+% REWRITE ^
+
+Lastly, as a note besides the directly sequence oriented problems, the alignment data does not take into account environmental factors, such as how certain parts of the protein might interact with other molecules in a way such that protein functionality invisible in the primary sequence is conserved or maintained. If this is the case, and this functionality is not conserved spatially in relation to other residues, this might as well be obfuscated. In other words, as a high score indicates contact, a low score must not necessarily mean no contact between residues.
+
+% 3
+\paragraph{3}
+% Write this
+\Cref{fig:TP_plot} shows the change in percentage TP when amino acids of decreasing ranks are included in the measure. Clearly, when using the best ranking amino acids, there is a high certainty in the predicability of the model. However, quite quickly there is a steep decline, and the ability to predict couplings reach  50~\% at ca rank 175. The initial dip is due to a low abundance in the pairs which are ranked the highest, which regains its ground as soon as more frequent pairs are taken into account.
+<<TP_plot, echo=FALSE, fig.height = 4.5, fig.env='figure', fig.cap=" ", cache = TRUE, fig.pos="H",fig.align='center'>>=
+#!/usr/bin/env Rscript
+setwd("/home/henrik/compbio/src/assignments/sba3/code/")
+# Do the track analysis
+library(plyr)
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+lw.s = 2
+par(lwd=lw.s, cex = 1.5, ps = 15)
+library(prodlim)
+
+scores =
+read.csv("../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_DIScoresCompared.csv",
+         sep = ",", header = F)
+
+
+TPs = function(nIncluded) {
+    TP = sum(scores[1:nIncluded, 4] < 5.0)
+  TP / nIncluded
+}
+
+fract = sapply(1:nrow(scores), TPs)
+par(mfrow = c(1, 1))
+
+plot(fract, type = "l", ylab = "TP / (TP + FP)", xlab = "TP + FP", col = 1, lwd = lw.s)
+@
+
+% 4
+\paragraph{4}
+The parameter $\theta$ sets, as previously hinted, the similarity percentage cutoff between sequences. In our case, as it is set to $\theta = 0.3$, only sequences with more than $1.0 - 0.3 = 0.7 = 70~\%$ similarity will be processed when calculating the weights. This makes it so that, according to the aforementioned equation, sequences which are very similar will add less to the corresponding weights, as the information is duplicated in several parts of the input data, which here are the homologues. By doing so, we smoothen our distribution of weights, and thus makes it more variable due to smaller variation. We can also note how changing the $\theta$ parameter somewhat removes the initial bump, signifying that the initial dip indeed is because of low-abundance pairs distorting the prediction.
+
+% question 5
+\paragraph{5}
+Pseudocounts are used for smoothing distributions in particular when some specific probabilistic outcomes are unlikely to occur in relation to the size of the data set. In the case of amino acids, this could be to add and increment to the number of times a residue has been observed. For each amino acid, a different increment would be attributed, based on a prior estimates of how likely they are to appear. This approach is done in order to avoid sharp peaks in the distribution of values in for example a position weight matrix, where small changes in the number of observations would have large effects the resulting value, in the case where pseudocounts are not used. In practice, pseudocounts can be set to calculate the posterior estimator of the mean as
+\begin{equation*}
+  \theta^{PME}_i = \dfrac{n_i + \alpha_i}{|\mathbf n| + |\mathbf \alpha |}
+\end{equation*}
+where $n_i$ is the number of observations of component $i$, and $\alpha$ is the pseudocounts for that component~\cite{durbin1998biological}.
+
+% The pseudocounts roughly reflect the chances of seeing the amino acid in a context in which we have not previously seen it. A low pseudocount for an amino acid means that the amino acid is not often seen in a context in which some other amino acid has already been observed. If the pseudocount is lower than we would expect from the background probabilities, then the amino acid must be more highly conserved than other amino acids. Using this reasoning, we expect that G, P, W, and C are often highly conserved. Using symmetric reasoning for pseudocounts that are higher than expected from the background probabilities,   we also expect that M, Q, and S are less conserved than other amino acids.
+
+\paragraph{6}
+\Cref{fig:varying} shows the changes in predictability when changing the two parameters. As we can note, changing the pseudocount weight appears to saturate at around $0.6$. Having values under this makes the model underperform, where the lowest pseudocount weight leads to the worst performance. When instead keeping the pseudocount weights constant and instead changing $\theta$, we see that there is a balancing act between extracting the vital information and managing not to throw it out. As we can see from the figure, only very little of the material is needed to be discarded in order to get a good estimate in this case.
+<<varying, echo=FALSE, fig.height = 12, fig.env='figure', fig.cap=" ", cache = TRUE, fig.pos="H",fig.align='center', messages=FALSE>>=
+#!/usr/bin/env Rscript
+setwd("/home/henrik/compbio/src/assignments/sba3/code/")
+# Do the track analysis
+library(plyr)
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+lw.s = 2
+par(lwd=lw.s, cex = 1.5, ps = 15)
+library(prodlim)
+real.files   = list.files("../figures", pattern = "DIScoresC", full.names = T)
+real.files   = grep("DYR", real.files, value = T)
+order.files  = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"_theta_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+order.files2 = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"pc_weight_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+real.files   = real.files[order(order.files, order.files2)]
+
+a = expand.grid(unique(order.files), unique(order.files2))
+a = a[order(a[,1], a[,2]), ]
+name = paste(a[,1], a[,2], sep = "_")
+
+
+theta.0.3.files = which(a[,1] == 0.3)[c(2,4,6,8,10)]
+pc.0.5.files    = which(a[,2] == 0.5)[c(2,4,6,8,10)]
+
+TPs = function(nIncluded, scores) {
+  TP = sum(scores[1:nIncluded, 4] < 5.0)
+  TP / nIncluded
+}
+
+results = list()
+for(ii in real.files[theta.0.3.files]){
+  scores = read.csv(ii, sep = ",", header = F)
+  fract = sapply(1:nrow(scores), function(x) TPs(x, scores))
+  results = append(results, list(fract))
+}
+
+par(mfrow = c(2,1))
+plot(NA, ylim= c(0,1), xlim = c(0,1000), xlab = "TP + FP", ylab = "TP / (TP + FP)", main = expression(" "*theta*" = 0.3, varying pc weight"))
+for(ii in 1:length(results)) lines(results[[ii]], col = ii)
+legend("topright", legend=a[theta.0.3.files, 2], col = 1:5, lty = 1, lwd = lw.s, inset = c(0.02,0.02), bg = "white")
+
+#########################################################################
+results = list()
+for(ii in real.files[pc.0.5.files]){
+  scores = read.csv(ii, sep = ",", header = F)
+  fract = sapply(1:nrow(scores), function(x) TPs(x, scores))
+  results = append(results, list(fract))
+}
+plot(NA, ylim= c(0,1), xlim = c(0,1000), xlab = "TP + FP", ylab = "TP / (TP + FP)", main = expression("pc weight = 0.5, varying "*theta*" "))
+for(ii in 1:length(results)) lines(results[[ii]], col = ii)
+legend("topright", legend=a[pc.0.5.files, 1], col = 1:5, lty = 1, lwd = lw.s, inset = c(0.02,0.02), bg = "white")
+@
+
+In \cref{fig:sensandso} we can observe the sensitivity and precision for pseudocount weights and $\theta$ both in the range $[0, 1]$. While the minimum is clearly identifiable, there is no homogeneous slope towards it. Nevertheless, we 
+
+<<sensandso, echo=FALSE, fig.height = 6, fig.env='figure', fig.cap=" ", cache = TRUE, fig.pos="H",fig.align='center', messages=FALSE>>=
+#!/usr/bin/env Rscript
+setwd("/home/henrik/compbio/src/assignments/sba3/code/")
+# Do the track analysis
+library(plyr)
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+lw.s = 2
+par(lwd=lw.s, cex = 1.5, ps = 15)
+library(prodlim)
+library(lattice)
+library(gridExtra)
+library(viridis)
+
+real.files = list.files("../figures", pattern = "crystal_contacts.csv", full.names = T)
+real.files = grep("DYR", real.files, value = T)
+pred.files = list.files("../figures", pattern = "prediction_contacts.csv", full.names = T)
+pred.files = grep("DYR", pred.files, value = T)
+
+order.files  = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"_theta_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+order.files2 = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"pc_weight_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+
+real.files = real.files[order(order.files, order.files2)]
+pred.files = pred.files[order(order.files, order.files2)]
+
+a = expand.grid(unique(order.files), unique(order.files2))
+a = a[order(a[,1], a[,2]), ]
+name = paste(a[,1], a[,2], sep = "_")
+
+results = sapply(1:length(real.files), function(x){
+  pred = read.csv(pred.files[x], sep = ",")
+  real = read.csv(real.files[x], sep = ",")
+  # real = read.csv("../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_crystal_contacts.csv", sep = ",")
+  # pred = read.csv("../figures/DYR_ECOLI_e3_n2_m40_theta_0.3_pc_weight_0.5_prediction_contacts.csv", sep = ",")
+  TP = sum(!is.na(row.match(pred, real))) # Is in both
+  FP = sum(is.na(row.match(pred, real)))  # Is in pred but not in real
+  FN = sum(is.na(row.match(real, pred)))  # Is in real but not in pred
+    
+  sens = TP / (TP + FN)
+  prec = TP / (TP + FP)
+  list(TP = TP, FP = FP, FN = FN, sens=sens, prec=prec)    
+})
+
+colnames(results) = name
+
+# x is PC-weight, y is 
+prec = results["prec",]
+sens = results["sens",]
+prec.m = matrix(unlist(prec), ncol=11, nrow=11, byrow=T)
+sens.m = matrix(unlist(sens), ncol=11, nrow=11, byrow=T)
+par(mfrow=c(2,1))
+plot1 = levelplot(prec.m,  col.regions = viridis(21), xlab = "PC weight", ylab = expression(theta), main = "Precision",   panel = panel.levelplot.raster, scales = list(x=list(labels =seq(0,1,.25) , at=seq(0,11,11/4)), y=list(labels =seq(0,1,.25) , at=seq(0,11,11/4))) )
+
+plot2 = levelplot(sens.m,  col.regions = viridis(21), xlab = "PC weight", ylab = expression(theta), main = "Sensitivity", panel = panel.levelplot.raster,scales = list(x=list(labels =seq(0,1,.25) , at=seq(0,11,11/4)), y=list(labels =seq(0,1,.25) , at=seq(0,11,11/4))))
+grid.arrange(plot1, plot2, ncol = 2)
+@
+
+\paragraph{7}
+When comparing the three different proteins with each other using the default parameters we get the results shown in \cref{fig:otherprot}. Notably, LACI\_ECOLI performs the best, with the other bacterial species coming after. The human protein performs the worst in general. The origin of the Human protein is as it is simply because the highest ranked prediction is a false positive. 
+<<otherprot, echo=FALSE, fig.height = 6, fig.env='figure', fig.cap=" ", cache = TRUE, fig.pos="H",fig.align='center', messages=FALSE>>=
+#!/usr/bin/env Rscript
+setwd("/home/henrik/compbio/src/assignments/sba3/code/")
+# Do the track analysis
+library(plyr)
+library(RColorBrewer)
+palette(brewer.pal(n = 8, name = "Set1"))
+lw.s = 2
+par(lwd=lw.s, cex = 1.5, ps = 15)
+library(prodlim)
+
+########################################################
+real.files   = list.files("../figures", pattern = "DIScoresC", full.names = T)
+real.files   = grep("DYR", real.files, value = T)
+order.files  = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"_theta_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+order.files2 = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"pc_weight_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+real.files   = real.files[order(order.files, order.files2)]
+
+a = expand.grid(unique(order.files), unique(order.files2))
+a = a[order(a[, 1], a[, 2]),]
+name = paste(a[, 1], a[, 2], sep = "_")
+
+default.file = row.match(c(0.3, 0.5), a)
+
+TPs = function(nIncluded, scores) {
+  TP = sum(scores[1:nIncluded, 4] < 5.0)
+  TP / nIncluded
+}
+
+results = list()
+for(ii in real.files[default.file]){
+  scores  = read.csv(ii, sep = ",", header = F)
+  fract   = sapply(1:nrow(scores), function(x) TPs(x, scores))
+  results = append(results, list(fract))
+}
+
+par(mfrow = c(1,1))
+plot(NA, ylim= c(0,1), xlim = c(0,1000), xlab = "TP + FP", ylab = "TP / (TP + FP)", main = )
+for(ii in 1:length(results)) lines(results[[ii]], col = 1)
+# legend("topright", legend=a[theta.0.3.files, 2], col = 1:5, lty = 1, lwd = lw.s, inset = c(0.02,0.02), bg = "white")
+
+#########################################################################
+real.files = list.files("../figures", pattern = "DIScoresC", full.names = T)
+real.files = grep("HUMAN", real.files, value = T)
+order.files  = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"_theta_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+order.files2 = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"pc_weight_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+real.files = real.files[order(order.files, order.files2)]
+
+a    = expand.grid(unique(order.files), unique(order.files2))
+a    = a[order(a[, 1], a[, 2]),]
+name = paste(a[, 1], a[, 2], sep = "_")
+
+default.file = row.match(c(0.3, 0.5), a)
+
+TPs = function(nIncluded, scores) {
+  TP = sum(scores[1:nIncluded, 4] < 5.0)
+  TP / nIncluded
+}
+
+results = list()
+for(ii in real.files[default.file]){
+  scores = read.csv(ii, sep = ",", header = F)
+  fract = sapply(1:nrow(scores), function(x) TPs(x, scores))
+  results = append(results, list(fract))
+}
+
+par(mfrow = c(1,1))
+for(ii in 1:length(results)) lines(results[[ii]], col = 2)
+
+#############################################
+real.files = list.files("../figures", pattern = "DIScoresC", full.names = T)
+real.files = grep("LACI", real.files, value = T)
+order.files  = as.numeric(sapply(sapply(real.files, function(x) strsplit(x,"_theta_")[[1]][2]), function(x) strsplit(x, "_")[[1]][1]))
+real.files = real.files[order(order.files, order.files2)]
+
+a    = expand.grid(unique(order.files), unique(order.files2))
+a    = a[order(a[, 1], a[, 2]),]
+name = paste(a[, 1], a[, 2], sep = "_")
+
+default.file = row.match(c(0.3, 0.5), a)
+
+TPs = function(nIncluded, scores) {
+  TP = sum(scores[1:nIncluded, 4] < 5.0)
+  TP / nIncluded
+}
+
+results = list()
+for(ii in real.files[default.file]){
+  scores = read.csv(ii, sep = ",", header = F)
+  fract = sapply(1:nrow(scores), function(x) TPs(x, scores))
+  results = append(results, list(fract))
+}
+
+for(ii in 1:length(results)) lines(results[[ii]], col = 3)
+legend("topright", col = 1:3, c("DYR_ECOLI", "CADH1_HUMAN","LACI_ECOLI"), lty = 1, lwd = lw.s, inset = c(0.02,0.02))
+@
+
+\paragraph{8}
+% Question	8:	How	do	you	expect	performance	to	vary	as	the	length	of	the	protein	
+% sequence	being	analysed increases?	What	do	you	find	from	the	true	positive	
+% plots	that	you	have	generated?	
+Given \cref{fig:otherprot}, we can tie this information to the sequence lengths. From our data, we have that our data for LACI\_ECOLI contains sequences of at most 360 residues, whereas CADH1\_HUMAN has a more modest length of 151, and DYR\_ECOLI of 159. Normally, we would expect sequences of longer lengths to match worse due to the increased risk of missmatches and tendency to include non-functional residues. When the sequences are longer, the low-abundance subsequences will also cause the distribution landscape to be rougher and hence not as robust in performance.
+
+However, in our figure, we see the opposite effect, where longer sequences generally have higher predictive quality, aside from a discrepancy for high-scoring pairs. This could be because of different degrees of variance between homologs in our species, due to for example insertions and deletions. Indeed, a visual check on this affirms that the biological variance between the three cases is significant, with in particular DYR\_ECOLI being generally very well conserved, whereas CADH1\_HUMAN suffers from more indels than the ECOLI counterparts. It is also the case that LACI\_ECOLI has the most sequences included in the data set, which might simply entail that the difference we see is due to a relative lack of data in the other cases.
+
+\paragraph{9}
+% Question	9:	Given	your	findings	in	question	7,	and	your	answers	to	questions 4	
+% and	5 above,	do	you	think	the	same	parameter	values	should	be	used	for	all	of	
+% these	proteins,	given	the	input	data	that	you	have	been	provided	with? If	you	
+% were	given	a	new	protein	to	analyse,	what	factors	would	affect	your	choice	of	
+% parameter	values	for	theta	and	pc_weight?	
+
+Using the same parameters is clearly not a satisfying solution due to the differences in biological variance (and subsequently the error in alignment). There are naturally also differences in the frequency of the amino acids, which directly should affect the distribution of pseudocounts and their relative importance. For a new protein, it would be beneficial to take into account the factors previously mentioned, such as sequence lengths, variance in this, and conservation and variance in the corresponding subsequences.
+
+% No. They should depend on how frequent the amino acids are, and how high variance there is between the homologs. 
+
+\paragraph{10}
+% Question	10: What	factors	other	than	the	available	input	data	might	cause	the	
+% accuracy	of	contact	prediction to	vary	between	different	proteins?	To	answer	
+% this	question,	you	should	refer	to	your	findings	in	this	assignment	so	far,	to	the	
+% papers	provided	on	moodle	with	this	assignment,	and	in	addition any	other	
+% material	you find	relevant.	
+
+The accuracy of the method depends inherently on the quality of the sequence alignment, and as a consequence then on the method used for aligning. Ideally, dynamic programming would render the mathematically optimal fit between the sequences, although the large number of sequences makes it computationally impossible for any substantial studies. This means that heuristic methods must be applied in order to speed up the alignment, and the design and choice of these are thus bound to affect the quality of the alignment. Taking into account as much available data as possible, for example about the insertion/deletion frequencies and such, can then be used to improve upon this. 
+
+Similarly to this, still relating to the sequences, is the accuracy of the data itself, e.g.\ in the case of the 3D structure. Many proteins have structures which are difficult to capture precisely, which means that the sequence data and the corresponding fold sometimes are not very reliable, and depends on the method used to capture the conformation.
+
+Aside of the sequences themselves, our approach does not take into account environmental factors, such as interacting ligands and ions which might aid or obstruct certain types of folds and change the overall folding trajectory. While highly correlated pairs might have importance in folding and making the protein reaching the native state, our method is unable to account for the fact that this does not happen in an isolated environment. 
+
+
+% As an estimate of the accuracy maximally achievable by this method and its particular implementation, we performed reference calculations using artificial, fully correct, distance constraints derived from the experimentally observed structure. With this ideal set of constraints, we can construct protein structure models at an error of not lower than about 2.0 Å Cα-RMSD (Text S1, Table S3, larger values for some of the larger proteins). This places a lower bound on the expected error, inherent in the distance geometry and refinement part of the method and this error will scale to some extent with the length of the protein as others have noted [50]. That we achieve candidate structures close to these bounds with predicted distance constraints is consistent with the notion that the inferred residue couplings contain almost all the information required to find the native protein structure, at least for the 15 protein families examined here. This technical lower limit also represents a challenge for generic methods improvement for computation of accurate all-atom structures from distance constraints.
+
+
+
+
+
+\bibliography{references}
+\end{multicols*}
+\end{document}

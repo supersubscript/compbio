@@ -1,0 +1,75 @@
+2dShoot         1 8 0 1 # name, topologies, species, reactions, neighborhood rules
+
+##########################
+topology        4 0 0  
+
+##########################
+CLV3signal      4 4
+creationOne     1 1 1
+0.4   
+6     #CLV3
+diffusionSimple 1 0
+0.2 
+degradationOne  1 0
+0.1 
+degradationTwo  1 1 1
+0.1
+11
+
+##########################
+WUSsignal       5 4
+creationOne     1 1 1
+0.4   
+7     #WUS
+diffusionSimple 1 0
+0.2 
+degradationOne  1 0
+0.1 
+degradationTwo  1 1 1
+0.1
+11
+
+##########################
+CLV3            6 2
+hill            5 2 2 0
+0.7 
+0.6 
+2 
+0.6 
+2 
+8 
+5    # cAnchorIndex # WUSsignal 
+degradationOne  1 0
+0.1 
+
+##########################
+WUS             7 2
+hill            7 2 1 2
+0.7 
+0.6 
+2
+0.6 
+2 
+0.6 
+2  
+10 
+9 
+4   # longAIndex, shortA, cSignal
+degradationOne  1 0
+0.1 
+
+##########################
+cAnchor         8 0
+
+##########################
+shortAnchor     9 0
+
+##########################
+longAnchor      10 0
+
+##########################
+Sink            11 0
+
+##########################
+neighborhoodDistanceSphere 3 0
+1.0 0.0 0.0 
